@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -7,12 +7,10 @@
   <meta name="description" content="UNTU is a non-profit youth organization empowering young people aged 18–35 through international projects, trainings, volunteering, cultural exchange, wellbeing, sustainability, and peacebuilding." />
   <meta name="keywords" content="non-profit organization, youth organization, international youth projects, youth exchange, volunteering, training courses, peacebuilding, cultural exchange, sustainability, wellbeing, inclusive society, youth empowerment" />
 
-
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
-
 
   <style>
     :root{
@@ -31,30 +29,20 @@
       --container: 1120px;
     }
 
-
     *{box-sizing:border-box}
     html,body{height:100%}
 
+    html{ scroll-behavior: smooth; }
 
-html{ scroll-behavior: smooth; }
+    body{
+      margin:0;
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      color:var(--text);
+      background: var(--bg);
+      overflow-x:hidden;
+    }
 
-
-body{
-  margin:0;
-  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  color:var(--text);
-  background: var(--bg);
-  overflow-x:hidden;
-}
-
-
-a{ color: inherit; }
-
-
-
-
-    
-
+    a{ color: inherit; }
 
     /* Background layers */
     .bg{
@@ -89,67 +77,54 @@ a{ color: inherit; }
       mix-blend-mode: overlay;
     }
 
-
     /* Layout */
     .container{
       width:min(var(--container), calc(100% - 40px));
       margin:0 auto;
     }
 
+    header{
+      position:sticky;
+      top:0;
+      z-index:50;
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom:1px solid rgba(255,255,255,.07);
+      background: rgba(10,12,18,.42);
+    }
 
-header{
-  position:sticky;
-  top:0;
-  z-index:50;
-  backdrop-filter: blur(14px);
-  -webkit-backdrop-filter: blur(14px);
-  border-bottom:1px solid rgba(255,255,255,.07);
-  background: rgba(10,12,18,.42);
-}
+    .nav{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      padding:14px 0;
+      gap:18px;
+      flex-wrap:wrap;
+    }
 
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:220px;
+      text-decoration:none;
+      color:inherit;
+    }
 
-.nav{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  padding:14px 0;
-  gap:18px;
-  flex-wrap:wrap;
-}
+    /* ВАЖНО: только один раз в CSS */
+    .navlinks{
+      display:flex;
+      gap:18px;
+      align-items:center;
+      flex-wrap:wrap;
+      justify-content:flex-end;
 
-
-
-
-.brand{
-  display:flex;
-  align-items:center;
-  gap:12px;
-  min-width:220px;
-  text-decoration:none;
-  color:inherit;
-}
-
-
-/* ВАЖНО: только один раз в CSS */
-.navlinks{
-  display:flex;
-  gap:18px;
-  align-items:center;
-  flex-wrap:wrap;
-  justify-content:flex-end;
-
-
-  flex: 1 1 auto;
-  min-width: 0;
-
-
-}
-@media (max-width: 940px){
-  .navlinks{ justify-content:flex-start; }
-}
-
-
-
+      flex: 1 1 auto;
+      min-width: 0;
+    }
+    @media (max-width: 940px){
+      .navlinks{ justify-content:flex-start; }
+    }
 
     /* Logo — WITHOUT background/pill */
     .logo-wrap{
@@ -168,14 +143,12 @@ header{
       filter: drop-shadow(0 8px 18px rgba(0,0,0,.45));
     }
 
-
     .brand-title{
       font-weight:900;
       letter-spacing:.02em;
       font-size:14px;
       line-height:1.1;
     }
-
 
     /* Slogan (header) */
     .brand-sub{
@@ -199,9 +172,6 @@ header{
     .brand-sub .s-italic{ font-weight:400; font-style:italic; }
     .brand-sub .s-bold{ font-weight:700; font-style:normal; }
 
-
- 
-   
     .navlinks a{
       color:rgba(255,255,255,.80);
       text-decoration:none;
@@ -217,7 +187,6 @@ header{
       border-color: rgba(255,255,255,.14);
       background: rgba(255,255,255,.04);
     }
-
 
     .btn{
       appearance:none;
@@ -248,28 +217,18 @@ header{
       box-shadow: 0 28px 86px rgba(255,210,51,.12), 0 24px 74px rgba(0,0,0,.62);
     }
 
-
     /* Sections */
     section{ padding: 86px 0; }
     .hero{ padding: 76px 0 58px; }
 
+    .hero-grid{
+      display:grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
+      gap: 34px;
+      align-items: stretch;
+    }
 
-.hero-grid{
-  display:grid;
-  grid-template-columns: minmax(0, 1.15fr) minmax(0, .85fr);
-  gap: 34px;
-  align-items: stretch;
-}
-
-
-.hero-grid > *{
-  min-width: 0;
-}
-
-
-
-
-
+    .hero-grid > *{ min-width: 0; }
 
     h1{
       font-weight:900;
@@ -297,7 +256,6 @@ header{
       flex-wrap:wrap;
       margin-top: 22px;
     }
-
 
     /* Cards & pattern overlays */
     .card{
@@ -355,7 +313,6 @@ header{
       margin:0;
     }
 
-
     /* HERO VISUAL — stabilized for Google Sites embeds */
     .hero-visual{
       position:relative;
@@ -364,7 +321,6 @@ header{
       background: rgba(255,255,255,.04);
       overflow:hidden;
       box-shadow: var(--shadow);
-
 
       aspect-ratio: 4 / 3;   /* makes resizing predictable in embeds */
       min-height: 360px;
@@ -379,63 +335,51 @@ header{
       transform: none; /* removed scale to avoid weird clipping in embeds */
     }
 
+    .hero-visual{
+      width: 100%;
+      max-width: 100%;
+      min-width: 0;
+    }
 
-.hero-visual{
-  width: 100%;
-  max-width: 100%;
-  min-width: 0;
-}
+    .hero-visual::after{
+      content:"";
+      position:absolute;
+      inset:0;
+      background: radial-gradient(700px 420px at 20% 20%, rgba(255,210,51,.14), transparent 55%),
+                  linear-gradient(180deg, rgba(10,12,18,.40), rgba(10,12,18,.86));
+      z-index: 1;
+      pointer-events: none;
+    }
 
+    .hero-visual img{
+      position: relative;
+      z-index: 0;
+    }
 
-.hero-visual::after{
-  content:"";
-  position:absolute;
-  inset:0;
-  background: radial-gradient(700px 420px at 20% 20%, rgba(255,210,51,.14), transparent 55%),
-              linear-gradient(180deg, rgba(10,12,18,.40), rgba(10,12,18,.86));
-  z-index: 1;
-  pointer-events: none;
-}
+    @media (min-width: 941px){
+      .hero-visual{
+        aspect-ratio: auto;
+        min-height: 100%;
+        height: auto;
+        align-self: stretch;
+      }
 
+      .hero-visual{
+        position: relative;
+      }
 
-.hero-visual img{
-  position: relative;
-  z-index: 0;
-}
+      .hero-visual img{
+        position:absolute;
+        inset:0;
+        width:100%;
+        height:100%;
+        object-fit:cover;
+      }
+    }
 
-
-@media (min-width: 941px){
-  .hero-visual{
-    aspect-ratio: auto;   
-    min-height: 100%;     
-    height: auto;         
-    align-self: stretch;  
-  }
-
-
-.hero-visual{
-  position: relative;
-}
-
-
-.hero-visual img{
-  position:absolute;
-  inset:0;
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-
-}
-
-
-
-
-.hero-badge{
-  z-index: 2;
-}
-
+    .hero-badge{
+      z-index: 2;
+    }
 
     .hero-badge{
       position:absolute;
@@ -462,18 +406,12 @@ header{
       color: rgba(255,255,255,.80);
       font-size: 13px;
       line-height: 1.4;
-
-
     }
 
-
-.badge-text{
-  min-width: 0;             
-  overflow-wrap: anywhere;   
-}
-
-
-
+    .badge-text{
+      min-width: 0;
+      overflow-wrap: anywhere;
+    }
 
     .grid-3{
       display:grid;
@@ -487,7 +425,6 @@ header{
       gap: 16px;
       margin-top: 22px;
     }
-
 
     .section-head{
       display:flex;
@@ -519,13 +456,11 @@ header{
       margin: 10px 0 0;
     }
 
-
     /* Projects */
     .project-card .card-inner{
-  padding: 18px;
-  padding-bottom: 76px; 
-}
-
+      padding: 18px;
+      padding-bottom: 76px;
+    }
 
     .project-media{
       border-radius: 18px;
@@ -561,7 +496,6 @@ header{
       line-height:1.6;
       font-size:13px;
     }
-
 
     /* Form */
     .form-wrap{
@@ -612,7 +546,6 @@ header{
       margin: 0;
     }
 
-
     footer{
       padding: 40px 0 56px;
       border-top: 1px solid rgba(255,255,255,.08);
@@ -647,7 +580,6 @@ header{
     }
     .pill:hover{ transform: translateY(-2px); border-color: rgba(255,255,255,.22); }
 
-
     /* Responsive */
     @media (max-width: 940px){
       .hero-grid{ grid-template-columns: 1fr; }
@@ -658,317 +590,282 @@ header{
       .hero-visual{ min-height: 320px; }
     }
 
-
     /* Reduce motion */
     @media (prefers-reduced-motion: reduce){
       .card, .btn, .navlinks a { transition:none !important; }
     }
 
-
-
-
-/* Funding badge (Erasmus / Nordplus / etc.) */
-.funding-badge{
-  position:absolute;
-  right:14px;
-  bottom:14px;
-  background: rgba(10,12,18,.55);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 14px;
-  padding: 8px 10px;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  box-shadow: 0 10px 28px rgba(0,0,0,.45);
-  z-index:5;
-}
-
-
-.funding-badge img{
-  height:26px;
-  width:auto;
-  display:block;
-  opacity:.92;
-  filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
-}
-
-
-@media (max-width: 680px){
-  .funding-badge img{ height:22px; }
-}
-
-
-
-
-/* Erasmus action type badge (KA1 / KA2) — same style as project text */
-.erasmus-ka{
-  position:absolute;
-  left:14px;
-  bottom:14px;
-  background: rgba(10,12,18,.55);
-  border:1px solid rgba(255,255,255,.18);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border-radius: 14px;
-  padding: 6px 12px;
-
-
-  font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  font-size:13px;
-  font-weight:400;
-  line-height:1.6;
-  color: rgba(255,255,255,.72);
-
-
-  box-shadow: 0 10px 28px rgba(0,0,0,.45);
-  z-index:5;
-}
-
-
-/* Mobile header simplification */
-@media (max-width: 680px){
-  header{
-    position: static;          
-    top: auto;
-  }
-
-
-  .nav{
-    flex-wrap: nowrap;        
-    padding: 10px 0;
-    gap: 10px;
-  }
-
-
-  .brand{
-    min-width: 0;
-  }
-
-
-  .brand-sub{
-    display: none;            
-  }
-
-
-  .navlinks{
-    flex: 0 0 auto;
-    gap: 8px;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
-  }
-
-
-
-
-  .navlinks a{ display:none; }
-  .navlinks a[href="#projects"]{
-    display:inline-flex;
-  }
-
-
- 
-  .navlinks .btn.primary{
-    display:inline-flex;
-    padding: 10px 12px;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-
-
- 
-  .navlinks a[href="#projects"]{
-    display:inline-flex;
-    padding: 10px 12px;
-    font-size: 13px;
-    white-space: nowrap;
-  }
-}
-
-
-
-
-.pill-text-mobile{ display:none; }
-
-
-@media (max-width: 680px){
-  .pill-text-desktop{ display:none; }
-  .pill-text-mobile{ display:inline; }
-  .pill-apply{ white-space: nowrap; }
-}
-
-
-.btn-text-mobile{ display:none; }
-
-
-@media (max-width: 680px){
-  .btn-text-desktop{ display:none; }
-  .btn-text-mobile{ display:inline; }
-  .btn-apply{ white-space: nowrap; }
-}
-
-
-@media (max-width: 680px){
-
-
-  .brand-title{ display:none; }
-  .brand-sub{ display:none; } 
-}
-
-
-@media (max-width: 680px){
-  .project-media{
-    height: 220px;              
-    background: rgba(0,0,0,.18);
-  }
-
-
-  .project-media img{
-    object-fit: contain;        
-    background: transparent;
-  }
-
-
-  
-  .project-media::after{
-    background: linear-gradient(180deg, rgba(10,12,18,.08), rgba(10,12,18,.55));
-  }
-}
-
-
-@media (max-width: 680px){
-  form label{
-    display:none;
-  }
-}
-
-
-@media (max-width: 680px){
-  .card-inner{ padding: 18px; }
-  input, select, textarea{ font-size: 16px; } 
-}
-
-
-
-
-@media (max-width: 680px){
-  
-  .form-wrap > div:first-child{
-    display:none;
-  }
-}
-
-
-@media (max-width: 680px){
-  
-  .project-media{
-    height: auto;        
-    background: transparent;
-  }
-
-
-  .project-media img{
-    width: 100%;
-    height: auto;        
-    object-fit: initial; 
-    display: block;
-  }
-
-
-  
-  .project-media::after{
-    display: none;
-  }
-}
-
-
-@media (max-width: 680px){
-
-
-
-
-  .project-card .card-inner{
-    padding: 14px;
-    padding-bottom: 16px; /* было 76px — вот отсюда и пустота */
-  }
-
-
-
-
-  .project-name{
-    margin-top: 10px;
-    margin-bottom: 6px;
-  }
-
-
-
-
-  .project-text{
-    margin-bottom: 0;
-    line-height: 1.55;
-  }
-
-
-
-
-  .project-card .card-inner > *:last-child{
-    margin-bottom: 0;
-  }
-
-
-}
-
-
-
-
-@media (max-width: 680px){
-
-
-  .project-badges{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin: 14px 14px 14px;
-  }
-
-
-  .project-badges .erasmus-ka,
-  .project-badges .funding-badge{
-    position: static;
-    margin: 0;
-  }
-
-
-  .project-badges .funding-badge{
-    margin-left: auto;
-  }
-
-
-  .project-badges .funding-badge img{
-    height: 22px;
-    max-width: 100%;
-  }
-}
-
-
-
-
-@media (max-width: 680px){
-  #projects .grid-3{
-    gap: 16px;
-  }
-}
-
-
+    /* Funding badge (Erasmus / Nordplus / etc.) */
+    .funding-badge{
+      position:absolute;
+      right:14px;
+      bottom:14px;
+      background: rgba(10,12,18,.55);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding: 8px 10px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+      box-shadow: 0 10px 28px rgba(0,0,0,.45);
+      z-index:5;
+    }
+
+    .funding-badge img{
+      height:26px;
+      width:auto;
+      display:block;
+      opacity:.92;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,.35));
+    }
+
+    @media (max-width: 680px){
+      .funding-badge img{ height:22px; }
+    }
+
+    /* Erasmus action type badge (KA1 / KA2) — same style as project text */
+    .erasmus-ka{
+      position:absolute;
+      left:14px;
+      bottom:14px;
+      background: rgba(10,12,18,.55);
+      border:1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 14px;
+      padding: 6px 12px;
+
+      font-family: "Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      font-size:13px;
+      font-weight:400;
+      line-height:1.6;
+      color: rgba(255,255,255,.72);
+
+      box-shadow: 0 10px 28px rgba(0,0,0,.45);
+      z-index:5;
+    }
+
+    /* Mobile header simplification */
+    @media (max-width: 680px){
+      header{
+        position: static;
+        top: auto;
+      }
+
+      .nav{
+        flex-wrap: nowrap;
+        padding: 10px 0;
+        gap: 10px;
+      }
+
+      .brand{ min-width: 0; }
+
+      .brand-sub{ display: none; }
+
+      .navlinks{
+        flex: 0 0 auto;
+        gap: 8px;
+        justify-content: flex-end;
+        flex-wrap: nowrap;
+      }
+
+      .navlinks a{ display:none; }
+      .navlinks a[href="#projects"]{ display:inline-flex; }
+
+      .navlinks .btn.primary{
+        display:inline-flex;
+        padding: 10px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+
+      .navlinks a[href="#projects"]{
+        display:inline-flex;
+        padding: 10px 12px;
+        font-size: 13px;
+        white-space: nowrap;
+      }
+    }
+
+    .pill-text-mobile{ display:none; }
+
+    @media (max-width: 680px){
+      .pill-text-desktop{ display:none; }
+      .pill-text-mobile{ display:inline; }
+      .pill-apply{ white-space: nowrap; }
+    }
+
+    .btn-text-mobile{ display:none; }
+
+    @media (max-width: 680px){
+      .btn-text-desktop{ display:none; }
+      .btn-text-mobile{ display:inline; }
+      .btn-apply{ white-space: nowrap; }
+    }
+
+    @media (max-width: 680px){
+      .brand-title{ display:none; }
+      .brand-sub{ display:none; }
+    }
+
+    @media (max-width: 680px){
+      .project-media{
+        height: 220px;
+        background: rgba(0,0,0,.18);
+      }
+
+      .project-media img{
+        object-fit: contain;
+        background: transparent;
+      }
+
+      .project-media::after{
+        background: linear-gradient(180deg, rgba(10,12,18,.08), rgba(10,12,18,.55));
+      }
+    }
+
+    @media (max-width: 680px){
+      form label{ display:none; }
+    }
+
+    @media (max-width: 680px){
+      .card-inner{ padding: 18px; }
+      input, select, textarea{ font-size: 16px; }
+    }
+
+    @media (max-width: 680px){
+      .form-wrap > div:first-child{ display:none; }
+    }
+
+    @media (max-width: 680px){
+      .project-media{
+        height: auto;
+        background: transparent;
+      }
+
+      .project-media img{
+        width: 100%;
+        height: auto;
+        object-fit: initial;
+        display: block;
+      }
+
+      .project-media::after{ display: none; }
+    }
+
+    @media (max-width: 680px){
+      .project-card .card-inner{
+        padding: 14px;
+        padding-bottom: 16px; /* было 76px — вот отсюда и пустота */
+      }
+
+      .project-name{
+        margin-top: 10px;
+        margin-bottom: 6px;
+      }
+
+      .project-text{
+        margin-bottom: 0;
+        line-height: 1.55;
+      }
+
+      .project-card .card-inner > *:last-child{
+        margin-bottom: 0;
+      }
+    }
+
+    @media (max-width: 680px){
+      .project-badges{
+        display:flex;
+        align-items:center;
+        gap:10px;
+        margin: 14px 14px 14px;
+      }
+
+      .project-badges .erasmus-ka,
+      .project-badges .funding-badge{
+        position: static;
+        margin: 0;
+      }
+
+      .project-badges .funding-badge{
+        margin-left: auto;
+      }
+
+      .project-badges .funding-badge img{
+        height: 22px;
+        max-width: 100%;
+      }
+    }
+
+    @media (max-width: 680px){
+      #projects .grid-3{ gap: 16px; }
+    }
+
+    /* =========================
+       NEW: Projects extras (Donate + Social) — aligned to site style
+       ========================= */
+    .projects-extras{
+      margin-top: 32px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, .8fr);
+      gap: 16px;
+    }
+
+    @media (max-width: 940px){
+      .projects-extras{
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .projects-social-links{
+      display:flex;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .social-link{
+      flex: 1 1 220px;  /* responsive, no overflow */
+      min-width: 0;     /* critical to prevent container overflow */
+      max-width: 100%;
+
+      display:flex;
+      flex-direction:column;
+      gap:2px;
+
+      padding:12px 14px;
+      border-radius:18px;
+      border:1px solid rgba(255,255,255,.16);
+      background: rgba(0,0,0,.18);
+      text-decoration:none;
+
+      transition: all .2s ease;
+    }
+
+    .social-name{
+      font-size:13px;
+      font-weight:700;
+      color: rgba(255,255,255,.90);
+    }
+
+    .social-meta{
+      font-size:12px;
+      color: rgba(255,255,255,.60);
+      line-height:1.35;
+    }
+
+    .social-link:hover{
+      border-color: rgba(255,210,51,.55);
+      transform: translateY(-2px);
+    }
   </style>
 </head>
-
 
 <body>
   <div class="bg" aria-hidden="true"></div>
   <div class="grain" aria-hidden="true"></div>
-
 
   <header>
     <div class="container">
@@ -987,7 +884,6 @@ header{
           </div>
         </a>
 
-
         <!-- INTERNAL ANCHORS ONLY -->
         <nav class="navlinks" aria-label="Primary">
           <a href="#about">About</a>
@@ -998,7 +894,6 @@ header{
       </div>
     </div>
   </header>
-
 
   <main id="top">
     <!-- HERO -->
@@ -1014,19 +909,15 @@ header{
               for wellbeing, sustainability, and peace.
             </p>
 
-
             <div class="hero-actions">
-             <a class="btn primary btn-apply" href="#apply">
-  <span class="btn-text-desktop">Apply to participate</span>
-  <span class="btn-text-mobile">Apply</span>
-</a>
-
+              <a class="btn primary btn-apply" href="#apply">
+                <span class="btn-text-desktop">Apply to participate</span>
+                <span class="btn-text-mobile">Apply</span>
+              </a>
 
               <a class="btn" href="#projects">Explore projects</a>
             </div>
 
-
-       
             <div class="grid-2" style="margin-top:22px;">
               <div class="card tilt" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
                 <div class="pattern"></div>
@@ -1038,7 +929,6 @@ header{
                   </p>
                 </div>
               </div>
-
 
               <div class="card tilt" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
                 <div class="pattern"></div>
@@ -1053,14 +943,13 @@ header{
             </div>
           </div>
 
-
           <!-- NOTE: hero visual is NOT tilt to avoid embed oddities -->
           <div class="hero-visual card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg" style="border-radius:34px;">
             <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769107314/dragon_untu_jdcpf5.png" alt="Space visual" />
             <div class="hero-badge">
               <div class="badge-dot" aria-hidden="true"></div>
               <div class="badge-text">
-                International training courses, youth exchanges, volunteering, local initiatives, and digital campaigns - 
+                International training courses, youth exchanges, volunteering, local initiatives, and digital campaigns -
                 designed to build bridges between people.
               </div>
             </div>
@@ -1068,7 +957,6 @@ header{
         </div>
       </div>
     </section>
-
 
     <!-- ABOUT -->
     <section id="about">
@@ -1084,7 +972,6 @@ header{
           </div>
         </div>
 
-
         <div class="grid-3">
           <div class="card tilt" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
             <div class="pattern"></div>
@@ -1097,7 +984,6 @@ header{
             </div>
           </div>
 
-
           <div class="card tilt" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
             <div class="pattern"></div>
             <div class="card-inner">
@@ -1109,19 +995,17 @@ header{
             </div>
           </div>
 
-
           <div class="card tilt" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg">
             <div class="pattern"></div>
             <div class="card-inner">
               <div class="card-title">Approach</div>
               <p class="card-text">
-                Outdoor experiences, holistic wellbeing practices, and a balance of critical thinking and empathy - 
+                Outdoor experiences, holistic wellbeing practices, and a balance of critical thinking and empathy -
                 combined with creative media and digital innovation.
               </p>
             </div>
           </div>
         </div>
-
 
         <div class="grid-2" style="margin-top:16px;">
           <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
@@ -1136,7 +1020,6 @@ header{
               </p>
             </div>
           </div>
-
 
           <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
             <div class="pattern"></div>
@@ -1154,7 +1037,6 @@ header{
       </div>
     </section>
 
-
     <!-- VISION -->
     <section id="vision">
       <div class="container">
@@ -1168,7 +1050,6 @@ header{
             </p>
           </div>
         </div>
-
 
         <div class="grid-2">
           <div class="card tilt" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg">
@@ -1187,7 +1068,6 @@ header{
             </div>
           </div>
 
-
           <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
             <div class="pattern"></div>
             <div class="card-inner">
@@ -1204,165 +1084,210 @@ header{
       </div>
     </section>
 
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Projects</p>
+            <h2>Projects we are proud of.</h2>
+            <p class="section-desc">
+              Discover our initiatives — international collaboration, local action, and digital campaigns designed to create real social impact.
+            </p>
+          </div>
+          <a class="pill pill-apply" href="#apply">
+            <span class="pill-text-desktop">Apply to join a project</span>
+            <span class="pill-text-mobile">Apply</span>
+          </a>
+        </div>
 
-<!-- PROJECTS -->
-<section id="projects">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <p class="kicker">Projects</p>
-        <h2>Projects we are proud of.</h2>
-        <p class="section-desc">
-          Discover our initiatives — international collaboration, local action, and digital campaigns designed to create real social impact.
-        </p>
+        <div class="grid-3">
+          <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="project-media">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768595676/asset_1_rowlo5.png" alt="ASSET - Erasmus+ project">
+              </div>
+              <div class="project-name">ASSET (Erasmus+)</div>
+              <p class="project-text">
+  ASSET is a cross-border initiative focused on breaking the silence around violence against women — amplifying voices,
+  building awareness, and strengthening real pathways to support and empowerment.
+  One of the most important outcomes of the project was the creation of a dedicated handbook on domestic violence: a practical,
+  step-by-step guide explaining what to do if you become a survivor, how to recognize unsafe situations, and where to seek help.
+  Because the project involved multiple countries, the handbook was enriched with verified information about social services and
+  support institutions across different parts of Europe — making it easier to find the right contacts and resources, no matter
+  where a person is located.
+              </p>
+            </div>
+
+            <div class="project-badges">
+              <div class="erasmus-ka">Project KA2</div>
+              <div class="funding-badge">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
+              </div>
+            </div>
+          </div>
+
+          <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="project-media">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768849458/IMG_4466_mlqrwx.heic" alt="Daily Wellness Challenge Movement">
+              </div>
+              <div class="project-name">Daily Wellness Challenge Movement</div>
+              <p class="project-text">
+                This Erasmus+ training course brought together youth workers from Norway, Germany, Estonia, and Latvia to explore the connection between wellness education, digital engagement, and international collaboration. The project equipped participants with practical tools for wellness work and digital content creation, while laying the foundation for scalable methods in youth work.
+              </p>
+            </div>
+
+            <div class="project-badges">
+              <div class="erasmus-ka">Project KA1</div>
+              <div class="funding-badge">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
+              </div>
+            </div>
+          </div>
+
+          <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="project-media">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769092442/asset_photosession_web_rcq1k2.png" alt="ASSET - Boundaries Photo Session">
+              </div>
+              <div class="project-name">ASSET - Boundaries Photo Session</div>
+              <p class="project-text">
+                Behind every woman there is a story - often untold, yet deeply felt. This ASSET photo session explored hidden personal stories of women of different ages and backgrounds through a respectful and symbolic visual language. Before the shoot, each participant identified the parts of her body where touch would feel uncomfortable, and these boundaries were translated into subtle visual elements within the photographs. The project highlighted the importance of consent, personal boundaries, and awareness of gender-based violence.
+              </p>
+            </div>
+
+            <div class="project-badges">
+              <div class="erasmus-ka">Project KA2</div>
+              <div class="funding-badge">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
+              </div>
+            </div>
+          </div>
+
+          <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="project-media">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769091214/DSC_6724_v6yfei.jpg" alt="Critical Thinking and Media Literacy: Essential Life Skills">
+              </div>
+              <div class="project-name">Critical Thinking and Media Literacy: Essential Life Skills</div>
+              <p class="project-text">
+                In 2025, the UNTU team took part in a Nordplus international seminar in Estonia focused on critical thinking and media literacy, together with partners from Norway and Estonia. We explored interactive and game-based methods and developed practical tools for youth work to address misinformation and digital awareness. The experience laid the foundation for integrating these approaches into our local initiatives in Latvia.
+              </p>
+            </div>
+
+            <div class="project-badges">
+              <div class="funding-badge">
+                <img src="https://nordplusonline.org/globalassets/images/report-and-share/nordplus-logo.png" alt="Funded by Nordplus">
+              </div>
+            </div>
+          </div>
+
+          <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="project-media">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769092961/norway_la72it.png" alt="The Wellness Compass Outdoors - Erasmus+ in Norway">
+              </div>
+              <div class="project-name">The Wellness Compass Outdoors</div>
+              <p class="project-text">
+                The Wellness Compass Outdoors was an Erasmus+ training course held in Norway, bringing together youth workers from across Europe to explore wellbeing, resilience, and outdoor education. The project focused on practical nature-based methods, self-awareness, and teamwork, while developing tools to support vulnerable youth groups. It empowered participants to strengthen both their own mental health and the communities they work with.
+              </p>
+            </div>
+
+            <div class="project-badges">
+              <div class="erasmus-ka">Project KA1</div>
+              <div class="funding-badge">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
+              </div>
+            </div>
+          </div>
+
+          <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="project-media">
+                <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769099518/insta_think_clearly_tvav3r.png" alt="Think Clearly: Media Literacy Guide">
+              </div>
+              <div class="project-name">Think Clearly: Media Literacy Guide</div>
+              <p class="project-text">
+                This digital initiative was created by young participants of a Nordplus project to help people navigate the media world, recognize fake news, ask better questions, and develop strong critical thinking skills. The project shares tips, stories, challenges, and practical tools to strengthen media literacy in an accessible and engaging way.
+              </p>
+            </div>
+
+            <div class="project-badges">
+              <div class="funding-badge">
+                <img src="https://nordplusonline.org/globalassets/images/report-and-share/nordplus-logo.png" alt="Funded by Nordplus">
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- NEW: Donate + Social (now inside .container, so it will not overflow) -->
+        <div class="projects-extras">
+          <!-- Donate block -->
+          <div class="card donate-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="card-title">Support UNTU</div>
+              <p class="card-text" style="margin-bottom:12px;">
+                UNTU is a non-profit organization working on social impact projects in Latvia and internationally.
+                We support initiatives for survivors of domestic violence, create projects that build critical thinking and media literacy,
+                and work with young people through non-formal education, wellbeing, and community initiatives.
+              </p>
+              <p class="card-text" style="margin-bottom:16px; color: rgba(255,255,255,.72);">
+                If you believe in these values, you can support our work with a donation — it helps us keep activities accessible,
+                develop new initiatives, and respond faster to community needs.
+              </p>
+
+              <div class="hero-actions" style="margin-top:0;">
+                <a class="btn primary" href="https://www.paypal.com/donate/?hosted_button_id=B7EBULQTUCFBL" target="_blank" rel="noopener">
+                  Donate via PayPal
+                </a>
+                <a class="btn" href="#apply">Partner / collaborate</a>
+              </div>
+
+              <p class="note" style="margin-top:12px;">
+                Donations are voluntary support for our non-profit activities.
+              </p>
+            </div>
+          </div>
+
+          <!-- Social block -->
+          <div class="card projects-social-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg">
+            <div class="pattern"></div>
+            <div class="card-inner">
+              <div class="card-title">Follow us</div>
+              <p class="card-text" style="margin-bottom:14px; color: rgba(255,255,255,.72);">
+                Updates, behind the scenes, partner news, and project stories:
+              </p>
+
+              <div class="projects-social-links">
+                <a class="social-link" href="http://instagram.com/ngo_untu/" target="_blank" rel="noopener">
+                  <span class="social-name">Instagram</span>
+                  <span class="social-meta">community & moments</span>
+                </a>
+
+                <a class="social-link" href="https://www.youtube.com/@ngo_untu" target="_blank" rel="noopener">
+                  <span class="social-name">YouTube</span>
+                  <span class="social-meta">videos & project stories</span>
+                </a>
+
+                <a class="social-link" href="https://www.linkedin.com/company/ngo-untu/" target="_blank" rel="noopener">
+                  <span class="social-name">LinkedIn</span>
+                  <span class="social-meta">partnerships & updates</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /NEW -->
       </div>
-      <a class="pill pill-apply" href="#apply">
-        <span class="pill-text-desktop">Apply to join a project</span>
-        <span class="pill-text-mobile">Apply</span>
-      </a>
-    </div>
-
-
-    <div class="grid-3">
-      <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
-        <div class="pattern"></div>
-        <div class="card-inner">
-          <div class="project-media">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768595676/asset_1_rowlo5.png" alt="ASSET - Erasmus+ project">
-          </div>
-          <div class="project-name">ASSET (Erasmus+)</div>
-          <p class="project-text">
-            A cross-border initiative that helps break the silence around violence against women - amplifying voices, building awareness,
-            and strengthening pathways to support and empowerment.
-          </p>
-        </div>
-
-
-        <div class="project-badges">
-          <div class="erasmus-ka">Project KA2</div>
-          <div class="funding-badge">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
-          </div>
-        </div>
-      </div>
-
-
-      <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
-        <div class="pattern"></div>
-        <div class="card-inner">
-          <div class="project-media">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768849458/IMG_4466_mlqrwx.heic" alt="Daily Wellness Challenge Movement">
-          </div>
-          <div class="project-name">Daily Wellness Challenge Movement</div>
-          <p class="project-text">
-            This Erasmus+ training course brought together youth workers from Norway, Germany, Estonia, and Latvia to explore the connection between wellness education, digital engagement, and international collaboration. The project equipped participants with practical tools for wellness work and digital content creation, while laying the foundation for scalable methods in youth work.
-          </p>
-        </div>
-
-
-        <div class="project-badges">
-          <div class="erasmus-ka">Project KA1</div>
-          <div class="funding-badge">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
-          </div>
-        </div>
-      </div>
-
-
-      <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg">
-        <div class="pattern"></div>
-        <div class="card-inner">
-          <div class="project-media">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769092442/asset_photosession_web_rcq1k2.png" alt="ASSET - Boundaries Photo Session">
-          </div>
-          <div class="project-name">ASSET - Boundaries Photo Session</div>
-          <p class="project-text">
-            Behind every woman there is a story - often untold, yet deeply felt. This ASSET photo session explored hidden personal stories of women of different ages and backgrounds through a respectful and symbolic visual language. Before the shoot, each participant identified the parts of her body where touch would feel uncomfortable, and these boundaries were translated into subtle visual elements within the photographs. The project highlighted the importance of consent, personal boundaries, and awareness of gender-based violence.
-          </p>
-        </div>
-
-
-        <div class="project-badges">
-          <div class="erasmus-ka">Project KA2</div>
-          <div class="funding-badge">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
-          </div>
-        </div>
-      </div>
-
-
-      <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
-        <div class="pattern"></div>
-        <div class="card-inner">
-          <div class="project-media">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769091214/DSC_6724_v6yfei.jpg" alt="Critical Thinking and Media Literacy: Essential Life Skills">
-          </div>
-          <div class="project-name">Critical Thinking and Media Literacy: Essential Life Skills</div>
-          <p class="project-text">
-            In 2025, the UNTU team took part in a Nordplus international seminar in Estonia focused on critical thinking and media literacy, together with partners from Norway and Estonia. We explored interactive and game-based methods and developed practical tools for youth work to address misinformation and digital awareness. The experience laid the foundation for integrating these approaches into our local initiatives in Latvia.
-          </p>
-        </div>
-
-
-        <div class="project-badges">
-          <div class="funding-badge">
-            <img src="https://nordplusonline.org/globalassets/images/report-and-share/nordplus-logo.png" alt="Funded by Nordplus">
-          </div>
-        </div>
-      </div>
-
-
-      <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578420/abstraction_3-02_j3pbmt.jpg">
-        <div class="pattern"></div>
-        <div class="card-inner">
-          <div class="project-media">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769092961/norway_la72it.png" alt="The Wellness Compass Outdoors - Erasmus+ in Norway">
-          </div>
-          <div class="project-name">The Wellness Compass Outdoors</div>
-          <p class="project-text">
-            The Wellness Compass Outdoors was an Erasmus+ training course held in Norway, bringing together youth workers from across Europe to explore wellbeing, resilience, and outdoor education. The project focused on practical nature-based methods, self-awareness, and teamwork, while developing tools to support vulnerable youth groups. It empowered participants to strengthen both their own mental health and the communities they work with.
-          </p>
-        </div>
-
-
-        <div class="project-badges">
-          <div class="erasmus-ka">Project KA1</div>
-          <div class="funding-badge">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769100791/EN_Co-fundedbytheEU_RGB_NEG_tvcinj.png" alt="Co-funded by the European Union">
-          </div>
-        </div>
-      </div>
-
-
-      <div class="card tilt project-card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578087/Abstraction_Set_1-04_bouan6.png">
-        <div class="pattern"></div>
-        <div class="card-inner">
-          <div class="project-media">
-            <img src="https://res.cloudinary.com/da4ctmwz5/image/upload/v1769099518/insta_think_clearly_tvav3r.png" alt="Think Clearly: Media Literacy Guide">
-          </div>
-          <div class="project-name">Think Clearly: Media Literacy Guide</div>
-          <p class="project-text">
-            This digital initiative was created by young participants of a Nordplus project to help people navigate the media world, recognize fake news, ask better questions, and develop strong critical thinking skills. The project shares tips, stories, challenges, and practical tools to strengthen media literacy in an accessible and engaging way.
-          </p>
-        </div>
-
-
-        <div class="project-badges">
-          <div class="funding-badge">
-            <img src="https://nordplusonline.org/globalassets/images/report-and-share/nordplus-logo.png" alt="Funded by Nordplus">
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-
-
-
-
-
-
+    </section>
 
     <!-- APPLY -->
     <section id="apply">
@@ -1378,7 +1303,6 @@ header{
           </div>
         </div>
 
-
         <!-- IMPORTANT: no tilt here -->
         <div class="card" data-pattern="https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578086/Abstraction_Set_1-02_nv6kju.png">
           <div class="pattern"></div>
@@ -1389,11 +1313,9 @@ header{
                 <p class="card-text" style="margin-bottom:14px;">
                   UNTU is open to cooperation and new ideas. Submit your application and we will reply with next steps.
                 </p>
-              
               </div>
 
-
-              <form id="untuForm" action="#" method="post">
+              <form id="untuForm" action="https://formspree.io/f/mpqrzqdp" method="POST">
                 <div class="form-row">
                   <label for="role">I want to apply as</label>
                   <select id="role" name="role" required>
@@ -1404,30 +1326,25 @@ header{
                   </select>
                 </div>
 
-
                 <div class="form-row">
                   <label for="name">Full name</label>
                   <input id="name" name="name" type="text" placeholder="Your name" required />
                 </div>
-
 
                 <div class="form-row">
                   <label for="email">Email</label>
                   <input id="email" name="email" type="email" placeholder="name@example.com" required />
                 </div>
 
-
                 <div class="form-row">
                   <label for="org">Organization (optional)</label>
                   <input id="org" name="organization" type="text" placeholder="Organization / initiative name" />
                 </div>
 
-
                 <div class="form-row">
                   <label for="message">Message</label>
                   <textarea id="message" name="message" placeholder="Tell us what you want to do and how we can collaborate." required></textarea>
                 </div>
-
 
                 <div class="form-actions">
                   <button class="btn primary" type="submit">Submit application</button>
@@ -1438,11 +1355,9 @@ header{
           </div>
         </div>
 
-
       </div>
     </section>
   </main>
-
 
   <footer>
     <div class="container">
@@ -1462,7 +1377,6 @@ header{
           </div>
         </div>
 
-
         <div style="display:flex; gap:10px; flex-wrap:wrap; justify-content:flex-end;">
           <a class="pill" href="#about">About</a>
           <a class="pill" href="#vision">Vision</a>
@@ -1471,23 +1385,15 @@ header{
         </div>
       </div>
 
-
-     
-
-
       <p class="small" style="margin-top:10px;">
         Copyright © <span id="year"></span> UNTU. All rights reserved.
       </p>
     </div>
   </footer>
 
-
   <script>
-    // Set year
     document.getElementById("year").textContent = new Date().getFullYear();
 
-
-    // Apply patterns from data-pattern onto .pattern elements
     document.querySelectorAll(".card[data-pattern]").forEach(card => {
       const url = card.getAttribute("data-pattern");
       const pattern = card.querySelector(".pattern");
@@ -1496,11 +1402,8 @@ header{
       }
     });
 
-
-    // Smooth 3D tilt on hover for desktop
     const supportsHover = window.matchMedia("(hover: hover)").matches;
     const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
 
     function attachTilt(el){
       const maxTilt = 4;        // degrees (reduced)
@@ -1508,14 +1411,11 @@ header{
       const enterScale = 1.005; // subtle
       const smooth = 0.10;      // smoothing factor
 
-
       let tx = 0, ty = 0, rx = 0, ry = 0, sc = 1;
       let targetTx = 0, targetTy = 0, targetRx = 0, targetRy = 0, targetSc = 1;
       let raf = null;
 
-
       function lerp(a,b,t){ return a + (b-a)*t; }
-
 
       function render(){
         tx = lerp(tx, targetTx, smooth);
@@ -1524,14 +1424,11 @@ header{
         ry = lerp(ry, targetRy, smooth);
         sc = lerp(sc, targetSc, smooth);
 
-
         el.style.transform =
           `translate3d(${tx}px, ${ty}px, 0) rotateX(${rx}deg) rotateY(${ry}deg) scale(${sc})`;
 
-
         raf = requestAnimationFrame(render);
       }
-
 
       function onMove(e){
         const r = el.getBoundingClientRect();
@@ -1540,7 +1437,6 @@ header{
         const dx = (e.clientX - cx) / (r.width / 2);
         const dy = (e.clientY - cy) / (r.height / 2);
 
-
         targetRy = dx * maxTilt;
         targetRx = -dy * maxTilt;
         targetTx = dx * maxMove;
@@ -1548,12 +1444,10 @@ header{
         targetSc = enterScale;
       }
 
-
       function onEnter(){
         el.style.transition = "box-shadow .35s ease, border-color .35s ease";
         if(!raf) raf = requestAnimationFrame(render);
       }
-
 
       function onLeave(){
         targetTx = 0; targetTy = 0; targetRx = 0; targetRy = 0; targetSc = 1;
@@ -1567,49 +1461,35 @@ header{
         }, 260);
       }
 
-
       el.addEventListener("mouseenter", onEnter);
       el.addEventListener("mousemove", onMove);
       el.addEventListener("mouseleave", onLeave);
     }
 
-
     if(supportsHover && !reduceMotion){
       // Only elements that have .tilt class get the effect.
       document.querySelectorAll(".tilt").forEach(attachTilt);
 
-
-      // Logo tilt is ok, but very subtle now.
       const logo = document.getElementById("logoTilt");
       if(logo) attachTilt(logo);
     }
 
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener("click", (e) => {
+        const id = a.getAttribute("href");
+        const target = document.querySelector(id);
+        if(!target) return;
 
-    // Optional: intercept submit (demo)
-    document.getElementById("untuForm").addEventListener("submit", (e) => {
-      e.preventDefault();
-      alert("Form submitted (demo). Connect this form to your backend or Google Forms.");
+        e.preventDefault();
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+
+        // Update URL hash without jumping
+        history.pushState(null, "", id);
+      });
     });
-// Force in-page anchor scroll (useful inside Google Sites embeds)
-document.querySelectorAll('a[href^="#"]').forEach(a => {
-  a.addEventListener("click", (e) => {
-    const id = a.getAttribute("href");
-    const target = document.querySelector(id);
-    if(!target) return;
-
-
-    e.preventDefault();
-    target.scrollIntoView({ behavior: "smooth", block: "start" });
-
-
-    // Update URL hash without jumping
-    history.pushState(null, "", id);
-  });
-});
-
-
-
-
   </script>
 </body>
 </html>
+
+
+
