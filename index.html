@@ -876,6 +876,172 @@
       border-color: rgba(255,210,51,.55);
       transform: translateY(-2px);
     }
+
+    /* =====================
+       UPCOMING EVENTS SECTION
+       ===================== */
+    #events { padding: 0 0 86px; }
+
+    .events-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-top: 32px;
+    }
+    @media (max-width: 760px) {
+      .events-grid { grid-template-columns: 1fr; }
+    }
+
+    .event-card-main {
+      position: relative;
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.14);
+      background: var(--card);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      box-shadow: var(--shadow);
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .event-card-main.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .65s ease, transform .65s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+    .event-card-main:nth-child(2).visible { transition-delay: .12s; }
+    .event-card-main:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: var(--shadowHover);
+      border-color: rgba(255,255,255,.22);
+    }
+    /* shimmer sweep */
+    .event-card-main::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.055) 50%, transparent 60%);
+      background-size: 200% 100%;
+      background-position: 200% 0;
+      z-index: 3;
+      pointer-events: none;
+      transition: background-position .65s ease;
+    }
+    .event-card-main:hover::before { background-position: -200% 0; }
+
+    .event-img-main {
+      width: 100%;
+      aspect-ratio: 4 / 3;
+      overflow: hidden;
+      position: relative;
+      flex-shrink: 0;
+    }
+    .event-img-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .5s ease;
+    }
+    .event-card-main:hover .event-img-main img { transform: scale(1.04); }
+
+    .event-live-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      z-index: 4;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      background: rgba(10,12,18,.72);
+      border: 1px solid rgba(255,255,255,.18);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border-radius: 999px;
+      padding: 5px 12px 5px 8px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,.90);
+    }
+    .live-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4ade80;
+      flex-shrink: 0;
+      animation: livePulse 1.8s ease-in-out infinite;
+    }
+    @keyframes livePulse {
+      0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(74,222,128,.65); }
+      50%       { opacity: .75; box-shadow: 0 0 0 7px rgba(74,222,128,0); }
+    }
+
+    .event-body-main {
+      padding: 20px 22px 24px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      position: relative;
+      z-index: 2;
+    }
+    .event-tags-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-bottom: 13px;
+    }
+    .ev-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 8px;
+    }
+    .ev-tag--date {
+      background: rgba(255,210,51,.10);
+      border: 1px solid rgba(255,210,51,.28);
+      color: rgba(255,210,51,.95);
+    }
+    .ev-tag--loc {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.13);
+      color: rgba(255,255,255,.62);
+    }
+    .event-title-main {
+      font-size: 15px;
+      font-weight: 700;
+      line-height: 1.48;
+      color: rgba(255,255,255,.95);
+      flex: 1;
+      margin-bottom: 20px;
+    }
+    .event-apply-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      align-self: flex-start;
+      background: linear-gradient(180deg, rgba(255,210,51,.98), rgba(245,196,0,.96));
+      color: #111;
+      font-family: inherit;
+      font-size: 12px;
+      font-weight: 900;
+      letter-spacing: .03em;
+      padding: 9px 18px;
+      border-radius: 999px;
+      text-decoration: none;
+      transition: transform .22s ease, box-shadow .22s ease;
+      box-shadow: 0 10px 32px rgba(255,210,51,.15);
+    }
+    .event-apply-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 14px 40px rgba(255,210,51,.25);
+      color: #111;
+    }
   </style>
 </head>
 
@@ -902,6 +1068,7 @@
 
         <!-- INTERNAL ANCHORS ONLY -->
         <nav class="navlinks" aria-label="Primary">
+          <a href="#events">Events</a>
           <a href="#about">About</a>
           <a href="#vision">Vision</a>
           <a href="#projects">Projects</a>
@@ -970,6 +1137,61 @@
               </div>
             </div>
           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- UPCOMING EVENTS -->
+    <section id="events">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <p class="kicker">Upcoming Events</p>
+            <h2>Join us this summer.</h2>
+            <p class="section-desc">Open applications for our upcoming international programmes — apply now and secure your spot.</p>
+          </div>
+        </div>
+
+        <div class="events-grid">
+
+          <!-- Event 1: Adventure Through Seasons -->
+          <a class="event-card-main" href="https://docs.google.com/forms/d/e/1FAIpQLScyo9Xe-BRtPdJqUKXWuJ0AkNEC6VzYTHT17ihq7sQSICFVCw/viewform" target="_blank" rel="noopener">
+            <div class="event-img-main">
+              <img src="https://ik.imagekit.io/erewhile/Untu/adv.jpg" alt="Adventure Through Seasons">
+              <div class="event-live-badge">
+                <span class="live-dot"></span>
+                Open now
+              </div>
+            </div>
+            <div class="event-body-main">
+              <div class="event-tags-row">
+                <span class="ev-tag ev-tag--date">📅 23/06 – 01/07/2026</span>
+                <span class="ev-tag ev-tag--loc">📍 Volda, Norway</span>
+              </div>
+              <div class="event-title-main">Training Course "Adventure Through Seasons: Exchanging Tools, Approaches, and Best Practices in Outdoor Education for Youth Work"</div>
+              <span class="event-apply-btn">Apply now <span>↗</span></span>
+            </div>
+          </a>
+
+          <!-- Event 2: Beyond Labels -->
+          <a class="event-card-main" href="#" target="_blank" rel="noopener">
+            <div class="event-img-main">
+              <img src="https://ik.imagekit.io/erewhile/Untu/Me%CC%8Cde%CC%8Cnec,%20Czech%20Republic.png" alt="Beyond Labels">
+              <div class="event-live-badge">
+                <span class="live-dot"></span>
+                Open now
+              </div>
+            </div>
+            <div class="event-body-main">
+              <div class="event-tags-row">
+                <span class="ev-tag ev-tag--date">📅 02.08 – 12.08.2026</span>
+                <span class="ev-tag ev-tag--loc">📍 Měděnec, Czechia</span>
+              </div>
+              <div class="event-title-main">Youth Exchange "Beyond Labels"</div>
+              <span class="event-apply-btn">Apply now <span>↗</span></span>
+            </div>
+          </a>
+
         </div>
       </div>
     </section>
@@ -1510,6 +1732,22 @@
         history.pushState(null, "", id);
       });
     });
+
+    // Scroll-reveal for event cards
+    const eventCards = document.querySelectorAll('.event-card-main');
+    if ('IntersectionObserver' in window) {
+      const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      eventCards.forEach(card => revealObserver.observe(card));
+    } else {
+      eventCards.forEach(card => card.classList.add('visible'));
+    }
   </script>
 </body>
 </html>
