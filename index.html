@@ -891,6 +891,12 @@
     @media (max-width: 760px) {
       .events-grid { grid-template-columns: 1fr; }
     }
+    .events-grid--single {
+      grid-template-columns: 1fr;
+    }
+    .events-grid--single .event-card-main {
+      max-width: 460px;
+    }
 
     .event-card-main {
       position: relative;
@@ -1152,9 +1158,10 @@
           </div>
         </div>
 
-        <div class="events-grid">
+        <div class="events-grid events-grid--single">
 
-          <!-- Event 1: Adventure Through Seasons -->
+          <!-- Event 1: Adventure Through Seasons — hidden, date passed -->
+          <!--
           <a class="event-card-main" href="https://docs.google.com/forms/d/e/1FAIpQLScyo9Xe-BRtPdJqUKXWuJ0AkNEC6VzYTHT17ihq7sQSICFVCw/viewform" target="_blank" rel="noopener">
             <div class="event-img-main">
               <img src="https://ik.imagekit.io/erewhile/Untu/adv.jpg" alt="Adventure Through Seasons">
@@ -1172,6 +1179,7 @@
               <span class="event-apply-btn">Apply now <span>↗</span></span>
             </div>
           </a>
+          -->
 
           <!-- Event 2: Beyond Labels -->
           <a class="event-card-main" href="#" target="_blank" rel="noopener">
