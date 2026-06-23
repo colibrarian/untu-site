@@ -894,8 +894,111 @@
     .events-grid--single {
       grid-template-columns: 1fr;
     }
-    .events-grid--single .event-card-main {
-      max-width: 460px;
+
+    /* ===== HORIZONTAL FEATURE CARD ===== */
+    .event-card-feature {
+      position: relative;
+      display: grid;
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.3fr);
+      border-radius: var(--radius2);
+      border: 1px solid rgba(255,255,255,.14);
+      background: var(--card);
+      overflow: hidden;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      transition: transform .28s ease, box-shadow .28s ease, border-color .28s ease;
+      opacity: 0;
+      transform: translateY(28px);
+    }
+    .event-card-feature.visible {
+      opacity: 1;
+      transform: translateY(0);
+      transition: opacity .65s ease, transform .65s ease, box-shadow .28s ease, border-color .28s ease;
+    }
+    .event-card-feature:hover {
+      transform: translateY(-4px) !important;
+      box-shadow: var(--shadowHover);
+      border-color: rgba(255,255,255,.22);
+    }
+    .event-card-feature::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(105deg, transparent 40%, rgba(255,255,255,.05) 50%, transparent 60%);
+      background-size: 200% 100%;
+      background-position: 200% 0;
+      z-index: 3;
+      pointer-events: none;
+      transition: background-position .65s ease;
+    }
+    .event-card-feature:hover::before { background-position: -200% 0; }
+
+    .event-feature-img {
+      position: relative;
+      overflow: hidden;
+      min-height: 280px;
+    }
+    .event-feature-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      position: absolute;
+      inset: 0;
+      transition: transform .5s ease;
+    }
+    .event-card-feature:hover .event-feature-img img { transform: scale(1.04); }
+
+    .event-feature-body {
+      padding: 30px 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+    .event-feature-title {
+      font-size: 22px;
+      font-weight: 900;
+      letter-spacing: -.01em;
+      line-height: 1.25;
+      color: rgba(255,255,255,.97);
+      margin-bottom: 14px;
+    }
+    .event-feature-text {
+      font-size: 13.5px;
+      line-height: 1.65;
+      color: var(--muted);
+      margin-bottom: 18px;
+      max-width: 46ch;
+    }
+    .event-feature-badges {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 22px;
+    }
+    .ef-badge {
+      font-size: 11.5px;
+      font-weight: 600;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.13);
+      color: rgba(255,255,255,.74);
+    }
+
+    @media (max-width: 760px) {
+      .event-card-feature {
+        grid-template-columns: 1fr;
+      }
+      .event-feature-img {
+        min-height: 0;
+        aspect-ratio: 4 / 3;
+      }
+      .event-feature-img img { position: static; }
+      .event-feature-body { padding: 22px 22px 26px; }
+      .event-feature-title { font-size: 19px; }
     }
 
     .event-card-main {
@@ -1181,21 +1284,34 @@
           </a>
           -->
 
-          <!-- Event 2: Beyond Labels -->
-          <a class="event-card-main" href="#" target="_blank" rel="noopener">
-            <div class="event-img-main">
+          <!-- Event 2: Beyond Labels — horizontal feature layout -->
+          <a class="event-card-feature" href="#" target="_blank" rel="noopener">
+            <div class="event-feature-img">
               <img src="https://ik.imagekit.io/erewhile/Untu/Me%CC%8Cde%CC%8Cnec,%20Czech%20Republic.png" alt="Beyond Labels">
               <div class="event-live-badge">
                 <span class="live-dot"></span>
                 Open now
               </div>
             </div>
-            <div class="event-body-main">
+            <div class="event-feature-body">
               <div class="event-tags-row">
                 <span class="ev-tag ev-tag--date">📅 02.08 – 12.08.2026</span>
                 <span class="ev-tag ev-tag--loc">📍 Měděnec, Czechia</span>
               </div>
-              <div class="event-title-main">Youth Exchange "Beyond Labels"</div>
+
+              <div class="event-feature-title">Youth Exchange "Beyond Labels"</div>
+
+              <p class="event-feature-text">
+                A youth exchange exploring identity, stereotypes, and inclusion - bringing together young people from different
+                backgrounds to challenge labels and build mutual understanding through non-formal education and outdoor activities.
+              </p>
+
+              <div class="event-feature-badges">
+                <span class="ef-badge">🎫 Erasmus+ funded</span>
+                <span class="ef-badge">✈️ Travel covered</span>
+                <span class="ef-badge">🏠 Accommodation included</span>
+              </div>
+
               <span class="event-apply-btn">Apply now <span>↗</span></span>
             </div>
           </a>
@@ -1742,7 +1858,7 @@
     });
 
     // Scroll-reveal for event cards
-    const eventCards = document.querySelectorAll('.event-card-main');
+    const eventCards = document.querySelectorAll('.event-card-main, .event-card-feature');
     if ('IntersectionObserver' in window) {
       const revealObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
