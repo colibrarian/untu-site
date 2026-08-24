@@ -1,0 +1,981 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Online Learning Module — Daily Wellness Challenge Movement</title>
+  <meta name="description" content="Test your knowledge of the Daily Wellness Challenge Movement project with an eight-round interactive quiz.">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/UNTU%2016%20x%2016.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/UNTU%2032%20x%2032.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/512.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UNTU · Daily Wellness Challenge Movement">
+  <meta property="og:title" content="Online Learning Module — Daily Wellness Challenge Movement">
+  <meta property="og:description" content="Test your knowledge of the Daily Wellness Challenge Movement project with an eight-round interactive quiz.">
+  <meta property="og:image" content="https://ik.imagekit.io/colibrarian/dwcm/og/og-learning-module.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Online Learning Module — Daily Wellness Challenge Movement">
+  <meta name="twitter:description" content="Test your knowledge of the Daily Wellness Challenge Movement project with an eight-round interactive quiz.">
+  <meta name="twitter:image" content="https://ik.imagekit.io/colibrarian/dwcm/og/og-learning-module.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    :root{
+      --bg:#07090e; --card:rgba(255,255,255,.055); --border:rgba(255,255,255,.10);
+      --bh:rgba(255,255,255,.22); --text:#f0f2f7; --muted:rgba(240,242,247,.50);
+      --r:22px; --sh:0 20px 60px rgba(0,0,0,.42); --shh:0 28px 72px rgba(0,0,0,.58);
+      --cyan:#00D4EF; --cd:rgba(0,212,239,.12); --cg:rgba(0,212,239,.28);
+      --mag:#FF2DD4; --md:rgba(255,45,212,.10);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* BG */
+    .bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bg-img{position:absolute;inset:-60px;background-image:url("https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578525/Space_pattern_epsv7v.jpg");background-size:cover;background-position:center;filter:blur(40px) brightness(.52) saturate(.85);opacity:.28;transform:scale(1.14);animation:bgD 30s ease-in-out infinite alternate}
+    .bg-v{position:absolute;inset:0;background:radial-gradient(ellipse 70% 40% at 20% 10%,var(--cd) 0%,transparent 55%),radial-gradient(ellipse 50% 30% at 85% 90%,var(--md) 0%,transparent 55%),linear-gradient(180deg,rgba(7,9,14,.52) 0%,rgba(7,9,14,.88) 100%)}
+    @keyframes bgD{from{transform:scale(1.14) translate(-14px,-10px)}to{transform:scale(1.21) translate(14px,10px)}}
+    .page{position:relative;z-index:1}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);background:rgba(7,9,14,.75)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:14px}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:rgba(255,255,255,.65);transition:color .2s}
+    .nav-brand:hover{color:var(--text)}
+    .nav-brand img{width:26px;height:26px;object-fit:contain}
+    .nav-sep{opacity:.25;margin:0 2px}
+    .nav-proj{color:var(--cyan)}
+    .navlinks{display:flex;align-items:center;gap:4px}
+    .navlinks a{font-size:12px;font-weight:600;color:var(--muted);padding:7px 13px;border-radius:999px;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+    .navlinks a:hover{color:var(--text);border-color:var(--border);background:var(--card)}
+    .navlinks a.active{color:var(--cyan);border-color:var(--cg);background:var(--cd)}
+    .lsw{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;border:1px solid var(--border);background:var(--card);margin-left:4px}
+    .lbtn{appearance:none;border:none;background:transparent;color:var(--muted);font-family:inherit;font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:5px 10px;border-radius:999px;cursor:pointer;transition:all .2s}
+    .lbtn:hover{color:var(--text)}
+    .lbtn.active{background:var(--cyan);color:#03131a}
+    .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;appearance:none;flex-shrink:0}
+    .hamburger span{width:16px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:880px){
+      .hamburger{display:flex}
+      .navlinks{position:absolute;top:100%;left:16px;right:16px;flex-direction:column;align-items:stretch;gap:6px;background:rgba(10,11,18,.97);backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px;padding:12px;margin-top:8px;max-height:0;opacity:0;overflow:hidden;pointer-events:none;transition:max-height .3s ease,opacity .25s ease;z-index:200}
+      .navlinks.open{max-height:420px;opacity:1;pointer-events:auto}
+      .navlinks a{padding:12px 14px;border-radius:10px;text-align:left;width:100%}
+      .navlinks a.active{color:var(--muted);border-color:transparent;background:transparent}
+      .navlinks .lsw{margin:6px 2px 2px;align-self:flex-start}
+    }
+
+    /* HERO */
+    .hero{padding:72px 0 60px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
+    .edot{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 1.9s ease-in-out infinite}
+    h1{font-size:clamp(36px,5vw,58px);font-weight:900;letter-spacing:-.025em;line-height:1.07;margin-bottom:22px}
+    .hg{position:relative;display:inline-block;color:var(--cyan)}
+    .hg::after{content:attr(data-t);position:absolute;left:2px;top:2px;color:var(--mag);clip-path:inset(0 0 60% 0);opacity:.55;animation:glitch 5s steps(1) infinite}
+    @keyframes glitch{0%,88%,100%{opacity:0}90%{opacity:.55;clip-path:inset(20% 0 40% 0);left:-2px}93%{opacity:.55;clip-path:inset(60% 0 10% 0);left:3px}96%{opacity:0}}
+    .hero-lead{font-size:15px;line-height:1.72;color:var(--muted);margin-bottom:26px;max-width:50ch}
+    .flags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+    .fc{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid rgba(0,212,239,.22);background:rgba(0,212,239,.07);color:rgba(240,242,247,.85)}
+    .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:13px;font-weight:700;padding:12px 22px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);transition:all .22s;cursor:pointer}
+    .btn:hover{border-color:var(--bh);background:rgba(255,255,255,.09);transform:translateY(-1px)}
+    .btn-c{background:var(--cyan);color:#03131a;border-color:transparent;box-shadow:0 10px 36px var(--cg)}
+    .btn-c:hover{background:#22dbf5;box-shadow:0 14px 44px rgba(0,212,239,.38);border-color:transparent}
+    .snudge{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border:none;background:none;transition:color .2s;font-family:inherit}
+    .snudge:hover{color:var(--cyan)}
+    .sarrow{font-size:20px;animation:bob 2.2s ease-in-out infinite;display:block}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+    /* Hero panel */
+    .hpanel{border-radius:28px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(16px);padding:36px;display:flex;flex-direction:column;align-items:center;gap:22px;box-shadow:0 0 100px rgba(0,212,239,.07),var(--sh);position:relative;overflow:hidden}
+    .hpanel::before{content:'';position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(0,212,239,.15),transparent 50%,rgba(255,45,212,.08));border-radius:28px;pointer-events:none;z-index:0;opacity:.6}
+    .hlogo{width:210px;height:210px;border-radius:24px;object-fit:cover;animation:breathe 4.5s ease-in-out infinite alternate;position:relative;z-index:1}
+    @keyframes breathe{from{box-shadow:0 0 40px rgba(0,212,239,.22),0 0 12px rgba(255,45,212,.12);transform:scale(1)}to{box-shadow:0 0 80px rgba(0,212,239,.42),0 0 30px rgba(255,45,212,.22);transform:scale(1.025)}}
+    .hstats{display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:2px;border-radius:14px;overflow:hidden;position:relative;z-index:1}
+    .hs{background:rgba(0,212,239,.07);border:1px solid rgba(0,212,239,.13);padding:14px 10px;text-align:center}
+    .hn{font-size:26px;font-weight:900;color:var(--cyan);letter-spacing:-.02em;line-height:1;display:block}
+    .hl{font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;display:block}
+
+    /* MARQUEE */
+    .mq{overflow:hidden;position:relative;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:11px 0;background:rgba(255,255,255,.012)}
+    .mq::before,.mq::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+    .mq::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+    .mq::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+    .mqi{display:flex;width:max-content;animation:mqr 32s linear infinite}
+    .mqi:hover{animation-play-state:paused}
+    @keyframes mqr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .mi{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding:0 18px;white-space:nowrap}
+    .mi.c{color:var(--cyan)}.mi.m{color:var(--mag)}
+
+    /* SECTIONS */
+    .sec{padding:72px 0}
+    .sec0{padding-top:0}
+    .sh{margin-bottom:36px}
+    .kicker{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);display:inline-block;margin-bottom:10px}
+    .sh h2{font-size:clamp(24px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+    .sdesc{font-size:14.5px;line-height:1.72;color:var(--muted);max-width:56ch}
+    .rv{opacity:0;transform:translateY(22px);transition:opacity .62s ease,transform .62s ease}
+    .rv.in{opacity:1;transform:none}
+
+    /* ABOUT CARDS */
+    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .ac{border-radius:var(--r);border:1px solid var(--border);background:var(--card);padding:24px 22px;transition:border-color .25s,transform .25s,box-shadow .25s}
+    .ac:hover{border-color:rgba(0,212,239,.28);transform:translateY(-3px);box-shadow:var(--shh),0 0 32px rgba(0,212,239,.06)}
+    .ai{font-size:26px;margin-bottom:14px;display:block}
+    .at{font-size:13.5px;font-weight:800;margin-bottom:8px}
+    .ad{font-size:13px;line-height:1.62;color:var(--muted)}
+
+    /* EU strip */
+    .eustrip{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 22px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.025);margin-top:36px}
+    .eustrip img{height:30px;object-fit:contain;filter:brightness(.8)}
+    .eut{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1}
+    .kabadge{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:var(--cd);border:1px solid rgba(0,212,239,.22);padding:5px 13px;border-radius:999px;white-space:nowrap}
+
+    /* TIMELINE */
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:40px}
+    .timeline::before{content:'';position:absolute;top:28px;left:14%;right:14%;height:1px;background:linear-gradient(90deg,var(--cyan),var(--mag),var(--cyan));opacity:.35;z-index:0}
+    .titem{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;position:relative;z-index:1}
+    .tdot{width:56px;height:56px;border-radius:50%;background:var(--card);border:1px solid rgba(0,212,239,.3);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 24px rgba(0,212,239,.12)}
+    .tstep{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+    .ttitle{font-size:13px;font-weight:700;line-height:1.35}
+    .tdesc{font-size:11.5px;color:var(--muted);line-height:1.55}
+
+    /* OUTCOMES */
+    .og{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .oc{border-radius:var(--r);border:1px solid var(--border);background:var(--card);display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
+    .oc:hover{border-color:rgba(0,212,239,.24);transform:translateY(-3px);box-shadow:var(--shh)}
+    .oth{width:100%;aspect-ratio:16/9;background:rgba(0,212,239,.05);border-bottom:1px solid var(--border);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .oth::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(0,212,239,.07) 50%,transparent 62%);background-size:220% 100%;animation:shim 2.8s ease infinite}
+    @keyframes shim{from{background-position:220% 0}to{background-position:-220% 0}}
+    .obi{font-size:38px;position:relative;z-index:2}
+    .oph{position:absolute;bottom:10px;left:0;right:0;text-align:center;z-index:3;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,212,239,.55)}
+    .oplay{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center}
+    .pc{width:52px;height:52px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;color:#03131a;font-size:18px;padding-left:3px;box-shadow:0 0 32px var(--cg);transition:transform .22s,box-shadow .22s}
+    .oc:hover .pc{transform:scale(1.1);box-shadow:0 0 50px rgba(0,212,239,.55)}
+    .ob{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+    .otype{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+    .otitle{font-size:14px;font-weight:700;line-height:1.38;margin-bottom:8px}
+    .odesc{font-size:12.5px;line-height:1.6;color:var(--muted);flex:1;margin-bottom:16px}
+    .olink{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--cyan);border:1px solid rgba(0,212,239,.25);background:rgba(0,212,239,.06);padding:7px 14px;border-radius:999px;align-self:flex-start;transition:all .2s}
+    .olink:hover{background:rgba(0,212,239,.14);border-color:rgba(0,212,239,.44)}
+    .olink.dis{opacity:.4;pointer-events:none}
+
+    /* PARTNERS */
+    .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .pc2{border-radius:var(--r);border:1px solid var(--border);background:var(--card);padding:28px 18px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;transition:border-color .25s,transform .25s}
+    .pc2:hover{border-color:rgba(0,212,239,.24);transform:translateY(-3px)}
+    .plph{width:68px;height:68px;border-radius:16px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:32px}
+    .pcountry{font-size:13.5px;font-weight:800}
+    .porg{font-size:11px;color:var(--muted);margin-top:2px;font-weight:500;line-height:1.4}
+    .prole{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:var(--cd);border:1px solid rgba(0,212,239,.2);padding:4px 11px;border-radius:999px}
+    .prole.cr{color:var(--mag);background:var(--md);border-color:rgba(255,45,212,.25)}
+
+    /* MAP */
+    .mhdr{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+    .mchip{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,212,239,.22);background:rgba(0,212,239,.07);font-size:13px;font-weight:600;white-space:nowrap}
+    .mdot{width:8px;height:8px;border-radius:50%;background:var(--cyan);flex-shrink:0;animation:pulse 1.9s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,212,239,.65)}50%{opacity:.75;box-shadow:0 0 0 7px rgba(0,212,239,0)}}
+    #mapbox{height:380px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh)}
+    #lmap{width:100%;height:100%}
+    .leaflet-popup-content-wrapper{background:#0d1017;border:1px solid rgba(0,212,239,.25);border-radius:12px;color:var(--text);box-shadow:0 8px 32px rgba(0,0,0,.5)}
+    .leaflet-popup-tip{background:#0d1017}
+    .leaflet-popup-content{margin:12px 16px;font-family:'Plus Jakarta Sans',sans-serif}
+
+    /* GALLERY */
+    .gg{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:176px;gap:10px}
+    .gi{border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--border);cursor:pointer;transition:transform .28s ease,border-color .28s,box-shadow .28s}
+    .gi:hover{transform:scale(1.03);border-color:rgba(0,212,239,.28);box-shadow:0 20px 56px rgba(0,0,0,.55);z-index:2}
+    .gi.tall{grid-row:span 2}.gi.wide{grid-column:span 2}
+    .gi:nth-child(1){background:linear-gradient(135deg,rgba(0,212,239,.10),rgba(0,50,60,.35))}
+    .gi:nth-child(2){background:linear-gradient(135deg,rgba(255,45,212,.08),rgba(50,0,45,.35))}
+    .gi:nth-child(3){background:linear-gradient(135deg,rgba(0,212,239,.07),rgba(0,30,50,.30))}
+    .gi:nth-child(4){background:linear-gradient(225deg,rgba(255,45,212,.09),rgba(0,212,239,.07))}
+    .gi:nth-child(5){background:linear-gradient(135deg,rgba(0,212,239,.08),rgba(255,45,212,.05))}
+    .gi:nth-child(6){background:linear-gradient(135deg,rgba(0,50,60,.35),rgba(0,212,239,.10))}
+    .gi:nth-child(7){background:linear-gradient(225deg,rgba(255,45,212,.08),rgba(0,212,239,.08))}
+    .gi:nth-child(8){background:linear-gradient(135deg,rgba(0,212,239,.09),rgba(255,45,212,.06))}
+    .gi::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.04) 50%,transparent 62%);background-size:220% 100%;animation:shim 3s ease infinite;animation-delay:calc(var(--i,0)*.35s)}
+    .gph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;z-index:2}
+    .gpi{font-size:22px;opacity:.35}
+    .gpt{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,212,239,.35)}
+    .gnum{position:absolute;bottom:9px;right:11px;z-index:3;font-size:9px;font-weight:700;color:rgba(255,255,255,.22)}
+    .ghl{position:absolute;inset:0;z-index:4;background:rgba(0,212,239,.08);opacity:0;transition:opacity .25s;display:flex;align-items:center;justify-content:center;font-size:22px}
+    .gi:hover .ghl{opacity:1}
+    .gadd{border-radius:14px;border:1px dashed rgba(255,255,255,.13);background:transparent;color:var(--muted);min-height:176px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:border-color .2s,color .2s;cursor:pointer}
+    .gadd:hover{border-color:rgba(0,212,239,.32);color:var(--cyan)}
+
+    /* LIGHTBOX */
+    .lb{display:none;position:fixed;inset:0;z-index:999;background:rgba(7,9,14,.93);backdrop-filter:blur(28px);align-items:center;justify-content:center}
+    .lb.open{display:flex}
+    .lbph{width:82vw;max-width:820px;aspect-ratio:4/3;border-radius:var(--r);background:rgba(0,212,239,.05);border:1px solid rgba(0,212,239,.18);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted)}
+    .lbx{position:absolute;top:22px;right:22px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:16px;appearance:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s;font-family:inherit}
+    .lbx:hover{border-color:var(--bh)}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:32px 0 24px;margin-top:16px}
+    .ftgrid{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .ftbrand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:rgba(255,255,255,.60)}
+    .ftbrand img{width:28px;height:28px;object-fit:contain}
+    .ftbrand span{color:var(--cyan)}
+    .ftlinks{display:flex;gap:8px;flex-wrap:wrap}
+    .ftlinks a{font-size:12px;font-weight:600;color:var(--muted);padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);transition:all .2s}
+    .ftlinks a:hover{color:var(--text);border-color:var(--bh)}
+    .ftcopy{font-size:11px;color:rgba(240,242,247,.22);margin-top:14px;letter-spacing:.02em}
+    .ftaction{font-size:11px;color:rgba(240,242,247,.35);margin-top:6px;letter-spacing:.02em;font-weight:700}
+    .ftdisclaimer{font-size:10.5px;color:rgba(240,242,247,.28);margin-top:10px;line-height:1.6;max-width:70ch}
+
+    /* RESPONSIVE */
+    @media(max-width:880px){
+      .hero-grid,.g3,.og{grid-template-columns:1fr 1fr}
+      .hpanel{max-width:420px}
+      .pg{grid-template-columns:1fr 1fr}
+      .gg{grid-template-columns:repeat(2,1fr)}
+      .gi.wide{grid-column:span 1}
+      .timeline{grid-template-columns:1fr 1fr;gap:24px}
+      .timeline::before{display:none}
+    }
+    @media(max-width:560px){
+      .g3,.og{grid-template-columns:1fr}
+      h1{font-size:30px}
+    }
+    @media(max-width:480px){
+      .nav-proj,.nav-sep{display:none}
+      .g2,.pg{grid-template-columns:1fr 1fr}
+    }
+
+    /* SUBPAGE EXTRAS */
+    .crumb{padding:16px 0 0;font-size:12px;color:var(--muted)}
+    .crumb a{color:var(--cyan);font-weight:600}
+    .crumb a:hover{text-decoration:underline}
+    .phero{padding:34px 0 46px}
+    .phero h1{font-size:clamp(28px,4.2vw,44px);font-weight:900;letter-spacing:-.02em;line-height:1.12;margin-bottom:14px}
+    .phero .sdesc{max-width:64ch}
+    .status-badge{display:inline-flex;align-items:center;gap:6px;font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid rgba(0,212,239,.28);background:var(--cd);color:var(--cyan);white-space:nowrap}
+    .status-badge.ongoing{border-color:rgba(255,45,212,.3);background:var(--md);color:var(--mag)}
+    .chip-row{display:flex;flex-wrap:wrap;gap:8px;margin:28px 0 8px}
+    .chip{font-size:11.5px;font-weight:600;padding:8px 15px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--muted)}
+    .chip.on{border-color:rgba(0,212,239,.35);background:var(--cd);color:var(--cyan)}
+    .dl-list{display:flex;flex-direction:column;gap:10px}
+    .dl-row{display:flex;align-items:center;gap:14px;padding:16px 18px;border-radius:16px;border:1px solid var(--border);background:var(--card);transition:border-color .2s,transform .2s;flex-wrap:wrap}
+    .dl-row:hover{border-color:rgba(0,212,239,.26);transform:translateY(-2px)}
+    .dl-ico{width:42px;height:42px;border-radius:12px;background:var(--cd);display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+    .dl-body{flex:1;min-width:180px}
+    .dl-t{font-size:13.5px;font-weight:700;margin-bottom:2px}
+    .dl-s{font-size:11.5px;color:var(--muted)}
+    .dl-btn{font-size:11.5px;font-weight:700;color:var(--cyan);border:1px solid rgba(0,212,239,.25);background:rgba(0,212,239,.06);padding:8px 15px;border-radius:999px;white-space:nowrap;display:inline-block}
+    .dl-btn.dis{opacity:.4;pointer-events:none}
+    .ph{font-size:10.5px;font-weight:700;letter-spacing:.02em;color:#ffcf7a;border:1px dashed rgba(255,207,122,.42);background:rgba(255,207,122,.06);padding:2px 8px;border-radius:6px;white-space:nowrap;display:inline-block}
+    .prose{font-size:13.5px;line-height:1.78;color:var(--muted);max-width:72ch}
+    .prose h3{font-size:15px;font-weight:800;color:var(--text);margin:28px 0 10px}
+    .prose ul{margin:8px 0 14px 20px}
+    .prose li{margin-bottom:7px}
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+    .stat-card{border-radius:16px;border:1px solid var(--border);background:var(--card);padding:20px 14px;text-align:center}
+    .stat-card .n{font-size:28px;font-weight:900;color:var(--cyan);letter-spacing:-.02em;display:block}
+    .stat-card .l{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:6px;display:block}
+    .stat-card.tgt .n{color:var(--mag)}
+    @media(max-width:768px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+
+    .quiz-app{max-width:640px;margin:0 auto;border-radius:24px;border:1px solid var(--border);background:var(--card);padding:40px 34px;position:relative;overflow:hidden}
+    .quiz-app::before{content:'';position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(0,212,239,.10),transparent 50%,rgba(255,45,212,.07));pointer-events:none;z-index:0}
+    .quiz-app>*{position:relative;z-index:1}
+    .qprog{display:flex;gap:8px;justify-content:center;margin-bottom:30px}
+    .qdot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,.12);transition:all .3s}
+    .qdot.active{background:var(--cyan);box-shadow:0 0 12px var(--cg);transform:scale(1.25)}
+    .qdot.done{background:var(--mag)}
+    .qscreen{animation:qfade .4s ease}
+    .qscreen.hidden{display:none}
+    @keyframes qfade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+    .qkicker{font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;color:var(--cyan);text-align:center;margin-bottom:10px}
+    .qscreen h2{font-size:22px;font-weight:900;text-align:center;margin-bottom:18px;letter-spacing:-.01em;line-height:1.3}
+    .qpassage{font-size:13.5px;line-height:1.8;color:var(--muted);margin-bottom:30px}
+    .qpassage p{margin-bottom:12px}
+    .qpassage p:last-child{margin-bottom:0}
+    .quiz-app .btn{display:flex;margin:0 auto}
+    .qquestion{margin-bottom:26px}
+    .qquestion:last-child{margin-bottom:0}
+    .qqnum{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:var(--cd);color:var(--cyan);font-size:10px;font-weight:800;margin-right:8px}
+    .qqtext{font-size:14px;font-weight:700;margin-bottom:12px;line-height:1.4}
+    .qopts{display:flex;flex-direction:column;gap:8px}
+    .qopt{display:flex;align-items:center;gap:10px;padding:13px 16px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.02);cursor:pointer;font-size:13px;transition:all .18s;text-align:left;font-family:inherit;color:var(--text);width:100%}
+    .qopt:hover{border-color:rgba(0,212,239,.32)}
+    .qopt.selected{border-color:var(--cyan);background:rgba(0,212,239,.08)}
+    .qopt.correct{border-color:#3ddc84;background:rgba(61,220,132,.12);color:#3ddc84}
+    .qopt.wrong{border-color:#ff5c7a;background:rgba(255,92,122,.12);color:#ff5c7a}
+    .qopt:disabled{cursor:default}
+    .qletter{width:24px;height:24px;border-radius:50%;border:1px solid currentColor;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;opacity:.7}
+    .qrr-score,.qfinal-score{font-size:52px;font-weight:900;text-align:center;background:linear-gradient(90deg,var(--cyan),var(--mag));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-.02em;line-height:1}
+    #rrMsg,#finalMsg{text-align:center;color:var(--muted);font-size:13.5px;margin:14px 0 26px;line-height:1.6}
+    .qfinal-badge{font-size:44px;text-align:center;margin-bottom:8px}
+    .qbtnrow{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
+    @media(max-width:600px){.quiz-app{padding:28px 20px}.qrr-score,.qfinal-score{font-size:42px}}
+  </style>
+</head>
+<body>
+<div class="bg"><div class="bg-img"></div><div class="bg-v"></div></div>
+<div class="page">
+
+<!-- NAV -->
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="nav-brand" href="https://untu.ngo">
+        <img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU">
+        UNTU<span class="nav-sep">/</span><span class="nav-proj">Daily Wellness Challenge</span>
+      </a>
+      <nav class="navlinks" id="navlinks">
+        <a href="dwcm.html" data-i18n="nav.about">About</a>
+        <a href="dwcm-outputs-followup.html" data-i18n="nav.outcomes">Outcomes</a>
+        <a href="dwcm-media.html" data-i18n="nav.media">Media</a>
+        <a href="dwcm-digital-campaign.html" data-i18n="nav.campaign">Campaign</a>
+        <a href="dwcm-learning-module.html" data-i18n="nav.learning">Quiz</a>
+        <a href="dwcm-publication-guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="container"><p class="crumb rv"><a href="dwcm.html" data-i18n="crumb.back">← Daily Wellness Challenge Movement</a></p></div>
+
+<section class="phero sec0">
+  <div class="container">
+    <p class="kicker rv" data-i18n="lm.kicker">Online Learning Module</p>
+    <h1 class="rv" data-i18n="lm.h1">Read. Learn. Test yourself.</h1>
+    <p class="sdesc rv" style="--d:.05s" data-i18n="lm.lead">Eight rounds, each with a short intro to a topic and three questions. Read the text, answer the questions, and find out how well you know the Daily Wellness Challenge Movement project.</p>
+  </div>
+</section>
+
+<section class="sec sec0">
+  <div class="container">
+    <div class="quiz-app rv" id="quizApp">
+
+      <div class="qprog" id="qprog"></div>
+
+      <div class="qscreen" id="screenRead">
+        <p class="qkicker" id="roundLabel">Round 1 / 8</p>
+        <h2 id="roundTitle"></h2>
+        <div class="qpassage" id="roundPassage"></div>
+        <button class="btn btn-c" id="btnStartQuiz" data-i18n="lm.startBtn">Start quiz →</button>
+      </div>
+
+      <div class="qscreen hidden" id="screenQuiz">
+        <p class="qkicker" id="quizRoundLabel">Round 1 / 8</p>
+        <div id="questionsWrap"></div>
+        <div class="qbtnrow">
+          <button class="btn btn-c" id="btnSubmitRound" disabled data-i18n="lm.submitBtn">Submit answers</button>
+        </div>
+      </div>
+
+      <div class="qscreen hidden" id="screenRoundResult">
+        <div class="qrr-score" id="rrScore">2/3</div>
+        <p id="rrMsg"></p>
+        <div class="qbtnrow">
+          <button class="btn btn-c" id="btnNextRound" data-i18n="lm.nextBtn">Next round →</button>
+        </div>
+      </div>
+
+      <div class="qscreen hidden" id="screenFinal">
+        <div class="qfinal-badge" id="finalBadge">🏆</div>
+        <div class="qfinal-score" id="finalScore">18/24</div>
+        <h2 id="finalTitle" data-i18n="lm.finalDefaultTitle">Great job!</h2>
+        <p id="finalMsg"></p>
+        <div class="qbtnrow">
+          <button class="btn" id="btnRestart" data-i18n="lm.restartBtn">↻ Restart</button>
+        </div>
+      </div>
+
+    </div>
+
+    <p class="prose rv" style="margin-top:26px;text-align:center" data-i18n="lm.note">Question content is based on the project's Toolkit and Freshly Baked Content documents.</p>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="ftgrid">
+      <div class="ftbrand">
+        <img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU">
+        UNTU · <span>Daily Wellness Challenge Movement</span>
+      </div>
+      <div class="ftlinks">
+        <a href="https://untu.ngo" data-i18n="footer.back">← untu.ngo</a>
+        <a href="https://www.youtube.com/@untuwellnessdailychallenge" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://www.instagram.com/ngo_untu" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+    <p class="ftcopy" data-i18n="footer.copy">© 2025–2026 Biedrība UNTU.</p>
+    <p class="ftaction" data-i18n="footer.action">Erasmus+ KA153-YOU – Mobility of Youth Workers · Project No. 2025-1-LV02-KA153-YOU-000304266</p>
+    <p class="ftdisclaimer" data-i18n="footer.disclaimer">Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them.</p>
+  </div>
+</footer>
+
+</div>
+<script>
+/* ===== 0b. ACTIVE NAV LINK (desktop only, home page excluded) ===== */
+(function(){
+  var here=(location.pathname.split('/').pop()||'').split('?')[0];
+  document.querySelectorAll('.navlinks a[href]').forEach(function(a){
+    var href=a.getAttribute('href').split('#')[0];
+    if(href!=='dwcm.html'&&href===here)a.classList.add('active');
+  });
+})();
+
+/* ===== 0. HAMBURGER MENU ===== */
+(function(){
+  var h=document.getElementById('hamburger');
+  var n=document.getElementById('navlinks');
+  if(!h||!n)return;
+  h.addEventListener('click',function(){
+    var open=n.classList.toggle('open');
+    h.classList.toggle('open',open);
+    h.setAttribute('aria-expanded',open?'true':'false');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      n.classList.remove('open');
+      h.classList.remove('open');
+      h.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!n.classList.contains('open'))return;
+    if(n.contains(e.target)||h.contains(e.target))return;
+    n.classList.remove('open');
+    h.classList.remove('open');
+    h.setAttribute('aria-expanded','false');
+  });
+})();
+
+/* ===== 0.5 QUIZ ENGINE ===== */
+/* Content sourced from the Daily Wellness Challenge Movement Toolkit and Freshly Baked Content documents. Bilingual LV/EN. */
+(function(){
+  var QUIZ_DATA = [
+    {
+      title: { en: "The Training Course & Icebreakers", lv: "Mācību kurss un iepazīšanās aktivitātes" },
+      passage: {
+        en: [
+          "The \u201cDaily Wellness Challenge Movement\u201d was an Erasmus+ training course held in Latvia from 21 to 30 October 2025, uniting youth workers from Germany, Norway, Latvia and Estonia around burnout prevention, mental health and a culture of wellbeing.",
+          "Part 1 of the Toolkit, Icebreakers & Group Building, opens with the Conversation Cards Icebreaker (20\u201345 minutes, working in pairs with open-ended questions) and Fears, Expectations & Commitments, where participants individually reflect before the group clusters and discusses the responses together."
+        ],
+        lv: [
+          "\u201cDaily Wellness Challenge Movement\u201d bija Erasmus+ m\u0101c\u012bbu kurss, kas notika Latvij\u0101 no 2025. gada 21. l\u012bdz 30. oktobrim, apvienojot jaunatnes darbiniekus no V\u0101cijas, Norv\u0113\u0123ijas, Latvijas un Igaunijas ap izdeg\u0161anas profilaksi, gar\u012bgo vesel\u012bbu un labb\u016bt\u012bbas kult\u016bru.",
+          "R\u012bkkopas 1. da\u013ca, Iepaz\u012b\u0161an\u0101s un grupas veido\u0161ana, s\u0101kas ar sarunu k\u0101r\u0161u aktivit\u0101ti (20\u201345 min\u016btes, darbs p\u0101ros ar atv\u0113rtiem jaut\u0101jumiem) un vingrin\u0101jumu \u201cBailes, cer\u012bbas un ap\u0146em\u0161an\u0101s\u201d, kur\u0101 dal\u012bbnieki vispirms individu\u0101li p\u0101rdom\u0101, p\u0113c tam grupa sakopo un p\u0101rrun\u0101 atbildes kop\u0101."
+        ]
+      },
+      questions: [
+        { q: { en: "How many partner countries were united in the training course?", lv: "Cik partnervalstis apvienoja m\u0101c\u012bbu kursu?" },
+          opts: { en: ["Three", "Four", "Five"], lv: ["Tr\u012bs", "\u010cetras", "Piecas"] }, correct: 1 },
+        { q: { en: "What is the recommended duration for the Conversation Cards Icebreaker, including reflection?", lv: "K\u0101ds ir ieteicamais ilgums sarunu k\u0101r\u0161u aktivit\u0101tei, ieskaitot refleksiju?" },
+          opts: { en: ["20\u201345 minutes (up to 60 with reflection)", "5 minutes only", "3 hours"], lv: ["20\u201345 min\u016btes (l\u012bdz 60 ar refleksiju)", "Tikai 5 min\u016btes", "3 stundas"] }, correct: 0 },
+        { q: { en: "In \u2018Fears, Expectations & Commitments\u2019, what happens after individual reflection?", lv: "Kas notiek p\u0113c individu\u0101l\u0101s refleksijas vingrin\u0101jum\u0101 \u201cBailes, cer\u012bbas un ap\u0146em\u0161an\u0101s\u201d?" },
+          opts: { en: ["Responses are collected and clustered as a group", "Each answer is read aloud by the trainer only", "Participants immediately move to the next activity"], lv: ["Atbildes tiek sav\u0101ktas un sakopotas grup\u0101", "Katru atbildi ska\u013ci nolasa tikai treneris", "Dal\u012bbnieki uzreiz p\u0101riet pie n\u0101kam\u0101s aktivit\u0101tes"] }, correct: 0 }
+      ]
+    },
+    {
+      title: { en: "Wellness & Somatic Practices I: Yoga & Breathing", lv: "Labb\u016bt\u012bba un somatisk\u0101s prakses I: joga un elpo\u0161ana" },
+      passage: {
+        en: [
+          "Ashtanga Yoga for Beginners is a structured morning wellness practice built around the Surya Namaskar flow, recommended for groups of 5\u201325 participants and lasting 60\u201390 minutes, best timed before breakfast. It closes with 8\u201312 minutes of Shavasana, letting the nervous system shift out of \u2018effort mode\u2019.",
+          "Chakra Breathing, based on Osho\u2019s Active Meditation, is a one-hour practice in two stages: 45 minutes of active breathing that moves upward through each chakra (marked by a bell at each transition, three bells at the crown), followed by 15 minutes of silent stillness."
+        ],
+        lv: [
+          "Ashtanga joga ies\u0101c\u0113jiem ir struktur\u0113ta r\u012bta labb\u016bt\u012bbas prakse, kas balst\u012bta uz Surya Namaskar pl\u016bsmu, ieteicama grup\u0101m no 5 l\u012bdz 25 dal\u012bbniekiem, ilgst 60\u201390 min\u016btes un vislab\u0101k tiek veikta pirms brokast\u012bm. To nosl\u0113dz 8\u201312 min\u016btes ilga Shavasana, kas \u013cauj nervu sist\u0113mai iziet no \u201cpiep\u016bles re\u017e\u012bma\u201d.",
+          "Chakra elpo\u0161ana, kas balst\u012bta uz Osho akt\u012bvo medit\u0101ciju, ir vienu stundu ilga prakse divos posmos: 45 min\u016btes akt\u012bvas elpo\u0161anas, kas virz\u0101s aug\u0161up caur katru \u010dakru (katru p\u0101reju iez\u012bm\u0113 zvana ska\u0146a, bet kro\u0146a \u010dakru \u2014 tr\u012bs zvani), kam seko 15 min\u016btes klusuma."
+        ]
+      },
+      questions: [
+        { q: { en: "What is the recommended group size for Ashtanga Yoga for Beginners?", lv: "K\u0101ds ir ieteicamais grupas lielums Ashtanga jogai ies\u0101c\u0113jiem?" },
+          opts: { en: ["5\u201325 participants", "50\u2013100 participants", "Only 1-on-1 sessions"], lv: ["5\u201325 dal\u012bbnieki", "50\u2013100 dal\u012bbnieki", "Tikai individu\u0101las nodarb\u012bbas"] }, correct: 0 },
+        { q: { en: "How long does the Active Breathing stage of Chakra Breathing last?", lv: "Cik ilgi ilgst akt\u012bv\u0101s elpo\u0161anas posms Chakra elpo\u0161an\u0101?" },
+          opts: { en: ["45 minutes", "5 minutes", "3 hours"], lv: ["45 min\u016btes", "5 min\u016btes", "3 stundas"] }, correct: 0 },
+        { q: { en: "What signals that a participant has reached the crown chakra during Chakra Breathing?", lv: "Kas iez\u012bm\u0113 br\u012bdi, kad dal\u012bbnieks sasniedzis kro\u0146a \u010dakru Chakra elpo\u0161anas laik\u0101?" },
+          opts: { en: ["Three bells", "A single clap", "Complete silence with no signal"], lv: ["Tr\u012bs zvani", "Viens aplausu sitiens", "Piln\u012bgs klusums bez sign\u0101la"] }, correct: 0 }
+      ]
+    },
+    {
+      title: { en: "Wellness & Somatic Practices II: Yoga Nidra, Sound Healing & Sauna", lv: "Labb\u016bt\u012bba un somatisk\u0101s prakses II: Yoga Nidra, ska\u0146u ter\u0101pija un sauna" },
+      passage: {
+        en: [
+          "Yoga Nidra (\u2018yogic sleep\u2019) is a group-guided meditation performed lying down only, lasting 25\u201345 minutes. It uses a \u2018Sankalpa\u2019 \u2014 a short positive intention repeated at the start and end of the practice \u2014 and the facilitator\u2019s golden rule is to leave long pauses of 3\u201310 seconds after each instruction.",
+          "Sound Healing is a 30\u201360 minute group relaxation practice using live instruments such as Tibetan singing bowls, Koshi chimes and Kalimba, gradually introduced with soft, grounding sounds. Sauna as Wellness Practice recommends beginner temperatures of 60\u201380\u00b0C, cycling through heat, cooling and rest phases 2\u20133 times."
+        ],
+        lv: [
+          "Yoga Nidra (\u201cjogiskais miegs\u201d) ir grup\u0101 vad\u012bta medit\u0101cija, kas tiek veikta tikai gu\u013cus st\u0101vokl\u012b un ilgst 25\u201345 min\u016btes. Taj\u0101 izmanto \u201cSankalpu\u201d \u2014 \u012bsu pozit\u012bvu nodomu, ko atk\u0101rto prakses s\u0101kum\u0101 un beig\u0101s, un vad\u012bt\u0101ja zelta likums ir atst\u0101t garas, 3\u201310 sekun\u017eu pauzes p\u0113c katras instrukcijas.",
+          "Ska\u0146u ter\u0101pija ir 30\u201360 min\u016btes ilga grupas relaks\u0101cijas prakse, izmantojot dz\u012bvus instrumentus, piem\u0113ram, Tibetas dziedo\u0161\u0101s b\u013codi\u0146as, Koshi zvani\u0146us un Kalimba, kas tiek pak\u0101peniski ieviesti ar maig\u0101m, zem\u0113jo\u0161\u0101m ska\u0146\u0101m. Sauna k\u0101 labb\u016bt\u012bbas prakse iesaka ies\u0101c\u0113jiem temperat\u016bru 60\u201380\u00b0C, cikliski main\u012bt silt\u0101, atdzi\u0161anas un atp\u016btas f\u0101zes 2\u20133 reizes."
+        ]
+      },
+      questions: [
+        { q: { en: "What is a \u2018Sankalpa\u2019 in Yoga Nidra?", lv: "Kas ir \u201cSankalpa\u201d Yoga Nidra praks\u0113?" },
+          opts: { en: ["A short positive intention repeated at the start and end", "The name of the final relaxation pose", "A physical stretching sequence"], lv: ["\u012ass pozit\u012bvs nodoms, ko atk\u0101rto prakses s\u0101kum\u0101 un beig\u0101s", "Nosl\u0113guma pozas nosaukums", "Fiziska stiep\u0161an\u0101s sec\u012bba"] }, correct: 0 },
+        { q: { en: "What is the facilitator\u2019s golden rule during Yoga Nidra?", lv: "K\u0101ds ir vad\u012bt\u0101ja zelta likums Yoga Nidra laik\u0101?" },
+          opts: { en: ["Speak quickly to keep energy high", "Leave long pauses of 3\u201310 seconds after instructions", "Never repeat any instruction"], lv: ["Run\u0101t \u0101tri, lai saglab\u0101tu enerģiju", "Atst\u0101t garas, 3\u201310 sekun\u017eu pauzes p\u0113c instrukcij\u0101m", "Nekad neatk\u0101rtot nevienu instrukciju"] }, correct: 1 },
+        { q: { en: "What is the recommended beginner sauna temperature range?", lv: "K\u0101da ir ieteicam\u0101 saunas temperat\u016bra ies\u0101c\u0113jiem?" },
+          opts: { en: ["60\u201380\u00b0C", "100\u2013120\u00b0C", "20\u201330\u00b0C"], lv: ["60\u201380\u00b0C", "100\u2013120\u00b0C", "20\u201330\u00b0C"] }, correct: 0 }
+      ]
+    },
+    {
+      title: { en: "Outdoor Education Tools", lv: "\u0100ra izgl\u012bt\u012bbas r\u012bki" },
+      passage: {
+        en: [
+          "The Human Knot brings 8\u201312 participants into a circle where they grab random hands across from them and must untangle without letting go \u2014 building communication and joint problem-solving in 15\u201320 minutes. If a knot proves mathematically impossible, facilitators may allow one \u2018Magic Break\u2019, where two people briefly unclasp and re-clasp hands.",
+          "The Square Knot Rope Relay teaches a practical outdoor skill through a fast-paced team race: participants tie square knots using the rhyme \u2018Right over left, and under. Left over right, and under.\u2019 Silent Walk & Forest Bathing, meanwhile, asks participants to walk in complete silence, keeping a 2\u20133 metre distance from others, with no phones or music."
+        ],
+        lv: [
+          "\u201cCilv\u0113ku mezgls\u201d pulc\u0113 8\u201312 dal\u012bbniekus apl\u012b, kur vi\u0146i satver nejau\u0161as rokas pret\u012b st\u0101vo\u0161ajiem un bez atlai\u0161anas m\u0113\u0123ina atritin\u0101ties \u2014 15\u201320 min\u016bt\u0113s veidojot komunik\u0101ciju un kop\u012bgu probl\u0113mu risin\u0101\u0161anu. Ja mezglu matem\u0101tiski nav iesp\u0113jams atritin\u0101t, vad\u012bt\u0101ji var at\u013caut vienu \u201cma\u0123isko p\u0101rtraukumu\u201d, kad divi cilv\u0113ki \u012bsi atlai\u017e un no jauna satver rokas.",
+          "\u201cVienk\u0101r\u0161\u0101 mezgla virves stafete\u201d m\u0101ca praktisku \u0101ra prasmi \u0101tr\u0101 komandu sacens\u012bb\u0101: dal\u012bbnieki sien vienk\u0101r\u0161os mezglus, izmantojot atska\u0146u \u201cRight over left, and under. Left over right, and under.\u201d Savuk\u0101rt \u201cKlusais pastaigas g\u0101jiens un me\u017ea peldes\u201d aicina dal\u012bbniekus staig\u0101t piln\u012bg\u0101 klusum\u0101, saglab\u0101jot 2\u20133 metru distanci no citiem, bez telefoniem vai m\u016bzikas."
+        ]
+      },
+      questions: [
+        { q: { en: "What rhyme is taught to help participants remember how to tie a square knot?", lv: "K\u0101da atska\u0146a pal\u012bdz dal\u012bbniekiem atcer\u0113ties, k\u0101 sasiet vienk\u0101r\u0161o mezglu?" },
+          opts: { en: ["\u2018Right over left, and under. Left over right, and under.\u2019", "\u2018Over, under, around and through\u2019", "\u2018Left, right, left, tie it tight\u2019"], lv: ["\u201cRight over left, and under. Left over right, and under.\u201d", "\u201cOver, under, around and through\u201d", "\u201cLeft, right, left, tie it tight\u201d"] }, correct: 0 },
+        { q: { en: "During the Silent Walk, what distance should participants keep from the person in front and behind?", lv: "K\u0101da distance j\u0101saglab\u0101 dal\u012bbniekiem Klus\u0101s pastaigas laik\u0101 no priek\u0161\u0101 un aizmugur\u0113 eso\u0161\u0101 cilv\u0113ka?" },
+          opts: { en: ["2\u20133 metres", "10 metres", "No distance rule applies"], lv: ["2\u20133 metri", "10 metri", "Distances noteikums nav sp\u0113k\u0101"] }, correct: 0 },
+        { q: { en: "What is the \u2018Magic Break\u2019 rule in the Human Knot exercise?", lv: "Kas ir \u201cma\u0123isk\u0101 p\u0101rtraukuma\u201d noteikums \u201cCilv\u0113ku mezgla\u201d vingrin\u0101jum\u0101?" },
+          opts: { en: ["A rule allowing two people to unclasp and re-clasp hands if the knot is unsolvable", "A mandatory rest halfway through", "Permission to add new participants mid-game"], lv: ["Noteikums, kas \u013cauj diviem cilv\u0113kiem atlaist un no jauna satvert rokas, ja mezglu nevar atrisin\u0101t", "Oblig\u0101ta atp\u016bta pusce\u013c\u0101", "At\u013cauja pievienot jaunus dal\u012bbniekus sp\u0113les vid\u016b"] }, correct: 0 }
+      ]
+    },
+    {
+      title: { en: "Communication & Project Tools", lv: "Komunik\u0101cijas un projektu r\u012bki" },
+      passage: {
+        en: [
+          "The DESC method is a structured framework for assertive, respectful conflict resolution: Describe the observable facts, Express how the situation affects you, Specify a clear request, and state the Consequences or Commitment that follows. The related FUKO method uses Fact, Understanding/Feelings, Konsequences, and Outcome/Request to express personal needs without blame.",
+          "In \u2018Step Back, Step Forward\u2019, participants stand in a line and step forward for statements that apply to them (such as \u2018I take breaks during my working day\u2019), stay still if neutral, and step back for statements like \u2018I experience burnout\u2019 \u2014 a physical, experiential way to reflect on wellbeing habits."
+        ],
+        lv: [
+          "DESC metode ir struktur\u0113ts ietvars pa\u0161p\u0101rliecin\u0101tai, cie\u0146pilnai konfliktu risin\u0101\u0161anai: Aprakst\u012bt (Describe) nov\u0113rojamos faktus, Izteikt (Express), k\u0101 situ\u0101cija ietekm\u0113 tevi, Nor\u0101d\u012bt (Specify) skaidru l\u016bgumu un pateikt Sekas/Ap\u0146em\u0161anos (Consequences/Commitment), kas seko. Saist\u012bt\u0101 FUKO metode izmanto \u010detrus so\u013cus \u2014 faktu, izj\u016btas, sekas un v\u0113lamo rezult\u0101tu vai l\u016bgumu, lai izteiktu person\u012bg\u0101s vajadz\u012bbas bez vaino\u0161anas.",
+          "Vingrin\u0101jum\u0101 \u201cSolis atpaka\u013c, solis uz priek\u0161u\u201d dal\u012bbnieki st\u0101v rind\u0101 un sper soli uz priek\u0161u, ja apgalvojums attiecas uz vi\u0146iem (piem\u0113ram, \u201cEs ieturu p\u0101rtraukumus darba dienas laik\u0101\u201d), paliek uz vietas, ja tas ir neitr\u0101ls, un sper soli atpaka\u013c t\u0101diem apgalvojumiem k\u0101 \u201cEs piedz\u012bvoju izdeg\u0161anu\u201d \u2014 fizisks, pieredz\u0113 balst\u012bts veids, k\u0101 p\u0101rdom\u0101t labb\u016bt\u012bbas ieradumus."
+        ]
+      },
+      questions: [
+        { q: { en: "What does the \u2018S\u2019 stand for in the DESC communication method?", lv: "Ko apz\u012bm\u0113 burts \u201cS\u201d DESC komunik\u0101cijas metod\u0113?" },
+          opts: { en: ["Specify", "Silence", "Solution"], lv: ["Nor\u0101d\u012bt (Specify)", "Klusums (Silence)", "Risin\u0101jums (Solution)"] }, correct: 0 },
+        { q: { en: "What does the \u2018U\u2019 stand for in the FUKO method?", lv: "Ko apz\u012bm\u0113 burts \u201cU\u201d FUKO metod\u0113?" },
+          opts: { en: ["Understanding / Feelings", "Urgency", "Unity"], lv: ["Izpratne / J\u016btas", "Steidzam\u012bba", "Vienot\u012bba"] }, correct: 0 },
+        { q: { en: "In \u2018Step Back, Step Forward\u2019, what does a participant do for a statement like \u2018I experience burnout\u2019?", lv: "Ko dal\u012bbnieks dara vingrin\u0101jum\u0101 \u201cSolis atpaka\u013c, solis uz priek\u0161u\u201d pie apgalvojuma \u201cEs piedz\u012bvoju izdeg\u0161anu\u201d?" },
+          opts: { en: ["Step back", "Step forward", "Sit down"], lv: ["Sper soli atpaka\u013c", "Sper soli uz priek\u0161u", "Aps\u0113\u017eas"] }, correct: 0 }
+      ]
+    },
+    {
+      title: { en: "Reflection & Closing", lv: "Refleksija un nosl\u0113gums" },
+      passage: {
+        en: [
+          "Emotion Cards Reflection uses visual cards so participants can identify their current emotional state without needing to verbalise it directly \u2014 a low-pressure way to support connection and self-awareness, best used at morning check-ins or when group energy feels fragmented.",
+          "Drawing My House is an introspective exercise on personal boundaries: participants draw their \u2018house\u2019 exactly as they feel it, imagine it, or would like it to be, noting details like fences, doors and windows. The trainer\u2019s important rule is that sharing is strictly voluntary, and drawings are never interpreted or psychoanalysed for the participant."
+        ],
+        lv: [
+          "Emociju kar\u0161u refleksija izmanto vizu\u0101las kartes, lai dal\u012bbnieki var\u0113tu identific\u0113t savu pa\u0161reiz\u0113jo emocion\u0101lo st\u0101vokli, to tie\u0161i nenosaucot v\u0101rdos \u2014 zemas spriedzes veids, k\u0101 atbalst\u012bt saikni un pa\u0161apzi\u0146u, vislab\u0101k izmantojams r\u012bta re\u0123istr\u0101cij\u0101s vai br\u012b\u017eos, kad grupas ener\u0123ija \u0161\u0137iet sadrumstalota.",
+          "\u201cZ\u012bm\u0113 manu m\u0101ju\u201d ir intraspekt\u012bvs vingrin\u0101jums par personiskaj\u0101m robe\u017e\u0101m: dal\u012bbnieki z\u012bm\u0113 savu \u201cm\u0101ju\u201d tie\u0161i t\u0101, k\u0101 vi\u0146i to j\u016bt, izt\u0113lojas, vai k\u0101du v\u0113l\u0113tos to redz\u0113t, atz\u012bm\u0113jot detaļas, piem\u0113ram, \u017eogus, durvis un logus. Trenera svar\u012bgais noteikums \u2014 dal\u012b\u0161an\u0101s ir stingri br\u012bvpr\u0101t\u012bga, un z\u012bm\u0113jumi nekad netiek interpret\u0113ti vai psihoanaliz\u0113ti dal\u012bbnieka viet\u0101."
+        ]
+      },
+      questions: [
+        { q: { en: "What is the purpose of Emotion Cards Reflection?", lv: "K\u0101ds ir Emociju kar\u0161u refleksijas m\u0113r\u0137is?" },
+          opts: { en: ["To help participants express their emotional state through imagery rather than words", "To test participants\u2019 drawing skills", "To rank participants by emotional intelligence"], lv: ["Pal\u012bdz\u0113t dal\u012bbniekiem izteikt savu emocion\u0101lo st\u0101vokli ar att\u0113lu, nevis v\u0101rdu pal\u012bdz\u012bbu", "P\u0101rbaud\u012bt dal\u012bbnieku z\u012bm\u0113\u0161anas prasmes", "Sarindot dal\u012bbniekus p\u0113c emocion\u0101l\u0101s inteli\u0123ences"] }, correct: 0 },
+        { q: { en: "In \u2018Drawing My House\u2019, what does the house metaphor represent?", lv: "Ko vingrin\u0101jum\u0101 \u201cZ\u012bm\u0113 manu m\u0101ju\u201d simboliz\u0113 m\u0101jas met\u0101fora?" },
+          opts: { en: ["The relationship with oneself and personal boundaries", "The participant\u2019s actual home address", "The training venue\u2019s floor plan"], lv: ["Attiec\u012bbas ar sevi un personisk\u0101s robe\u017eas", "Dal\u012bbnieka faktisko dz\u012bvesvietas adresi", "M\u0101c\u012bbu vietas pl\u0101nojumu"] }, correct: 0 },
+        { q: { en: "What is the trainer\u2019s important rule in \u2018Drawing My House\u2019?", lv: "K\u0101ds ir trenera svar\u012bgais noteikums vingrin\u0101jum\u0101 \u201cZ\u012bm\u0113 manu m\u0101ju\u201d?" },
+          opts: { en: ["Never interpret or psychoanalyse participants\u2019 drawings for them", "Always explain what each drawing means", "Drawings must be shared publicly"], lv: ["Nekad neinterpret\u0113t vai nepsihoanaliz\u0113t dal\u012bbnieku z\u012bm\u0113jumus vi\u0146u viet\u0101", "Vienm\u0113r paskaidrot, ko katrs z\u012bm\u0113jums noz\u012bm\u0113", "Z\u012bm\u0113jumi j\u0101par\u0101da publiski"] }, correct: 0 }
+      ]
+    },
+    {
+      title: { en: "Freshly Baked Content: Concept, Motivation & Technical Setup", lv: "Freshly Baked Content: koncepts, motiv\u0101cija un tehnisk\u0101 sagatave" },
+      passage: {
+        en: [
+          "The Freshly Baked Content toolkit treats video creation like home baking: \u2018everyone has their own recipe\u2019, guided by feel and intuition \u2014 but technical fundamentals are still essential, or \u2018the pastry turns out bland\u2019. Its core mindset is \u2018action beats perfection\u2019: start while the motivation is still there, even if the first result is rough around the edges.",
+          "The recommended technical setup is filming with the main camera (not front-facing), in 4K at 30 FPS, using natural light out of direct sunlight, in a quiet space free from background noise. For scripting, the toolkit suggests using ChatGPT: describe your topic and role, then ask for a short vertical-video script with a strong hook."
+        ],
+        lv: [
+          "\u201cFreshly Baked Content\u201d r\u012bkkopa izturas pret video veido\u0161anu k\u0101 pret m\u0101jas cep\u0161anu: \u201ckatram ir sava recepte\u201d, vadoties p\u0113c saj\u016btas un intu\u012bcijas \u2014 ta\u010du tehniskie pamati joproj\u0101m ir b\u016btiski, cit\u0101di \u201ck\u016bka izn\u0101k garlaic\u012bga\u201d. T\u0101s pamatdoma ir \u201cdarb\u012bba uzvar perfekcionismu\u201d: s\u0101kt, kam\u0113r motiv\u0101cija v\u0113l ir kl\u0101t, pat ja pirmais rezult\u0101ts izn\u0101k nedaudz neveikls.",
+          "Ieteicam\u0101 tehnisk\u0101 sagatave ir film\u0113\u0161ana ar galveno kameru (nevis priek\u0161\u0113jo), 4K iz\u0161\u0137irtsp\u0113j\u0101 ar 30 kadriem sekund\u0113, izmantojot dabisko gaismu \u0101rpus tie\u0161iem saules stariem, klus\u0101 telp\u0101 bez fona trok\u0161\u0146a. Scen\u0101rija izstr\u0101dei r\u012bkkopa iesaka izmantot ChatGPT: aprakst\u012bt t\u0113mu un lomu, tad pal\u016bgt \u012bsu vertik\u0101l\u0101 video scen\u0101riju ar sp\u0113c\u012bgu \u0101\u0137i (hook)."
+        ]
+      },
+      questions: [
+        { q: { en: "What is the toolkit\u2019s core mindset for getting started?", lv: "K\u0101da ir r\u012bkkopas pamatdoma, s\u0101kot darbu?" },
+          opts: { en: ["\u2018Action beats perfection\u2019", "\u2018Perfection before publishing\u2019", "\u2018Wait for the ideal moment\u2019"], lv: ["\u201cDarb\u012bba uzvar perfekcionismu\u201d", "\u201cPerfekcionisms pirms public\u0113\u0161anas\u201d", "\u201cGaid\u012bt ide\u0101lu br\u012bdi\u201d"] }, correct: 0 },
+        { q: { en: "What is the recommended filming specification?", lv: "K\u0101da ir ieteicam\u0101 film\u0113\u0161anas specifik\u0101cija?" },
+          opts: { en: ["4K at 30 FPS, using the main camera", "1080p at 60 FPS, using the front camera", "720p, either camera is fine"], lv: ["4K, 30 kadri sekund\u0113, galven\u0101 kamera", "1080p, 60 kadri sekund\u0113, priek\u0161\u0113j\u0101 kamera", "720p, jebkura kamera der"] }, correct: 0 },
+        { q: { en: "What tool does the toolkit suggest for scripting short videos?", lv: "K\u0101du r\u012bku r\u012bkkopa iesaka \u012bsu video scen\u0101riju izstr\u0101dei?" },
+          opts: { en: ["ChatGPT", "A physical notebook only", "A professional scriptwriter"], lv: ["ChatGPT", "Tikai pap\u012bra piez\u012bmju gr\u0101mati\u0146u", "Profesion\u0101lu scen\u0101rista pakalpojumu"] }, correct: 0 }
+      ]
+    },
+    {
+      title: { en: "Freshly Baked Content: Editing, Social Media & Bulk Creation", lv: "Freshly Baked Content: mont\u0101\u017ea, soci\u0101lo t\u012bklu stratē\u0123ija un video izveide vairum\u0101" },
+      passage: {
+        en: [
+          "In editing (\u2018The Oven\u2019), the toolkit recommends colour correction, audio enhancement, automatically removing silent gaps, adding supporting footage from a personal archive or Pexels, and enabling auto-generated subtitles. On Instagram, the single most common mistake is trying to talk about everything at once \u2014 the guide\u2019s main rule is to start with one clear message and one clear point of identification.",
+          "LinkedIn serves a different purpose: rather than fast engagement, it is a long-term tool for professional relationships, reputation and partnerships, requiring both an organisation page and a personal page. To scale video production, the toolkit describes generating 150 short challenge texts with ChatGPT, then using Canva\u2019s Bulk Create feature to map the data onto a single styled template, producing all 150 videos automatically."
+        ],
+        lv: [
+          "Mont\u0101\u017eas posm\u0101 (\u201cCepe\u0161kr\u0101sns\u201d) r\u012bkkopa iesaka kr\u0101su korekciju, audio uzlabo\u0161anu, autom\u0101tisku klusuma pauzu izgrie\u0161anu, papildu materi\u0101la pievieno\u0161anu no person\u012bg\u0101 arh\u012bva vai Pexels, k\u0101 ar\u012b autom\u0101tiski \u0123ener\u0113tu subtitru iesp\u0113jo\u0161anu. Instagram platform\u0101 visbie\u017e\u0101k\u0101 k\u013c\u016bda ir m\u0113\u0123in\u0101t run\u0101t par visu uzreiz \u2014 rokasgr\u0101matas galvenais noteikums ir s\u0101kt ar vienu skaidru v\u0113st\u012bjumu un vienu skaidru identifik\u0101cijas punktu.",
+          "LinkedIn kalpo citam m\u0113r\u0137im: nevis \u0101trai iesaistei, bet ilgtermi\u0146a r\u012bkam profesion\u0101l\u0101m attiec\u012bb\u0101m, reput\u0101cijai un partner\u012bb\u0101m, t\u0101p\u0113c nepiecie\u0161ama gan organiz\u0101cijas lapa, gan person\u012bg\u0101 lapa. Lai palielin\u0101tu video ra\u017eo\u0161anas apjomu, r\u012bkkopa apraksta 150 \u012bsu izaicin\u0101jumu tekstu \u0123ener\u0113\u0161anu ar ChatGPT, tad Canva \u201cBulk Create\u201d funkcijas izmanto\u0161anu, lai datus autom\u0101tiski ievietotu vien\u0101 stiliz\u0113t\u0101 veidn\u0113 un ieg\u016btu visus 150 video autom\u0101tiski."
+        ]
+      },
+      questions: [
+        { q: { en: "According to the toolkit, what is the most common mistake people make on Instagram?", lv: "Saska\u0146\u0101 ar r\u012bkkopu, k\u0101da ir visbie\u017e\u0101k\u0101 k\u013c\u016bda Instagram platform\u0101?" },
+          opts: { en: ["Trying to talk about everything at once", "Posting too rarely", "Using too many hashtags"], lv: ["M\u0113\u0123in\u0101t run\u0101t par visu uzreiz", "Public\u0113t p\u0101r\u0101k reti", "Izmantot p\u0101r\u0101k daudz t\u0113mturu (hashtags)"] }, correct: 0 },
+        { q: { en: "What two pages does the toolkit recommend for working effectively on LinkedIn?", lv: "K\u0101das divas lapas r\u012bkkopa iesaka efekt\u012bvam darbam LinkedIn?" },
+          opts: { en: ["An organisation page and a personal page", "A shop page and a blog page", "Only one combined page"], lv: ["Organiz\u0101cijas lapu un person\u012bgo lapu", "Veikala lapu un emu\u0101ra lapu", "Tikai vienu apvienotu lapu"] }, correct: 0 },
+        { q: { en: "What Canva feature is used to generate all 150 videos automatically from one styled template?", lv: "Kādu Canva funkciju izmanto, lai autom\u0101tiski \u0123ener\u0113tu visus 150 video no vienas stiliz\u0113tas veidnes?" },
+          opts: { en: ["Bulk Create", "Magic Resize", "Brand Kit"], lv: ["Bulk Create", "Magic Resize", "Brand Kit"] }, correct: 0 }
+      ]
+    }
+  ];
+
+  var LM_I18N = {
+    lv: {
+      roundLabel: "Raunds {n} / {total}",
+      quizLabel: "Raunds {n} / {total} \u2014 Jaut\u0101jumi",
+      roundScoreMsg: "Pareizi atbild\u0113ji uz {s} no {t} jaut\u0101jumiem \u0161aj\u0101 raund\u0101.",
+      nextBtn: "N\u0101kamais raunds \u2192",
+      finalCta: "Skat\u012bt rezult\u0101tu \u2192",
+      finalTitleHigh: "Lieliski!", finalTitleMid: "Paldies!", finalTitleLow: "Turpini p\u0113t\u012bt!",
+      finalMsgHigh: "Izcili! Tu \u013coti labi p\u0101rzini projektu.",
+      finalMsgMid: "Labs rezult\u0101ts! V\u0113l p\u0101ris t\u0113mas \u2014 un zin\u0101si visu.",
+      finalMsgLow: "Labs s\u0101kums \u2014 izp\u0113ti sada\u013cas v\u0113lreiz un m\u0113\u0123ini v\u0113lreiz!"
+    },
+    en: {
+      roundLabel: "Round {n} / {total}",
+      quizLabel: "Round {n} / {total} \u2014 Questions",
+      roundScoreMsg: "You got {s} out of {t} questions right in this round.",
+      nextBtn: "Next round \u2192",
+      finalCta: "See results \u2192",
+      finalTitleHigh: "Great job!", finalTitleMid: "Thanks!", finalTitleLow: "Keep exploring!",
+      finalMsgHigh: "Excellent! You really know the project.",
+      finalMsgMid: "Good result! A couple more topics and you'll know it all.",
+      finalMsgLow: "Good start \u2014 explore the sections again and try once more!"
+    }
+  };
+  function currentLang(){
+    return document.documentElement.getAttribute('lang') || 'lv';
+  }
+
+  var qprog = document.getElementById('qprog');
+  var screenRead = document.getElementById('screenRead');
+  var screenQuiz = document.getElementById('screenQuiz');
+  var screenRoundResult = document.getElementById('screenRoundResult');
+  var screenFinal = document.getElementById('screenFinal');
+  if(!screenRead) return;
+
+  var roundLabel = document.getElementById('roundLabel');
+  var roundTitle = document.getElementById('roundTitle');
+  var roundPassage = document.getElementById('roundPassage');
+  var btnStartQuiz = document.getElementById('btnStartQuiz');
+  var quizRoundLabel = document.getElementById('quizRoundLabel');
+  var questionsWrap = document.getElementById('questionsWrap');
+  var btnSubmitRound = document.getElementById('btnSubmitRound');
+  var rrScore = document.getElementById('rrScore');
+  var rrMsg = document.getElementById('rrMsg');
+  var btnNextRound = document.getElementById('btnNextRound');
+  var finalBadge = document.getElementById('finalBadge');
+  var finalScore = document.getElementById('finalScore');
+  var finalTitle = document.getElementById('finalTitle');
+  var finalMsg = document.getElementById('finalMsg');
+  var btnRestart = document.getElementById('btnRestart');
+
+  var curRound = 0;
+  var selections = [null, null, null];
+  var roundScores = [];
+  var lastTitleKey = null, lastMsgKey = null, lastBadge = null;
+
+  function pick(obj){
+    var lang = currentLang();
+    return obj[lang] || obj.en;
+  }
+  function tr(key){
+    var d = LM_I18N[currentLang()] || LM_I18N.lv;
+    return d[key] || LM_I18N.lv[key] || '';
+  }
+  function fmt(key, n, total){
+    var s = tr(key);
+    if(!s) return '';
+    return s.replace('{n}', n).replace('{total}', (total!=null?total:QUIZ_DATA.length)).replace('{s}', selections._s).replace('{t}', selections._t);
+  }
+
+  function buildDots(){
+    qprog.innerHTML = '';
+    QUIZ_DATA.forEach(function(_, i){
+      var d = document.createElement('div');
+      d.className = 'qdot' + (i===0 ? ' active' : '');
+      d.setAttribute('data-round', i);
+      qprog.appendChild(d);
+    });
+  }
+
+  function showScreen(el){
+    [screenRead, screenQuiz, screenRoundResult, screenFinal].forEach(function(s){ s.classList.add('hidden'); });
+    el.classList.remove('hidden');
+  }
+
+  function updateDots(activeIdx, doneCount){
+    qprog.querySelectorAll('.qdot').forEach(function(d, i){
+      d.classList.remove('active','done');
+      if(i < doneCount) d.classList.add('done');
+      else if(i === activeIdx) d.classList.add('active');
+    });
+  }
+
+  function renderRound(i){
+    curRound = i;
+    selections = [null, null, null];
+    var data = QUIZ_DATA[i];
+    roundLabel.textContent = fmt('roundLabel', i+1);
+    roundTitle.textContent = pick(data.title);
+    roundPassage.innerHTML = pick(data.passage).map(function(p){ return '<p>'+p+'</p>'; }).join('');
+    updateDots(i, roundScores.length);
+    showScreen(screenRead);
+  }
+
+  function renderQuiz(){
+    var data = QUIZ_DATA[curRound];
+    quizRoundLabel.textContent = fmt('quizLabel', curRound+1);
+    questionsWrap.innerHTML = '';
+    data.questions.forEach(function(qd, qi){
+      var block = document.createElement('div');
+      block.className = 'qquestion';
+      var qt = document.createElement('div');
+      qt.className = 'qqtext';
+      qt.innerHTML = '<span class="qqnum">'+(qi+1)+'</span>'+pick(qd.q);
+      block.appendChild(qt);
+      var opts = document.createElement('div');
+      opts.className = 'qopts';
+      var letters = ['A','B','C'];
+      pick(qd.opts).forEach(function(optText, oi){
+        var b = document.createElement('button');
+        b.type = 'button';
+        b.className = 'qopt' + (selections[qi]===oi ? ' selected' : '');
+        b.innerHTML = '<span class="qletter">'+letters[oi]+'</span><span>'+optText+'</span>';
+        b.addEventListener('click', function(){
+          if(b.disabled) return;
+          opts.querySelectorAll('.qopt').forEach(function(o){ o.classList.remove('selected'); });
+          b.classList.add('selected');
+          selections[qi] = oi;
+          btnSubmitRound.disabled = selections.indexOf(null) !== -1;
+        });
+        opts.appendChild(b);
+      });
+      block.appendChild(opts);
+      questionsWrap.appendChild(block);
+    });
+    btnSubmitRound.disabled = selections.indexOf(null) !== -1;
+    showScreen(screenQuiz);
+  }
+
+  function submitRound(){
+    var data = QUIZ_DATA[curRound];
+    var correctCount = 0;
+    var qBlocks = questionsWrap.querySelectorAll('.qquestion');
+    qBlocks.forEach(function(block, qi){
+      var qd = data.questions[qi];
+      var optButtons = block.querySelectorAll('.qopt');
+      optButtons.forEach(function(b, oi){
+        b.disabled = true;
+        if(oi === qd.correct) b.classList.add('correct');
+        else if(oi === selections[qi]) b.classList.add('wrong');
+      });
+      if(selections[qi] === qd.correct) correctCount++;
+    });
+    roundScores[curRound] = correctCount;
+
+    setTimeout(function(){
+      selections._s = correctCount;
+      selections._t = data.questions.length;
+      rrScore.textContent = correctCount + '/' + data.questions.length;
+      rrMsg.textContent = fmt('roundScoreMsg');
+      updateDots(curRound, curRound+1);
+      showScreen(screenRoundResult);
+      btnNextRound.textContent = (curRound === QUIZ_DATA.length-1) ? tr('finalCta') : tr('nextBtn');
+    }, 900);
+  }
+
+  function nextRoundOrFinal(){
+    if(curRound < QUIZ_DATA.length - 1){
+      renderRound(curRound + 1);
+    } else {
+      showFinal();
+    }
+  }
+
+  function showFinal(){
+    var total = roundScores.reduce(function(a,b){return a+b;}, 0);
+    var max = QUIZ_DATA.reduce(function(a,r){return a+r.questions.length;}, 0);
+    finalScore.textContent = total + '/' + max;
+    updateDots(-1, QUIZ_DATA.length);
+    var ratio = total / max;
+    if(ratio >= 0.8){ lastBadge = '\ud83c\udfc6'; lastTitleKey = 'finalTitleHigh'; lastMsgKey = 'finalMsgHigh'; }
+    else if(ratio >= 0.5){ lastBadge = '\ud83c\udf89'; lastTitleKey = 'finalTitleMid'; lastMsgKey = 'finalMsgMid'; }
+    else { lastBadge = '\ud83c\udf31'; lastTitleKey = 'finalTitleLow'; lastMsgKey = 'finalMsgLow'; }
+    finalBadge.textContent = lastBadge;
+    finalTitle.textContent = tr(lastTitleKey);
+    finalMsg.textContent = tr(lastMsgKey);
+    showScreen(screenFinal);
+  }
+
+  btnStartQuiz.addEventListener('click', renderQuiz);
+  btnSubmitRound.addEventListener('click', submitRound);
+  btnNextRound.addEventListener('click', nextRoundOrFinal);
+  btnRestart.addEventListener('click', function(){
+    roundScores = [];
+    renderRound(0);
+  });
+
+  buildDots();
+  renderRound(0);
+
+  document.querySelectorAll('.lbtn').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      setTimeout(refreshDynamicText, 0);
+    });
+  });
+  function refreshDynamicText(){
+    if(!screenRead.classList.contains('hidden')){
+      renderRound(curRound);
+    }
+    if(!screenQuiz.classList.contains('hidden')){
+      renderQuiz();
+    }
+    if(!screenRoundResult.classList.contains('hidden')){
+      rrMsg.textContent = fmt('roundScoreMsg');
+      btnNextRound.textContent = (curRound === QUIZ_DATA.length-1) ? tr('finalCta') : tr('nextBtn');
+    }
+    if(!screenFinal.classList.contains('hidden') && lastTitleKey){
+      finalBadge.textContent = lastBadge;
+      finalTitle.textContent = tr(lastTitleKey);
+      finalMsg.textContent = tr(lastMsgKey);
+    }
+  }
+})();
+
+/* ===== 1. REVEAL ===== */
+(function(){
+  function all(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  if(!('IntersectionObserver' in window)){all();return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var s=e.target.getAttribute('style')||'';
+      var m=s.match(/--d:\s*([\d.]+)/);
+      var delay=m?parseFloat(m[1])*1000:0;
+      (function(el,d){setTimeout(function(){el.classList.add('in')},d)})(e.target,delay);
+      io.unobserve(e.target);
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+})();
+
+/* ===== 2. SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ===== 3. LIGHTBOX ===== */
+(function(){
+  var lb=document.getElementById('lb');
+  if(!lb)return;
+  document.querySelectorAll('.gi').forEach(function(el){el.addEventListener('click',function(){lb.classList.add('open')})});
+  var lbx=document.getElementById('lbx');
+  if(lbx)lbx.addEventListener('click',function(){lb.classList.remove('open')});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+})();
+
+/* ===== 4. I18N ===== */
+(function(){
+var T={
+  lv:{
+    "nav.about":"Par projektu","nav.outcomes":"Rezultāti","nav.partners":"Partneri","nav.gallery":"Galerija",
+    "nav.followup":"Aktivitātes","nav.media":"Mediji","nav.downloads":"Lejupielādes","nav.campaign":"Kampaņa","nav.learning":"Tests","nav.guidelines":"Vadlīnijas",
+    "footer.back":"\u2190 untu.ngo","footer.copy":"\u00a9 2025\u20132026 Biedrība UNTU.",
+    "footer.action":"Erasmus+ KA153-YOU — jaunatnes darbinieku mobilitāte · Projekts Nr. 2025-1-LV02-KA153-YOU-000304266",
+    "footer.disclaimer":"Līdzfinansē Eiropas Savienība. Paustie uzskati un viedokļi atspoguļo vienīgi autoru viedokli un ne vienmēr sakrīt ar Eiropas Savienības vai Jaunatnes starptautisko programmu aģentūras viedokli. Ne Eiropas Savienība, ne piešķīrēja iestāde nav atbildīga par tiem.",
+    "crumb.back":"\u2190 Daily Wellness Challenge Movement",
+    "lm.kicker":"Online Learning Module","lm.h1":"Izlasi. Iepazīsti. Pārbaudi sevi.",
+    "lm.lead":"Astoņi raundi, katrā — īss ievads tēmā un trīs jautājumi. Izlasi tekstu, atbildi uz jautājumiem un uzzini, cik labi iepazini Daily Wellness Challenge Movement projektu.",
+    "lm.startBtn":"Sākt testu →","lm.submitBtn":"Iesniegt atbildes","lm.nextBtn":"Nākamais raunds →","lm.restartBtn":"↻ Sākt no jauna",
+    "lm.finalDefaultTitle":"Lieliski!",
+    "lm.note":"Jautājumu saturs balstīts uz projekta Toolkit un Freshly Baked Content dokumentiem.",
+    "lm.roundLabel":"Raunds {n} / 8","lm.quizLabel":"Raunds {n} / 8 — Jautājumi",
+    "lm.roundScoreMsg":"Pareizi atbildēji uz {s} no {t} jautājumiem šajā raundā.",
+    "lm.finalMsgHigh":"Izcili! Tu ļoti labi pārzini projektu.","lm.finalMsgMid":"Labs rezultāts! Vēl pāris tēmas — un zināsi visu.","lm.finalMsgLow":"Labs sākums — izpēti sadaļas vēlreiz un mēģini vēlreiz!",
+    "lm.finalTitleHigh":"Lieliski!","lm.finalTitleMid":"Paldies!","lm.finalTitleLow":"Turpini pētīt!"
+  },
+  en:{
+    "nav.about":"About","nav.outcomes":"Outcomes","nav.partners":"Partners","nav.gallery":"Gallery",
+    "nav.followup":"Activities","nav.media":"Media","nav.downloads":"Downloads","nav.campaign":"Campaign","nav.learning":"Quiz","nav.guidelines":"Guidelines",
+    "footer.back":"\u2190 untu.ngo","footer.copy":"\u00a9 2025\u20132026 Biedrība UNTU.",
+    "footer.action":"Erasmus+ KA153-YOU \u2013 Mobility of Youth Workers \u00b7 Project No. 2025-1-LV02-KA153-YOU-000304266",
+    "footer.disclaimer":"Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them.",
+    "crumb.back":"\u2190 Daily Wellness Challenge Movement",
+    "lm.kicker":"Online Learning Module","lm.h1":"Read. Learn. Test yourself.",
+    "lm.lead":"Eight rounds, each with a short intro to a topic and three questions. Read the text, answer the questions, and find out how well you know the Daily Wellness Challenge Movement project.",
+    "lm.startBtn":"Start quiz →","lm.submitBtn":"Submit answers","lm.nextBtn":"Next round →","lm.restartBtn":"↻ Restart",
+    "lm.finalDefaultTitle":"Great job!",
+    "lm.note":"Question content is based on the project's Toolkit and Freshly Baked Content documents.",
+    "lm.roundLabel":"Round {n} / 8","lm.quizLabel":"Round {n} / 8 — Questions",
+    "lm.roundScoreMsg":"You got {s} out of {t} questions right in this round.",
+    "lm.finalMsgHigh":"Excellent! You really know the project.","lm.finalMsgMid":"Good result! A couple more topics and you'll know it all.","lm.finalMsgLow":"Good start — explore the sections again and try once more!",
+    "lm.finalTitleHigh":"Great job!","lm.finalTitleMid":"Thanks!","lm.finalTitleLow":"Keep exploring!"
+  }
+};
+function applyLang(lang){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(T[lang]&&T[lang][k])el.textContent=T[lang][k];
+  });
+  document.querySelectorAll('.lbtn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
+  try{localStorage.setItem('dwcm_lang',lang)}catch(e){}
+}
+applyLang('en');
+})();
+
+/* ===== 5. MAP (isolated, cannot break other JS) ===== */
+(function(){
+  function initMap(){
+    try{
+      var m=L.map('lmap',{center:[56.510,23.858],zoom:11,scrollWheelZoom:false});
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'\u00a9 OpenStreetMap \u00a9 CARTO',maxZoom:19}).addTo(m);
+      var icon=L.divIcon({html:'<svg width="34" height="42" viewBox="0 0 34 42" xmlns="http://www.w3.org/2000/svg"><ellipse cx="17" cy="38" rx="7" ry="2.5" fill="rgba(0,212,239,.3)"/><path d="M17 0C7.6 0 0 7.6 0 17c0 12.8 17 25 17 25S34 29.8 34 17C34 7.6 26.4 0 17 0z" fill="#00D4EF"/><circle cx="17" cy="17" r="7" fill="white" fill-opacity=".92"/></svg>',className:'',iconSize:[34,42],iconAnchor:[17,42],popupAnchor:[0,-46]});
+      L.marker([56.510,23.858],{icon:icon}).addTo(m).bindPopup('<div style="font-family:sans-serif"><strong style="color:#00D4EF;font-size:13px">Daily Wellness Challenge Movement</strong><br><span style="color:#888;font-size:11px">Vircava, Latvija</span></div>',{maxWidth:220}).openPopup();
+    }catch(err){
+      var box=document.getElementById('mapbox');
+      if(box)box.innerHTML='<div style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(240,242,247,.4);font-family:sans-serif;font-size:13px"><span style="font-size:30px">\ud83d\uddfa\ufe0f</span>Vircava, Latvija<span style="font-size:11px">56.510\u00b0N 23.858\u00b0E</span></div>';
+    }
+  }
+  if(typeof L!=='undefined'){
+    initMap();
+  }else{
+    var lcsS=document.createElement('link');
+    lcsS.rel='stylesheet';lcsS.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(lcsS);
+    var sc=document.createElement('script');
+    sc.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    sc.onload=initMap;
+    sc.onerror=function(){
+      var box=document.getElementById('mapbox');
+      if(box)box.innerHTML='<div style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(240,242,247,.4);font-family:sans-serif;font-size:13px"><span style="font-size:30px">\ud83d\uddfa\ufe0f</span>Vircava, Latvija<span style="font-size:11px">56.510\u00b0N 23.858\u00b0E</span></div>';
+    };
+    document.body.appendChild(sc);
+  }
+})();
+</script>
+</body>
+</html>
