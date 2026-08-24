@@ -1,0 +1,956 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Daily Wellness Challenge Movement — UNTU</title>
+  <meta name="description" content="Erasmus+ KA1 training course — youth workers from Norway, Germany, Estonia and Latvia.">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/UNTU%2016%20x%2016.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/UNTU%2032%20x%2032.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/512.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UNTU · Daily Wellness Challenge Movement">
+  <meta property="og:title" content="Daily Wellness Challenge Movement — UNTU">
+  <meta property="og:description" content="Erasmus+ KA1 training course — youth workers from Norway, Germany, Estonia and Latvia.">
+  <meta property="og:image" content="https://ik.imagekit.io/colibrarian/dwcm/og/og-dwcm.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Daily Wellness Challenge Movement — UNTU">
+  <meta name="twitter:description" content="Erasmus+ KA1 training course — youth workers from Norway, Germany, Estonia and Latvia.">
+  <meta name="twitter:image" content="https://ik.imagekit.io/colibrarian/dwcm/og/og-dwcm.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#07090e; --card:rgba(255,255,255,.055); --border:rgba(255,255,255,.10);
+      --bh:rgba(255,255,255,.22); --text:#f0f2f7; --muted:rgba(240,242,247,.50);
+      --r:22px; --sh:0 20px 60px rgba(0,0,0,.42); --shh:0 28px 72px rgba(0,0,0,.58);
+      --cyan:#00D4EF; --cd:rgba(0,212,239,.12); --cg:rgba(0,212,239,.28);
+      --mag:#FF2DD4; --md:rgba(255,45,212,.10);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* BG */
+    .bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bg-img{position:absolute;inset:-60px;background-image:url("https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578525/Space_pattern_epsv7v.jpg");background-size:cover;background-position:center;filter:blur(40px) brightness(.52) saturate(.85);opacity:.28;transform:scale(1.14);animation:bgD 30s ease-in-out infinite alternate}
+    .bg-v{position:absolute;inset:0;background:radial-gradient(ellipse 70% 40% at 20% 10%,var(--cd) 0%,transparent 55%),radial-gradient(ellipse 50% 30% at 85% 90%,var(--md) 0%,transparent 55%),linear-gradient(180deg,rgba(7,9,14,.52) 0%,rgba(7,9,14,.88) 100%)}
+    @keyframes bgD{from{transform:scale(1.14) translate(-14px,-10px)}to{transform:scale(1.21) translate(14px,10px)}}
+    .page{position:relative;z-index:1}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);background:rgba(7,9,14,.75)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:14px}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:rgba(255,255,255,.65);transition:color .2s}
+    .nav-brand:hover{color:var(--text)}
+    .nav-brand img{width:26px;height:26px;object-fit:contain}
+    .nav-sep{opacity:.25;margin:0 2px}
+    .nav-proj{color:var(--cyan)}
+    .navlinks{display:flex;align-items:center;gap:4px}
+    .navlinks a{font-size:12px;font-weight:600;color:var(--muted);padding:7px 13px;border-radius:999px;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+    .navlinks a:hover{color:var(--text);border-color:var(--border);background:var(--card)}
+    .navlinks a.active{color:var(--cyan);border-color:var(--cg);background:var(--cd)}
+    .lsw{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;border:1px solid var(--border);background:var(--card);margin-left:4px}
+    .lbtn{appearance:none;border:none;background:transparent;color:var(--muted);font-family:inherit;font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:5px 10px;border-radius:999px;cursor:pointer;transition:all .2s}
+    .lbtn:hover{color:var(--text)}
+    .lbtn.active{background:var(--cyan);color:#03131a}
+    .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;appearance:none;flex-shrink:0}
+    .hamburger span{width:16px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:880px){
+      .hamburger{display:flex}
+      .navlinks{position:absolute;top:100%;left:16px;right:16px;flex-direction:column;align-items:stretch;gap:6px;background:rgba(10,11,18,.97);backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px;padding:12px;margin-top:8px;max-height:0;opacity:0;overflow:hidden;pointer-events:none;transition:max-height .3s ease,opacity .25s ease;z-index:200}
+      .navlinks.open{max-height:420px;opacity:1;pointer-events:auto}
+      .navlinks a{padding:12px 14px;border-radius:10px;text-align:left;width:100%}
+      .navlinks a.active{color:var(--muted);border-color:transparent;background:transparent}
+      .navlinks .lsw{margin:6px 2px 2px;align-self:flex-start}
+    }
+
+    /* HERO */
+    .hero{padding:72px 0 60px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
+    .edot{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 1.9s ease-in-out infinite}
+    .oa-badge{display:inline-flex;align-items:center;gap:7px;font-size:11px;font-weight:800;letter-spacing:.04em;color:var(--mag);border:1px solid rgba(255,45,212,.28);background:rgba(255,45,212,.07);padding:6px 14px;border-radius:999px;margin-bottom:16px}
+    .hero-projectno{font-size:11.5px;color:rgba(240,242,247,.4);letter-spacing:.03em;margin:14px 0 2px;font-weight:600}
+    h1{font-size:clamp(36px,5vw,58px);font-weight:900;letter-spacing:-.025em;line-height:1.07;margin-bottom:22px}
+    .hg{position:relative;display:inline-block;color:var(--cyan)}
+    .hg::after{content:attr(data-t);position:absolute;left:2px;top:2px;color:var(--mag);clip-path:inset(0 0 60% 0);opacity:.55;animation:glitch 5s steps(1) infinite}
+    @keyframes glitch{0%,88%,100%{opacity:0}90%{opacity:.55;clip-path:inset(20% 0 40% 0);left:-2px}93%{opacity:.55;clip-path:inset(60% 0 10% 0);left:3px}96%{opacity:0}}
+    .hero-lead{font-size:15px;line-height:1.72;color:var(--muted);margin-bottom:26px;max-width:50ch}
+    .flags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+    .fc{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid rgba(0,212,239,.22);background:rgba(0,212,239,.07);color:rgba(240,242,247,.85)}
+    .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:13px;font-weight:700;padding:12px 22px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);transition:all .22s;cursor:pointer}
+    .btn:hover{border-color:var(--bh);background:rgba(255,255,255,.09);transform:translateY(-1px)}
+    .btn-c{background:var(--cyan);color:#03131a;border-color:transparent;box-shadow:0 10px 36px var(--cg)}
+    .btn-c:hover{background:#22dbf5;box-shadow:0 14px 44px rgba(0,212,239,.38);border-color:transparent}
+    .snudge{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border:none;background:none;transition:color .2s;font-family:inherit}
+    .snudge:hover{color:var(--cyan)}
+    .sarrow{font-size:20px;animation:bob 2.2s ease-in-out infinite;display:block}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+    /* Hero panel */
+    .hpanel{border-radius:28px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(16px);padding:36px;display:flex;flex-direction:column;align-items:center;gap:22px;box-shadow:0 0 100px rgba(0,212,239,.07),var(--sh);position:relative;overflow:hidden}
+    .hpanel::before{content:'';position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(0,212,239,.15),transparent 50%,rgba(255,45,212,.08));border-radius:28px;pointer-events:none;z-index:0;opacity:.6}
+    .hlogo{width:100%;max-width:210px;aspect-ratio:1/1;border-radius:24px;object-fit:cover;animation:breathe 4.5s ease-in-out infinite alternate;position:relative;z-index:1}
+    @keyframes breathe{from{box-shadow:0 0 40px rgba(0,212,239,.22),0 0 12px rgba(255,45,212,.12);transform:scale(1)}to{box-shadow:0 0 80px rgba(0,212,239,.42),0 0 30px rgba(255,45,212,.22);transform:scale(1.025)}}
+    .hstats{display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:2px;border-radius:14px;overflow:hidden;position:relative;z-index:1}
+    .hs{background:rgba(0,212,239,.07);border:1px solid rgba(0,212,239,.13);padding:14px 10px;text-align:center}
+    .hn{font-size:26px;font-weight:900;color:var(--cyan);letter-spacing:-.02em;line-height:1;display:block}
+    .hl{font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;display:block}
+
+    /* MARQUEE */
+    .mq{overflow:hidden;position:relative;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:11px 0;background:rgba(255,255,255,.012)}
+    .mq::before,.mq::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+    .mq::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+    .mq::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+    .mqi{display:flex;width:max-content;animation:mqr 32s linear infinite}
+    .mqi:hover{animation-play-state:paused}
+    @keyframes mqr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .mi{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding:0 18px;white-space:nowrap}
+    .mi.c{color:var(--cyan)}.mi.m{color:var(--mag)}
+
+    /* SECTIONS */
+    .sec{padding:72px 0}
+    .sec0{padding-top:0}
+    .sh{margin-bottom:36px}
+    .kicker{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);display:inline-block;margin-bottom:10px}
+    .sh h2{font-size:clamp(24px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+    .sdesc{font-size:14.5px;line-height:1.72;color:var(--muted);max-width:56ch}
+    .about-meta{font-size:12px;color:var(--muted);letter-spacing:.02em;margin-top:6px;font-weight:600}
+    .rv{opacity:0;transform:translateY(22px);transition:opacity .62s ease,transform .62s ease}
+    .rv.in{opacity:1;transform:none}
+
+    /* ABOUT CARDS */
+    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .ac{border-radius:var(--r);border:1px solid var(--border);background:var(--card);padding:24px 22px;transition:border-color .25s,transform .25s,box-shadow .25s}
+    .ac:hover{border-color:rgba(0,212,239,.28);transform:translateY(-3px);box-shadow:var(--shh),0 0 32px rgba(0,212,239,.06)}
+    .ai{font-size:26px;margin-bottom:14px;display:block}
+    .at{font-size:13.5px;font-weight:800;margin-bottom:8px}
+    .ad{font-size:13px;line-height:1.62;color:var(--muted)}
+    a.ac{display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+    a.ac::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--mag));transform:scaleX(0);transform-origin:left;transition:transform .3s ease}
+    a.ac:hover::before{transform:scaleX(1)}
+    .ac .agoTop{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px}
+    .ac .anum{font-size:11px;font-weight:800;letter-spacing:.05em;color:var(--cyan);background:var(--cd);border-radius:999px;padding:4px 10px}
+    .ac .ago{font-size:12px;font-weight:700;color:var(--muted);opacity:0;transform:translateX(-4px);transition:opacity .25s,transform .25s}
+    a.ac:hover .ago{opacity:1;transform:translateX(0);color:var(--cyan)}
+
+    /* EU strip */
+    .eustrip{display:flex;align-items:center;gap:20px;flex-wrap:wrap;padding:28px 22px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.025);margin-top:36px}
+    .eustrip img{height:30px;object-fit:contain;filter:brightness(.8)}
+    .jspa-logo{display:none;height:75px;object-fit:contain}
+    html[lang="lv"] .jspa-lv{display:block}
+    html[lang="en"] .jspa-en{display:block}
+    html:not([lang]) .jspa-lv{display:block}
+    .eut{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1}
+    .kabadge{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:var(--cd);border:1px solid rgba(0,212,239,.22);padding:5px 13px;border-radius:999px;white-space:nowrap}
+    .pfpanel{border-radius:var(--r);border:1px solid var(--border);background:rgba(255,255,255,.02);padding:30px 28px;margin-top:24px}
+    .pflabel{font-size:10.5px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin-bottom:16px}
+    .pflogos{display:flex;flex-wrap:wrap;justify-content:center;gap:26px;padding-bottom:24px;border-bottom:1px solid var(--border);margin-bottom:24px}
+    .pfpartner{display:flex;align-items:center;gap:11px}
+    .pfpartner img{width:36px;height:36px;border-radius:9px;background:#fff;object-fit:contain;padding:4px;flex-shrink:0}
+    .pfpname{display:flex;flex-direction:column}
+    .pfpname b{font-size:12.5px;font-weight:800;line-height:1.3}
+    .pfpname small{font-size:10.5px;font-weight:600;color:var(--muted)}
+    .pfpartner.cr .pfpname b{color:var(--cyan)}
+    .pfwhen{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;padding-bottom:24px;border-bottom:1px solid var(--border);margin-bottom:24px}
+    .pfwhen-label{font-size:10.5px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+    .pfwhen-pill{display:inline-flex;align-items:center;gap:8px;text-decoration:none;color:var(--text);font-size:13px;font-weight:700;border:1px solid var(--border);background:rgba(255,255,255,.03);padding:8px 14px;border-radius:999px;transition:border-color .2s,transform .2s}
+    .pfwhen-pill:hover{border-color:rgba(0,212,239,.32);transform:translateY(-2px)}
+    .pfwhen-sep{opacity:.35}
+    .pfwhen-go{font-size:11px;color:var(--cyan);margin-left:2px}
+    .pffunding{display:flex;flex-direction:column;gap:18px}
+    .pffunding-logos{display:flex;align-items:center;justify-content:center;gap:18px;flex-wrap:wrap}
+    .pffunding img{height:26px;object-fit:contain;filter:brightness(.85)}
+    .pffunding .jspa-logo{height:60px}
+    .pfsplit{display:flex;gap:26px;align-items:stretch}
+    .pfsplit-divider{width:1px;background:var(--border);flex-shrink:0}
+    .pfdisclaimer{font-size:10.5px;color:var(--muted);line-height:1.65;flex:1;min-width:0}
+    .pfprojectno{flex:1;min-width:0;display:flex;flex-direction:column;justify-content:center;gap:4px}
+    .pfprojectno .pfpn-label{font-size:10px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+    .pfprojectno .pfpn-value{font-size:12.5px;font-weight:700;color:var(--text)}
+    @media(max-width:640px){.pfsplit{flex-direction:column}.pfsplit-divider{width:100%;height:1px}}
+
+    /* TIMELINE */
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:40px}
+    .timeline::before{content:'';position:absolute;top:28px;left:14%;right:14%;height:1px;background:linear-gradient(90deg,var(--cyan),var(--mag),var(--cyan));opacity:.35;z-index:0}
+    .titem{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;position:relative;z-index:1}
+    .tdot{width:56px;height:56px;border-radius:50%;background:var(--card);border:1px solid rgba(0,212,239,.3);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 24px rgba(0,212,239,.12)}
+    .tstep{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+    .ttitle{font-size:13px;font-weight:700;line-height:1.35}
+    .tdesc{font-size:11.5px;color:var(--muted);line-height:1.55}
+
+    /* OUTCOMES */
+    .og{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .oc{border-radius:var(--r);border:1px solid var(--border);background:var(--card);display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
+    .oc:hover{border-color:rgba(0,212,239,.24);transform:translateY(-3px);box-shadow:var(--shh)}
+    .oth{width:100%;aspect-ratio:16/9;background:rgba(0,212,239,.05);border-bottom:1px solid var(--border);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden}
+    .oth::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(0,212,239,.07) 50%,transparent 62%);background-size:220% 100%;animation:shim 2.8s ease infinite}
+    @keyframes shim{from{background-position:220% 0}to{background-position:-220% 0}}
+    .obi{font-size:38px;position:relative;z-index:2}
+    .oph{position:absolute;bottom:10px;left:0;right:0;text-align:center;z-index:3;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,212,239,.55)}
+    .oplay{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center}
+    .pc{width:52px;height:52px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;color:#03131a;font-size:18px;padding-left:3px;box-shadow:0 0 32px var(--cg);transition:transform .22s,box-shadow .22s}
+    .oc:hover .pc{transform:scale(1.1);box-shadow:0 0 50px rgba(0,212,239,.55)}
+    .ob{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+    .otype{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+    .otitle{font-size:14px;font-weight:700;line-height:1.38;margin-bottom:8px}
+    .odesc{font-size:12.5px;line-height:1.6;color:var(--muted);flex:1;margin-bottom:16px}
+    .olink{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--cyan);border:1px solid rgba(0,212,239,.25);background:rgba(0,212,239,.06);padding:7px 14px;border-radius:999px;align-self:flex-start;transition:all .2s}
+    .epale-panel{border-radius:var(--r);border:1px solid var(--border);background:rgba(255,255,255,.02);padding:30px 28px}
+    .epale-head{display:flex;align-items:center;gap:16px;margin-bottom:16px;flex-wrap:wrap}
+    .epale-badge{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:800;letter-spacing:.03em;color:#4f8dff;border:1px solid rgba(79,141,255,.3);background:rgba(79,141,255,.08);padding:7px 14px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+    .epale-h3{font-size:15px;font-weight:800;letter-spacing:-.005em;line-height:1.3}
+    .epale-desc{font-size:13px;line-height:1.7;color:var(--muted);max-width:70ch;margin-bottom:22px}
+    .epale-links{display:flex;flex-direction:column;gap:10px}
+    .epale-row{display:flex;align-items:center;gap:14px;padding:15px 18px;border-radius:14px;border:1px solid var(--border);background:var(--card);text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+    .epale-row:hover{border-color:rgba(79,141,255,.4);transform:translateY(-2px)}
+    .epale-icon{font-size:18px;flex-shrink:0}
+    .epale-title{flex:1;font-size:13px;font-weight:700;min-width:0}
+    .epale-go{font-size:11.5px;font-weight:800;color:#4f8dff;white-space:nowrap;flex-shrink:0}
+    .ig-promo{position:relative;overflow:visible;display:grid;grid-template-columns:1fr 260px;gap:36px;align-items:center;margin-top:0;padding:36px;border-radius:22px;border:1px solid var(--border);background:var(--card)}
+    .ig-promo-kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mag);margin-bottom:10px}
+    .ig-promo h3{font-size:22px;font-weight:900;letter-spacing:-.01em;line-height:1.25;margin-bottom:12px}
+    .ig-promo p{font-size:13.5px;line-height:1.7;color:var(--muted);margin-bottom:22px;max-width:48ch}
+    .ig-promo-btn{display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:700;color:#05060a;background:linear-gradient(90deg,var(--cyan),var(--mag));padding:12px 22px;border-radius:999px;text-decoration:none}
+    .ig-phone-slot{position:relative;width:100%;max-width:230px;margin:0 auto;z-index:2}
+    .ig-phone-slot::before{content:'';position:absolute;inset:-25% -15%;background:radial-gradient(circle at 50% 42%,rgba(0,212,239,.24),rgba(255,45,212,.16) 46%,transparent 72%);filter:blur(34px);z-index:-1}
+    .ig-phone-slot img{display:block;width:100%;height:auto;filter:drop-shadow(0 26px 46px rgba(0,0,0,.55))}
+    @media(min-width:1025px){
+      .ig-promo{grid-template-columns:1fr 300px;padding-right:70px}
+      .ig-phone-slot{max-width:400px;margin:-64px -78px -64px 0}
+    }
+    @media(max-width:1024px) and (min-width:721px){
+      .ig-phone-slot{max-width:270px}
+    }
+    @media(max-width:720px){.ig-promo{grid-template-columns:1fr;text-align:center;padding:30px 26px}.ig-promo p{margin-left:auto;margin-right:auto}.ig-phone-slot{order:-1;max-width:210px;margin:0 auto 8px}}
+    .olink:hover{background:rgba(0,212,239,.14);border-color:rgba(0,212,239,.44)}
+    .olink.dis{opacity:.4;pointer-events:none}
+    a.oc{text-decoration:none;color:inherit}
+    a.oc .olink{margin-top:4px}
+    .ccentral{display:block;text-decoration:none;color:inherit;margin-top:20px;padding:32px;border-radius:var(--r);border:1px solid rgba(255,45,212,.25);background:linear-gradient(135deg,rgba(255,45,212,.06),rgba(0,212,239,.04));transition:border-color .25s,transform .25s}
+    .ccentral:hover{border-color:rgba(255,45,212,.5);transform:translateY(-2px)}
+    .ccbadge{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--mag);background:var(--md);border:1px solid rgba(255,45,212,.28);padding:5px 12px;border-radius:999px;margin-bottom:14px}
+    .cctitle{font-size:19px;font-weight:900;letter-spacing:-.015em;margin-bottom:6px}
+    .ccsub{font-size:13px;color:var(--muted);margin-bottom:16px;line-height:1.5}
+    .campchaos{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;padding:20px 10px 30px;position:relative}
+    .campcard{display:block;width:220px;padding:24px 22px 22px;margin:0 -20px 26px;border-radius:18px;border:1px solid var(--border);background:var(--card);text-decoration:none;color:inherit;box-shadow:0 16px 38px rgba(0,0,0,.45);cursor:pointer;transition:transform .3s cubic-bezier(.2,.8,.2,1),box-shadow .3s,border-color .3s;position:relative}
+    .campcard:hover{transform:rotate(0deg) translateY(-10px) scale(1.06) !important;box-shadow:0 26px 60px rgba(0,0,0,.55);border-color:rgba(0,212,239,.4);z-index:20 !important}
+    .campcard.cc1{transform:rotate(-6deg) translateY(10px);z-index:1}
+    .campcard.cc2{transform:rotate(4deg) translateY(-14px);z-index:2}
+    .campcard.cc3{transform:rotate(-3deg) translateY(18px);z-index:3}
+    .ccicon{font-size:26px;display:block;margin-bottom:10px}
+    .cctag{display:inline-block;font-size:10px;font-weight:800;letter-spacing:.05em;color:var(--cyan);background:var(--cd);border:1px solid rgba(0,212,239,.22);padding:4px 10px;border-radius:999px;margin-bottom:12px}
+    .ccname{font-size:14.5px;font-weight:800;line-height:1.3;margin-bottom:3px}
+    .ccorg{font-size:12px;color:var(--muted);margin-bottom:14px}
+    .ccgo{font-size:11.5px;font-weight:700;color:var(--mag)}
+    @media(max-width:880px){
+      .campchaos{flex-direction:column;align-items:center;padding-top:8px}
+      .campcard{margin:0 0 16px;transform:none !important}
+      .campcard:hover{transform:translateY(-4px) !important}
+    }
+    .lt-banner{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;text-decoration:none;color:inherit;padding:32px 36px;border-radius:24px;border:1px solid rgba(0,212,239,.22);background:linear-gradient(120deg,rgba(0,212,239,.06),rgba(255,45,212,.05));position:relative;overflow:hidden;transition:border-color .25s,transform .25s}
+    .lt-banner:hover{border-color:rgba(0,212,239,.45);transform:translateY(-2px)}
+    .lt-banner::before{content:'';position:absolute;inset:-40% -10%;background:radial-gradient(circle,rgba(255,45,212,.10),transparent 60%);pointer-events:none}
+    .lt-left{position:relative;z-index:1}
+    .lt-dots{display:flex;gap:6px;margin-bottom:14px}
+    .lt-dots span{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.15)}
+    .lt-dots span:nth-child(1){background:var(--cyan)}
+    .lt-dots span:nth-child(2){background:var(--cyan);opacity:.55}
+    .lt-kicker{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+    .lt-banner h3{font-size:21px;font-weight:900;letter-spacing:-.01em;margin-bottom:8px}
+    .lt-desc{font-size:13px;color:var(--muted);max-width:46ch;margin:0}
+    .lt-cta{position:relative;z-index:1;display:inline-flex;align-items:center;gap:8px;font-size:13px;font-weight:800;color:#03131a;background:linear-gradient(90deg,var(--cyan),var(--mag));padding:13px 26px;border-radius:999px;white-space:nowrap;flex-shrink:0}
+    @media(max-width:600px){.lt-banner{padding:26px 22px;flex-direction:column;align-items:flex-start}.lt-cta{width:100%;justify-content:center}}
+    .oth--photo{aspect-ratio:4/5}
+    .oth--photo::after{content:none;animation:none;background:none}
+    .oth-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1}
+    .oth--photo::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,0) 55%,rgba(5,6,10,.75) 100%)}
+    .oth--photo .oph{color:rgba(255,255,255,.92);text-shadow:0 1px 4px rgba(0,0,0,.65);z-index:3}
+    .oth--photo .obi{display:none}
+    .oclinks{display:flex;gap:8px;flex-wrap:wrap}
+    .olink.canva{color:#7d2ae8;border-color:rgba(125,42,232,.3);background:rgba(125,42,232,.08)}
+    .olink.canva:hover{background:rgba(125,42,232,.16);border-color:rgba(125,42,232,.5)}
+    .osublabel{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:8px 0 14px}
+    .osublabel:first-child{margin-top:0}
+
+    /* PARTNERS */
+    .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .pc2{border-radius:var(--r);border:1px solid var(--border);background:var(--card);padding:28px 18px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;transition:border-color .25s,transform .25s}
+    .pc2:hover{border-color:rgba(0,212,239,.24);transform:translateY(-3px)}
+    .plph{width:68px;height:68px;border-radius:16px;background:#fff;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:32px;overflow:hidden}
+    .plph img{width:100%;height:100%;object-fit:contain;padding:8px}
+    .pcountry{font-size:13.5px;font-weight:800}
+    .porg{font-size:11px;color:var(--muted);margin-top:2px;font-weight:500;line-height:1.4}
+    .prole{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:var(--cd);border:1px solid rgba(0,212,239,.2);padding:4px 11px;border-radius:999px}
+    .prole.cr{color:var(--mag);background:var(--md);border-color:rgba(255,45,212,.25)}
+
+    /* MAP */
+    .mhdr{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+    .mchip{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,212,239,.22);background:rgba(0,212,239,.07);font-size:13px;font-weight:600;white-space:nowrap}
+    .mdot{width:8px;height:8px;border-radius:50%;background:var(--cyan);flex-shrink:0;animation:pulse 1.9s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,212,239,.65)}50%{opacity:.75;box-shadow:0 0 0 7px rgba(0,212,239,0)}}
+    .locrow{display:flex;align-items:center;gap:16px;padding:20px 26px;border-radius:18px;border:1px solid var(--border);background:var(--card);text-decoration:none;color:inherit;transition:border-color .2s,transform .2s}
+    .locrow:hover{border-color:rgba(0,212,239,.3);transform:translateY(-2px)}
+    .locicon{font-size:24px;flex-shrink:0}
+    .loctext{flex:1;min-width:0}
+    .locname{font-size:14.5px;font-weight:800}
+    .locsub{font-size:11.5px;color:var(--muted);margin-top:2px}
+    .locgo{font-size:12px;font-weight:700;color:var(--cyan);white-space:nowrap;flex-shrink:0}
+    @media(max-width:480px){.locrow{flex-wrap:wrap}.locgo{width:100%;text-align:center;margin-top:8px}}
+
+    /* GALLERY */
+    .gg{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;padding:8px 4px 4px}
+    .gi{aspect-ratio:1/1;border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--border);cursor:pointer;box-shadow:0 12px 28px rgba(0,0,0,.4);transition:transform .32s cubic-bezier(.2,.8,.2,1),box-shadow .32s,border-color .32s}
+    .gi-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+    .gi:hover{transform:rotate(0deg) scale(1.08) translateY(-6px) !important;box-shadow:0 26px 50px rgba(0,0,0,.55);border-color:rgba(0,212,239,.35);z-index:10}
+    .gi:nth-child(8n+1){transform:rotate(-3deg) translateY(5px)}
+    .gi:nth-child(8n+2){transform:rotate(2.5deg) translateY(-7px)}
+    .gi:nth-child(8n+3){transform:rotate(-1.5deg) translateY(7px)}
+    .gi:nth-child(8n+4){transform:rotate(3deg) translateY(-4px)}
+    .gi:nth-child(8n+5){transform:rotate(2deg) translateY(6px)}
+    .gi:nth-child(8n+6){transform:rotate(-2.5deg) translateY(-5px)}
+    .gi:nth-child(8n+7){transform:rotate(1.5deg) translateY(4px)}
+    .gi:nth-child(8n+8){transform:rotate(-2deg) translateY(-6px)}
+
+    /* LIGHTBOX */
+    .lb{display:none;position:fixed;inset:0;z-index:999;background:rgba(7,9,14,.93);backdrop-filter:blur(28px);align-items:center;justify-content:center;padding:40px}
+    .lb.open{display:flex}
+    .lbimg{width:auto;height:auto;max-width:90vw;max-height:86vh;border-radius:var(--r);border:1px solid rgba(0,212,239,.18);box-shadow:0 30px 90px rgba(0,0,0,.6);object-fit:contain}
+    .lbx{position:absolute;top:22px;right:22px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:16px;appearance:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s;font-family:inherit}
+    .lbx:hover{border-color:var(--bh)}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:32px 0 24px;margin-top:16px}
+    .ftgrid{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .ftbrand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:rgba(255,255,255,.60)}
+    .ftbrand img{width:28px;height:28px;object-fit:contain}
+    .ftbrand span{color:var(--cyan)}
+    .ftlinks{display:flex;gap:8px;flex-wrap:wrap}
+    .ftlinks a{font-size:12px;font-weight:600;color:var(--muted);padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);transition:all .2s}
+    .ftlinks a:hover{color:var(--text);border-color:var(--bh)}
+    .ftcopy{font-size:11px;color:rgba(240,242,247,.22);margin-top:14px;letter-spacing:.02em}
+    .ftaction{font-size:11px;color:rgba(240,242,247,.35);margin-top:6px;letter-spacing:.02em;font-weight:700}
+    .ftdisclaimer{font-size:10.5px;color:rgba(240,242,247,.28);margin-top:10px;line-height:1.6;max-width:70ch}
+
+    /* RESPONSIVE */
+    @media(max-width:880px){
+      .hero-grid{grid-template-columns:1fr}
+      .g3,.og{grid-template-columns:1fr 1fr}
+      .hpanel{max-width:420px;width:100%;margin:0 auto;box-sizing:border-box}
+      .pg{grid-template-columns:1fr 1fr}
+      .gg{grid-template-columns:repeat(2,1fr)}
+      .timeline{grid-template-columns:1fr 1fr;gap:24px}
+      .timeline::before{display:none}
+    }
+    @media(max-width:560px){
+      .g3,.og{grid-template-columns:1fr}
+      h1{font-size:30px}
+      .hpanel{padding:24px 18px;gap:16px}
+      .hstats{gap:6px}
+      .hs{padding:11px 4px}
+      .hn{font-size:19px}
+      .hl{font-size:8px;letter-spacing:.03em}
+    }
+    @media(max-width:480px){
+      .nav-proj,.nav-sep{display:none}
+      .g2,.pg{grid-template-columns:1fr 1fr}
+    }
+  </style>
+</head>
+<body>
+<div class="bg"><div class="bg-img"></div><div class="bg-v"></div></div>
+<div class="page">
+
+<!-- NAV -->
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="nav-brand" href="https://untu.ngo">
+        <img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU">
+        UNTU<span class="nav-sep">/</span><span class="nav-proj">Daily Wellness Challenge</span>
+      </a>
+      <nav class="navlinks" id="navlinks">
+        <a href="dwcm.html" data-i18n="nav.about">About</a>
+        <a href="dwcm-outputs-followup.html" data-i18n="nav.outcomes">Outcomes</a>
+        <a href="dwcm-media.html" data-i18n="nav.media">Media</a>
+        <a href="dwcm-digital-campaign.html" data-i18n="nav.campaign">Campaign</a>
+        <a href="dwcm-learning-module.html" data-i18n="nav.learning">Quiz</a>
+        <a href="dwcm-publication-guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow"><span class="edot"></span><span data-i18n="hero.kicker">Erasmus+ KA153-YOU – Mobility of Youth Workers</span></div>
+        <div class="oa-badge"><span>🌐</span><span data-i18n="hero.oa">Open-Access Resource Hub</span></div>
+        <h1>Daily<br><span class="hg" data-t="Wellness">Wellness</span><br>Challenge<br><em style="font-style:italic;color:rgba(240,242,247,.85)">Movement</em></h1>
+        <p class="hero-projectno" data-i18n="hero.projectno">Project No. 2025-1-LV02-KA153-YOU-000304266</p>
+        <p class="hero-lead" data-i18n="hero.lead">An international training that brought together youth workers from four countries to explore accessible approaches to burnout prevention, mental well-being and a sustainable well-being culture in youth work — through somatic methods, outdoor education, reflection and digital storytelling.</p>
+        <div class="flags">
+          <span class="fc" data-i18n="flag.lv">🇱🇻 Latvia</span>
+          <span class="fc" data-i18n="flag.no">🇳🇴 Norway</span>
+          <span class="fc" data-i18n="flag.de">🇩🇪 Germany</span>
+          <span class="fc" data-i18n="flag.ee">🇪🇪 Estonia</span>
+        </div>
+        <div class="ctas">
+          <a class="btn btn-c" href="#about" data-i18n="hero.explore">Explore Project</a>
+          <a class="btn" href="#outcomes" data-i18n="hero.downloads">Download Outputs</a>
+        </div>
+        <button class="snudge" onclick="document.getElementById('about').scrollIntoView({behavior:'smooth'})">
+          <span class="sarrow">↓</span>
+          <span data-i18n="hero.scroll">Scroll</span>
+        </button>
+      </div>
+      <div class="hpanel">
+        <img class="hlogo" src="https://ik.imagekit.io/erewhile/Untu/dwcm%20logo.png" alt="Daily Wellness Challenge Movement">
+        <div class="hstats">
+          <div class="hs"><span class="hn">4</span><span class="hl" data-i18n="stat.countries">Countries</span></div>
+          <div class="hs"><span class="hn">KA153</span><span class="hl" data-i18n="stat.program">Programme</span></div>
+          <div class="hs"><span class="hn">2025</span><span class="hl" data-i18n="stat.year">Year</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="mq">
+  <div class="mqi">
+    <span class="mi c">WELLNESS</span><span class="mi">•</span><span class="mi">MOVEMENT</span><span class="mi">•</span><span class="mi m">CHALLENGE</span><span class="mi">•</span><span class="mi">JAUNATNES DARBS</span><span class="mi">•</span><span class="mi c">DIGITAL</span><span class="mi">•</span><span class="mi">ERASMUS+</span><span class="mi">•</span><span class="mi">NORWAY</span><span class="mi">•</span><span class="mi">GERMANY</span><span class="mi">•</span><span class="mi m">ESTONIA</span><span class="mi">•</span><span class="mi">LATVIA</span><span class="mi">•</span><span class="mi c">COLLABORATION</span><span class="mi">•</span><span class="mi">EMPOWERMENT</span><span class="mi">•</span><span class="mi m">NON-FORMAL EDUCATION</span><span class="mi">•</span>
+    <span class="mi c">WELLNESS</span><span class="mi">•</span><span class="mi">MOVEMENT</span><span class="mi">•</span><span class="mi m">CHALLENGE</span><span class="mi">•</span><span class="mi">JAUNATNES DARBS</span><span class="mi">•</span><span class="mi c">DIGITAL</span><span class="mi">•</span><span class="mi">ERASMUS+</span><span class="mi">•</span><span class="mi">NORWAY</span><span class="mi">•</span><span class="mi">GERMANY</span><span class="mi">•</span><span class="mi m">ESTONIA</span><span class="mi">•</span><span class="mi">LATVIA</span><span class="mi">•</span><span class="mi c">COLLABORATION</span><span class="mi">•</span><span class="mi">EMPOWERMENT</span><span class="mi">•</span><span class="mi m">NON-FORMAL EDUCATION</span><span class="mi">•</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="sec">
+  <div class="container">
+    <div class="sh rv">
+      <p class="kicker" data-i18n="about.kicker">Project overview</p>
+      <h2 data-i18n="about.h2">Daily Wellness Challenge Movement</h2>
+      <p class="about-meta" data-i18n="about.meta">Erasmus+ KA153-YOU – Mobility of Youth Workers</p>
+    </div>
+    <div class="g3">
+      <div class="ac rv" style="--d:0s">
+        <span class="ai">🌍</span>
+        <div class="at" data-i18n="about.c1.t">The Project</div>
+        <p class="ad" data-i18n="about.c1.d">Daily Wellness Challenge Movement was an Erasmus+ project bringing together youth workers from Latvia, Norway, Germany and Estonia to explore wellbeing education, digital engagement and international cooperation.</p>
+      </div>
+      <div class="ac rv" style="--d:.08s">
+        <span class="ai">🏔️</span>
+        <div class="at" data-i18n="about.c2.t">The Training Course</div>
+        <p class="ad" data-i18n="about.c2.d">The international training course took place in Vircava, Latvia. Mobility period: 21–30 October 2025, including arrival/departure days; 8-day learning programme: 22–29 October 2025. Participants explored practical approaches to wellbeing and non-formal education, including mindfulness, movement-based learning, yoga and sound-based practices, while strengthening their skills in digital storytelling and content creation.</p>
+      </div>
+      <div class="ac rv" style="--d:.16s">
+        <span class="ai">🔄</span>
+        <div class="at" data-i18n="about.c3.t">Impact &amp; Sustainability</div>
+        <p class="ad" data-i18n="about.c3.d">The project supported the exchange of methods and good practices between participating organisations and encouraged youth workers to transfer their learning to their organisations and local communities. It also contributed to the development of practical and scalable resources that can continue to be used beyond the mobility.</p>
+      </div>
+    </div>
+
+    <div class="pfpanel rv" id="partners" style="--d:.22s">
+      <p class="pflabel" data-i18n="pf.label">Partner Organizations</p>
+      <div class="pflogos">
+        <div class="pfpartner cr">
+          <img src="https://ik.imagekit.io/colibrarian/dwcm/logo/untu%20logo.jpg" alt="UNTU">
+          <div class="pfpname"><b data-i18n="p.lv.org">Biedrība UNTU</b><small data-i18n="p.lv.role">Latvia · Coordinator</small></div>
+        </div>
+        <div class="pfpartner">
+          <img src="https://ik.imagekit.io/colibrarian/dwcm/logo/volda%20logo.jpg" alt="International Volda">
+          <div class="pfpname"><b data-i18n="p.no.org">International Volda</b><small data-i18n="p.no.role">Norway · Partner</small></div>
+        </div>
+        <div class="pfpartner">
+          <img src="https://ik.imagekit.io/colibrarian/dwcm/logo/rubikus%20logo.jpg" alt="Rubikus e. V.">
+          <div class="pfpname"><b data-i18n="p.de.org">Rubikus e. V.</b><small data-i18n="p.de.role">Germany · Partner</small></div>
+        </div>
+        <div class="pfpartner">
+          <img src="https://ik.imagekit.io/colibrarian/dwcm/logo/kambuka%20logo.jpg" alt="Kambuka Kids MTÜ">
+          <div class="pfpname"><b data-i18n="p.ee.org">Kambuka Kids MTÜ</b><small data-i18n="p.ee.role">Estonia · Partner</small></div>
+        </div>
+      </div>
+
+      <div class="pfwhen">
+        <span class="pfwhen-label" data-i18n="pf.whenLabel">📅 When &amp; Where</span>
+        <span class="pfwhen-pill" style="cursor:default">
+          <span data-i18n="pf.period">Project period: July 2025 – June 2026</span>
+        </span>
+        <a class="pfwhen-pill" href="https://www.google.com/maps?q=56.510,23.858" target="_blank" rel="noopener">
+          <span data-i18n="pf.whenDate">21–30 Oct 2025</span>
+          <span class="pfwhen-sep">·</span>
+          <span>📍</span>
+          <span data-i18n="map.pin">Vircava, Latvia</span>
+          <span class="pfwhen-go">↗</span>
+        </a>
+      </div>
+      <div class="pffunding">
+        <div class="pffunding-logos">
+          <img src="https://ik.imagekit.io/erewhile/Untu/Logo%20and%20Og/EN_Co-fundedbytheEU_RGB_NEG.png" alt="Co-funded by the EU">
+          <img class="jspa-logo jspa-lv" src="https://ik.imagekit.io/colibrarian/dwcm/logo/Vienkrasu%20JSPA.png" alt="JSPA">
+          <img class="jspa-logo jspa-en" src="https://ik.imagekit.io/colibrarian/dwcm/logo/vienkarss_inversa_rgb_v_EN-39.png" alt="JSPA">
+          <span class="kabadge">KA153</span>
+        </div>
+        <div class="pfsplit">
+          <p class="pfdisclaimer" data-i18n="about.eu">Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them.</p>
+          <div class="pfsplit-divider"></div>
+          <div class="pfprojectno">
+            <span class="pfpn-label" data-i18n="pf.pnLabel">Erasmus+ KA153-YOU</span>
+            <span class="pfpn-value" data-i18n="pf.pnValue">Project No. 2025-1-LV02-KA153-YOU-000304266</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- TIMELINE -->
+    <div class="sh rv" style="margin-top:56px;--d:.1s">
+      <p class="kicker" data-i18n="timeline.kicker">How it worked</p>
+      <h2 data-i18n="timeline.h2">Project journey.</h2>
+    </div>
+    <div class="timeline rv" style="--d:.15s">
+      <div class="titem">
+        <div class="tdot">🤝</div>
+        <div class="tstep" data-i18n="tl.s1">01 — Preparation</div>
+        <div class="ttitle" data-i18n="tl.t1">Online preparation</div>
+        <p class="tdesc" data-i18n="tl.d1">Preparation took place online — the four organisations remotely coordinated goals and methods, carried out national context mapping, and prepared materials for the mobility.</p>
+      </div>
+      <div class="titem">
+        <div class="tdot">🏕️</div>
+        <div class="tstep" data-i18n="tl.s2">02 — Training</div>
+        <div class="ttitle" data-i18n="tl.t2">Mobility, 21–30 Oct 2025</div>
+        <p class="tdesc" data-i18n="tl.d2">Mobility period: 21–30 October 2025, including arrival/departure days; 8-day learning programme: 22–29 October 2025.</p>
+      </div>
+      <div class="titem">
+        <div class="tdot">📱</div>
+        <div class="tstep" data-i18n="tl.s3">03 — Results &amp; campaigns</div>
+        <div class="ttitle" data-i18n="tl.t3">Videos, toolkits &amp; campaigns</div>
+        <p class="tdesc" data-i18n="tl.d3">513 videos across the full project cycle, three production outputs and an international digital campaign.</p>
+      </div>
+      <div class="titem">
+        <div class="tdot">🌐</div>
+        <div class="tstep" data-i18n="tl.s4">04 — Follow-up</div>
+        <div class="ttitle" data-i18n="tl.t4">Dissemination &amp; follow-up activities</div>
+        <p class="tdesc" data-i18n="tl.d4">At least 11 activities across Latvia, Norway, Germany and Estonia continue the project's impact.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OUTCOMES -->
+<section id="outcomes" class="sec sec0">
+  <div class="container">
+    <div class="sh rv">
+      <p class="kicker" data-i18n="outcomes.kicker">Results</p>
+      <h2 data-i18n="outcomes.h2">Project results and resources.</h2>
+      <p class="sdesc" data-i18n="outcomes.desc">The project produced practical resources designed to support youth workers, trainers, NGOs and other non-formal education practitioners in applying wellbeing approaches and strengthening their digital communication skills.</p>
+    </div>
+
+    <div class="og">
+      <div class="oc rv" style="--d:0s">
+        <div class="oth oth--photo"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/follow%20up%20and%20outputs%20page/int%20map%20report.jpg" alt=""><span class="obi">🗺️</span></div>
+        <div class="ob">
+          <div class="otitle" data-i18n="outcome.map.t">International Comparative Mapping Report</div>
+          <p class="odesc" data-i18n="outcome.map.d">Wellness Challenges, Digital Well-being and Sustainable Practices in European Youth Work.</p>
+          <a class="olink" href="https://drive.google.com/file/d/1Luurrq9JsieYuNZIwr9qwCTaX8H4K3qi/view" target="_blank" rel="noopener"><span data-i18n="outcome.map.l">Read / Download report</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.08s">
+        <div class="oth oth--photo"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/follow%20up%20and%20outputs%20page/toolkit%20outdoor.jpg" alt=""><span class="obi">🧰</span></div>
+        <div class="ob">
+          <div class="otitle" data-i18n="outcome.kit.t">Daily Wellness Challenge Movement Toolkit</div>
+          <p class="odesc" data-i18n="outcome.kit.d">Practical methods and activities for wellbeing and youth work.</p>
+          <a class="olink" href="https://drive.google.com/file/d/1HMSqIzvAxaFwlRAHh0wJQYSrq-_Oezo5/view" target="_blank" rel="noopener"><span data-i18n="outcome.kit.l">Read / Download toolkit</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.16s">
+        <div class="oth oth--photo"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/follow%20up%20and%20outputs%20page/baked%20content.jpg" alt=""><span class="obi">🎬</span></div>
+        <div class="ob">
+          <div class="otitle" data-i18n="outcome.dig.t">Freshly Baked Content – Digital Content Creation Toolkit</div>
+          <p class="odesc" data-i18n="outcome.dig.d">A practical guide to digital storytelling, filming, AI-assisted scripting, editing and social-media content creation.</p>
+          <a class="olink" href="https://drive.google.com/file/d/1QwL06e0kSPj1JYc855_U0o5ZczL4m2Bw/view" target="_blank" rel="noopener"><span data-i18n="outcome.dig.l">Read / Download toolkit</span> ↗</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EPALE -->
+<section id="epale" class="sec sec0">
+  <div class="container">
+    <div class="epale-panel rv">
+      <div class="epale-head">
+        <span class="epale-badge">🇪🇺 EPALE</span>
+        <h3 class="epale-h3" data-i18n="epale.h3">EPALE – Electronic Platform for Adult Learning in Europe</h3>
+      </div>
+      <p class="epale-desc" data-i18n="epale.desc">To ensure broad international dissemination and long-term sustainability, the results of the Daily Wellness Challenge Movement project have been made available in the official EPALE Resource Centre. EPALE (Electronic Platform for Adult Learning in Europe) is an initiative funded by the European Union under the Erasmus+ programme, connecting educators, trainers, NGOs, and researchers across Europe. You can explore and download our materials directly via the EPALE platform.</p>
+      <div class="epale-links">
+        <a class="epale-row" href="https://epale.ec.europa.eu/en/resource-centre/content/international-comparative-mapping-report#" target="_blank" rel="noopener">
+          <span class="epale-icon">🗺️</span>
+          <span class="epale-title">International Comparative Mapping Report</span>
+          <span class="epale-go">EPALE ↗</span>
+        </a>
+        <a class="epale-row" href="https://epale.ec.europa.eu/en/resource-centre/content/wellbeing-youth-work-practical-activity-toolkit" target="_blank" rel="noopener">
+          <span class="epale-icon">🧰</span>
+          <span class="epale-title">Wellbeing in Youth Work: A Practical Activity Toolkit</span>
+          <span class="epale-go">EPALE ↗</span>
+        </a>
+        <a class="epale-row" href="https://epale.ec.europa.eu/en/resource-centre/content/freshly-baked-content-digital-content-creation-toolkit" target="_blank" rel="noopener">
+          <span class="epale-icon">🎬</span>
+          <span class="epale-title">Freshly Baked Content – Digital Content Creation Toolkit</span>
+          <span class="epale-go">EPALE ↗</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIGITAL AWARENESS CAMPAIGN -->
+<section id="campaign" class="sec sec0">
+  <div class="container">
+    <div class="sh rv">
+      <p class="kicker" data-i18n="camp.kicker">Digital Awareness Campaign</p>
+      <h2 data-i18n="camp.h2">Central campaign + local concepts.</h2>
+      <p class="sdesc" data-i18n="camp.lead">As part of the follow-up process, participants and national teams were encouraged to apply the digital communication and wellness competences developed during the project to their own organisational contexts. Rather than reproducing one identical campaign in all partner countries, teams developed local concepts reflecting the needs of their audiences and regular youth-work activities.</p>
+    </div>
+    <div class="campchaos">
+      <a class="campcard cc1 rv" style="--d:0s" href="dwcm-digital-campaign.html#kambuka">
+        <span class="ccicon">📱</span>
+        <span class="cctag" data-i18n="camp.c1.type">🇪🇪 Estonia</span>
+        <div class="ccname">Content Promotion Strategy</div>
+        <div class="ccorg">Kambuka Kids</div>
+        <span class="ccgo" data-i18n="camp.view">View campaign →</span>
+      </a>
+      <a class="campcard cc2 rv" style="--d:.08s" href="dwcm-digital-campaign.html#wiesbaden">
+        <span class="ccicon">🤝</span>
+        <span class="cctag" data-i18n="camp.c2.type">🇩🇪 Germany</span>
+        <div class="ccname">Identity Through Community</div>
+        <div class="ccorg">Wiesbaden</div>
+        <span class="ccgo" data-i18n="camp.view">View campaign →</span>
+      </a>
+      <a class="campcard cc3 rv" style="--d:.16s" href="dwcm-digital-campaign.html#norway">
+        <span class="ccicon">🧗</span>
+        <span class="cctag" data-i18n="camp.c3.type">🇳🇴 Norway</span>
+        <div class="ccname">Friday Climbing Activities</div>
+        <div class="ccorg">Norway</div>
+        <span class="ccgo" data-i18n="camp.view">View campaign →</span>
+      </a>
+    </div>
+    <a class="ccentral rv" style="--d:.24s" href="dwcm-digital-campaign.html#central">
+      <span class="ccbadge" data-i18n="camp.central.badge">Central document</span>
+      <div class="cctitle">Daily Wellness Challenge Movement</div>
+      <div class="ccsub">Digital Awareness Campaign — Strategy, Implementation, Results &amp; Lessons Learned</div>
+      <span class="olink" data-i18n="camp.central.view">View document →</span>
+    </a>
+  </div>
+</section>
+
+<!-- LEARNING MODULE TEASER -->
+<section id="learning-teaser" class="sec sec0">
+  <div class="container">
+    <a class="lt-banner rv" href="dwcm-learning-module.html">
+      <div class="lt-left">
+        <div class="lt-dots"><span></span><span></span><span></span><span></span></div>
+        <p class="lt-kicker" data-i18n="lt.kicker">Online Learning Module</p>
+        <h3 data-i18n="lt.h3">Read. Answer. Get your result.</h3>
+        <p class="lt-desc" data-i18n="lt.desc">8 rounds, 24 questions — test how well you know the project and get your score.</p>
+      </div>
+      <span class="lt-cta" data-i18n="lt.cta">Start quiz →</span>
+    </a>
+  </div>
+</section>
+
+<!-- MAP -->
+<!-- GALLERY -->
+<section id="gallery" class="sec sec0">
+  <div class="container">
+    <div class="sh rv">
+      <p class="kicker" data-i18n="gallery.kicker">Photo Gallery</p>
+      <h2 data-i18n="gallery.h2">Moments from the project.</h2>
+      <p class="sdesc" data-i18n="gallery.desc">Photos from workshops, outdoor activities, and team moments throughout the project.</p>
+    </div>
+    <div class="gg">
+      <div class="gi rv" style="--d:0s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/5.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.03s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/7.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.06s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/11.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.09s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/13.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.12s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/10.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.15s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/12.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.18s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/9.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.21s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/6.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.24s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/1.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.27s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/2.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.30s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/4.jpg" alt="" loading="lazy"></div>
+      <div class="gi rv" style="--d:.33s"><img class="gi-cover" src="https://ik.imagekit.io/colibrarian/dwcm/photo%20gallery/3.jpg" alt="" loading="lazy"></div>
+    </div>
+    <div class="lb" id="lb">
+      <button class="lbx" id="lbx">✕</button>
+      <img class="lbimg" id="lbimg" src="" alt="">
+    </div>
+
+    <div class="ig-promo rv" style="margin-top:36px">
+      <div>
+        <p class="ig-promo-kicker" data-i18n="igp.kicker">Media Content</p>
+        <h3 data-i18n="igp.h3">Videos created before, during and after the project.</h3>
+        <p data-i18n="igp.p">During preparation, throughout the mobility, and across the follow-up activities, a wide and varied range of video material was created. Explore it in our Media section — standardised videos with real Instagram previews, and the complete archive on Google Drive.</p>
+        <a class="ig-promo-btn" href="dwcm-media.html" data-i18n="igp.btn">Open the Media Section →</a>
+      </div>
+      <div class="ig-phone-slot">
+        <img src="https://ik.imagekit.io/colibrarian/dwcm/wall%20papers/transp%202.png" alt="Instagram lapas priekšskats">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="ftgrid">
+      <div class="ftbrand">
+        <img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU">
+        UNTU · <span>Daily Wellness Challenge Movement</span>
+      </div>
+      <div class="ftlinks">
+        <a href="https://untu.ngo" data-i18n="footer.back">← untu.ngo</a>
+        <a href="https://www.instagram.com/ngo_untu" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+    <p class="ftcopy" data-i18n="footer.copy">© 2025–2026 Biedrība UNTU.</p>
+    <p class="ftaction" data-i18n="footer.action">Erasmus+ KA153-YOU – Mobility of Youth Workers · Project No. 2025-1-LV02-KA153-YOU-000304266</p>
+    <p class="ftdisclaimer" data-i18n="footer.disclaimer">Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them.</p>
+  </div>
+</footer>
+
+</div>
+<script>
+/* ===== 0b. ACTIVE NAV LINK (desktop only, home page excluded) ===== */
+(function(){
+  var here=(location.pathname.split('/').pop()||'').split('?')[0];
+  document.querySelectorAll('.navlinks a[href]').forEach(function(a){
+    var href=a.getAttribute('href').split('#')[0];
+    if(href!=='dwcm.html'&&href===here)a.classList.add('active');
+  });
+})();
+
+/* ===== 0. HAMBURGER MENU ===== */
+(function(){
+  var h=document.getElementById('hamburger');
+  var n=document.getElementById('navlinks');
+  if(!h||!n)return;
+  h.addEventListener('click',function(){
+    var open=n.classList.toggle('open');
+    h.classList.toggle('open',open);
+    h.setAttribute('aria-expanded',open?'true':'false');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      n.classList.remove('open');
+      h.classList.remove('open');
+      h.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!n.classList.contains('open'))return;
+    if(n.contains(e.target)||h.contains(e.target))return;
+    n.classList.remove('open');
+    h.classList.remove('open');
+    h.setAttribute('aria-expanded','false');
+  });
+})();
+
+/* ===== 1. REVEAL ===== */
+(function(){
+  function all(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  if(!('IntersectionObserver' in window)){all();return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var s=e.target.getAttribute('style')||'';
+      var m=s.match(/--d:\s*([\d.]+)/);
+      var delay=m?parseFloat(m[1])*1000:0;
+      (function(el,d){setTimeout(function(){el.classList.add('in')},d)})(e.target,delay);
+      io.unobserve(e.target);
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+})();
+
+/* ===== 2. SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ===== 3. LIGHTBOX ===== */
+(function(){
+  var lb=document.getElementById('lb');
+  if(!lb)return;
+  var lbimg=document.getElementById('lbimg');
+  document.querySelectorAll('.gi').forEach(function(el){
+    el.addEventListener('click',function(){
+      var img=el.querySelector('img');
+      if(img&&lbimg){lbimg.src=img.src;lbimg.alt=img.alt||'';}
+      lb.classList.add('open');
+    });
+  });
+  var lbx=document.getElementById('lbx');
+  if(lbx)lbx.addEventListener('click',function(){lb.classList.remove('open')});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+})();
+
+/* ===== 4. I18N ===== */
+(function(){
+var T={
+  lv:{
+    "nav.about":"Par projektu","nav.outcomes":"Rezultāti","nav.partners":"Partneri","nav.gallery":"Galerija","nav.guidelines":"Vadlīnijas",
+    "nav.followup":"Aktivitātes","nav.media":"Mediji","nav.downloads":"Lejupielādes","nav.campaign":"Kampaņa","nav.learning":"Tests",
+    "hero.kicker":"Erasmus+ KA153-YOU – Mobility of Youth Workers",
+    "hero.projectno":"Projekts Nr. 2025-1-LV02-KA153-YOU-000304266",
+    "hero.oa":"Open-Access Resource Hub",
+    "flag.lv":"🇱🇻 Latvija","flag.no":"🇳🇴 Norvēģija","flag.de":"🇩🇪 Vācija","flag.ee":"🇪🇪 Igaunija",
+    "hero.lead":"Starptautiska apmācība, kas pulcēja jaunatnes darbiniekus no četrām valstīm, lai izzinātu pieejamas pieejas izdegšanas profilaksei, garīgajai labbūtībai un ilgtspējīgai labbūtības kultūrai jaunatnes darbā — ar somatiskām metodēm, āra izglītību, refleksiju un digitālo stāstniecību.",
+    "hero.explore":"Izpētīt projektu","hero.downloads":"Lejupielādēt rezultātus","hero.scroll":"Ritināt",
+    "stat.countries":"Valstis","stat.program":"Programma","stat.year":"Gads",
+    "about.kicker":"Par projektu","about.h2":"Daily Wellness Challenge Movement",
+    "about.meta":"Erasmus+ KA153-YOU – jaunatnes darbinieku mobilitāte",
+    "about.c1.t":"Projekts","about.c1.d":"Daily Wellness Challenge Movement bija Erasmus+ projekts, kas apvienoja jaunatnes darbiniekus no Latvijas, Norvēģijas, Vācijas un Igaunijas, lai izzinātu labbūtības izglītību, digitālo iesaisti un starptautisko sadarbību.",
+    "about.c2.t":"Mācību kurss","about.c2.d":"Starptautiskais mācību kurss notika Vircavā, Latvijā. Mobilitātes periods: 2025. gada 21.–30. oktobris, ieskaitot ierašanās un aizbraukšanas dienas; 8 dienu mācību programma: 2025. gada 22.–29. oktobris. Dalībnieki izzināja praktiskas pieejas labbūtībai un neformālajai izglītībai — apzinātību, kustībā balstītu mācīšanos, jogu un skaņu terapijas praksi —, vienlaikus stiprinot prasmes digitālajā stāstniecībā un satura veidošanā.",
+    "about.c3.t":"Ietekme un ilgtspēja","about.c3.d":"Projekts atbalstīja metožu un labās prakses apmaiņu starp dalīborganizācijām un iedrošināja jaunatnes darbiniekus pārnest apgūto uz savām organizācijām un vietējām kopienām. Tas arī veicināja praktisku un mērogojamu resursu izstrādi, kas turpina būt izmantojami arī pēc mobilitātes noslēguma.",
+    "about.eu":"Līdzfinansē Eiropas Savienība. Paustie uzskati un viedokļi atspoguļo vienīgi autoru viedokli un ne vienmēr sakrīt ar Eiropas Savienības vai Jaunatnes starptautisko programmu aģentūras viedokli. Ne Eiropas Savienība, ne piešķīrēja iestāde nav atbildīga par tiem.",
+    "timeline.kicker":"Kā tas notika","timeline.h2":"Projekta gaita.",
+    "tl.s1":"01 — Sagatavošanās","tl.t1":"Online sagatavošanās","tl.d1":"Sagatavošanās notika tiešsaistē — četras organizācijas attālināti koordinēja mērķus un metodes, veica nacionālo kontekstu apzināšanu (mapping) un sagatavoja materiālus mobilitātei.",
+    "tl.s2":"02 — Mācību kurss","tl.t2":"Mobilitāte, 21.–30.10.2025","tl.d2":"Mobilitātes periods: 21.–30. oktobris, ieskaitot ierašanās un aizbraukšanas dienas; 8 dienu mācību programma: 22.–29. oktobris.",
+    "tl.s3":"03 — Rezultāti un kampaņas","tl.t3":"Video, rīkkopas un kampaņas","tl.d3":"513 video visā projekta ciklā, trīs izstrādnes rīkkopas un starptautiska digitāla kampaņa.",
+    "tl.s4":"04 — Turpinājums","tl.t4":"Izplatīšana un turpmākās aktivitātes","tl.d4":"Vismaz 11 aktivitātes Latvijā, Norvēģijā, Vācijā un Igaunijā turpina projekta ietekmi.",
+    "outcomes.kicker":"Rezultāti","outcomes.h2":"Projekta rezultāti un resursi.",
+    "outcomes.desc":"Projekts radīja praktiskus resursus, kas palīdz jaunatnes darbiniekiem, treneriem, NVO un citiem neformālās izglītības speciālistiem pielietot labbūtības pieejas un stiprināt digitālās komunikācijas prasmes.",
+    "outcome.map.t":"International Comparative Mapping Report",
+    "outcome.map.d":"Labbūtības izaicinājumi, digitālā labbūtība un ilgtspējīgas prakses Eiropas jaunatnes darbā.",
+    "outcome.map.l":"Lasīt / Lejupielādēt ziņojumu",
+    "outcome.kit.t":"Daily Wellness Challenge Movement Toolkit",
+    "outcome.kit.d":"Praktiskas metodes un aktivitātes labbūtībai un darbam ar jaunatni.",
+    "outcome.kit.l":"Lasīt / Lejupielādēt rīkkopu",
+    "outcome.dig.t":"Freshly Baked Content – Digital Content Creation Toolkit",
+    "outcome.dig.d":"Praktisks ceļvedis digitālajā stāstniecībā, filmēšanā, ar MI atbalstītu scenāriju rakstīšanu, montāžu un sociālo tīklu satura veidošanu.",
+    "outcome.dig.l":"Lasīt / Lejupielādēt rīkkopu",
+    "epale.h3":"EPALE – Eiropas Pieaugušo izglītības elektroniskā platforma",
+    "epale.desc":"Lai nodrošinātu plašu starptautisko izplatīšanu un rezultātu ilgtspēju, projekta Daily Wellness Challenge Movement materiāli ir pieejami oficiālajā EPALE resursu centrā. EPALE (Eiropas Pieaugušo izglītības elektroniskā platforma) ir Eiropas Savienības Erasmus+ programmas iniciatīva, kas apvieno izglītotājus, NVO un pētniekus visā Eiropā. Ar mūsu materiāliem var iepazīties un tos lejupielādēt EPALE platformā.",
+    "camp.kicker":"Digital Awareness Campaign","camp.h2":"Centrālā kampaņa + vietējie koncepti.",
+    "camp.lead":"Turpinājuma procesa ietvaros dalībnieki un nacionālās komandas tika aicināti pielietot projektā apgūtās digitālās komunikācijas un labbūtības kompetences savā organizācijas kontekstā. Tā vietā, lai visās partnervalstīs atkārtotu vienu un to pašu kampaņu, komandas izstrādāja vietējus konceptus, kas atspoguļo to auditoriju vajadzības un regulārās jaunatnes darba aktivitātes.",
+    "camp.c1.type":"🇪🇪 Igaunija","camp.c1.d":"Praktisks ietvars organizācijas satura izstrādei un popularizēšanai — auditorijas analīze, pozicionēšana, satura plānošana un rezultātu mērīšana.",
+    "camp.c2.type":"🇩🇪 Vācija","camp.c2.d":"Ikmēneša sociālo tīklu koncepts, kas apvieno labbūtības padomus ar kultūras identitāti, radošumu, integrāciju un kopienas atbalstu.",
+    "camp.c3.type":"🇳🇴 Norvēģija","camp.c3.d":"Digitāla informatīvā kampaņa, kas ik nedēļu prezentē kāpšanu kā rīku labbūtībai, pašapziņai, piederībai un sociālajai iekļaušanai.",
+    "camp.view":"Skatīt kampaņu →","camp.central.badge":"Centrālais dokuments","camp.central.view":"Skatīt dokumentu →",
+    "lt.kicker":"Online Learning Module","lt.h3":"Izlasi. Atbildi. Uzzini rezultātu.",
+    "lt.desc":"8 raundi, 24 jautājumi — pārbaudi, cik labi iepazini projektu, un saņem savu rezultātu.","lt.cta":"Sākt testu →",
+    "pf.label":"Partnerorganizācijas",
+    "pf.whenLabel":"📅 Norises laiks un vieta","pf.whenDate":"21.–30.10.2025","pf.period":"Projekta periods: 2025. gada jūlijs – 2026. gada jūnijs",
+    "pf.pnLabel":"Erasmus+ KA153-YOU","pf.pnValue":"Projekts Nr. 2025-1-LV02-KA153-YOU-000304266",
+    "p.lv.role":"Latvija · koordinējošā","p.no.role":"Norvēģija · partneris","p.de.role":"Vācija · partneris","p.ee.role":"Igaunija · partneris",
+    "p.lv.org":"Biedrība UNTU","p.no.org":"International Volda","p.de.org":"Rubikus e. V.","p.ee.org":"Kambuka Kids MTÜ",
+    "p.coord":"Koordinējošā","p.partner":"Partneris",
+    "map.kicker":"Norises vieta","map.pin":"Vircava, Latvija","map.sub":"56.510°N 23.858°E","map.open":"Atvērt kartē ↗",
+    "gallery.kicker":"Foto galerija","gallery.h2":"Mirkļi no projekta.",
+    "gallery.desc":"Fotogrāfijas no semināriem, āra aktivitātēm un komandas brīžiem visā projekta laikā.",
+    "igp.kicker":"Mediju saturs","igp.h3":"Video, kas tapa pirms, projekta laikā un pēc tā.",
+    "igp.p":"Sagatavošanās posmā, mobilitātes laikā un turpinājuma aktivitātēs tapis plašs un daudzveidīgs video materiāls. Iepazīsties ar to Mediju sadaļā — standartizētie video ar reāliem Instagram priekšskatiem un pilns arhīvs Google Drive.",
+    "igp.btn":"Atvērt Mediju sadaļu →",
+    "footer.back":"\u2190 untu.ngo","footer.copy":"\u00a9 2025–2026 Biedrība UNTU.",
+    "footer.action":"Erasmus+ KA153-YOU — jaunatnes darbinieku mobilitāte · Projekts Nr. 2025-1-LV02-KA153-YOU-000304266",
+    "footer.disclaimer":"Līdzfinansē Eiropas Savienība. Paustie uzskati un viedokļi atspoguļo vienīgi autoru viedokli un ne vienmēr sakrīt ar Eiropas Savienības vai Jaunatnes starptautisko programmu aģentūras viedokli. Ne Eiropas Savienība, ne piešķīrēja iestāde nav atbildīga par tiem."
+  },
+  en:{
+    "nav.about":"About","nav.outcomes":"Outcomes","nav.partners":"Partners","nav.gallery":"Gallery","nav.guidelines":"Guidelines",
+    "nav.followup":"Activities","nav.media":"Media","nav.downloads":"Downloads","nav.campaign":"Campaign","nav.learning":"Quiz",
+    "hero.kicker":"Erasmus+ KA153-YOU – Mobility of Youth Workers",
+    "hero.projectno":"Project No. 2025-1-LV02-KA153-YOU-000304266",
+    "hero.oa":"Open-Access Resource Hub",
+    "flag.lv":"🇱🇻 Latvia","flag.no":"🇳🇴 Norway","flag.de":"🇩🇪 Germany","flag.ee":"🇪🇪 Estonia",
+    "hero.lead":"An international training that brought together youth workers from four countries to explore accessible approaches to burnout prevention, mental well-being and a sustainable well-being culture in youth work — through somatic methods, outdoor education, reflection and digital storytelling.",
+    "hero.explore":"Explore Project","hero.downloads":"Download Outputs","hero.scroll":"Scroll",
+    "stat.countries":"Countries","stat.program":"Programme","stat.year":"Year",
+    "about.kicker":"Project overview","about.h2":"Daily Wellness Challenge Movement",
+    "about.meta":"Erasmus+ KA153-YOU – Mobility of Youth Workers",
+    "about.c1.t":"The Project","about.c1.d":"Daily Wellness Challenge Movement was an Erasmus+ project bringing together youth workers from Latvia, Norway, Germany and Estonia to explore wellbeing education, digital engagement and international cooperation.",
+    "about.c2.t":"The Training Course","about.c2.d":"The international training course took place in Vircava, Latvia. Mobility period: 21–30 October 2025, including arrival/departure days; 8-day learning programme: 22–29 October 2025. Participants explored practical approaches to wellbeing and non-formal education, including mindfulness, movement-based learning, yoga and sound-based practices, while strengthening their skills in digital storytelling and content creation.",
+    "about.c3.t":"Impact & Sustainability","about.c3.d":"The project supported the exchange of methods and good practices between participating organisations and encouraged youth workers to transfer their learning to their organisations and local communities. It also contributed to the development of practical and scalable resources that can continue to be used beyond the mobility.",
+    "about.eu":"Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them.",
+    "timeline.kicker":"How it worked","timeline.h2":"Project journey.",
+    "tl.s1":"01 — Preparation","tl.t1":"Online preparation","tl.d1":"Preparation took place online — the four organisations remotely coordinated goals and methods, carried out national context mapping, and prepared materials for the mobility.",
+    "tl.s2":"02 — Training","tl.t2":"Mobility, 21–30 Oct 2025","tl.d2":"Mobility period: 21–30 October 2025, including arrival/departure days; 8-day learning programme: 22–29 October 2025.",
+    "tl.s3":"03 — Results & campaigns","tl.t3":"Videos, toolkits & campaigns","tl.d3":"513 videos across the full project cycle, three production outputs and an international digital campaign.",
+    "tl.s4":"04 — Follow-up","tl.t4":"Dissemination & follow-up activities","tl.d4":"At least 11 activities across Latvia, Norway, Germany and Estonia continue the project's impact.",
+    "outcomes.kicker":"Results","outcomes.h2":"Project results and resources.",
+    "outcomes.desc":"The project produced practical resources designed to support youth workers, trainers, NGOs and other non-formal education practitioners in applying wellbeing approaches and strengthening their digital communication skills.",
+    "outcome.map.t":"International Comparative Mapping Report",
+    "outcome.map.d":"Wellness Challenges, Digital Well-being and Sustainable Practices in European Youth Work.",
+    "outcome.map.l":"Read / Download report",
+    "outcome.kit.t":"Daily Wellness Challenge Movement Toolkit",
+    "outcome.kit.d":"Practical methods and activities for wellbeing and youth work.",
+    "outcome.kit.l":"Read / Download toolkit",
+    "outcome.dig.t":"Freshly Baked Content – Digital Content Creation Toolkit",
+    "outcome.dig.d":"A practical guide to digital storytelling, filming, AI-assisted scripting, editing and social-media content creation.",
+    "outcome.dig.l":"Read / Download toolkit",
+    "epale.h3":"EPALE – Electronic Platform for Adult Learning in Europe",
+    "epale.desc":"To ensure broad international dissemination and long-term sustainability, the results of the Daily Wellness Challenge Movement project have been made available in the official EPALE Resource Centre. EPALE (Electronic Platform for Adult Learning in Europe) is an initiative funded by the European Union under the Erasmus+ programme, connecting educators, trainers, NGOs, and researchers across Europe. You can explore and download our materials directly via the EPALE platform.",
+    "camp.kicker":"Digital Awareness Campaign","camp.h2":"Central campaign + local concepts.",
+    "camp.lead":"As part of the follow-up process, participants and national teams were encouraged to apply the digital communication and wellness competences developed during the project to their own organisational contexts. Rather than reproducing one identical campaign in all partner countries, teams developed local concepts reflecting the needs of their audiences and regular youth-work activities.",
+    "camp.c1.type":"🇪🇪 Estonia","camp.c1.d":"A practical framework for developing and promoting organisational content, covering audience analysis, positioning, content planning, channel selection, growth tactics and performance measurement.",
+    "camp.c2.type":"🇩🇪 Germany","camp.c2.d":"A monthly social-media concept combining wellness tips with cultural identity, creativity, integration and community support.",
+    "camp.c3.type":"🇳🇴 Norway","camp.c3.d":"A digital awareness campaign presenting weekly climbing as a tool for well-being, confidence, belonging, social inclusion and integration.",
+    "camp.view":"View campaign →","camp.central.badge":"Central document","camp.central.view":"View document →",
+    "lt.kicker":"Online Learning Module","lt.h3":"Read. Answer. Get your result.",
+    "lt.desc":"8 rounds, 24 questions — test how well you know the project and get your score.","lt.cta":"Start quiz →",
+    "pf.label":"Partner Organizations",
+    "pf.whenLabel":"📅 When & Where","pf.whenDate":"21–30 Oct 2025","pf.period":"Project period: July 2025 – June 2026",
+    "pf.pnLabel":"Erasmus+ KA153-YOU","pf.pnValue":"Project No. 2025-1-LV02-KA153-YOU-000304266",
+    "p.lv.role":"Latvia · Coordinator","p.no.role":"Norway · Partner","p.de.role":"Germany · Partner","p.ee.role":"Estonia · Partner",
+    "p.lv.org":"Biedrība UNTU","p.no.org":"International Volda","p.de.org":"Rubikus e. V.","p.ee.org":"Kambuka Kids MTÜ",
+    "p.coord":"Coordinating","p.partner":"Partner",
+    "map.kicker":"Location","map.pin":"Vircava, Latvia","map.sub":"56.510°N 23.858°E","map.open":"Open in Maps ↗",
+    "gallery.kicker":"Photo Gallery","gallery.h2":"Moments from the project.",
+    "gallery.desc":"Photos from workshops, outdoor activities, and team moments throughout the project.",
+    "igp.kicker":"Media Content","igp.h3":"Videos created before, during and after the project.",
+    "igp.p":"During preparation, throughout the mobility, and across the follow-up activities, a wide and varied range of video material was created. Explore it in our Media section — standardised videos with real Instagram previews, and the complete archive on Google Drive.",
+    "igp.btn":"Open the Media Section →",
+    "footer.back":"\u2190 untu.ngo","footer.copy":"\u00a9 2025–2026 Biedrība UNTU.",
+    "footer.action":"Erasmus+ KA153-YOU \u2013 Mobility of Youth Workers \u00b7 Project No. 2025-1-LV02-KA153-YOU-000304266",
+    "footer.disclaimer":"Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them."
+  }
+};
+function applyLang(lang){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(T[lang]&&T[lang][k])el.textContent=T[lang][k];
+  });
+  document.querySelectorAll('.lbtn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
+  try{localStorage.setItem('dwcm_lang',lang)}catch(e){}
+}
+applyLang('en');
+})();
+</script>
+</body>
+</html>
