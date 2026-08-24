@@ -1,0 +1,896 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Outputs & Follow-up — Daily Wellness Challenge Movement</title>
+  <meta name="description" content="The three official outputs of the Daily Wellness Challenge Movement project, and the follow-up activities implemented in Latvia, Norway, Germany and Estonia after the mobility.">
+  <link rel="icon" type="image/png" sizes="16x16" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/UNTU%2016%20x%2016.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/UNTU%2032%20x%2032.png">
+  <link rel="icon" type="image/png" sizes="48x48" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/48.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/180.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/192.png">
+  <link rel="icon" type="image/png" sizes="512x512" href="https://ik.imagekit.io/xshkpkf2i/Untu/Logo%20and%20Og/512.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="UNTU · Daily Wellness Challenge Movement">
+  <meta property="og:title" content="Outputs & Follow-up — Daily Wellness Challenge Movement">
+  <meta property="og:description" content="The three official outputs of the Daily Wellness Challenge Movement project, and the follow-up activities implemented in Latvia, Norway, Germany and Estonia after the mobility.">
+  <meta property="og:image" content="https://ik.imagekit.io/colibrarian/dwcm/og/og-outputs-followup.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Outputs & Follow-up — Daily Wellness Challenge Movement">
+  <meta name="twitter:description" content="The three official outputs of the Daily Wellness Challenge Movement project, and the follow-up activities implemented in Latvia, Norway, Germany and Estonia after the mobility.">
+  <meta name="twitter:image" content="https://ik.imagekit.io/colibrarian/dwcm/og/og-outputs-followup.png">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+  <style>
+    :root{
+      --bg:#07090e; --card:rgba(255,255,255,.055); --border:rgba(255,255,255,.10);
+      --bh:rgba(255,255,255,.22); --text:#f0f2f7; --muted:rgba(240,242,247,.50);
+      --r:22px; --sh:0 20px 60px rgba(0,0,0,.42); --shh:0 28px 72px rgba(0,0,0,.58);
+      --cyan:#00D4EF; --cd:rgba(0,212,239,.12); --cg:rgba(0,212,239,.28);
+      --mag:#FF2DD4; --md:rgba(255,45,212,.10);
+    }
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;min-height:100vh}
+    a{color:inherit;text-decoration:none}
+    img{display:block;max-width:100%}
+
+    /* BG */
+    .bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .bg-img{position:absolute;inset:-60px;background-image:url("https://res.cloudinary.com/da4ctmwz5/image/upload/v1768578525/Space_pattern_epsv7v.jpg");background-size:cover;background-position:center;filter:blur(40px) brightness(.52) saturate(.85);opacity:.28;transform:scale(1.14);animation:bgD 30s ease-in-out infinite alternate}
+    .bg-v{position:absolute;inset:0;background:radial-gradient(ellipse 70% 40% at 20% 10%,var(--cd) 0%,transparent 55%),radial-gradient(ellipse 50% 30% at 85% 90%,var(--md) 0%,transparent 55%),linear-gradient(180deg,rgba(7,9,14,.52) 0%,rgba(7,9,14,.88) 100%)}
+    @keyframes bgD{from{transform:scale(1.14) translate(-14px,-10px)}to{transform:scale(1.21) translate(14px,10px)}}
+    .page{position:relative;z-index:1}
+    .container{max-width:1100px;margin:0 auto;padding:0 24px}
+
+    /* NAV */
+    header{position:sticky;top:0;z-index:100;border-bottom:1px solid var(--border);backdrop-filter:blur(26px);-webkit-backdrop-filter:blur(26px);background:rgba(7,9,14,.75)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:13px 0;gap:14px}
+    .nav-brand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:rgba(255,255,255,.65);transition:color .2s}
+    .nav-brand:hover{color:var(--text)}
+    .nav-brand img{width:26px;height:26px;object-fit:contain}
+    .nav-sep{opacity:.25;margin:0 2px}
+    .nav-proj{color:var(--cyan)}
+    .navlinks{display:flex;align-items:center;gap:4px}
+    .navlinks a{font-size:12px;font-weight:600;color:var(--muted);padding:7px 13px;border-radius:999px;border:1px solid transparent;transition:all .2s;white-space:nowrap}
+    .navlinks a:hover{color:var(--text);border-color:var(--border);background:var(--card)}
+    .navlinks a.active{color:var(--cyan);border-color:var(--cg);background:var(--cd)}
+    .lsw{display:flex;align-items:center;gap:2px;padding:3px;border-radius:999px;border:1px solid var(--border);background:var(--card);margin-left:4px}
+    .lbtn{appearance:none;border:none;background:transparent;color:var(--muted);font-family:inherit;font-size:11.5px;font-weight:800;letter-spacing:.04em;padding:5px 10px;border-radius:999px;cursor:pointer;transition:all .2s}
+    .lbtn:hover{color:var(--text)}
+    .lbtn.active{background:var(--cyan);color:#03131a}
+    .hamburger{display:none;flex-direction:column;justify-content:center;align-items:center;gap:5px;width:38px;height:38px;border-radius:10px;border:1px solid var(--border);background:var(--card);cursor:pointer;appearance:none;flex-shrink:0}
+    .hamburger span{width:16px;height:2px;background:var(--text);border-radius:2px;transition:transform .25s,opacity .25s}
+    .hamburger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+    .hamburger.open span:nth-child(2){opacity:0}
+    .hamburger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+    @media(max-width:880px){
+      .hamburger{display:flex}
+      .navlinks{position:absolute;top:100%;left:16px;right:16px;flex-direction:column;align-items:stretch;gap:6px;background:rgba(10,11,18,.97);backdrop-filter:blur(18px);border:1px solid var(--border);border-radius:16px;padding:12px;margin-top:8px;max-height:0;opacity:0;overflow:hidden;pointer-events:none;transition:max-height .3s ease,opacity .25s ease;z-index:200}
+      .navlinks.open{max-height:420px;opacity:1;pointer-events:auto}
+      .navlinks a{padding:12px 14px;border-radius:10px;text-align:left;width:100%}
+      .navlinks a.active{color:var(--muted);border-color:transparent;background:transparent}
+      .navlinks .lsw{margin:6px 2px 2px;align-self:flex-start}
+    }
+
+    /* HERO */
+    .hero{padding:72px 0 60px}
+    .hero-grid{display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center}
+    .eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--cyan);margin-bottom:18px}
+    .edot{width:7px;height:7px;border-radius:50%;background:var(--cyan);animation:pulse 1.9s ease-in-out infinite}
+    h1{font-size:clamp(36px,5vw,58px);font-weight:900;letter-spacing:-.025em;line-height:1.07;margin-bottom:22px}
+    .hg{position:relative;display:inline-block;color:var(--cyan)}
+    .hg::after{content:attr(data-t);position:absolute;left:2px;top:2px;color:var(--mag);clip-path:inset(0 0 60% 0);opacity:.55;animation:glitch 5s steps(1) infinite}
+    @keyframes glitch{0%,88%,100%{opacity:0}90%{opacity:.55;clip-path:inset(20% 0 40% 0);left:-2px}93%{opacity:.55;clip-path:inset(60% 0 10% 0);left:3px}96%{opacity:0}}
+    .hero-lead{font-size:15px;line-height:1.72;color:var(--muted);margin-bottom:26px;max-width:50ch}
+    .flags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:28px}
+    .fc{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:6px 13px;border-radius:999px;border:1px solid rgba(0,212,239,.22);background:rgba(0,212,239,.07);color:rgba(240,242,247,.85)}
+    .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:36px}
+    .btn{display:inline-flex;align-items:center;gap:8px;font-family:inherit;font-size:13px;font-weight:700;padding:12px 22px;border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text);transition:all .22s;cursor:pointer}
+    .btn:hover{border-color:var(--bh);background:rgba(255,255,255,.09);transform:translateY(-1px)}
+    .btn-c{background:var(--cyan);color:#03131a;border-color:transparent;box-shadow:0 10px 36px var(--cg)}
+    .btn-c:hover{background:#22dbf5;box-shadow:0 14px 44px rgba(0,212,239,.38);border-color:transparent}
+    .snudge{display:inline-flex;flex-direction:column;align-items:flex-start;gap:4px;color:var(--muted);font-size:10px;font-weight:700;letter-spacing:.09em;text-transform:uppercase;cursor:pointer;border:none;background:none;transition:color .2s;font-family:inherit}
+    .snudge:hover{color:var(--cyan)}
+    .sarrow{font-size:20px;animation:bob 2.2s ease-in-out infinite;display:block}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(7px)}}
+
+    /* Hero panel */
+    .hpanel{border-radius:28px;border:1px solid var(--border);background:var(--card);backdrop-filter:blur(16px);padding:36px;display:flex;flex-direction:column;align-items:center;gap:22px;box-shadow:0 0 100px rgba(0,212,239,.07),var(--sh);position:relative;overflow:hidden}
+    .hpanel::before{content:'';position:absolute;inset:-1px;background:linear-gradient(135deg,rgba(0,212,239,.15),transparent 50%,rgba(255,45,212,.08));border-radius:28px;pointer-events:none;z-index:0;opacity:.6}
+    .hlogo{width:210px;height:210px;border-radius:24px;object-fit:cover;animation:breathe 4.5s ease-in-out infinite alternate;position:relative;z-index:1}
+    @keyframes breathe{from{box-shadow:0 0 40px rgba(0,212,239,.22),0 0 12px rgba(255,45,212,.12);transform:scale(1)}to{box-shadow:0 0 80px rgba(0,212,239,.42),0 0 30px rgba(255,45,212,.22);transform:scale(1.025)}}
+    .hstats{display:grid;grid-template-columns:repeat(3,1fr);width:100%;gap:2px;border-radius:14px;overflow:hidden;position:relative;z-index:1}
+    .hs{background:rgba(0,212,239,.07);border:1px solid rgba(0,212,239,.13);padding:14px 10px;text-align:center}
+    .hn{font-size:26px;font-weight:900;color:var(--cyan);letter-spacing:-.02em;line-height:1;display:block}
+    .hl{font-size:9.5px;font-weight:700;color:var(--muted);letter-spacing:.06em;text-transform:uppercase;margin-top:4px;display:block}
+
+    /* MARQUEE */
+    .mq{overflow:hidden;position:relative;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:11px 0;background:rgba(255,255,255,.012)}
+    .mq::before,.mq::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;pointer-events:none}
+    .mq::before{left:0;background:linear-gradient(90deg,var(--bg),transparent)}
+    .mq::after{right:0;background:linear-gradient(-90deg,var(--bg),transparent)}
+    .mqi{display:flex;width:max-content;animation:mqr 32s linear infinite}
+    .mqi:hover{animation-play-state:paused}
+    @keyframes mqr{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+    .mi{font-size:10.5px;font-weight:700;letter-spacing:.11em;text-transform:uppercase;color:var(--muted);padding:0 18px;white-space:nowrap}
+    .mi.c{color:var(--cyan)}.mi.m{color:var(--mag)}
+
+    /* SECTIONS */
+    .sec{padding:72px 0}
+    .sec0{padding-top:0}
+    .sh{margin-bottom:36px}
+    .kicker{font-size:10.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--cyan);display:inline-block;margin-bottom:10px}
+    .sh h2{font-size:clamp(24px,3.2vw,36px);font-weight:900;letter-spacing:-.02em;line-height:1.15;margin-bottom:12px}
+    .sdesc{font-size:14.5px;line-height:1.72;color:var(--muted);max-width:56ch}
+    .rv{opacity:0;transform:translateY(22px);transition:opacity .62s ease,transform .62s ease}
+    .rv.in{opacity:1;transform:none}
+
+    /* ABOUT CARDS */
+    .g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .g2{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .ac{border-radius:var(--r);border:1px solid var(--border);background:var(--card);padding:24px 22px;transition:border-color .25s,transform .25s,box-shadow .25s}
+    .ac:hover{border-color:rgba(0,212,239,.28);transform:translateY(-3px);box-shadow:var(--shh),0 0 32px rgba(0,212,239,.06)}
+    .ai{font-size:26px;margin-bottom:14px;display:block}
+    .at{font-size:13.5px;font-weight:800;margin-bottom:8px}
+    .ad{font-size:13px;line-height:1.62;color:var(--muted)}
+
+    /* EU strip */
+    .eustrip{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:16px 22px;border-radius:14px;border:1px solid var(--border);background:rgba(255,255,255,.025);margin-top:36px}
+    .eustrip img{height:30px;object-fit:contain;filter:brightness(.8)}
+    .eut{font-size:11.5px;color:var(--muted);line-height:1.55;flex:1}
+    .kabadge{font-size:11px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:var(--cd);border:1px solid rgba(0,212,239,.22);padding:5px 13px;border-radius:999px;white-space:nowrap}
+
+    /* TIMELINE */
+    .timeline{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;margin-top:40px}
+    .timeline::before{content:'';position:absolute;top:28px;left:14%;right:14%;height:1px;background:linear-gradient(90deg,var(--cyan),var(--mag),var(--cyan));opacity:.35;z-index:0}
+    .titem{display:flex;flex-direction:column;align-items:center;text-align:center;gap:12px;position:relative;z-index:1}
+    .tdot{width:56px;height:56px;border-radius:50%;background:var(--card);border:1px solid rgba(0,212,239,.3);display:flex;align-items:center;justify-content:center;font-size:22px;box-shadow:0 0 24px rgba(0,212,239,.12)}
+    .tstep{font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan)}
+    .ttitle{font-size:13px;font-weight:700;line-height:1.35}
+    .tdesc{font-size:11.5px;color:var(--muted);line-height:1.55}
+
+    /* OUTCOMES */
+    .og{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+    .oc{border-radius:var(--r);border:1px solid var(--border);background:var(--card);display:flex;flex-direction:column;overflow:hidden;transition:border-color .25s,transform .25s,box-shadow .25s}
+    .oc:hover{border-color:rgba(0,212,239,.24);transform:translateY(-3px);box-shadow:var(--shh)}
+    .oth{width:100%;aspect-ratio:16/9;background:rgba(0,212,239,.05);border-bottom:1px solid var(--border);position:relative;display:flex;align-items:center;justify-content:center;overflow:hidden;border-radius:16px}
+    .oth::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(0,212,239,.07) 50%,transparent 62%);background-size:220% 100%;animation:shim 2.8s ease infinite}
+    @keyframes shim{from{background-position:220% 0}to{background-position:-220% 0}}
+    .obi{font-size:38px;position:relative;z-index:2}
+    .oph{position:absolute;bottom:10px;left:0;right:0;text-align:center;z-index:3;font-size:9px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,212,239,.55)}
+    .oplay{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center}
+    .pc{width:52px;height:52px;border-radius:50%;background:var(--cyan);display:flex;align-items:center;justify-content:center;color:#03131a;font-size:18px;padding-left:3px;box-shadow:0 0 32px var(--cg);transition:transform .22s,box-shadow .22s}
+    .oc:hover .pc{transform:scale(1.1);box-shadow:0 0 50px rgba(0,212,239,.55)}
+    .oth--photo::after{content:none;animation:none;background:none}
+    .oth-cover{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:1;border-radius:16px}
+    .oth--photo::before{content:'';position:absolute;inset:0;z-index:2;background:linear-gradient(180deg,rgba(0,0,0,0) 52%,rgba(5,6,10,.78) 100%)}
+    .oth--photo .oph{color:rgba(255,255,255,.92);text-shadow:0 1px 4px rgba(0,0,0,.65);z-index:3}
+    .oth--photo .obi{display:none}
+    .ob{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+    .otype{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--cyan);margin-bottom:8px}
+    .otitle{font-size:14px;font-weight:700;line-height:1.38;margin-bottom:8px}
+    .odesc{font-size:12.5px;line-height:1.6;color:var(--muted);flex:1;margin-bottom:16px}
+    .oc-wide .oth{width:180px !important}
+    .oc-wide .ob{padding:26px 30px}
+    .oc-wide .otitle{font-size:17px;line-height:1.35;margin-bottom:12px}
+    .oc-wide .odesc{font-size:13.5px;line-height:1.75;margin-bottom:18px}
+    .oc-wide .olink{font-size:12.5px !important;padding:8px 16px !important}
+    @media(max-width:640px){
+      .oc-wide{flex-direction:column !important;align-items:stretch !important}
+      .oc-wide .oth{width:100% !important;aspect-ratio:16/9 !important}
+    }
+    .olink{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:700;color:var(--cyan);border:1px solid rgba(0,212,239,.25);background:rgba(0,212,239,.06);padding:7px 14px;border-radius:999px;align-self:flex-start;transition:all .2s}
+    .olink:hover{background:rgba(0,212,239,.14);border-color:rgba(0,212,239,.44)}
+    .olink.dis{opacity:.4;pointer-events:none}
+
+    /* PARTNERS */
+    .pg{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .pc2{border-radius:var(--r);border:1px solid var(--border);background:var(--card);padding:28px 18px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:14px;transition:border-color .25s,transform .25s}
+    .pc2:hover{border-color:rgba(0,212,239,.24);transform:translateY(-3px)}
+    .plph{width:68px;height:68px;border-radius:16px;background:rgba(255,255,255,.03);border:1px dashed rgba(255,255,255,.15);display:flex;align-items:center;justify-content:center;font-size:32px}
+    .pcountry{font-size:13.5px;font-weight:800}
+    .porg{font-size:11px;color:var(--muted);margin-top:2px;font-weight:500;line-height:1.4}
+    .prole{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--cyan);background:var(--cd);border:1px solid rgba(0,212,239,.2);padding:4px 11px;border-radius:999px}
+    .prole.cr{color:var(--mag);background:var(--md);border-color:rgba(255,45,212,.25)}
+
+    /* MAP */
+    .mhdr{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:20px;flex-wrap:wrap}
+    .mchip{display:inline-flex;align-items:center;gap:8px;padding:10px 18px;border-radius:999px;border:1px solid rgba(0,212,239,.22);background:rgba(0,212,239,.07);font-size:13px;font-weight:600;white-space:nowrap}
+    .mdot{width:8px;height:8px;border-radius:50%;background:var(--cyan);flex-shrink:0;animation:pulse 1.9s ease-in-out infinite}
+    @keyframes pulse{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(0,212,239,.65)}50%{opacity:.75;box-shadow:0 0 0 7px rgba(0,212,239,0)}}
+    #mapbox{height:380px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);box-shadow:var(--sh)}
+    #lmap{width:100%;height:100%}
+    .leaflet-popup-content-wrapper{background:#0d1017;border:1px solid rgba(0,212,239,.25);border-radius:12px;color:var(--text);box-shadow:0 8px 32px rgba(0,0,0,.5)}
+    .leaflet-popup-tip{background:#0d1017}
+    .leaflet-popup-content{margin:12px 16px;font-family:'Plus Jakarta Sans',sans-serif}
+
+    /* GALLERY */
+    .gg{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:176px;gap:10px}
+    .gi{border-radius:14px;overflow:hidden;position:relative;border:1px solid var(--border);cursor:pointer;transition:transform .28s ease,border-color .28s,box-shadow .28s}
+    .gi:hover{transform:scale(1.03);border-color:rgba(0,212,239,.28);box-shadow:0 20px 56px rgba(0,0,0,.55);z-index:2}
+    .gi.tall{grid-row:span 2}.gi.wide{grid-column:span 2}
+    .gi:nth-child(1){background:linear-gradient(135deg,rgba(0,212,239,.10),rgba(0,50,60,.35))}
+    .gi:nth-child(2){background:linear-gradient(135deg,rgba(255,45,212,.08),rgba(50,0,45,.35))}
+    .gi:nth-child(3){background:linear-gradient(135deg,rgba(0,212,239,.07),rgba(0,30,50,.30))}
+    .gi:nth-child(4){background:linear-gradient(225deg,rgba(255,45,212,.09),rgba(0,212,239,.07))}
+    .gi:nth-child(5){background:linear-gradient(135deg,rgba(0,212,239,.08),rgba(255,45,212,.05))}
+    .gi:nth-child(6){background:linear-gradient(135deg,rgba(0,50,60,.35),rgba(0,212,239,.10))}
+    .gi:nth-child(7){background:linear-gradient(225deg,rgba(255,45,212,.08),rgba(0,212,239,.08))}
+    .gi:nth-child(8){background:linear-gradient(135deg,rgba(0,212,239,.09),rgba(255,45,212,.06))}
+    .gi::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,transparent 38%,rgba(255,255,255,.04) 50%,transparent 62%);background-size:220% 100%;animation:shim 3s ease infinite;animation-delay:calc(var(--i,0)*.35s)}
+    .gph{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;z-index:2}
+    .gpi{font-size:22px;opacity:.35}
+    .gpt{font-size:8.5px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:rgba(0,212,239,.35)}
+    .gnum{position:absolute;bottom:9px;right:11px;z-index:3;font-size:9px;font-weight:700;color:rgba(255,255,255,.22)}
+    .ghl{position:absolute;inset:0;z-index:4;background:rgba(0,212,239,.08);opacity:0;transition:opacity .25s;display:flex;align-items:center;justify-content:center;font-size:22px}
+    .gi:hover .ghl{opacity:1}
+    .gadd{border-radius:14px;border:1px dashed rgba(255,255,255,.13);background:transparent;color:var(--muted);min-height:176px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;transition:border-color .2s,color .2s;cursor:pointer}
+    .gadd:hover{border-color:rgba(0,212,239,.32);color:var(--cyan)}
+
+    /* LIGHTBOX */
+    .lb{display:none;position:fixed;inset:0;z-index:999;background:rgba(7,9,14,.93);backdrop-filter:blur(28px);align-items:center;justify-content:center}
+    .lb.open{display:flex}
+    .lbph{width:82vw;max-width:820px;aspect-ratio:4/3;border-radius:var(--r);background:rgba(0,212,239,.05);border:1px solid rgba(0,212,239,.18);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted)}
+    .lbx{position:absolute;top:22px;right:22px;width:40px;height:40px;border-radius:50%;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:16px;appearance:none;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:border-color .2s;font-family:inherit}
+    .lbx:hover{border-color:var(--bh)}
+
+    /* FOOTER */
+    footer{border-top:1px solid var(--border);padding:32px 0 24px;margin-top:16px}
+    .ftgrid{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+    .ftbrand{display:flex;align-items:center;gap:10px;font-size:13px;font-weight:700;color:rgba(255,255,255,.60)}
+    .ftbrand img{width:28px;height:28px;object-fit:contain}
+    .ftbrand span{color:var(--cyan)}
+    .ftlinks{display:flex;gap:8px;flex-wrap:wrap}
+    .ftlinks a{font-size:12px;font-weight:600;color:var(--muted);padding:6px 14px;border-radius:999px;border:1px solid var(--border);background:var(--card);transition:all .2s}
+    .ftlinks a:hover{color:var(--text);border-color:var(--bh)}
+    .ftcopy{font-size:11px;color:rgba(240,242,247,.22);margin-top:14px;letter-spacing:.02em}
+    .ftaction{font-size:11px;color:rgba(240,242,247,.35);margin-top:6px;letter-spacing:.02em;font-weight:700}
+    .ftdisclaimer{font-size:10.5px;color:rgba(240,242,247,.28);margin-top:10px;line-height:1.6;max-width:70ch}
+
+    /* RESPONSIVE */
+    @media(max-width:880px){
+      .hero-grid,.g3,.og{grid-template-columns:1fr 1fr}
+      .hpanel{max-width:420px}
+      .pg{grid-template-columns:1fr 1fr}
+      .gg{grid-template-columns:repeat(2,1fr)}
+      .gi.wide{grid-column:span 1}
+      .timeline{grid-template-columns:1fr 1fr;gap:24px}
+      .timeline::before{display:none}
+    }
+    @media(max-width:560px){
+      .g3,.og{grid-template-columns:1fr}
+      h1{font-size:30px}
+      .outcard{flex-direction:column !important;align-items:stretch !important}
+      .outcard-thumb{width:100% !important;aspect-ratio:4/5 !important}
+    }
+    @media(max-width:480px){
+      .nav-proj,.nav-sep{display:none}
+      .g2,.pg{grid-template-columns:1fr 1fr}
+    }
+
+    /* SUBPAGE EXTRAS */
+    .crumb{padding:16px 0 0;font-size:12px;color:var(--muted)}
+    .crumb a{color:var(--cyan);font-weight:600}
+    .crumb a:hover{text-decoration:underline}
+    .phero{padding:34px 0 30px}
+    .phero h1{font-size:clamp(28px,4.2vw,44px);font-weight:900;letter-spacing:-.02em;line-height:1.12;margin-bottom:14px}
+    .phero .sdesc{max-width:64ch}
+    .status-badge{display:inline-flex;align-items:center;gap:6px;font-size:9.5px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:5px 12px;border-radius:999px;border:1px solid rgba(0,212,239,.28);background:var(--cd);color:var(--cyan);white-space:nowrap}
+    .status-badge.ongoing{border-color:rgba(255,45,212,.3);background:var(--md);color:var(--mag)}
+    .dl-list{display:flex;flex-direction:column;gap:10px}
+    .reslinks{margin-top:16px}
+    .reslabel{font-size:10px;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin:16px 0 8px}
+    .reslabel:first-child{margin-top:0}
+    .resrow{display:flex;align-items:center;gap:12px;padding:12px 15px;border-radius:12px;border:1px solid var(--border);background:rgba(255,255,255,.025);text-decoration:none;color:inherit;transition:border-color .2s,transform .2s;margin-bottom:8px}
+    .resrow:hover{border-color:rgba(0,212,239,.32);transform:translateX(3px)}
+    .resrow:last-child{margin-bottom:0}
+    .res-icon{font-size:16px;flex-shrink:0}
+    .res-title{flex:1;font-size:12.5px;font-weight:600;min-width:0;line-height:1.4}
+    .res-go{font-size:12px;font-weight:800;color:var(--cyan);flex-shrink:0}
+    .ph{font-size:10.5px;font-weight:700;letter-spacing:.02em;color:#ffcf7a;border:1px dashed rgba(255,207,122,.42);background:rgba(255,207,122,.06);padding:2px 8px;border-radius:6px;white-space:nowrap;display:inline-block}
+    .prose{font-size:13.5px;line-height:1.78;color:var(--muted);max-width:72ch}
+    .stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:8px}
+    .stat-card{border-radius:16px;border:1px solid var(--border);background:var(--card);padding:20px 14px;text-align:center}
+    .stat-card .n{font-size:28px;font-weight:900;color:var(--cyan);letter-spacing:-.02em;display:block}
+    .stat-card .l{font-size:10px;font-weight:700;color:var(--muted);letter-spacing:.05em;text-transform:uppercase;margin-top:6px;display:block}
+    .stat-card.tgt .n{color:var(--mag)}
+    @media(max-width:768px){.stat-grid{grid-template-columns:repeat(2,1fr)}}
+
+    /* QUICK JUMP TABS */
+    .qjump{display:flex;gap:10px;flex-wrap:wrap;margin:22px 0 8px;position:sticky;top:70px;z-index:20}
+    .qjump a{font-size:12.5px;font-weight:700;padding:11px 20px;border-radius:999px;border:1px solid var(--border);background:rgba(10,11,18,.75);backdrop-filter:blur(10px);color:var(--muted);display:inline-flex;align-items:center;gap:7px;transition:all .2s}
+    .qjump a .dot{width:6px;height:6px;border-radius:50%;background:currentColor;opacity:.5}
+    .qjump a.cy:hover{border-color:rgba(0,212,239,.4);color:var(--cyan)}
+    .qjump a.mg:hover{border-color:rgba(255,45,212,.4);color:var(--mag)}
+
+    /* BLOCK DIVIDERS */
+    .blockwrap{padding:64px 0 8px;position:relative}
+    .blockwrap.mg{padding-top:88px}
+    .bnum{display:inline-flex;align-items:center;justify-content:center;width:46px;height:46px;border-radius:14px;font-size:16px;font-weight:900;flex-shrink:0}
+    .blockwrap.cy .bnum{background:var(--cd);color:var(--cyan);border:1px solid rgba(0,212,239,.3)}
+    .blockwrap.mg .bnum{background:var(--md);color:var(--mag);border:1px solid rgba(255,45,212,.3)}
+    .bhead{display:flex;align-items:center;gap:16px;margin-bottom:6px}
+    .bhead .kicker{margin-bottom:0}
+    .blockwrap h2{font-size:clamp(22px,3vw,32px);font-weight:900;letter-spacing:-.015em;line-height:1.2;margin:14px 0 12px}
+    .bline{height:1px;margin:0 0 34px;background:linear-gradient(90deg,rgba(0,212,239,.4),transparent 65%)}
+    .blockwrap.mg .bline{background:linear-gradient(90deg,rgba(255,45,212,.4),transparent 65%)}
+    .connector{display:flex;align-items:center;justify-content:center;gap:10px;margin:52px 0 0;font-size:11.5px;font-weight:700;color:var(--muted);letter-spacing:.03em}
+    .connector .arrow{font-size:16px;color:var(--mag);animation:bob 2s ease-in-out infinite}
+    @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+  </style>
+</head>
+<body>
+<div class="bg"><div class="bg-img"></div><div class="bg-v"></div></div>
+<div class="page">
+
+<!-- NAV -->
+<header>
+  <div class="container">
+    <div class="nav">
+      <a class="nav-brand" href="https://untu.ngo">
+        <img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU">
+        UNTU<span class="nav-sep">/</span><span class="nav-proj">Daily Wellness Challenge</span>
+      </a>
+      <nav class="navlinks" id="navlinks">
+        <a href="dwcm.html" data-i18n="nav.about">About</a>
+        <a href="dwcm-outputs-followup.html" data-i18n="nav.outcomes">Outcomes</a>
+        <a href="dwcm-media.html" data-i18n="nav.media">Media</a>
+        <a href="dwcm-digital-campaign.html" data-i18n="nav.campaign">Campaign</a>
+        <a href="dwcm-learning-module.html" data-i18n="nav.learning">Quiz</a>
+        <a href="dwcm-publication-guidelines.html" data-i18n="nav.guidelines">Guidelines</a>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false" aria-controls="navlinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+</header>
+<div class="container"><p class="crumb rv"><a href="dwcm.html" data-i18n="crumb.back">← Daily Wellness Challenge Movement</a></p></div>
+<section class="phero sec0">
+  <div class="container">
+    <p class="kicker rv" data-i18n="ch.kicker">Outputs &amp; Follow-up</p>
+    <h1 class="rv" data-i18n="ch.h1">Everything we created — and what happened next.</h1>
+    <p class="sdesc rv" style="--d:.05s" data-i18n="ch.lead">Here's everything the project produced — research, toolkits and participant-developed scenarios — and everything that happened after the mobility.</p>
+    <div class="qjump rv" style="--d:.1s">
+      <a class="cy" href="#research"><span class="dot" style="color:var(--cyan)"></span> <span data-i18n="ch.jump1">📖 Research</span></a>
+      <a class="cy" href="#toolkits"><span class="dot" style="color:var(--cyan)"></span> <span data-i18n="ch.jump3">🛠️ Toolkits</span></a>
+      <a class="cy" href="#scenarios"><span class="dot" style="color:var(--cyan)"></span> <span data-i18n="ch.jump4">🧩 Scenarios</span></a>
+      <a class="mg" href="#followup"><span class="dot" style="color:var(--mag)"></span> <span data-i18n="ch.jump2">🌐 Follow-up Activities</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCK 1: RESEARCH ============ -->
+<section class="sec sec0 blockwrap cy" id="research">
+  <div class="container">
+    <div class="bhead">
+      <span class="bnum">01</span>
+      <div>
+        <p class="kicker" data-i18n="r.kicker">Comparative Study</p>
+        <h2 data-i18n="r.h2">One study. Four countries.</h2>
+      </div>
+    </div>
+    <p class="sdesc rv" style="max-width:64ch;margin-bottom:20px" data-i18n="r.lead">An international comparative study — a standalone output, not merged with the practical toolkits.</p>
+    <div class="bline"></div>
+
+    <div class="og" style="grid-template-columns:1fr">
+      <div class="oc outcard rv" style="--d:0s;flex-direction:row;align-items:flex-start;border-color:rgba(0,212,239,.22)">
+        <div class="oth oth--photo outcard-thumb" style="aspect-ratio:4/5;width:200px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/follow%20up%20and%20outputs%20page/int%20map%20report.jpg" alt=""><span class="obi">🗺️</span></div>
+        <div class="ob">
+          <div class="otype" data-i18n="o1.type">International Comparative Study</div>
+          <div class="otitle" data-i18n="o1.t">International Comparative Mapping Report</div>
+          <p class="odesc" data-i18n="o1.d">Wellness Challenges, Digital Well-being and Sustainable Practices in European Youth Work. Includes country sections for Estonia, Germany, Latvia and Norway, comparative findings and recommendations for youth workers and policy stakeholders.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:14px" data-i18n="o1.meta">Language: EN · Format: PDF</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="olink" href="https://drive.google.com/file/d/1Luurrq9JsieYuNZIwr9qwCTaX8H4K3qi/view" target="_blank" rel="noopener"><span data-i18n="o1.dl">View / Download</span> ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector rv">
+      <span data-i18n="ch.connector1">and what it means in practice</span>
+      <span class="arrow">↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCK 2: TOOLKITS ============ -->
+<section class="sec sec0 blockwrap cy" id="toolkits">
+  <div class="container">
+    <div class="bhead">
+      <span class="bnum">02</span>
+      <div>
+        <p class="kicker" data-i18n="tk.kicker">Practical Toolkits</p>
+        <h2 data-i18n="tk.h2">Two toolkits. One movement.</h2>
+      </div>
+    </div>
+    <p class="sdesc rv" style="max-width:64ch;margin-bottom:20px" data-i18n="tk.lead">A methodology toolkit and a digital storytelling toolkit — two separate, standalone resources.</p>
+    <div class="bline"></div>
+
+    <div class="og" style="grid-template-columns:1fr">
+      <div class="oc outcard rv" style="--d:0s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo outcard-thumb" style="aspect-ratio:4/5;width:200px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/follow%20up%20and%20outputs%20page/toolkit%20outdoor.jpg" alt=""><span class="obi">🧰</span></div>
+        <div class="ob">
+          <div class="otype" data-i18n="o2.type">Methodology Toolkit</div>
+          <div class="otitle" data-i18n="o2.t">Daily Wellness Challenge Movement Toolkit</div>
+          <p class="odesc" data-i18n="o2.d">A practical, easy-to-use methodology toolkit for youth workers — physical, emotional and communication well-being, team dynamics and stress relief for everyday youth work.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:14px" data-i18n="o2.meta">Language: EN · Format: PDF</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="olink" href="https://drive.google.com/file/d/1HMSqIzvAxaFwlRAHh0wJQYSrq-_Oezo5/view" target="_blank" rel="noopener"><span data-i18n="o2.dl">View / Download</span> ↗</a>
+          </div>
+        </div>
+      </div>
+      <div class="oc outcard rv" style="--d:.08s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo outcard-thumb" style="aspect-ratio:4/5;width:200px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/follow%20up%20and%20outputs%20page/baked%20content.jpg" alt=""><span class="obi">🎬</span></div>
+        <div class="ob">
+          <div class="otype" data-i18n="o3.type">Digital Toolkit</div>
+          <div class="otitle" data-i18n="o3.t">Freshly Baked Content — DWCM Digital Toolkit</div>
+          <p class="odesc" data-i18n="o3.d">A separate digital storytelling and content-creation toolkit — video planning, filming and editing for youth workers producing content for social media.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:14px" data-i18n="o3.meta">Language: EN · Format: PDF</p>
+          <div style="display:flex;gap:10px;flex-wrap:wrap">
+            <a class="olink" href="https://drive.google.com/file/d/1QwL06e0kSPj1JYc855_U0o5ZczL4m2Bw/view" target="_blank" rel="noopener"><span data-i18n="o3.dl">View / Download</span> ↗</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector rv">
+      <span data-i18n="ch.connector2">and what participants developed themselves</span>
+      <span class="arrow">↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCK 3: SCENARIOS ============ -->
+<section class="sec sec0 blockwrap cy" id="scenarios">
+  <div class="container">
+    <div class="bhead">
+      <span class="bnum">03</span>
+      <div>
+        <p class="kicker" data-i18n="sc.kicker">Participant-Developed Scenarios</p>
+        <h2 data-i18n="sc.h2">Participant-Developed Inclusive Learning Resources.</h2>
+      </div>
+    </div>
+    <p class="sdesc rv" style="max-width:64ch;margin-bottom:20px" data-i18n="sc.lead">Beyond the official outputs, participants also created their own inclusive outdoor and activity scenarios for different target groups — from seniors to teenagers to refugee families.</p>
+    <div class="bline"></div>
+
+    <div class="og" style="grid-template-columns:1fr;gap:12px">
+      <div class="oc rv" style="--d:0s;flex-direction:row;align-items:flex-start">
+        <div class="oth" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><span class="obi">🚶</span></div>
+        <div class="ob">
+          <div class="otype" style="margin-bottom:0" data-i18n="sc1.tag">Ages 65+</div>
+          <div class="otitle" data-i18n="sc1.t">Park Walk – Connection and Joy</div>
+          <p class="odesc" data-i18n="sc1.d">Inclusive outdoor activity concept for adults aged 65+, supporting social connection, gentle movement and well-being.</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://docs.google.com/document/d/1exnbAD_PZQwy6Z4jrCzy3AjiLpdk0u9b/edit?usp=drivesdk&ouid=115030433200269848455&rtpof=true&sd=true" target="_blank" rel="noopener"><span data-i18n="sc1.dl">View / Download</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.08s;flex-direction:row;align-items:flex-start">
+        <div class="oth" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><span class="obi">🌍</span></div>
+        <div class="ob">
+          <div class="otype" style="margin-bottom:0" data-i18n="sc2.tag">Ages 13–16</div>
+          <div class="otitle" data-i18n="sc2.t">My World and Me</div>
+          <p class="odesc" data-i18n="sc2.d">Inclusive session plan for young people aged 13-16, focusing on confidence, communication, self-expression and cooperation.</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://drive.google.com/file/d/1oQWBlC6xothnW3rPYguaykR7B3_OBV96/view?usp=drivesdk" target="_blank" rel="noopener"><span data-i18n="sc2.dl">View / Download</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.16s;flex-direction:row;align-items:flex-start">
+        <div class="oth" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><span class="obi">🥾</span></div>
+        <div class="ob">
+          <div class="otype" style="margin-bottom:0" data-i18n="sc3.tag">Guide</div>
+          <div class="otitle" data-i18n="sc3.t">Guide for Leading an Inclusive One-Day Hike</div>
+          <p class="odesc" data-i18n="sc3.d">Practical guide for planning and facilitating an inclusive one-day hike with refugee adults and children, covering safety, accessibility, safeguarding and group support.</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://drive.google.com/file/d/12-RcNVIW-Si7jv3DwrPDrP0UT7zmn8gu/view?usp=drivesdk" target="_blank" rel="noopener"><span data-i18n="sc3.dl">View / Download</span> ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="connector rv">
+      <span data-i18n="ch.connector">and what it led to after the mobility</span>
+      <span class="arrow">↓</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ BLOCK 4: FOLLOW-UP ============ -->
+<section class="sec sec0 blockwrap mg" id="followup">
+  <div class="container">
+    <div class="bhead">
+      <span class="bnum">04</span>
+      <div>
+        <p class="kicker" data-i18n="fh.kicker">Follow-up Activities</p>
+        <h2 data-i18n="fh.h1">Impact continues after the mobility.</h2>
+      </div>
+    </div>
+    <p class="sdesc rv" style="max-width:64ch;margin-bottom:20px" data-i18n="fh.lead">The impact continued long after the mobility ended — from local campaigns and camps to new digital communication channels and resources shared through European professional platforms.</p>
+    <div class="bline"></div>
+
+    <div class="og" style="grid-template-columns:1fr;gap:12px">
+      <div class="oc oc-wide rv" style="--d:0s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/wall%20papers/dwcm.jpg" alt=""><span class="obi">🇱🇻</span></div>
+        <div class="ob">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px">
+            <div class="otype" style="margin-bottom:0" data-i18n="f1.org">Coordinated by UNTU · Latvia</div>
+            <span class="status-badge ongoing" data-i18n="f1.status">Ongoing</span>
+          </div>
+          <div class="otitle" data-i18n="f1.t">Project-Wide Digital Awareness Campaign</div>
+          <p class="odesc" data-i18n="f1.d">A digital awareness campaign continuing to spread the project's message and outputs in Latvia after the mobility.</p>
+          <a class="olink" href="dwcm-digital-campaign.html#central" data-i18n="f1.view">View document →</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.06s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/wall%20papers/sound%20heal%20dwcm.jpg" alt=""><span class="obi">🇳🇴</span></div>
+        <div class="ob">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px">
+            <div class="otype" style="margin-bottom:0" data-i18n="f2.org">International Volda · Norway</div>
+            <span class="status-badge" data-i18n="f2.status">Implemented</span>
+          </div>
+          <div class="otitle" data-i18n="f2.t">Sound Healing Workshop</div>
+          <p class="odesc" data-i18n="f2.d">A sound healing workshop applying the somatic and well-being methods learned during the project.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px" data-i18n="f2.aud">Attendance: 15 participants (verified)</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://www.instagram.com/reel/DTiygN-jT2B/" target="_blank" rel="noopener"><span data-i18n="f2.ig">View on Instagram</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.10s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/wall%20papers/climb.jpg" alt=""><span class="obi">🇳🇴</span></div>
+        <div class="ob">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px">
+            <div class="otype" style="margin-bottom:0" data-i18n="f3.org">International Volda · Norway</div>
+            <span class="status-badge" data-i18n="f3.status">Implemented</span>
+          </div>
+          <div class="otitle" data-i18n="f3.t">Climbing Sessions</div>
+          <p class="odesc" data-i18n="f3.d">Eight indoor climbing sessions built on the project's wellbeing, inclusion and active-learning approach.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px" data-i18n="f3.aud">8 sessions · ~20 distinct participants · 64–80 attendance instances — estimate, to verify</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://www.instagram.com/p/DVyXyfSjc5j/" target="_blank" rel="noopener"><span data-i18n="f3.ig">View on Instagram</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.16s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/wall%20papers/rubikus.jpg" alt=""><span class="obi">🇩🇪</span></div>
+        <div class="ob">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px">
+            <div class="otype" style="margin-bottom:0" data-i18n="f4.org">Rubikus e. V. · Germany</div>
+            <span class="status-badge" data-i18n="f4.status">Implemented</span>
+          </div>
+          <div class="otitle" data-i18n="f4.t">Christmas Family Camp</div>
+          <p class="odesc" data-i18n="f4.d">A Christmas family camp integrating the project's well-being activities for children and adults.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px" data-i18n="f4.aud">35 participants (20 children + 15 adults)</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://www.instagram.com/p/DU_CYkyjMhB/" target="_blank" rel="noopener"><span data-i18n="f4.ig">View on Instagram</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.22s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><img class="oth-cover" src="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAGQAZADASIAAhEBAxEB/8QAHQAAAAcBAQEAAAAAAAAAAAAAAAECAwQFBgcICf/EAE4QAAEDAwMCBAQDBAQJCgYDAAEAAgMEBREGEiExQQcTIlEUMmFxCEKBFSNSkWKhsdIWFzNDVpKUwdEYJDQ2U2RygrKzNUZUc5PhhKLi/8QAGgEAAwEBAQEAAAAAAAAAAAAAAAECAwQFBv/EACwRAAICAgICAgIBBAEFAAAAAAABAhEDIQQSMUETIlFhcQUUMoEjM0Kh0eH/2gAMAwEAAhEDEQA/AOF2etdS1DJQcOC2FHdHOfUzuLSHxEOHdc5p3uzknp3Vgypf5m3cQMdu6ynjUnbJjNxJxaKyUiFr9zuB3/qSqYTM6NIc123n3TdBVyUFZBVUpAladwzyFqrR/wA7qJDN5eZXh7jt/MVM11RKfZ7NHoe4OktdRFUEsDQT14VbL5gmdO124t5aVoqCwOjoLhBsGA4bSCsze2/A3AUzCeG+sZ6Lx5SWWbo7LcYiRNLPOJZXZkHTP5QukaRqoaqoiAjDmjg/QrAWGklq6eephYHOYOQfZanw6iDdQTiWTZti80MPGVg3UqNsSctlp4p3F8Fvp6OnqPLdUuMDgOuCptyomWPQNNQve1r4oQ3ceNxwsL4iTsrNb0kwe7yqcMkAb0JytF4wVsVTbLPBDITJUO3Yaegx3W0vsqLkutmT0DZ21tbTVc0gcIqjlo7kFelYZ2mkDWnoF598MohRneXDa+fbz2x3XbqGEvpZGh+XZGD9Ftin9mkc81aVnOPGl5GobFVNd6aeKQ4A6nsq+31VVcZ4WsBeZGtc8u/KCUvxmpaxlRSVRY59Mxwj4PTJ6rQ6Qh3BlSxrfKMTGNx3x1KxyweTbNMbpG5gfHTx+U0gbQEzU1LWRvBcMkcKLUyBk3myjDTxlV8LhXxTTSnbTROIz3cufJNp9Y+SqS2yzt80kgcXHPGFd2ppaH7h1KrrJEJoGzOZtb+Qe491dxgDGF6PFg1FNnLklb0OStDWjCJjvcJXVvKJzc4wu1mYZGX9egRbuQPqovm5lfzjHCNjserusvk3SL6k0njlJDwU1GSTnKUB1K2bdWShbXcpwHjlRgTkp4H0hEZA0OIJBPAwlBapkhoIIicJ2ACcBBJAyUfdQ3YCkkgEpsv5wET37W5WcmVQqQ7W8KPnBynWPDxykkDKPIeBYPCalPpTg6JqQ5GFDLQ2wnKcPRMbwCn2ncOFmpJ6KSAAjHVFuwUe4J6JdsBRInPRbxhYuSNKdC+yS4ZH1Q3DbympJcDhOeRJUOEG2MyD36ppzeRlHK/MgHuiJ9X2Xndk5Hc31iBrA0lInADeEl8oEnJSJ3na0jnJQ5KJnFujw05vluGOikwAvkBzgYS6mHa8gduicpSGuYCF9JZ47JAiwxuHA4HKnUtwkjjcxuWkkHcPotxom00twJM0UTwW4wVSay0/+yat/ksHltWXZS0ybpmtoNTsqLFHPTO2yB48wE8kjqslFNU6n1JOYGkB7uT9AqnT4L6ObaeXHa1vuSup6Ws1Pp+aHzAG1MseXj7ry5QWKUqO5JzSs0OjLJFR0lKxw/fkHf7EKj8QpKa06jgqqB3lyiLa8DuFrqepp6WrEsz8NYwuIz2XFvFPUIuMrKiDLCXlrf8AwrHHj+SXU731xYrFy1jZbg6oc8OaCMA+wTdTVyVt8+Jke5+cNY3s37LM0NdGLf8AvCS8rU6bDJHtkAy5rCQD34W08fwxs43k76RuPD2jhqqGvjJ2yOnwz3xjkrstmgEFvDC7JaA3cVyvwfoBVRzVZkztmc0hdRE48uVjAMAgELPFpthPZzTx3ubYbG2ga15lqp2iPHU464Wo01LR01goGTvZAIoGbw44IOOVgvHyqBrtM0TAPOMpmyezRx1VRf71S3W/UVLbnANjiDah4PB9gPqtMrahaFHTNtUXp+o9U01NSCQW+I+lzf8AOEe/0XRG0UVLROGzJI+XsqLQlgjs8LJ6kZqpm4aP4W9gtBepSxsbs+nODyscMEovJLyN231Dt8wLGFvBAwWjoFYwnLiSqCjY5k5cPlcOArOiqHGEbgN2eVvDP18kyx/gsXEkjCiVVYIzsj5kIyAE1XVzKWnfLKcNCg2pr5JH1k4IMg9APYLX51N0iOnXbLGmid5YMhBf1KcfhpwnIm8Z7KO4lz+OgK3aUYpohO2TInDaMpbyADyo4IB4Rh/XJW0WmiWg2u5T7PUozXZIAGU+xpA5OElQ2hXThAvIOMIIx0KokLfnrwjJCR9Sid1G1ACy7AQBJCbc0k9UTnlnCAAw4dgoT/Ikl3BPdMVDjs9Kwk6NBcZwCltduUWJ5LU/Bndz0WansPQ/nhIcEp5wMBIJ4VtjQw9mMpymyBk9EeMpQHp4WSh9rKv8jUp7psSHBS5OhTAGAubL2vRvCq2O78twkPdhBo4yjkaCxZ/c00Fu9PJSJnYAwiHHCKUjI+izm37NYV6EyN9THeyRM7byE8SPJA7qLVuLSMeywLcbRXST/vTu9koVe+SNuPSFAklBqS0nmR2B9Fm5tXUtJqyGzPYXSPHDh2P1WbjOTFSS2ebqwkSEd2nB+6htn/ebXcK0nayoikqT1leXEeyrWRNNTtAzwvrls8JnQPDi7i21wMwLo8YXQNQW1l7irJYyCdmWDP0XGqJ0kOPTjjgrWP1JJRWEu88+fuDMe4WL0zFq2rK3w4tz571IXM3Mhlzt+oK2mqL8WaniDmgepoP2We0hUutZqp2kbZB5mR7rIXe51lXeHVUzvz5C5Zw+STR6SyKEEbLX94kkuk3kyuZEWBoAK57VVbp8Nc7cxowMqbc619VMXu7hUp+b7la8fCoLfkxy5nN+SZSsMzmtbgBdc8JLS24X6MSBskcbCHtd0AI6rk9ERCWZ6krtPgbKGVN5qpMNhp6fJPYLDn/9M04iUsmy98N5mUNNeGxSERtr5Ycewaeq0lPWFjG+XJljudx53FYHw8gkqbfdZISXRvqH1DyTjAcVEq9XxUNbTspR5lJHkEk8ZXBGX2aS0dcoogeObpK3U1pc6ba5lGQGjrkuU3wV0xTy3K41lxIkjpWs2g9Nx5ysRqWrnu9Y+4T5c7o1uflC3nhSZY7TvbLmOpk2uae56crfPlcMZkoJzO0GUz3ehc14FOyNznu7fRSiBW0+5w9Ocj6qmulsc8W6mD3Mp4wRPtOMjsFY3Cr+BhYyHHpw3nsFxRyPfY1cLJce2ORjSeMY5Tg2xvLejeuVBoqhtS4P+YA4J+qqdV3VoMNvo3bqiV3rLT8jVrKdQ7GXsdbO25V7tz804JAb74V7E9vltbF06AKhtULaWjc545PXPXKk0Faf2iyNuNobk/dVx7W5eWRMvadxId144Qm5aQ35vomGyOmZJ5Qxk4ypDB5MZJ5cRzld0Z9lQunV2MRGQzNHbCl+Udue/so0cm8cjBBT8MpDtp5VYJJOmxZVatEmni2glHJwcdkRlBHpSXHJGV0uS9GXV+xTTnhK3Acd0xIcH2SWu5yUkxMde/lKhOWnKbc3Jyl0/LVoSLIweUktDjnKKY9kyHHCfoButk8puWjPOE1C8vYSUVQ4Pl2k8gdEvAYzjusZJMLYGEBxCkRkYyFC2F0hwVIhyOCs61RcWPD6oyARwku4RtdgAKPBrVh7UCcDhHlJOO6LoW2NPOAo8mcKRI5p4UaVwCxmaxFt+UJR+VIB3RtKNzwG4CzTS2zV+KEOIz15UeR3raM9VXXKsbSTyyOdnbHnblR6esErA9rj8u5ck59pUXGVaL1/pDPuq68yllNLIzl4GB90qOu3vazHpDd2VT19U90UZJb639ComqRv30Q7fUtqZ90pLXsBzn3XGrTTGv8AFF0j5T/lXuDs5HC65cGyU9NUGDgyNIDsdFj9O6dlp5oZ2guk80vc7u4+yeGfx32Iku9UcPinaKQMdxg9E1UN8sCRpxhNQkPc5vR3UJ+ba+mcD1wvpzwy4a+N9FCWO/eEepVd2e8NjBzxyQlWsbqXrkpmuc6SUdwAQVNbAvrVXOite1hPqPOVAlcJnZx0KbiOIxGDhuOU/AAY35/RCivINsjMblriVXnHnc+6tnN2sP1VS/iowfdMS8k/Ac1xB+xW1s17kotL19HTuMbqlgbI4dwslE0NhUxlQyK0yn0547/VcfIx/IqN8c+jtHYLJVU1h8Mat7HZqJqbzH4PQk4AXHaUulbKfVtLsjPZWE12rKi2T07Mso5mNG7GenOFXwen5XZGM4PdYY8XW+x0zydqomNhdPTyM67ec59l1XwJZT3CibT4PnUlRveD0LT0K5hbq5tM6Vs8bTHLE9v1yRwujfh4Bhul0c8PbGI2Ny7plTlS60x4m3I7XXvY50jWj5HAFZ+9lz4amMH1l7Y2/Unsju94ZRS1BJDnvlywfQBQIKqR0cc8zRl9T5/PYALzJpOdHY5VEGpbwzS+kJKmb0T52tA6lyqPCyndVW8XSsBlq6qZz8u7N7Bc71dqSbXmqGUryILVTTAAA/MB1JK65S3u06d05TPdIxsfyU7epefYLuWKNUzhk23ZZ3+U0sIJfs5yP+CRbQZ6mOpk2hrcHb78LNUFxrbzW1VVdYWtjZxBF1AHuVOmMsU+fUA/AAHRoWF9ZdvRXWzc2+qjlZIWN2gOUp371vAVLp4tdRfuuQDyT3V7ESwerouzDLsgmqK8SPj3NczknhFF5j5wW8ABSTHvkeXYweiXG1sXPAVRxfYl5ElQ9gtbymfiN5IA5BwnZSRFlqrSXxv3478p5c3R0gjG42yc95OMhLZ2ymY3b2nKW5wIxnkLXHNSMZKh8nsEqI4KhucWHcOQeCpAfhm4d10Jmfsde4cpkEZSJZOiJsg5J6IsbK3zCKt7jyMp5zy489Et9OyVpdAR15SPJPG4rJ+QfjY/T8fdPZAccpqnjw4kngBNTuJcMdEIfhEzduaiPPTso8MuBgqVE/cDws5xs0jIS9xz1Tc7iIiQUqbgFR5ATGR7rnnI6EhhsxMmAchB/qH1SWM2Owm55GxN3E8ngBQ3+ReCXJI2KDcewVb8b59YYmkDaM5yiu75G2x7mDL2tzhY3Q9eJ6+5Za8vYOS45wfZYzbbUUaWo+SJrKtlF0qXMa9xZhg44KVp2ql+BD3ZDtxaAVfwQRV4fLw7c7lV9zozRCJsYDWudhuOmShcVqPezn+S5kg3Ulr2tH74N6BRjM6qpqdwaXuBJdt/KVk7nXTUNzjJ9MRJa49ytvpHyBRyBuHcbs+6Ficl9jRZft1IkdRMWyQPYTtHzO4yraihAazqCGFxx0R1dOHepmASOcp6mAjo3uc4ZxjjsueacTswfZnjeP01Ax+qmvYHM9IUGIl0pOeisYHNe1o7hfVngJiLdIIhJE7jJ4RbfWR2KjznbVbhwFOaQ+EEBDQ7Djbgc9lLYBt4SIot0ec8pDj5bgAcqaFY/O304VTKwfEt+6tJH7tv2VVO/bWsI90mUmW8rfKhAOMkZVNVVGIXDnJOMKbc6oDbjAGFXU0Zl+YnAUJDkzeW1tPDoOkllcXOfM8Y/Tos5+0Dtc1obwfT9lPq6+EabpaGN+Htkc5zfuFnJIyHAh3CyhiTbbLyZfCRobY1tVBuefUeB9F2HwFpDJZby9jgf3zcH7BcYoa9tLROawDdg5B+y6v+HWrmGnr02L1vZO1zWfp0XLyY1Z04Zq0zRUsj55KttezZNHI7DX9cfRRPFC8G0aTibSj9/UM8tpb+Udyq3xOu7P21RyYdBURYZKGnsTzlZHXN6fd62OOlIfTNjAYB9OoXFHE1JKjX5OyZVad8uC1TRAB9S/nOeVvtJ2+mnuFDJqJ0rw3JpmO/ybSsvoykgh+JfUxjzvSG7ugC3N4vcFS61UtNG1jYHZeM4zwtJupNspQtI1ldPSUTmGN2GzO2xhvPKtrVURVlYyI4eA3lUNLQi40UDmH95GScNK0mlKL4cz1BAIeAB9MLHG5TlfoeRdFRLtsRt7apgb1eXNH0VoybLGl3HGVSXOpkfXAxNw0DB+qlOqBM3y4+OASStXL4/AoruKdWOdUPxwG9PqnI5jLEZJeocB9lGjh8w4b3KXM5kMTos5c4joeiI5JtWP44l0z1t57JmVgLRgd+VGopnTSFpHoaOCpsY5dnldcIqatnPluLojU7HNkeHdM8I3gmQ44wnpHYcOOygwmSSWR2fShLqyG7H5COQEvcGwNA6lMs9UxBOCB0SJ3YkiYP1WkZEtCnudkjskPk2R5cDyjdIDJsHVKkLI2hshGFTknEitkSCZ8Dg1xwwn+pWDnNIGCCqp9ZC6oLNwIacFT2tjdEXROBH0KyjKjRxscll8sNHdxwiaQ5nC59qLVU8NydSMjeJKeYHI5Dm4WhtF48+zx1OQ8vycDsohmuTTFKGjRxMAz0T8ZDQeVS0dyikhBe7a/uCpkdQJGktJ54TnkVWisUbeyZUkeXkJlpJGVGrJ3ReW3PJKdZUR7XhzsFo5CyuzafmhuU8vPHCqpidmT6ueFPrPVRvcznIyqy2OMrCHA9e6Uo9otGXapJMl3J+23gv5a7A4VDp+mipJqrY1o81+76q/ufDYY/c8qK2FjcloG7nlThg1dmuaSck0UdszQ1ksRPoeTj9SlXx4fc6Wla4Fw9ePonKunxMxzjjJyoNxpJDXisj5G3bn6Lqcbx0calUyp1fQMlbHPjLmO69sKVpidtLbpnhzBI9wjja53JCq9TXgeX8McN9I6hYOsrvh3iQTSHZ8uT0RiwvItGPJ5Px5LSs6Zf9SNhM0MczGvaQ0knomLJqH4vdTyPBy7gjuuU3G5Qvo97ZNz3HPPVT9I1cs1yoW9HyEgfXC5eXw+se1nVwOXKU9o5c12JRnoVPphhwd27qr3fvArESbYsDuveONqgXAAvDm9E9bXZZtKhPl3EMJUuhHqcAUFeiY4loPPCZJynpWnHPVMbTjnhIkS5+D1VfVO/fB31UuUbcnsq2ofmTCVFIVUTOneM9B2VpSw5haQeVTRcyfqtBTYawccIFNg8k45xlNujcGYIV3are+tmYxjclzg0D3Ks7xYZaGYxVDWtkYPU32USkk6Mnb2ZBsLn5LWkjHOF2n8MQBGos58qPy3H78rnum7hSWiprRWUzaiGogfFsd+V2OCPsmdA6rrtK0F4iodrTWBoc8jkY9v5rlzxlNOjq480lbHvEO9MumpbtVxSO+HExDfsOExpYECOWUfu2gkA91mKl0lVUuLuhdk+3VbuwWme6xTvo2P8qBo38dR9FE4dYqzXHJNkaW4yxl7I87XO5K1vhXSN1BriF1fkwQQOexvZzwccquu9FTMuFPT0EZdFtaDx1cfddR8J7B+yIKuoqYS2Z0oLS78oxyuDJNels7cb2bWjtkVM/bEAxueMIrlUw2iky44iHUqXdKuJjiyKRpkHqIB6BU96tz66lc2THluZ1J7p4o9baK5M78DNhr4qmokdK35slnfITBn3XGVgfhwIOAmLdRmiulKPUWiF2R2yB1TGnan4yvqpZQ0vdkjHYBZZdtL2TgTq2XM0s0kUMUR2kO5IPKqay4RQ1LBI4tmDi0ZPzFVWqtWQ2oGKlcJKkgkAdG/dZ+jnZqOjjrK2R8TmkBu33z1SptfU1clZ1+2VMcdK0PcBJtyW55TguY+GbLEwvDs8BVrnwUdE58A82QR4znrwqmudVVWnttHlkrSOhwQFt3lDyYtqRpTU1U+3EXlt29zkqp+Jr2ulbEGnnoU/pgSyWvfM5x9OAXHnhMGdzHYYWueeCWnJVRyJ1vyRONKx2irqoySeeGNIGOEzU11Q2dhYzzAOuFJto8xkpkwXZwQ5FPSRynDN0ZPcLaEO0dM55TogtuDpauFwD2ZeAVY3RvxNaGtdiNoyfqU3R2c05zHKXnOfUlVJnfWRxzxCKJg+Zp+clUk0qY0r2UYc1soc4ktc7GR3Ui1XFs1O0wtkaGSuaQ8EZWP1/Hc7VQSV1FWBkLJ2tYMcgHgAfqVe6Nkrm6cbFXkPfk5J+fOe6n42mCmm6MJrBtT+2aiKClljklqA4yZPIPC39gs0lJYaYUzy58TsuY49c9VPustFNRFsnNRGWkEDp91XVF2pnzgU1UGzn0gB39oUdUkNqns0MULBkgNccZBzyVYwObGGkggHlcaq9RXCzavcJj58BaGybM+nPfC3ttvU7bRR+Y0ukmDi1zu4zws5uvKNMavwWF7qDJKHRnGwcEqJbp5pfiXveHBxDQEboJqqNplaRJnPChU1QY7h5D2kDOendLG+zVk5HTs2cXpgYx3TaAmYKYRVBb2TcUu5wDj1xhLq6sRXARgguwOF0JpaCSVdiPdfVV+k8tGEcMbXv9XHCjSSufNMcd0VHUPZI8yAYI4z2WsUl5Od9pPRC1NO2hhe97ckNy0D3XI9Va4qpI/gaU+XHjl56hdA19XRT2tz/N9bDgAHquE1zXPEj3jkrWEFI5M83F0O3C8y1jt0khOBg8qDeakmlaWuzkKjkJ8zaCeSpc+PhwAcnpyumMFDwYtNtNkGSpfhmTnHQLtPhEbfU0cUrmb62njc7B7ZXDZyA457Lr/gSHh1dUnlpYIxhcnOfWFnp8CClkSOMNGKkDtlWNSwNa3B4xlV0P8A0kE9FaSN3tC9BHNIrzzlx6qRQzbJeCkSMwDhR6fIqGk++EME7NU0CSNueqRLDsGSmadr3NJZnhSnFzo8P4wFLIZT1pPO3oqpwy/OFa3AgN44VewZ5VDiwomkv4CuqflgVfRN3SA4yrIDaeEqFKR0Lwvs9VcLvFJG4Mhh9bie+Oy3OvqSjknFQD5c7Gndu/OuaaJ1JVWi5UsEDQWSysa/PsThdS8XaymbQuhYzFQC0kgdAcryeZklGaPS42CM8bZyPXFmkszqWeaRhZWQeczaOmeyy1HEZaaeU/LGMlXuu3ufp7T1TJM53mtljbk9GtcsjR1T2QSRtd6ZOCPddeBynBNnPPGoukWttiBk3kbuei6/pLUjLbpaShpqZrq+ol2R/XcuSUdUyOENZgvC2+iHh16tEk3yCoa4rPk29oWJbOy1Gn6S22iNz2NdUDZI5zupcFI1JdxadJsrHvEUkzxtB7rG+Mt+qI71FRUcrmQCJr5C3sSVRa7uc1ZpXTUVVLwIXPeT1PPBK8zJBuWvB2waSssbxq6rpJWvfE0edF5rcn1Oao9R4o3BgdLHC2SEtawR5+U9yuTXG4une3M8k21uxpcejfYfRLpnTOp27ThoOOe664cSUI3ZnLOm6O6WbWsF4M8oDopmUrgY2nOT9FEsNTVtndI/EMD4wA0fNkrmdnl+Do5pIpBHK4fqttpK6Nne0zdRgbj/AGLjyYndnRHKqojS2+Jkkhc4udktc4jnqtEaCOhtbI6b1O25OPdVV7q2ftOqMTDsJA4HQqMy6vZWRsncWxnDM+33WH2ToG1Vmw0Xepp7k6gqcGJzMsLhzlbS3QNmdPG3LWBwBx3K49Yr1S0dwne2MyTxk+W73XUNI3/9oWetqnUxifDLtx/FwCuyFJUzKL2aCXZb7bNkANjB/VYm11r4a1kUUbJBM4E4OSCVtJZaa5Ur4almRK3O33WOsFskoNRwGVoEWXNaOp6cZXNkg+8XHwazl6ZcwTtdXywtP7xpwce6nzCaKMvdywdT3VTRWt8N5NbDKGte4l4Pdaatb8RC6BnBOCV6eJPq7PNm12aIkNWW7Rg5KXVyt2yOyCfqoUkkNM58ckrQWEDr39lndQXbyqOJ1PI1/mPI4OchZuTs6YpKGzM+JtY2WHT9G1wzLcowRnqAcroUFPE6WUn0EH8q4pqydtx1tYWMeDHTPEj/AGac/wD6XX7FMJq7Y9+5sg3NC9CKtbPMcvtaCvBfRWi4zbWuDQCMDnH1XGrnBHNWCojc6OQYdlhIzyu8VcIqWV9KB8zMY9wud6tskdLbpZ448FmBjucrmljSdHX3bjbMW6R1Q2ulIkfOY9zZN2cgdsLrWmLZNV2e3zSTgsgDZBkY4x0K5fWyx0Vhq42sa+aSL0nOCMrY+GF8lmqam31TwQ+nbs29AQMHKwyQd0zfBNPwbiC7U7mvLZWENyC7somyKWbzzhzj+YLGXWnnpXVUDZCI2njAwDlWGnalzYR5ri7ZwUYo9nsWadM3FAd87fTkDlQLkxzL9LUkENLQ1Jst+o3V5iimYSGZcM9FoJo460eaMYAW3x1sxWTvGkUZkDGyyZ9AbuJ9k22aKrtU1TTuD2tjflw98Jdxpnmx3QRkeY5mxqrdN0Yp9PVdKAS0sOOfpyuTNJ3R6PGgnG2clkmlqYzDNM44dkg/VQ7rbYjRHbnefZT42gSPw3JBwAmmXCn+OdHPktb1C9HAmoqjxeZXyNGA/Zz3VTmsaXP7NHVFcLfUQN/eRva1vU47rultm0yJPiImwfFxsA3YTuop6SWzSww0TJJJxu3BvQreWStsiMWec6igf5JlB9BXWPAclkU9O54DXPzgnrwodRp0yUIMkYaOm0JWg6I0mt6KibIWAESED8wXn83KsmJpHscLE8eSMjjwG2QFWcL9zVVvdzlPQTYI5XrI82WyaW5J9lDAAqPplSzINmQVDkOJM+6ZMTT217RtB7p+sax8gaDjKpKeq8vYc9EVXXOMm4HooaE1sZu/okLB2UCPPQd0qpmM0gceqdpoieypFLSJVJHsGfdSfMaHAZ5KZPpGAmX5BzlPwZtfk01hLI9Q0IkIMfnRnj7roXinfqYagr6NoDnugjOeuOCuQUFS+KsjkjJaWuBzlanT8MN41dUV92nxTQPEjxnlwHZcHJ4/yS7SPSwcj4sfQzmuLu6sgs9va1ohoYHBuBgkudkrPQgsxkqRfqwXC/1VQxoZE+VxY0Do3PA/ko8p/fHHQBdOOKjFJGE5WyVBKY3tdk8Hlb+wajt1DQRybyZ2HcQB0KwVLTunAa3qV1Oy6NpINAGrrY2fFPc5zXdyOynIovTJi3ujJ6h1VUXa4SzSOcRIRj6AI9S3h11mpnNc4RQUrYtueM91SzxNa920BAPAaW+4QsULTon5ZJUP09LjaSOHDKvoG0zacRSSfvByqWnqjtDMct6fZKrZ3OJkIzgK5RvRlF0yxYZJpW08Tg8ucAB9Fsp6VlmbGxkzS4+pwz0OFkNDwTVuoYI6bBl3B4z7Dkq7vEhnulTgAu85wXn50u3U7IJy2Wc9eX0sk+4OlLw4/dUd2uL6idzvkLhnjoocRnfM+Bzi0dBj3SK6ARA/vDuxwqjhiEpPwSrXK0yMDHuDifmPcrsnh9Vti0xWtqHFz2SmQD3GBwuFQS7Ghx4d2wV03Qt0ngtE3nxb43tIBJ/TCMmNJaJi5WdfbtqKKkkYNsjoBKAO2UdldTyyEkh0o9XPUKvk81uoLVHA7DIKNhmYDxtWWobxI7VFU2jGWulcMezM4BXG5qHk6ZJtm1qqylhqxThwLzzgJ26VrKOwVNdI8RkDaxx9+gVP8BMNSZDR5ETN7nn8xUHxQm36G+H37RI5j8N9t4K6O7aZj8aT2Zy5SU9ts9VNUVL5quol8wuHPJHC5827ysrZ4YptzIaZzxk9HZ7Kb4rahpBdYqS2EOAja6THY4WJo2SSOmnc3l4wT75K0xYa20Rlnf1RMsdwcK6aaof5sziCCfZdVsWqHtqqd1PGXuZGDyOmVy+wU4guW+riBjLsHPYLf1ccNBUiOA4HlNLD7rpk6OSMettl/YdWXF7qyuqomvic8gNHzBuU1fNVUN4sjhSvO/cQY3Dn+SpaeV4pnCEAH2BWE1NFV2+ZlXCHs3OyeepURi3LYTyfWoljPR1ExywmQfKQ7sMrU6FlNDeq2d7gWxUxDT/SWN01qFs8xNUdrx1+q0FLeIGSVL8Za5pG0BGeN7OjivqX1ZqWpuNEzzYY2vwQ4jv9VXWS+iluIhk5hlOHE8qsgrGVEEhc0saGkhVUlUyVwZES0jByssTryZ57lJ7NM6B8VdJUUOWwmUDgrcW7VsFos1QKypBmb8ocec+y5vZK4TXGC3iUgPnGfqVO1NatprnMxJycAjkHPZdMoxkrOLE5wbo1Ns1dJdbXWnLWHYXAg+wUXQOsm1zHUMh3TxwyyPfjjaAsro8OMd1jaAx8dK92HDkjHKzmiru221N0lk+aekfTx47OK82PG7yZ7P8AcfFBN+y2oa0vheX5HmOLg79VV1bAXyEM5Ixn/eoVuM0EOJHktBwAVJfPuwM59zlexGHWNI8Sc3PI2yIw+TFtDjuzknKvH6knEMMbJNoY3Cq6qGMROe09eqqKwkuYGnAWU42deNpNGzoLvNVyGIuLs8jlaHSVue7W9urHNxw5p/QErnenqlsF2jkeTsxhdSuleLTZorlC/a9nLD9wvF5ScH1Xs+h4Uk49n6PNj3Dgp6Fm6JzgorjwnIJC0EdivoEeK0SGuIAHZFJ75RbtzcDGQkSAgcp2JIeY/ohK7LSmWEZ6pbjkFAmhgOJcr+2s3Q4WfZ/lFbQ1XlMGD2SRM1+CZUNMGQec9FCc4ZOeqcbUfERuLycjooUryHlUSSYnDzB91MdWmlhlcx2HSZ6d1TNlwhcCfhoH5xuz/UpaspKyE15Mu49c5T8Z8yUnsSog56KZb27nH3SNpaRqrBbKmswaaIu57Ls1Ha6qq0NTU8jXNe1jgG9zysj4U3WhghdFUEB7Hbznutl4h63pbLR0Drc4OkLHFrccfquTK25CxKk2zjGpra+2V4hlyHbc7T2VU1OV9yqbrXTVdbK6SaR2ST2+iab9F047S2ZTSJEPB+uE9jdE7PJKZiBJGArBrf3ROOQrZmavwgp/K1KanftbBTSPcSPl46pdMxsz2TvcHvkDpHO6ZKb0hVspLLfHHionY2Fpz0aTymmOkjoaqVgxFCA3PtledyYXLsduB0qHbU2J9TLLJjaw5wEzdqZjonysblgOAVDpKsspDHG1u53qcT7KK6pqJyWEnyy7OB0Vxi0wtOxgNIyHNz9VtbA+aO0Pa14LXDaGfw/VYidxYWtYcgnn6LoHh3TxXin8oZa2CTe/+kPZXkWrYRTvR0XQl0NTVfDzB0jnw+qc9w0cBZbwuudGypvUtfK34mSo8uJp/h3HBU3StzNDruK0mmMcc7ZGx+2McLOafsj4dV1tI4cNJbuH3zheZN9f5OxW0jolzv2dcU1DDUDyKiDYGju/P/BZrxivVLTUUlvY94qIg0DHuoFqiNR4l2kPeG/DSvOPoGrAa8vEt41nepoyDA6by48fwjj/AHLXjfZ2ZZtKyJZ7Z8aw1NS7fKTnB7q2+HZskwMFrCWtx/WpdiY1tNDEWjB+Z2OVrKayRVNLLUdGMYfUF3rJ6PMlN9tHOWxOqKUOa8mTrn/cr69zyvt1DJC4mRkbWyknkAJHwUFHSzF7j5TXZJz0VS+4SOLmwNJY9vqA56d1e3sT+0WjQWKeIPbulLSRkglVuu6plQ2CFhy1hySFRUlxcyPLwC/PX6KbU1LJowXBvIWkY1swUWtGUhidFWPewn6K+irXRUEgL/35HRR6qFscBI6nqVU1Erixx3EkcJyj2OiEmXDLs8RAbjuxyhRVjHSZkyOMKhjB4JIwVMpmb3MDRk5A4QsaRM5uzWWO4Pt1bDMxjHyNk3h+MloVmbrWCvdO6Yy7yXODvl57KnZTGNu5o3loBdgfKU7Xl1uhie52RMfl91k1QdeyNLbSXi4VVPCcyUzoyB7FYi42+W2tik8ota8cZWjs15npYJxAW5lw0Nx0GUXiC+qqKSmdGwOiYMuLRnH3UcaPWTsrNuKMkKglmXHJTD5znrwosbyeTwShK8Fwbldpz9SSal5bs3HCZLyXDJ6dFEc/nqi83B6ocS0qJz5RFITno3+tb3VF2hrPDKi8h4LwWseO4K5fUzuc0tB6haWdjxoShy7DZpSR+i4s/HjKUW/yehxs0lFr9GAdyUG9cI3BE1dRAuJ22TnolzSB/A4Cad1Se6BCg7a7lOmQdk2cEZTTn88IHVj7euU6OQmYuQl7tqZLFtJHRO1TA2lim3gueSNvcYUfem3nJ5RYqBuKcr5hJDTRgfIw5+5KYJ6pouy7kpFRXsSOMqTRy+U/KYfwjjPKRb2i2guEkDi6ElrjxkJ2rr568xNlkLxGMDJVQXeyXTv2vH1R1V2Zu60W0DPsnWggqNE49M4TvmAdSq8GLZZ0boxjcpXmteQxvdU0coHIU2heHzsDjx9FLEXwHl0DgOM9VY2u+UtFpW722opHTTV5aGS7uGY91m6yteHGPOGtKbfcI3xNYPnWTgpeTeM6JEDuWx5wOwHdCq3QvDGu6jPCjMmDTnJBHJwjdURycgHOMcquo7oIEu2h+cArqvhL5VJZrjOS0u3gu5+UBclfUY6YACn0N/db7TWQseQZuuO6jJDsqRpjyJO2dynvNLTXSluMwhAZ8svcA8LNVOuaGj1TUVULWSxj1en8xK4rLfauo2xySPMbeAMp7zQ7aQMc5z7rmlxFN/Zm39z10jpukL3SjV1beLg5+0wSOYGj8zuyzUxpzWSywRFrXOyM9VV26pdggOGPZTWkkEkcrWHGjA5MnJlPRdUdU0ANPC2OlbtHDbaqmldlrmnGVg4Yi6JzsgOHAB7p1lQKOlzLLkE4aQtHA5E9h6rqwKSSlgd6ZXgnHJT+hrSysqKuB4cXineQM9TjhVAp5nnz3ML4yeCVrNHVUdHNNMC1rwzbj3VeEbY6TOfTQuhqTE8Yc04KEzwJG7c8dVNu8oddZZ5Bjcc4HdMtc2aY7G4C0XgzyNORbmOCe2OOPUW8cLJVdNJHud+UlXr6p0EXlbQSFaRUdNcLS9mA2bG7JVRRDyKJiIhnICubXCXHDXbXAZBVXLEaaqfGexwlx1boXAgnhV6B78Gstu+nL45nlzpTl/KTfz8VSwTgHZFIWj74WcfdXOl3l3TqtTcojFoWgrI/8/M4krnn5RvhT6uyqpJHxva9hyRytTSVdVUUmw5dHO3GMdOVi2yPa0cgLeaaq4aOpbHUEbPLBA/hJVyh12ZwnaaZgr3Rvo698L2429/dVEu7K6VqtlLWxzSM2btpII6rmc0v7whaxtqyI7GiecInHCM9Uh5VliHEkrTT3KP/AAYt9Fj1REn+azDk5vLmAO7LOUVI0jNx8FaWnCbHBUg8NUeTqpo3Q6G5aEktICVC7jBTwAITSE3RDcSOEgDJT8sfPCQxuCEhp6HoxtARPTiQ5uUyRhxIOUPM3Rk9x3Vxo42YaqtjtTmQWRs4dV+W0ucWDnGBzzgD7Fe4NH3K2XuCljsGlXQaefEc1NTSMpmZ/K1kThueD/F0+pUyl1NFGzwCSfdF7H3Xty0eF+kpfFm9XSK3UkjKWGACj2gwxVLw5znbOgO0N47ZJwpWmdUaO8SrjqDTX7DjkjtpLHiogZtlZuLC5mOW4I+/IKnsVR4bcc4HdE3g4PVesvDin0boO/3zTtPaa286pirJQ0R0Jmc2HrE3zD6WDGMu45PK2HjBp60XjwrudbqC0UdvucVKZIXNLHPhn/IwSNA3ZOBgdcoct0FaPD+4fxD+aXG4E8HK+gtq0xR2jTlnoobBbqmWGnihkMscbCCGDLiS07jn+1eZvxRwVMerLU+WwMtFMKR0cTonRujndvJJBYByMgYPKanboTjo5LC7MQ55RPcmGPAGEN2Voc1DrHlp4KvdJ0rrleYafdtBBcT7ADKzufZdQ/D3QRV+tZ/idvkQ0cr3FxwBxhZZZdYtm+GClJIyNxex0z/LwWg4z7p3SlpdfdSUVtjkZE6dxG9/RoAJJP8AJJ1HTR0FZJHFPFKzc4gxuyANxwFTQVs1NUiane5kjc4LTg8pQdxsiUaky0uHlwXCqjilbLHG4sEjejsHqmHybfSeuM4VZ52XekYx1CJ9Q+WUuJJcRglUKh6epIPVM5dKw9/okSR5OQeVJp27R2QVQmGhmdgtB5VpHRzMjG8HKetc7Q9o25OVbzStlLcN2DOOQpcqJaszrXugcchSoK75Q9x6p6tt0krjJDgsB55VLOfKeW8Z7qk7M5RNa+vg4Mbs4GDyq1lfEK1oncTC09FnmVflEj3CjmcvcSSnRKxHZY623z2xop5o3Oxw3IUGhroYnPe0Ru25BGVzKCocB8xAUuOodCcsecO6o6kuLTsurk4eZJI9wJccgApFumG53IH3VHVVJcMnKjR1bmuOCcK/AvjbRoaovc57wc5KlU1W6OM4JHGOqzjK1xaeSB7JyOr9Y9XCaRLxvwyTW5dK53VxKjTNO0KYZGuG48pBLXquqGnREjidIdvTK6LfmPpdHaZtkjgXuY+VwP1PCwjG4fuB6Kzut2qbjJTPmcMwRCJoHssp47aNo5UotfkkxUjXtDpztjacHlS57myWTyYmYDnD1DqAFn/OkcCCT/NKhlMZz36ZWj+3k546J9bPI2kfKHHaMs69VmpCd+Vpq3aNLPc75vOw37YWWznqmjbqltCiThIJ5RoimADyjzwiSX8BIBnb2TT2YCkkepIlHCg2IjHbXKQw5URww5SYTlqSKkhyQANTHdOSHhNjqmyUPgZHCae7GQn2PDQQosruU2JN2afwpmstP4i2Oo1TJEy0Qz+bMZWlzPS0lu4AHI3YXre7eLPh5cqQ0z9Y/DMcMONK6SJ5HtuDMj9MLwy488FJysmrN06PU2k/EjQWg9d11DZa6efTl0hjnlri+Sd0VUC4EvLhuILSOecFaqh1j4SaIku97styonVlxPmTx0b3yySnJO1rT8oJJPYZK8Xo8nCXSx2exPDPxa0XHZau43q6UdtvN0rZqqqhc1zngbsRtJDeQGBoCqvEjUvhhqG21VdUamqLnc6WN01HTOqphEZW8tAjDQ3kjH+9eUMn3QyUdEHY9hf4SeEmrILVcqy+G31FHIKhsEtbNC9j+DtcCSHDI7fz5XMPxMeJNm1pU2q26dlNVTUD5JZKrYWte9wA2szyQAOq4YDkpW3HKFBJ2Dl6Ftce6c3cJkFLzwrM6FB66V4b1ZtmiNbXRoHmijZTRk+73LmBIWmprp8L4d1tA12H1tawuH9Fjc/2lY5l2jX7RthpOyl+K3NAdj6pIk3O54ChZOcp5vI4WlGTROdGxgLzI0jcBtTJe0OJb7qIQc/VKHATFQ+H+pPskyFALiDwlCQgBAUW9HUiF4JGQrCe6Om2Nb6WjlZnzsKaJwI2MPAdzlJoTsuhVNDHZcQAPfqs/VVG55IRPly4gHhQ3uJcUIEr8hucT1Sog4u4TWVMpQ3uqRUtIcjaR1UoElnGEw92Pl6JLZS0n6qvBg9ip5OMKOX4PCOd3H3UcuQ2XGI55hSmyEEHKayEOErKosI6h2ACeE/E5znDaVXMcpdJLsmYT0yqTMZRotcubwW8pvzcFWdyuFLJTR+WwB4GCqWSVpGQqbMY2/I6+TngpyKTJG48KCHEo95CVldTUahmidY6OGEjJ9TgPdZbGCUt0zngZJOOibOScpopWBAoIFMBsvSHHPVKkGEgpFIlVrfLLCOjkzLggBXNRTNmpWkEZaFUyRlv3UmiIU0Y6hJjODhPyNOOijEYKRQ+4ZCZccFOtOW5TUgwUCQW/lNyO5Rk4CbJykykgkO6Jd5/Db4VQ6nndqTUUHmWemfsp6d44qZR1Lvdjf6zx2KlujRbMh4deDeqNbwsq6eFlvtbulZWZaHj+g0cu+/T6rttl/DNpyniYbvd7nWyjlwh2ws/Tgn+td7a1rGNYxoa1oAAAwAPYBBZOTKSOOn8OuhCD+6uo+vxn/8AlZq//hjtMsLnWG+1tNNj0srGNlYT924I/rXodF3U92VSPAuvfDbUWhJh+26QGledsdZAd8Lz7Z7H6HBWMJyV9IrrbqS626oobjTx1NJO0skhkGWuBXhrxp0C/QOr30kJe+11TfPopHckszywn3aePrwe60hO9GcoVswjRkIEFxDWgkngAdyiauheA2mxqjxPtNPKzfSUjjW1HGRsj5AP3dtH6rV6RC8nQrd+GK5VNBTT1GpKanmlia98JpHO8skAlpO7nGcKUPwvVmAHarpsDoBRO/vL1BnPXqiPZYdma0jzF/yXantqun/2J395co8WfD6r8OL7S0FTVsrYqmDzoqhkZYDyQ5uCTyDj+a96ArjX4qNN/tjw6/acMe6ptEwnyBz5TvS8fb5T+icZb2JpHkCkED5cTyGNp74yt1p3T1q1pXaS09aaj4O41AmbVVD49wBGXNOMjPAXOdpzwF0r8OxP+OPTgPZ8v/tOVszS2dHH4Xao/wDzXT/7E7+8iP4XKv8A0rpv9id/eXqAIys+zNeqPGHif4GVuhdKyXx16huEMUrI3xsp3RloccbsknvgfquPFxcACenRfQnxLsg1HoG/WrAMlRSP8vP8bRub/WAvn22Mhhc7gjqFpF9iZUjq3hV4K12v9Ny3hl4ht0Lah0DGSQOkL9oGXZBHGThbE/hdrc/9aqT/AGN/95dx8HrINP8Ahnp6g27ZPhWzy8fnk9Z/tWxWLyNPRaijy9/yXK3/AEqpP9jd/eWEj8J52eLw0L+2IvM8nzfjPIO3/J78bc5+nVe21xcWWR3j/f76+kn2U9JDDTVO7DGyOjAcMdXHHHHTP2WGflrj45ZZei4YfkkooyP/ACZKojnVNOP/AOE7+8kO/DBVE8aqp/8AYnf3l3nS95NzqKqGIOmp4AAakcs8zODGD+YjqcdOi0SfH5Us2NZKqyZ4Iwk0eYj+F+scP+tdN+tE7+8m3/hcrtp2arpS7sDRvA/9S9QpQW/yNk9EjxnqP8O+tLTC+agFFd42jJbSyFsn6NeBn9CuR1VJPR1MtNWQywVER2vikaWuafYg8hfSkchcm/ED4b02r9M1N0oYQ3UFBEZYpGDBqGN5MbvfjJB7H7q1P8kyj+Dxa3KlwsG3JUZgzhSIzxytkc0x9g3ZyUQbk7UAcBLi5cqMwNj7JDhhS29Co7h3QJMQ1Lwk4wUsHKaGFtQcMBGgeiYDEvYps9U7K1MlSUicyrIaQXFN+eHuweihlxA6IN5cMKTSiZw84P8ANQapm08KYxvPCKrLHQYx6h3QCIURwMJMyDMZGEqobgA54QivZFcclEjKJSaDlLBJU1UUEIzLK8RtHuScD+1fRrSlkp9N6atlno2BsNFA2IYHVwHqJ+pdk/qvAfh1E2fX+m4n8NfcqcH7eY1fRN/Lifqs5spDblyTxt8YafQBjtltgjrb9KwSbJD+7p2no5+OST2b+pXXHBeAfGmqnrPFXVEtVu8wV0kYB7Nb6Wj+QCmKtjbo1tP+IbXjKzzn1NvliznyHUbQzHtker+tekvCHxHo/ESxS1McIpLjSuDKql3bg0kcOae7Tz9iCF4MatBpHWN80fVTVOnbg+imnj8qRzWtduaDkAhwI6qnBNaJTZ9DzjC4t+Kyyx3Dw3ZcgwefbKpjw7uGP9Dh/Paf0XDbV4166nrY46vU0jIT1Igiz/6VA1n4papvtNW2irvstVa58NfE+KMbgCD1Dc9QFMcbTspyTRz9wwF6t/CJpr4PTNz1DOzEtwm+HhJH+aj6kfdx/wD6ryzTU0tZUQ01M0yTzSNijaOpc44A/mV9DdG2OLTWlrVZoANlFTsiJHdwHqP6uJK0yPVEQLlZTWmvrDo2qtlPfZ5o5bg8shEce/GCAXO54blw5WqK8W/iW1CL34nV1PC/dBbI20TMHjcPU8j/AMxx+iySstuj2ko1zoILpbaugrGh1PVROhkB7tcMH+1Zjwi1C3VHhzY7nu3TGnEM/v5sfod/Zn9VsEvAHzpv1kqLDqC4WmrBFRRTvgdnvtPB/UYP6rdfh/g8vxh0249S+T/2nrVfit07+zNbUN9hZinukOyQgcedHwc/dpb/ACWb8A5A/wAXdNY/7ST/ANp62u0Yu1M9rDogiCGFidAOhBxnC8P3XRhb40z6VDSGTXYMYMf5l7t+f9Qr3AuaVWhppvHqj1YIf+YR2whz8j/pAyxox1+Q5/RVGXWyZRs6FVu8ijf5AADG+kewH/6UHT92/abK1rmgSUs/kux3y1rgf5OVlUs3U0rR1LSFk7DOKCS7gNPmSyxyNP8AEfLDT/LavF5XIXH5Xab+vX/zZ2Y4d8bSW7NFc69lJEcEeZjv0H1K4xHrVmp/Fm3aRgE4tz2STVU4JYakCMua1h6iM4GSPm7cLcUlBJq2pc6d7hYmPxI4HmucDywHtEDwT+Y8DjK5rtDPxhxsaA1oosAAYAHwvZHF48uVP+45C1/2r8ft/sMmRYl8eP8A2z0LTQxU1PHBTxsihjaGsYwYa0DsB2RzP8uGR4GdrS7HvgZSkmZhkhkYOC5pb/MYXqnNZ5Wk/E9fQ9wbp214BIGZZP8Aitn4UePp1bqimsV7tMNDNVkspp6eRzml+Mhrg7pnHUFc8f8Ahq1eXuLbhZcZPWZ/91bnwi8BKzTGqqS/aiuNLLJROMkFPSbiC/GA5ziBwM5wAt2opGas9DApQAJAIyCcEJAGEtuAQT0ysyj5460oWWzVt6oosbIK2eNuPYPICp2nhXOua1lw1he6yLHlz108jcexkdhU0LS94a3knoupHIxQKWx5COeCSnmMcrcO9igGYVEEuE7hlKDcqO12zunoX5KZDQpseXYwmXt2PIVgzZjPdMVIa45CYk9kYIHogCAkPfgJFeRL+iZKNziUknJSKSENO7qlNwH8dE0UASos2onxOyeUbmtcxwPVQ2PIIUv8mfcIJeisPpfj6p2UFzMpE49SkROb8MQRyhFP00V5RJTupSUjQm2OtNtvNDXDrS1Ec4/8rg7/AHL6R01THW0sNVA4OhnY2Vjh0LXDIP8AIr5nr19+F7xDhvenItLXKcNutuZim3nmeAdAPct6Y9sKJoqJ3Vy8tfiU8KrlLfqjVmn6WSspqkB1bBC3dJFIBgvDR1aQBnHQ/depOqP7dVmnRVHzTio6qScQRU075yceW2Nxcf0xlesfw3+Fs+n7dV3rVFBG2vrmNjgpaiMOdDEDnLgejnHHHUAfVd3bFG2Te2NgkPV4aN38+qWeqbmCiVv7HtgORbKHI/7sz/guW/iVFutfhPcfLo6OOpq5oaeNzYWtdku3HBAz0aV2I/ReQvxSa5iv+pqewW2USUFqLjM9hy19QeDj32jj75Sg22EqSKv8MumjfvE2nq5o99JaYzWPyON/yxj/AFjn/wAq9pri/wCFXTRs/h4+6Ts21N3mMwJ6+U30s/mdx/VdpTk7YRVILnOVyKu/D/oyurairqnXiSonkdLI81nzOcck/L7ldd5Q5U2FGZ0Dou16GtM1tsjqs0skxn21EvmFriADg4GBwFpsIYKBQBzT8RGmjqPwvuQhZvq7eRXQ4HJ2fOB92E/yXmj8PDt3i/pv/wC5J/7Tl7glYyWN8crQ+N7S1zT0IPBH8l5A8PdOyaT/ABN0lme0hlPVzeSf4onRPcw/6pCuL1RMluz2AAo9ymfT2+qmix5kcL3tyMjIaSP7FIHQKFe//glxP/dpf/QVBfortC3z/CbRtlvJDA+tpWSyNZ0a/GHAfqCr0Lif4S70bh4cT22R+ZLZVuYAeojkG9v9e5dsJwMngBEqV2JbI9xmMFFM9hb5gadm7puxxlYkUVRdq2mtxl8qnkY6WqkadrixuAWM9i4nBPYZ7qm8afEGLSlhknj2yVsuYqOI9HOxy8/0W9f5BW2hZ5XUulqupkL5aqhaJHu6uc+IPz/Nq+ZyzfK5GPLJf8d0v3+/4PRgvjxyiv8AKrNy4RUNEGwRsjiiYGsY0Ya0DgADsFyMaXlHjZJryrq4YKGOERCHBLj+62FxPQAErpupKuOmo3ea8MYGl73E8NaOSSsBQtudayV9ax7W1tbC7ys4+GpQ1r8EH8x7/V/0WnK5uaGdrFKoqk/5f/wnFhhKFyW2dWyB1IRrIftae5VlQ6CF7qOnJbLPnDA8fkZ/ER3xwOnXhXNkrpTYKGa4Ob8W+Br3s6HcRnGPfoF2YP6lGcpfIuqVNX7sxnhcUq2y1c4NaS48BRYrjTvk2B2DnAJ4BWM1ZrH9m6ZqblUwtc+Ju0UtO/zDJMThsYIHJzgdFU2SujjpbZT6lc2nv12IPwj595yPVta0cNa3H/Ekriz/ANVyuXbD/in/ALf5r9JGseMkqn5OrrJeJFxuTNMXSh0yyOa+y07mRtMgb5QcMbz9cZ2jufsuHXTxg17qm/1lh0TQ00XlzPhFXFEXvDQ4je5zvSz36fZJ8Rn1mhfCOSjfcpK++XqrIrK/eS57iMvw7rgBob+pXrcnldemPE/vJql+F7bOaGO7cvCPOsrnMe6N4Ic0lpB6gjgqRRx1D2yz00MsjadofK9jCRG3OAXHsM4C1nh/4b3TVrjWyEW+xxHM1wqPSwNHXbn5j/V7lWPiJqeyRWyPSmh4PKskLxJVVZ+eulb0cT1LR2+vThdr5SeX4ca7Nefwv5/f68/wc/w/XtLRhpal9TKZZjl57p6MAgKCzgDCmUzC5ucrsRyyQuVmAmQ7aVJkdxhRJBymQiS2c7eqQ6XKZGUYHKB0K3ZTchS3YCZ6lIaQWcId0eERSKGByj3bTylMbgnKbepNUSPKLQCcjIyn487MHoray0rbzaJ2NA+LpgDj+JqgyMDG46kdQizNu3TKypwCmQ7hS6pody3ooSRpHwId1RJRCSRhBYFIt9bVW2ugrKCeWnqoHh8UsTtrmOHQgqOggD1J4c/iRpZaeGj11TvhqB6f2hSs3Mf9XsHIP1bkfQLt1l1npm+RNktN+tlSHDOG1DQ4fdpII/kvnYh/ao6Jj7H0uNXTNaXOqYA0DJJlbgf1rNai8QtJWCJz7pqC3RuAz5ccwlkP2a3JXz3L3HguJH3SUuiY+x6H8VPxCz3almteioZ6KmkBZJXzYbM5vcMb+TPv1+y4BTMZPVwsnmEMckjWvldkhgJwXHvx1TIQVqKXgTdnua0eK/hvaLXR2+k1LRtp6SFkEYEcnytAA/L9FM/xz+Hv+k9J/wDjk/urwdk+6LJU9EPszr34iNfw6r1pCdPXGSW00dM2KKSJzmNe85c8449wP0XK/wBo13/1lV/+Z3/FRhylAKkiWySy5V4Ic2tqmuHIImdwf5r2lpXxs0ZUaatct3v9PS3J1NH8TC9j8skAw7OG46jP6rxKRgIm5yhxTBSPeH+OXw+/0no/9ST+6uX6r1loefxs0hqugv1M+GOOWCvkDH4YAx3luPp77i3j2XmLJ90TtzikoIHM92f45vD3/Sek/wBST+6od48ZNAy2muih1JSvlkp5GMaI5OSWEAfL7rw67I7pPPul0Q+zZ2T8M2ubbo/Ulziv1Y2kttbSjMrwSBIw5b0BPILgvStw15YqvS895obgyS0RhzpKkNc0YacEDIBPPH3XiHROnqjU+pqK00pIM7vW8f5tg5c79Aul+PWpKaliotFWLEdvtzW/ENYerwPSw/bqfqfovM/qCeeceLB7lt/qK/8AZ04KhF5ZevH8lN416mt+oq22T2+rZVvdC6SUtBxT5dhsIyOoAy493OPsF6D0PqiyXTStljtFxhqau1UVK+qjYHboixoyCMc9HDjK8X591pfD/V1XozUMNzpGiZoaY5oHHDZWHqD7diCteZwVPjrHi047X+icWasnafvyertSeJuhLnU0cf8AhPQij8wGqDo5S5zGndsA2c7iADntlc+uHijbavxmq4hqR0GiqtjXy1ELC07xDjDXFpc3LgAcD+XVef8AUVbS198raq3U8lLRzSukjhe4OMYPOMjrzlVndaw4WFRdx/ydu97IeaV6fg90Ufit4aUtuioaXUVDFSxM2MjDJAGj/V/rWfrte+H9QJmT66c+AsdiCGJ8W44PBka3dj6AheN8lDJVT4WHJJTnFNoSzTSpM7DpPxlGndIU1pbZGVVZSOeYaiSX0ElxO5wxnPPY8rEM1xeTrSn1RUTfEXKGUSNEnyAdNgA6NwcYCywGUodUY+DghKUox3Lz/scs85JJvwdVvfi9qG9QC2WCiprLFUEMMdvZ+9lcewd1GfoM/VdPrrZZdO+Fumn+IcBlda8vbSNdu86d+TsPucdeccHKxfgpbLdp7Sl08QLzF5xpN0VJH3BGASP6RJDR7clR77eLrrTwe1De7w7L4bxE+naOGRM27Sxo9hu/VeLnxQllWLCusIySbXlt6pfwmdUJSUXKbttGQ194jXjV2KVxbQWaPiG30/pYAOm7+I/1ewWJHVEM45SmjlfRYcOPDHpjVI8+c3J3IcYeQp0Ega3CghOjotTCSsll27PKZd8yJrkMqiaodaETsBAOACac4k8oEkE45KJBF3SLDROOEaQ84ckApzD5YcmSO/ZS6VjqjLQOG8kpdVStZHkFSXdOhFluU1ouMVXTEZYeWno4dwfor68fDXCQ11uZtil5fGPyO7j7LNNjaQe6doauSiecHMZ6t7FS0x6YqSJ3sVAk4cQtGRBPRuqoDx+Zh/KqGrILgWphF7I6LCNAAnog0EIIyCiQAWEEaCACQR4RgZQASCVhDAQATRlKwEGpxrMoJbG8DsjCkfDO2F3ZJdFsAJTFY1hE44RuI7I44nSOQwCGSnAMJ/4UhoICTLBIxocQcIJ7JkaQZzhN47p4AnqiIQUmds/D3TtoLDqrUNJEKq6UsPlQwDG7G0vz9iQP9VcWrKiWsqpqmqkMk8z3SSOPVzickqRbLpcLU+V1tramldKwxyGGQt3tPY46hQnN2nlcuLjuGbJlbvtX+kvRvPIpQjBehOBlHgIDlDBXVRiDaPZEQOyUAj25RQWIA5R4R4wjAyihWJAQCVjCIBOh2dT8OdSaeqdI1WkdaVdTR211U2rgngzye7HYBwM85wnvFHW1gl0tSaR0NG9lohk82aYgjzSOQBnk8nJJ9guT4R4XC+BjeX5W35ur1f5r8m3zvr1CHRLHZJAS+y7jnYoFKzwkBGgmh0FHlNh3CTuKYqJAIIQxymmuyE61yqxBHqklGeqLKQBk4CaJylE5SEhoudKXyGztukVXSsqYa6ldTkEcsOchw9iq19TvYG8/qo3GQjA5U+DRqxQO1Jd6uEo8pLjhIKF00z4XloOGPGCEipHAcOiQ48opHlwAzwgK2ITkLSWlNgZIUunxtdlBUmRXjDikHqnZfmKbQCEowMpQGU61nCAboZAwltxhG5mOqSgLsIpQblKY3KebGAUEtjIZzwEtnBT4ZzhHsa1hz1ToTdiDO4MLQeEXL4+OcJiQknjsn6bcQeOEITVbGWxHdlSod0WMt4U2nhYWZPVFUAtbt2/qEyHO9BCVob1CKarL2CMj0hRww84CDnOIwUyaQ1IBnITO1LfnKJI0Da0JqQZcpDAm3AZKBpjbWjCPalDhBAWJDQlBvCPCeha1zmh3RMTZHLQiAAVtcKWCONhidk45VaWjqENUClY2eqLBS8ZQwkOxICPCPCCQWBDqEZCCYgIIYSg3KACHRJKW5uAkpgEOqcB4CQhlADo5RO6IN6pRQSMlBG7qiQUIccJxow4ZTDjnop1OBOzAIDx2PdQaeBo4wmijm3seWuGCiyECEvGE2eoS3nJSEFIAPqCfY/Gcd1HSmlAMU7klI7pRRIELaOVMpot6ix4AJTsczmD0lAnsTVM2PIIUcDKecXzyZPOU55WAEUNaBA0KU2LKjsO08J3zy0FBDHHM28qLMcnhB8zncA8IgO/umFUJaMqbSbWnGFGAwpVK3c9MmT0SCzjI4S/Na6MNLeR3RuPpwmcEcpmVWBxABOEumiZIDnGVGlznhLhJA56pFOOtDFZE1jzhRmNy4D3Uqb1Z55SaWEyTsb0yeqBxFTxiNrQBg91FIySru7xthIY4c+6qcc9Ex3Q1tQ2lOYRgJgmI2pQGEeEYCKAB5CbI4UhrfSklv0Ta9isjkJKdeE2pZSCQQKCkYZRBBBMA0bSElEmFC3nhIQwjQAESNBAC2lLzwmwOEeeECEu6pGeUopGUikIlYGSEMIc0HAI7pdM8tqGOHGDytRJo6spp4mPLSyQZ+od/CfqpFVpq1z2lzqG4Mju0GfOopeCcfwnusVkT8GrRVX4wyQwPhdHI8j1FvZUuCeMco4y+J728jHUFKMn81aJoYe0jqkJ+dwc0Y6qMeqY14FoIh0QQMPKNv1RIAoEx4YQTYKdYMhAhyE7cpT3ZTOcJbSgQpo5SiARhFn2S2MLjxlNIlkmgoBPIW+wVhUWkRwsDQd3UpFGyaniZIIngSHDTjr9k9JXy72skBG3jkI9kSk60VL4Sw4IRwksdkBT6kB5aW9PdQpAAeqZCd+R8S56hKzu6KINxHCch3Z5TKSHHNGeRyltjB4T7Is4JCsYbeZY8gZToXooZYAScFWWnbcau5RMDg0A5ypEtAY3epq1GhLeXfF1hhyyFh5+qzzPrBtGuCPaSMdqRobcJI8h204KrBDkAqyuI8yvlzzlxOT91DeS0kK8auKsyyyubojvYG8JnHOFIkJI56pg8OJVCQexGG4KS0ncngB3KbBugm4wj2j3QIx3ST1SFYmRnCjluFIe7jomT0UlxGXdUWUbhykYSLFIIIIACCCCABhBDqgmACEOyPKCAFZ4SCUZKIoAS4okCUEmUj0pSxUd6ovMLfJdOP+kAY3Y7j+kFhvEnQEhl+Ps0/wATsZ6z+d591tG6jtUkVLRTOMVdTPJfAGY8p/XP/hKsbSyjrXXGrp5PLfPy+MP3Nj/pD7r5vDnlikd8opnmQuLJC+oY7d8pyOpR1UIbAyaM5iecA+xXojVmi6e7WJjKGGmdLK7D5Dw5h/iCz2mdHUt/pYtF19KKC6U2+eGraM/ED6/Retj5cZLZzvG0cOKQQrbVFlqNO3+ttVZj4ilkMbiOh9iqo9F1p2rIEjqlogEaYAQCCNoQDFNbkp0cBLiahKMIIsaJ5QaeUlxyUbCgY+zlT6LZn1nHuoUQ44Ulny8qkZSZs71d4qmmtlJTlgp6WPDQOuT1KRWRwzwRAsaS3ncsiX4ILeykR1socPVx7ZToya/BfG307qZxbK1smeGlQ6qy1DIvMc1pj+hTDKlj3Bzhz7qW6sIaGiZ2PYlMi2isbThgwWkfdPwQAuCckqsna4gkd8JUEhLgAQf0VJFKdeS3tdvMzgSOFrKG1xsYHOGGrOWycwuad3IWliuDZMeY8N2jP3VuI45EN1NFBIMbcDnlbGGGntPh40Qs9dQ8knHVZaoc2PyXbgWOB5C0eqbjBT2W2UjXNOIy7H3XNnTdI7uPOKjJs4/daXEjnAcqjkYQSSt5X0JlpTOXNGOMZ5WRr4g3IHutl+jz3p2VgbuKRJEfZTqZgydylegDBARQdqKRrcIE4U2ojAJx0UN4SKTsLelNIITR4RsPskMTIm1IlA2lR0iohEcJs8JTnc4CSRwkWEgUEjlA6FoIgjQAAjRJQGUCCCCVtRAe6AE9eEEECgBJ6JJS0goZSOz/AB9O29TXORzTDVRuiMj24zxyw/0ls9I2ejgstO+glIZK4Ze4cgd2uTd4obfU00lLVRtbENsxja3Hf0yM98qfWGhtdXDM+WU/EUxd8OzhsuBw4D3C+UeTtpHpqFeS3r6JxqJWW6UNpGR7mAHkO7sKgyGSot1BdKZvwlwBcymlYN0kco/I7+iVyPXOsLnaGfCUVa5lTVx/vyBzs7Z9nfVZDS+vdQacrZ6ihrXSGdu2Vk/ra/2PPce678HDnOPe6sxyZEnRvvFWotWqbTcbxcSy2attr2QT0nT4kE43AdTgLjAPKttVagrtT3mS53Qxmqka1rjGzaCAMDhVC9bHFxjTOdhkoZKJBaCFtTjE0088p1g9kCZIjdhFPI1zcDqm8kAppziglIA5PKfibkplvUKU3AAQKTFjgpwOTOUYVmbVj/VKDD1TTHqSx4Ix3QSw25CJ7sJwYBCJ+HIIG27nuCsaUiPGeqr2nb0SzK5UmKSsvo589Dym6iokDNrSSFXQSPPdSTvIV9jLrTHn3SoMQY6UhreyTcrzU1skbnvyGNDR+ihSs45TB9uyTdlxJEtxqHu5lcR7EpHnmQAHqmWtBIynHBobwpuhvYsenlKD955TG4k47JzaWjOUmFCpRu7qM+NO7kgvz1KLBDBiSNm3OE6Xgd0296C9jUp9KjudhOSHuEwkaxAhlFlGkUBJISkRKBhdEpvPVJ7owcIAURwghnuESCRQIH1ROOSiCSSgYeeUMpBKLcUDoXuSSiyiQB6pi1BpqqutHRXCpjilpQW08jxjyCBgsk+ntlciuN2s1Veq1819qImRSyfDYBcI3jOC3+iSsJqK/VN8u01wqGRwzTACRsXDXEDGcfVVC83Bwow23s68mbtolXCrkrap89RI6SV5y5x7lRkSAXclSowDQQQTACBGEArih09crhZq66UdJJLRUWPPlaMhmemUwKgKZA3cMKLEAXgHoprW7GF3bsgmQzONriFH7pb3bjkomjJQNaHIxyFIIwEzGOQniRhNGcgkHE4RDqgeUCDYSnmSYCYAwlBMTJbZRjkoxK33UPKIHhOyepPD29igXhQ43p0cpktE2F4afop8FQzGCqcOwnonKjOUbJtQQ4ktPChZwU44khR3BxKAihxruUoknKbbx1VzRW2OeldJ5rGkdieUqBtRKbdt6JL6kqRVQtjcQDlQJB7JPRcaYozk9EgSOykoDhIuhwuTZOSgSgOUDoS/oo56qQ/omCkVEIoAokMpFAQRZQTANBEjCQAyjHVHgIcJgwFNlKckkpgkBEhlFlKyg8okWUMpNjG0EEFIwI0SCADQRBGgCxsVoq73cY6Kgj3zvyRzgALtXhlcqjQNDVftu3ul0zXP+Hr2bMujdjHmfUc4WT8Laaott5EjKbe51M6Tdn/KN7tH1XRKvWttbo+uFZTvjM9PK2Dz2emQgY2n6hcuXJb6otQdWee7u2lZd6wW95fRiZ/kOIwSzcdv9WFGdKSNvZKt8Iqa+mhe8MbLKxhcejckDJ/mtl4p+H9w0JeGxVJZNQVA3U1RHna4ex+q6bS0RVmIS2HCQlNVCY4ClApASgeE0QxaU1JHRKamSxWEOiGcIdUxBIIfqgkABgJ2MglMkJ2JhLgU0Sx4dU9E1Lip8qU2mc05xwqRk5IYDSjwMcqT5XHRNTRloQTZClITbah7OA4gJUoyVGceVJslZJ8wv5JTUuMH3SGOwUHnJRYKOxGXIc90MoZykaARhBFuA4QAl/Qpkp1xyCm3dUDQlEjKT2QMBRpKPKADQRIJAKygk5RgpgGeiQlFJKQ0JwggUEigIFBBAxtDCXHG6RwawZceAFIdRTMp/Oc3DN20/QoAiIIz1RBIA1Ms1JJX3WkpYADLLI1rQenVRHAtOHAgrU+Gcvkawopfhfiw3JMffGOo+yjJLrFscVbSNlOa6jfPJbWvgfbCWyn/ALI++PYqzuV3odQ6JlFfFEyeFhkdEeCT2kYfv1C3c1baGvkMRhl+Ii5mIG2T3jd9QsnqS2WissUb6Z0UUEJLYX/wO7sd9F465ClJJrZ1yxuMTgXdbB2qqur0TPYbzVzVMMTmTUO87jE4cFuT+XHZZKduJ3jgeojAUqpzHSsDcFrwCfcL2as47IR6pxg6JsclWM1DNTxNdLE9gc3cC4YyqEyN3RpIR5VECmuTw6BR8J1ruMJiYHlGw5SC5EDzkIFQ/gItvKDTlKTJA1ueqmQNAIURvun2SDIQTLZoKKIEAlWHkNLVR0lVjAyraCcOHKv0ck07AYQB2UGtx0Uyado7quqJA45RQQuyqmad59lFPsp05GSVEfhQzsixvujxwlYGPqhsPskWiOSAecpZyADg4U+moTO5rcZLinbzCyirTThvLAM/dAX6K4t4+qZkyCpMlQDjDeUguY8dOUDQwc7QkJ944wEyRhAwsIjwEpJKAEIBKDSU7HCSEA3QzhEVMFOcdEiSLA6IpiUyOOUYGEe3AyiygfkDklGSiQUgIiQiJRFSOg0EklAFAz//2Q==" alt=""><span class="obi">🇪🇪</span></div>
+        <div class="ob">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px">
+            <div class="otype" style="margin-bottom:0" data-i18n="f5.org">Kambuka Kids MTÜ · Estonia</div>
+            <span class="status-badge" data-i18n="f5.status">Implemented</span>
+          </div>
+          <div class="otitle" data-i18n="f5.t">Children's Winter Camp</div>
+          <p class="odesc" data-i18n="f5.d">A children's winter camp using the project's well-being and outdoor activity methods.</p>
+          <p style="font-size:11.5px;color:var(--muted);margin-bottom:10px" data-i18n="f5.aud">45 participants (33 children + 12 team members)</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://www.instagram.com/p/DTegjyoCPbq/" target="_blank" rel="noopener"><span data-i18n="f5.ig">View on Instagram</span> ↗</a>
+        </div>
+      </div>
+      <div class="oc oc-wide rv" style="--d:.28s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/wall%20papers/epale%20salto.jpg" alt=""><span class="obi">🇱🇻</span></div>
+        <div class="ob">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px">
+            <div class="otype" style="margin-bottom:0" data-i18n="f6.org">UNTU · Latvia</div>
+            <span class="status-badge ongoing" data-i18n="f6.status">Ongoing</span>
+          </div>
+          <div class="otitle" data-i18n="f6.t">Toolkit-based Preparation for External Exchanges</div>
+          <p class="odesc" data-i18n="f6.d">Knowledge gained from the toolkits was put into practice and shared with a wider audience — our network of NGO partners, as well as the EPALE and SALTO portals.</p>
+          <div class="reslinks">
+            <p class="prose" style="margin-bottom:6px" data-i18n="f6.epaleIntro">Our project's open educational resources and materials are published on EPALE — the European Commission's official open platform for the adult learning and education community.</p>
+            <p class="reslabel" data-i18n="f6.epaleLabel">🇪🇺 EPALE</p>
+            <a class="resrow" href="https://epale.ec.europa.eu/en/resource-centre/content/international-comparative-mapping-report#" target="_blank" rel="noopener">
+              <span class="res-icon">🗺️</span><span class="res-title">International Comparative Mapping Report</span><span class="res-go">↗</span>
+            </a>
+            <a class="resrow" href="https://epale.ec.europa.eu/en/resource-centre/content/wellbeing-youth-work-practical-activity-toolkit" target="_blank" rel="noopener">
+              <span class="res-icon">🧰</span><span class="res-title">Wellbeing in Youth Work: A Practical Activity Toolkit</span><span class="res-go">↗</span>
+            </a>
+            <a class="resrow" href="https://epale.ec.europa.eu/en/resource-centre/content/freshly-baked-content-digital-content-creation-toolkit" target="_blank" rel="noopener">
+              <span class="res-icon">🎬</span><span class="res-title">Freshly Baked Content – Digital Content Creation Toolkit</span><span class="res-go">↗</span>
+            </a>
+            <p class="reslabel" data-i18n="f6.saltoLabel">🔶 SALTO-YOUTH</p>
+            <a class="resrow" href="http://toolbox.salto-youth.net/5937" target="_blank" rel="noopener">
+              <span class="res-icon">🧩</span><span class="res-title" data-i18n="f6.saltoTitle">Daily Wellness Challenge Movement Toolkit</span><span class="res-go">↗</span>
+            </a>
+          </div>
+        </div>
+      </div>
+      <div class="oc rv" style="--d:.34s;flex-direction:row;align-items:flex-start">
+        <div class="oth oth--photo" style="aspect-ratio:1/1;width:130px;flex-shrink:0"><img class="oth-cover" src="https://ik.imagekit.io/colibrarian/dwcm/wall%20papers/tik%20tok%20brain.png" alt=""><span class="obi">🇱🇻</span></div>
+        <div class="ob">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:10px;margin-bottom:8px">
+            <div class="otype" style="margin-bottom:0" data-i18n="f7.org">UNTU · Latvia</div>
+            <span class="status-badge ongoing" data-i18n="f7.status">Ongoing</span>
+          </div>
+          <div class="otitle" data-i18n="f7.t">TikTok Channel on Critical Thinking &amp; Media Literacy</div>
+          <p class="odesc" data-i18n="f7.d">A new TikTok account was created in Latvia, dedicated to critical thinking and media literacy — continuing to apply the project's digital communication skills in practice.</p>
+          <a class="olink" style="font-size:11px;padding:5px 12px" href="https://www.tiktok.com/@fromthinkingtospeaking" target="_blank" rel="noopener"><span data-i18n="f7.tt">View on TikTok</span> ↗</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="sh rv" style="margin-top:56px">
+      <p class="kicker" data-i18n="fstat.kicker">Verified Indicators</p>
+      <h2 style="font-size:22px" data-i18n="fstat.h2">Outreach, in numbers.</h2>
+    </div>
+    <div class="stat-grid rv">
+      <div class="stat-card tgt"><span class="n">80</span><span class="l" data-i18n="fstat.s1">Original follow-up reach target</span></div>
+      <div class="stat-card"><span class="n">11+</span><span class="l" data-i18n="fstat.s2">Documented activities</span></div>
+      <div class="stat-card"><span class="n">100+</span><span class="l" data-i18n="fstat.s3">Unique participants</span></div>
+      <div class="stat-card"><span class="n">159–175</span><span class="l" data-i18n="fstat.s4">Attendance instances</span></div>
+    </div>
+    <p class="prose rv" style="margin-top:20px" data-i18n="fstat.note">Figures compiled from partner reports. Estimates (such as the attendance-instance range) are marked separately and are not summed together with verified unique-participant counts.</p>
+  </div>
+</section>
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="ftgrid">
+      <div class="ftbrand">
+        <img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU">
+        UNTU · <span>Daily Wellness Challenge Movement</span>
+      </div>
+      <div class="ftlinks">
+        <a href="https://untu.ngo" data-i18n="footer.back">← untu.ngo</a>
+        <a href="https://www.youtube.com/@untuwellnessdailychallenge" target="_blank" rel="noopener">YouTube ↗</a>
+        <a href="https://www.instagram.com/ngo_untu" target="_blank" rel="noopener">Instagram ↗</a>
+      </div>
+    </div>
+    <p class="ftcopy" data-i18n="footer.copy">© 2025–2026 Biedrība UNTU.</p>
+    <p class="ftaction" data-i18n="footer.action">Erasmus+ KA153-YOU – Mobility of Youth Workers · Project No. 2025-1-LV02-KA153-YOU-000304266</p>
+    <p class="ftdisclaimer" data-i18n="footer.disclaimer">Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them.</p>
+  </div>
+</footer>
+
+</div>
+<script>
+/* ===== 0b. ACTIVE NAV LINK (desktop only, home page excluded) ===== */
+(function(){
+  var here=(location.pathname.split('/').pop()||'').split('?')[0];
+  document.querySelectorAll('.navlinks a[href]').forEach(function(a){
+    var href=a.getAttribute('href').split('#')[0];
+    if(href!=='dwcm.html'&&href===here)a.classList.add('active');
+  });
+})();
+
+/* ===== 0. HAMBURGER MENU ===== */
+(function(){
+  var h=document.getElementById('hamburger');
+  var n=document.getElementById('navlinks');
+  if(!h||!n)return;
+  h.addEventListener('click',function(){
+    var open=n.classList.toggle('open');
+    h.classList.toggle('open',open);
+    h.setAttribute('aria-expanded',open?'true':'false');
+  });
+  n.querySelectorAll('a').forEach(function(a){
+    a.addEventListener('click',function(){
+      n.classList.remove('open');
+      h.classList.remove('open');
+      h.setAttribute('aria-expanded','false');
+    });
+  });
+  document.addEventListener('click',function(e){
+    if(!n.classList.contains('open'))return;
+    if(n.contains(e.target)||h.contains(e.target))return;
+    n.classList.remove('open');
+    h.classList.remove('open');
+    h.setAttribute('aria-expanded','false');
+  });
+})();
+
+/* ===== 1. REVEAL ===== */
+(function(){
+  function all(){document.querySelectorAll('.rv').forEach(function(el){el.classList.add('in')})}
+  if(!('IntersectionObserver' in window)){all();return}
+  var io=new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(!e.isIntersecting)return;
+      var s=e.target.getAttribute('style')||'';
+      var m=s.match(/--d:\s*([\d.]+)/);
+      var delay=m?parseFloat(m[1])*1000:0;
+      (function(el,d){setTimeout(function(){el.classList.add('in')},d)})(e.target,delay);
+      io.unobserve(e.target);
+    });
+  },{threshold:0.08,rootMargin:'0px 0px -30px 0px'});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el)});
+})();
+
+/* ===== 2. SMOOTH SCROLL ===== */
+document.querySelectorAll('a[href^="#"]').forEach(function(a){
+  a.addEventListener('click',function(e){
+    var t=document.querySelector(a.getAttribute('href'));
+    if(!t)return;
+    e.preventDefault();
+    t.scrollIntoView({behavior:'smooth',block:'start'});
+  });
+});
+
+/* ===== 3. LIGHTBOX ===== */
+(function(){
+  var lb=document.getElementById('lb');
+  if(!lb)return;
+  document.querySelectorAll('.gi').forEach(function(el){el.addEventListener('click',function(){lb.classList.add('open')})});
+  var lbx=document.getElementById('lbx');
+  if(lbx)lbx.addEventListener('click',function(){lb.classList.remove('open')});
+  lb.addEventListener('click',function(e){if(e.target===lb)lb.classList.remove('open')});
+  document.addEventListener('keydown',function(e){if(e.key==='Escape')lb.classList.remove('open')});
+})();
+
+/* ===== 4. I18N ===== */
+(function(){
+var T={
+  lv:{
+    "nav.about":"Par projektu","nav.outcomes":"Rezultāti","nav.partners":"Partneri","nav.gallery":"Galerija","nav.guidelines":"Vadlīnijas",
+    "nav.followup":"Aktivitātes","nav.media":"Mediji","nav.downloads":"Lejupielādes","nav.campaign":"Kampaņa","nav.learning":"Tests",
+    "footer.back":"\u2190 untu.ngo","footer.copy":"\u00a9 2025\u20132026 Biedrība UNTU.",
+    "footer.action":"Erasmus+ KA153-YOU — jaunatnes darbinieku mobilitāte · Projekts Nr. 2025-1-LV02-KA153-YOU-000304266",
+    "footer.disclaimer":"Līdzfinansē Eiropas Savienība. Paustie uzskati un viedokļi atspoguļo vienīgi autoru viedokli un ne vienmēr sakrīt ar Eiropas Savienības vai Jaunatnes starptautisko programmu aģentūras viedokli. Ne Eiropas Savienība, ne piešķīrēja iestāde nav atbildīga par tiem.",
+    "crumb.back":"\u2190 Daily Wellness Challenge Movement",
+    "ch.kicker":"Rezultāti un turpinājums","ch.h1":"Viss, ko radījām — un kas notika pēc tam.",
+    "ch.lead":"Šeit apkopots viss, ko projekts saražoja — pētījums, rīkkopas un dalībnieku pašu izstrādātie scenāriji — un viss, kas notika pēc mobilitātes.",
+    "ch.jump1":"📖 Pētījums","ch.jump2":"🌐 Turpmākās aktivitātes","ch.jump3":"🛠️ Rīkkopas",
+    "ch.connector":"un ko tas deva pēc mobilitātes","ch.connector1":"un ko tas nozīmē praksē","ch.connector2":"un ko dalībnieki izstrādāja paši",
+    "ch.jump4":"🧩 Scenāriji",
+    "sc.kicker":"Dalībnieku izstrādātie scenāriji","sc.h2":"Dalībnieku izstrādātie iekļaujošie mācību resursi.",
+    "sc.lead":"Papildus oficiālajām izstrādnēm dalībnieki izveidoja arī savus iekļaujošos āra un aktivitāšu scenārijus dažādām mērķauditorijām — no senioriem līdz pusaudžiem un bēgļu ģimenēm.",
+    "sc1.tag":"65+ gadi","sc1.t":"Park Walk – Connection and Joy",
+    "sc1.d":"Iekļaujošas āra aktivitātes koncepts pieaugušajiem 65+ gadu vecumā — atbalsta sociālo saikni, maigu kustību un labbūtību.",
+    "sc2.tag":"13–16 gadi","sc2.t":"My World and Me",
+    "sc2.d":"Iekļaujošas nodarbības plāns jauniešiem vecumā no 13 līdz 16 gadiem — pašapziņa, komunikācija, pašizpausme un sadarbība.",
+    "sc3.tag":"Ceļvedis","sc3.t":"Guide for Leading an Inclusive One-Day Hike",
+    "sc3.d":"Praktisks ceļvedis vienas dienas iekļaujoša pārgājiena plānošanai un vadīšanai kopā ar bēgļu pieaugušajiem un bērniem — drošība, pieejamība, aizsardzība un grupas atbalsts.",
+    "sc1.dl":"Skatīt / Lejupielādēt","sc2.dl":"Skatīt / Lejupielādēt","sc3.dl":"Skatīt / Lejupielādēt",
+    "f7.org":"UNTU · Latvija","f7.status":"Turpinās","f7.t":"TikTok Channel on Critical Thinking & Media Literacy",
+    "f7.d":"Latvijā tapa jauns TikTok konts, kas veltīts kritiskās domāšanas un mediju pratības tēmām — turpinot projektā apgūto digitālās komunikācijas prasmju pielietojumu praksē.","f7.tt":"Skatīt TikTok",
+    "r.kicker":"Salīdzinošais pētījums","r.h2":"Viens pētījums. Četras valstis.",
+    "r.lead":"Starptautisks salīdzinošs pētījums — patstāvīga izstrādne, kas nav apvienota ar praktiskajām rīkkopām.",
+    "tk.kicker":"Praktiskās rīkkopas","tk.h2":"Divas rīkkopas. Viena kustība.",
+    "tk.lead":"Metodoloģijas rīkkopa un digitālās stāstniecības rīkkopa — divi atsevišķi, patstāvīgi resursi.",
+    "o1.ph":"PDF — drīzumā","o1.type":"Starptautisks salīdzinošs pētījums","o1.t":"International Comparative Mapping Report",
+    "o1.d":"Wellness Challenges, Digital Well-being and Sustainable Practices in European Youth Work. Satur sadaļas par Igauniju, Vāciju, Latviju un Norvēģiju, salīdzinošus secinājumus un ieteikumus jaunatnes darbiniekiem un politikas veidotājiem.",
+    "o1.meta":"Valoda: EN · Formāts: PDF","o1.dl":"Skatīt / Lejupielādēt",
+    "o2.ph":"PDF — drīzumā","o2.type":"Metodoloģijas rīkkopa","o2.t":"Daily Wellness Challenge Movement Toolkit",
+    "o2.d":"Praktiska, viegli lietojama metožu rīkkopa jaunatnes darbiniekiem — fiziskā, emocionālā un komunikācijas labbūtība, komandas dinamika un stresa mazināšana ikdienas darbā ar jauniešiem.",
+    "o2.meta":"Valoda: EN · Formāts: PDF","o2.dl":"Skatīt / Lejupielādēt",
+    "o3.ph":"PDF — drīzumā","o3.type":"Digitālā rīkkopa","o3.t":"Freshly Baked Content — DWCM Digital Toolkit",
+    "o3.d":"Atsevišķa digitālās stāstniecības un satura veidošanas rīkkopa — video plānošana, filmēšana un montāža jaunatnes darbiniekiem, kas veido saturu sociālajiem tīkliem.",
+    "o3.meta":"Valoda: EN · Formāts: PDF","o3.dl":"Skatīt / Lejupielādēt",
+    "fh.kicker":"Turpmākās aktivitātes","fh.h1":"Ietekme turpinās pēc mobilitātes.",
+    "fh.lead":"Ietekme turpinājās ilgi pēc mobilitātes noslēguma — no vietējām kampaņām un nometnēm līdz jauniem digitālās komunikācijas kanāliem un resursiem, kas koplietoti Eiropas profesionālajās platformās.",
+    "f1.org":"Koordinē UNTU · Latvija","f1.status":"Turpinās","f1.t":"Project-Wide Digital Awareness Campaign",
+    "f1.d":"Digitāla informatīvā kampaņa, kas turpina izplatīt projekta vēstījumu un rezultātus Latvijā pēc mobilitātes.",
+    "f1.view":"Skatīt dokumentu →",
+    "f2.org":"International Volda · Norvēģija","f2.status":"Īstenota","f2.t":"Sound Healing Workshop",
+    "f2.d":"Skaņas terapijas darbnīca, kurā izmantotas projektā apgūtās somatiskās un labbūtības metodes.",
+    "f2.aud":"Apmeklējums: 15 dalībnieki (verificēts)","f2.ig":"Skatīt Instagram",
+    "f3.org":"International Volda · Norvēģija","f3.status":"Īstenota","f3.t":"Climbing Sessions",
+    "f3.d":"Astoņas telpu kāpšanas nodarbības, kas balstītas projekta labbūtības, iekļaušanas un aktīvās mācīšanās pieejā.",
+    "f3.aud":"8 nodarbības · ~20 unikāli dalībnieki · 64–80 apmeklējumi — aplēse, precizēt","f3.ig":"Skatīt Instagram",
+    "f4.org":"Rubikus e. V. · Vācija","f4.status":"Īstenota","f4.t":"Christmas Family Camp",
+    "f4.d":"Ziemassvētku ģimeņu nometne, kurā integrētas projekta labbūtības aktivitātes bērniem un pieaugušajiem.",
+    "f4.aud":"35 dalībnieki (20 bērni + 15 pieaugušie)","f4.ig":"Skatīt Instagram",
+    "f5.org":"Kambuka Kids MTÜ · Igaunija","f5.status":"Īstenota","f5.t":"Children's Winter Camp",
+    "f5.d":"Ziemas nometne bērniem ar projekta labbūtības un āra aktivitāšu metodēm.",
+    "f5.aud":"45 dalībnieki (33 bērni + 12 komandas locekļi)","f5.ig":"Skatīt Instagram",
+    "f6.org":"UNTU · Latvija","f6.status":"Turpinās","f6.t":"Toolkit-based Preparation for External Exchanges",
+    "f6.d":"Rīkkopās gūtās zināšanas tika pielietotas praksē un koplietotas ar plašāku auditoriju — mūsu NVO partneru tīklu, kā arī EPALE un SALTO portāliem.",
+    "f6.epaleIntro":"Projekta izstrādātie atvērtie izglītības resursi un materiāli ir publicēti EPALE — Eiropas Komisijas oficiālajā platformā pieaugušo izglītības speciālistiem visā Eiropā.",
+    "f6.epaleLabel":"🇪🇺 EPALE","f6.saltoLabel":"🔶 SALTO-YOUTH","f6.saltoTitle":"Daily Wellness Challenge Movement Toolkit",
+    "fstat.kicker":"Verificēti rādītāji","fstat.h2":"Izplatīšanas apjoms skaitļos.",
+    "fstat.s1":"Sākotnējais turpinājuma sasniedzamības mērķis","fstat.s2":"Dokumentētas aktivitātes","fstat.s3":"Unikāli dalībnieki","fstat.s4":"Apmeklējuma reizes",
+    "fstat.note":"Skaitļi apkopoti no partneru ziņojumiem. Aplēses (piemēram, apmeklējuma reižu diapazons) atzīmētas atsevišķi un netiek summētas kopā ar verificētiem unikālo dalībnieku skaitiem."
+  },
+  en:{
+    "nav.about":"About","nav.outcomes":"Outcomes","nav.partners":"Partners","nav.gallery":"Gallery","nav.guidelines":"Guidelines",
+    "nav.followup":"Activities","nav.media":"Media","nav.downloads":"Downloads","nav.campaign":"Campaign","nav.learning":"Quiz",
+    "footer.back":"\u2190 untu.ngo","footer.copy":"\u00a9 2025\u20132026 Biedrība UNTU.",
+    "footer.action":"Erasmus+ KA153-YOU \u2013 Mobility of Youth Workers \u00b7 Project No. 2025-1-LV02-KA153-YOU-000304266",
+    "footer.disclaimer":"Co-funded by the European Union. Views and opinions expressed are, however, those of the authors only and do not necessarily reflect those of the European Union or the Agency for International Programs for Youth. Neither the European Union nor the granting authority can be held responsible for them.",
+    "crumb.back":"\u2190 Daily Wellness Challenge Movement",
+    "ch.kicker":"Outputs & Follow-up","ch.h1":"Everything we created — and what happened next.",
+    "ch.lead":"Here's everything the project produced — research, toolkits and participant-developed scenarios — and everything that happened after the mobility.",
+    "ch.jump1":"📖 Research","ch.jump2":"🌐 Follow-up Activities","ch.jump3":"🛠️ Toolkits",
+    "ch.connector":"and what it led to after the mobility","ch.connector1":"and what it means in practice","ch.connector2":"and what participants developed themselves",
+    "ch.jump4":"🧩 Scenarios",
+    "sc.kicker":"Participant-Developed Scenarios","sc.h2":"Participant-Developed Inclusive Learning Resources.",
+    "sc.lead":"Beyond the official outputs, participants also created their own inclusive outdoor and activity scenarios for different target groups — from seniors to teenagers to refugee families.",
+    "sc1.tag":"Ages 65+","sc1.t":"Park Walk – Connection and Joy",
+    "sc1.d":"Inclusive outdoor activity concept for adults aged 65+, supporting social connection, gentle movement and well-being.",
+    "sc2.tag":"Ages 13–16","sc2.t":"My World and Me",
+    "sc2.d":"Inclusive session plan for young people aged 13-16, focusing on confidence, communication, self-expression and cooperation.",
+    "sc3.tag":"Guide","sc3.t":"Guide for Leading an Inclusive One-Day Hike",
+    "sc3.d":"Practical guide for planning and facilitating an inclusive one-day hike with refugee adults and children, covering safety, accessibility, safeguarding and group support.",
+    "sc1.dl":"View / Download","sc2.dl":"View / Download","sc3.dl":"View / Download",
+    "f7.org":"UNTU · Latvia","f7.status":"Ongoing","f7.t":"TikTok Channel on Critical Thinking & Media Literacy",
+    "f7.d":"A new TikTok account was created in Latvia, dedicated to critical thinking and media literacy — continuing to apply the project's digital communication skills in practice.","f7.tt":"View on TikTok",
+    "r.kicker":"Comparative Study","r.h2":"One study. Four countries.",
+    "r.lead":"An international comparative study — a standalone output, not merged with the practical toolkits.",
+    "tk.kicker":"Practical Toolkits","tk.h2":"Two toolkits. One movement.",
+    "tk.lead":"A methodology toolkit and a digital storytelling toolkit — two separate, standalone resources.",
+    "o1.ph":"PDF — coming soon","o1.type":"International Comparative Study","o1.t":"International Comparative Mapping Report",
+    "o1.d":"Wellness Challenges, Digital Well-being and Sustainable Practices in European Youth Work. Includes country sections for Estonia, Germany, Latvia and Norway, comparative findings and recommendations for youth workers and policy stakeholders.",
+    "o1.meta":"Language: EN · Format: PDF","o1.dl":"View / Download",
+    "o2.ph":"PDF — coming soon","o2.type":"Methodology Toolkit","o2.t":"Daily Wellness Challenge Movement Toolkit",
+    "o2.d":"A practical, easy-to-use methodology toolkit for youth workers — physical, emotional and communication well-being, team dynamics and stress relief for everyday youth work.",
+    "o2.meta":"Language: EN · Format: PDF","o2.dl":"View / Download",
+    "o3.ph":"PDF — coming soon","o3.type":"Digital Toolkit","o3.t":"Freshly Baked Content — DWCM Digital Toolkit",
+    "o3.d":"A separate digital storytelling and content-creation toolkit — video planning, filming and editing for youth workers producing content for social media.",
+    "o3.meta":"Language: EN · Format: PDF","o3.dl":"View / Download",
+    "fh.kicker":"Follow-up Activities","fh.h1":"Impact continues after the mobility.",
+    "fh.lead":"The impact continued long after the mobility ended — from local campaigns and camps to new digital communication channels and resources shared through European professional platforms.",
+    "f1.org":"Coordinated by UNTU · Latvia","f1.status":"Ongoing","f1.t":"Project-Wide Digital Awareness Campaign",
+    "f1.d":"A digital awareness campaign continuing to spread the project's message and outputs in Latvia after the mobility.",
+    "f1.view":"View document →",
+    "f2.org":"International Volda · Norway","f2.status":"Implemented","f2.t":"Sound Healing Workshop",
+    "f2.d":"A sound healing workshop applying the somatic and well-being methods learned during the project.",
+    "f2.aud":"Attendance: 15 participants (verified)","f2.ig":"View on Instagram",
+    "f3.org":"International Volda · Norway","f3.status":"Implemented","f3.t":"Climbing Sessions",
+    "f3.d":"Eight indoor climbing sessions built on the project's wellbeing, inclusion and active-learning approach.",
+    "f3.aud":"8 sessions · ~20 distinct participants · 64–80 attendance instances — estimate, to verify","f3.ig":"View on Instagram",
+    "f4.org":"Rubikus e. V. · Germany","f4.status":"Implemented","f4.t":"Christmas Family Camp",
+    "f4.d":"A Christmas family camp integrating the project's well-being activities for children and adults.",
+    "f4.aud":"35 participants (20 children + 15 adults)","f4.ig":"View on Instagram",
+    "f5.org":"Kambuka Kids MTÜ · Estonia","f5.status":"Implemented","f5.t":"Children's Winter Camp",
+    "f5.d":"A children's winter camp using the project's well-being and outdoor activity methods.",
+    "f5.aud":"45 participants (33 children + 12 team members)","f5.ig":"View on Instagram",
+    "f6.org":"UNTU · Latvia","f6.status":"Ongoing","f6.t":"Toolkit-based Preparation for External Exchanges",
+    "f6.d":"Knowledge gained from the toolkits was put into practice and shared with a wider audience — our network of NGO partners, as well as the EPALE and SALTO portals.",
+    "f6.epaleIntro":"Our project's open educational resources and materials are published on EPALE — the European Commission's official open platform for the adult learning and education community.",
+    "f6.epaleLabel":"🇪🇺 EPALE","f6.saltoLabel":"🔶 SALTO-YOUTH","f6.saltoTitle":"Daily Wellness Challenge Movement Toolkit",
+    "fstat.kicker":"Verified Indicators","fstat.h2":"Outreach, in numbers.",
+    "fstat.s1":"Original follow-up reach target","fstat.s2":"Documented activities","fstat.s3":"Unique participants","fstat.s4":"Attendance instances",
+    "fstat.note":"Figures compiled from partner reports. Estimates (such as the attendance-instance range) are marked separately and are not summed together with verified unique-participant counts."
+  }
+};
+function applyLang(lang){
+  document.documentElement.lang=lang;
+  document.querySelectorAll('[data-i18n]').forEach(function(el){
+    var k=el.getAttribute('data-i18n');
+    if(T[lang]&&T[lang][k])el.textContent=T[lang][k];
+  });
+  document.querySelectorAll('.lbtn').forEach(function(b){b.classList.toggle('active',b.dataset.lang===lang)});
+  try{localStorage.setItem('dwcm_lang',lang)}catch(e){}
+}
+applyLang('en');
+})();
+
+/* ===== 5. MAP (isolated, cannot break other JS) ===== */
+(function(){
+  function initMap(){
+    try{
+      var m=L.map('lmap',{center:[56.510,23.858],zoom:11,scrollWheelZoom:false});
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png',{attribution:'\u00a9 OpenStreetMap \u00a9 CARTO',maxZoom:19}).addTo(m);
+      var icon=L.divIcon({html:'<svg width="34" height="42" viewBox="0 0 34 42" xmlns="http://www.w3.org/2000/svg"><ellipse cx="17" cy="38" rx="7" ry="2.5" fill="rgba(0,212,239,.3)"/><path d="M17 0C7.6 0 0 7.6 0 17c0 12.8 17 25 17 25S34 29.8 34 17C34 7.6 26.4 0 17 0z" fill="#00D4EF"/><circle cx="17" cy="17" r="7" fill="white" fill-opacity=".92"/></svg>',className:'',iconSize:[34,42],iconAnchor:[17,42],popupAnchor:[0,-46]});
+      L.marker([56.510,23.858],{icon:icon}).addTo(m).bindPopup('<div style="font-family:sans-serif"><strong style="color:#00D4EF;font-size:13px">Daily Wellness Challenge Movement</strong><br><span style="color:#888;font-size:11px">Vircava, Latvija</span></div>',{maxWidth:220}).openPopup();
+    }catch(err){
+      var box=document.getElementById('mapbox');
+      if(box)box.innerHTML='<div style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(240,242,247,.4);font-family:sans-serif;font-size:13px"><span style="font-size:30px">\ud83d\uddfa\ufe0f</span>Vircava, Latvija<span style="font-size:11px">56.510\u00b0N 23.858\u00b0E</span></div>';
+    }
+  }
+  if(typeof L!=='undefined'){
+    initMap();
+  }else{
+    var lcsS=document.createElement('link');
+    lcsS.rel='stylesheet';lcsS.href='https://unpkg.com/leaflet@1.9.4/dist/leaflet.css';
+    document.head.appendChild(lcsS);
+    var sc=document.createElement('script');
+    sc.src='https://unpkg.com/leaflet@1.9.4/dist/leaflet.js';
+    sc.onload=initMap;
+    sc.onerror=function(){
+      var box=document.getElementById('mapbox');
+      if(box)box.innerHTML='<div style="height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:10px;color:rgba(240,242,247,.4);font-family:sans-serif;font-size:13px"><span style="font-size:30px">\ud83d\uddfa\ufe0f</span>Vircava, Latvija<span style="font-size:11px">56.510\u00b0N 23.858\u00b0E</span></div>';
+    };
+    document.body.appendChild(sc);
+  }
+})();
+</script>
+</body>
+</html>
