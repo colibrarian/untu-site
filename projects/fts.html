@@ -115,9 +115,9 @@
     gap: var(--gap);
   }
   .g-hero-title{ grid-column: span 7; }
-  .g-hero-photo{ grid-column: span 5; grid-row: span 2; }
-  .g-pillars{ grid-column: span 4; }
-  .g-location{ grid-column: span 3; }
+  .g-hero-photo{ grid-column: span 5; }
+  .g-pillars{ grid-column: span 6; }
+  .g-location{ grid-column: span 6; }
   .g-gallery{ grid-column: span 12; }
   .g-timeline{ grid-column: span 12; }
   .g-objectives{ grid-column: span 12; }
@@ -187,9 +187,9 @@
   .weather-card{
     background: linear-gradient(165deg, var(--blue) 0%, var(--blue-deep) 100%);
     color:#fff;
-    height:100%;
-    min-height: 460px;
+    min-height: 280px;
     display:flex; flex-direction:column;
+    overflow:hidden;
   }
   .weather-card:hover{ border-radius: 10px var(--r-lg) 10px var(--r-lg); }
   .weather-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:6px; }
@@ -201,7 +201,7 @@
     white-space:nowrap; flex-shrink:0;
   }
   .weather-days{
-    flex:1; overflow-y:auto;
+    flex:1; min-height:0; overflow-y:auto;
     display:flex; flex-direction:column; gap:7px;
     margin-top:14px; padding-right:2px;
   }
@@ -255,7 +255,7 @@
   }
   .orgs-mini:hover{ border-radius: var(--r-lg) 10px; }
   .orgs-mini-head{ margin-bottom:12px; }
-  .orgs-mini-head h3{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:15px; color:#fff; margin:0 0 2px 0; }
+  .orgs-mini-head h3{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:21px; color:#fff; margin:0 0 3px 0; }
   .orgs-mini-head p{ margin:0; font-size:10px; font-family:'IBM Plex Mono', monospace; color:#9a9585; }
   .orgs-mini .org-grid{ grid-template-columns: repeat(2, 1fr); gap:10px; }
   .orgs-mini .org-tile{ padding:12px 8px 10px; min-width:0; }
@@ -266,11 +266,11 @@
   .glance-mini{
     background: var(--cream);
     color: var(--text-dark);
-    display:flex; flex-direction:column; justify-content:center; gap:9px;
+    display:flex; flex-direction:column; justify-content:flex-start; gap:9px;
     overflow: visible;
   }
   .glance-mini:hover{ border-radius: 10px var(--r-lg); }
-  .glance-mini-head{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:14px; margin-bottom:2px; }
+  .glance-mini-head{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:21px; margin-bottom:12px; }
   .glance-step{
     background:#fff; border-radius: var(--r-sm); padding:10px 12px;
     transition: transform .2s ease;
@@ -279,6 +279,33 @@
   .glance-step .gs-date{ font-family:'IBM Plex Mono', monospace; font-size:10px; color:var(--red-deep); display:block; margin-bottom:2px; }
   .glance-step .gs-label{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:13px; }
   .glance-tag{ font-family:'IBM Plex Mono', monospace; font-size:9.5px; color:#8f8b7d; text-align:center; margin-top:2px; }
+
+  /* ---------- countdown (fills remaining space) ---------- */
+  .countdown-wrap{
+    margin-top:auto;
+    padding-top:16px;
+    border-top: 1px dashed var(--cream-deep);
+  }
+  .countdown-label{
+    font-family:'IBM Plex Mono', monospace; font-size:10px; letter-spacing:.06em; text-transform:uppercase;
+    color:#8f8b7d; text-align:center; margin-bottom:10px;
+  }
+  .countdown-grid{ display:grid; grid-template-columns: repeat(4, 1fr); gap:8px; }
+  .countdown-unit{
+    background:#fff; border-radius: var(--r-sm); padding:12px 4px;
+    text-align:center; transition: transform .2s ease, background .2s ease;
+  }
+  .countdown-unit:hover{ transform: translateY(-4px); background: var(--red); }
+  .countdown-unit:hover .countdown-num,
+  .countdown-unit:hover .countdown-unit-label{ color:#fff; }
+  .countdown-num{
+    font-family:'Anton', sans-serif; font-size:24px; color:var(--red-deep); line-height:1;
+    font-variant-numeric: tabular-nums;
+  }
+  .countdown-unit-label{
+    font-family:'IBM Plex Mono', monospace; font-size:8.5px; letter-spacing:.04em; text-transform:uppercase;
+    color:#8f8b7d; margin-top:5px;
+  }
 
   /* ================= GALLERY ================= */
   .gallery{
@@ -1000,6 +1027,28 @@
         <div class="gs-label">Departure Day</div>
       </div>
       <div class="glance-tag">9 DAYS TOTAL</div>
+
+      <div class="countdown-wrap">
+        <div class="countdown-label">⏳ Countdown to Arrival Day</div>
+        <div class="countdown-grid">
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-days">–</div>
+            <div class="countdown-unit-label">Days</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-hours">–</div>
+            <div class="countdown-unit-label">Hrs</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-mins">–</div>
+            <div class="countdown-unit-label">Min</div>
+          </div>
+          <div class="countdown-unit">
+            <div class="countdown-num" id="cd-secs">–</div>
+            <div class="countdown-unit-label">Sec</div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <!-- GALLERY -->
@@ -1733,6 +1782,33 @@
   }
 
   loadWeather();
+
+  /* ================= COUNTDOWN ================= */
+  function updateCountdown(){
+    const target = new Date("2026-11-08T00:00:00+02:00").getTime();
+    const now = Date.now();
+    const diff = Math.max(0, target - now);
+
+    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+    const mins = Math.floor((diff / (1000 * 60)) % 60);
+    const secs = Math.floor((diff / 1000) % 60);
+
+    const pad = n => String(n).padStart(2, '0');
+
+    const elDays = document.getElementById('cd-days');
+    const elHours = document.getElementById('cd-hours');
+    const elMins = document.getElementById('cd-mins');
+    const elSecs = document.getElementById('cd-secs');
+    if (!elDays) return;
+
+    elDays.textContent = days;
+    elHours.textContent = pad(hours);
+    elMins.textContent = pad(mins);
+    elSecs.textContent = pad(secs);
+  }
+  updateCountdown();
+  setInterval(updateCountdown, 1000);
 </script>
 </body>
 </html>
