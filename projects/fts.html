@@ -190,6 +190,7 @@
     min-height: 280px;
     display:flex; flex-direction:column;
     overflow:hidden;
+    box-sizing:border-box;
   }
   .weather-card:hover{ border-radius: 10px var(--r-lg) 10px var(--r-lg); }
   .weather-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:6px; }
@@ -1782,6 +1783,32 @@
   }
 
   loadWeather();
+
+  /* ================= SYNC WEATHER CARD HEIGHT TO HERO ================= */
+  function syncWeatherHeight(){
+    const hero = document.querySelector('.hero-title');
+    const weather = document.querySelector('.weather-card');
+    if(!hero || !weather) return;
+
+    if(window.innerWidth <= 980){
+      weather.style.height = '';
+      weather.style.maxHeight = '';
+      return;
+    }
+    const h = hero.getBoundingClientRect().height;
+    if(h > 0){
+      weather.style.height = h + 'px';
+      weather.style.maxHeight = h + 'px';
+    }
+  }
+  window.addEventListener('load', syncWeatherHeight);
+  window.addEventListener('resize', syncWeatherHeight);
+  // fonts loading can change hero-title's height slightly after first paint
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(syncWeatherHeight);
+  }
+  setTimeout(syncWeatherHeight, 50);
+  setTimeout(syncWeatherHeight, 400);
 
   /* ================= COUNTDOWN ================= */
   function updateCountdown(){
