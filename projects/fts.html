@@ -900,6 +900,33 @@
       grid-column: 1 / -1;
     }
     .g-hero-photo{ grid-row: auto; min-height: 260px; }
+    .weather-card{ min-height:0; }
+    .weather-days{
+      flex-direction: row;
+      overflow-x: auto;
+      overflow-y: visible;
+      gap: 8px;
+      padding-bottom: 6px;
+      margin-top: 12px;
+      -webkit-overflow-scrolling: touch;
+      scrollbar-width: thin;
+    }
+    .weather-day{
+      flex: 0 0 auto;
+      width: 78px;
+      flex-direction: column;
+      align-items: center;
+      justify-content:flex-start;
+      text-align: center;
+      gap: 4px;
+      padding: 10px 6px;
+    }
+    .weather-day:hover{ transform:none; }
+    .wd-date{ width:auto; font-size:10px; }
+    .wd-icon{ width:auto; font-size:20px; }
+    .wd-cond{ display:none; }
+    .wd-temps{ flex-direction:row; gap:5px; }
+    .weather-note{ margin-top:10px; }
     .g-pillars,.g-location,.g-profile,.g-inclusion,.g-funding,.g-logos{
       grid-column: span 1;
     }
