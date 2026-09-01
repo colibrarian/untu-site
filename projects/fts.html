@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>From Thinking to Speaking: Critical Thinking, Media Literacy and Podcasting Tools for Youth Workers</title>
-<meta name="description" content="Critical Thinking, Media Literacy &amp; Podcasting Tools for Youth Workers. Erasmus+ KA153-YOU Training Course · Vircava, Latvia · 8–16 November 2026.">
+<meta name="description" content="Critical Thinking, Media Literacy &amp; Podcasting Tools for Youth Workers. Erasmus+ KA153-YOU Training Course · Vircava, Latvia · 9–15 November 2026.">
 
 <!-- Open Graph / Facebook, LinkedIn, WhatsApp, Telegram, etc. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Biedrība UNTU">
 <meta property="og:title" content="From Thinking to Speaking: Critical Thinking, Media Literacy and Podcasting Tools for Youth Workers">
-<meta property="og:description" content="Critical Thinking, Media Literacy &amp; Podcasting Tools for Youth Workers. Vircava, Latvia · 8–16 November 2026. 6 countries, 18 participants, 5+ podcast episodes.">
+<meta property="og:description" content="Critical Thinking, Media Literacy &amp; Podcasting Tools for Youth Workers. Vircava, Latvia · 9–15 November 2026. 6 countries, 18 participants, 5+ podcast episodes.">
 <meta property="og:image" content="https://ik.imagekit.io/fts/og/OG%20image%203.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="From Thinking to Speaking: Critical Thinking, Media Literacy and Podcasting Tools for Youth Workers">
-<meta name="twitter:description" content="Critical Thinking, Media Literacy &amp; Podcasting Tools for Youth Workers. Vircava, Latvia · 8–16 November 2026.">
+<meta name="twitter:description" content="Critical Thinking, Media Literacy &amp; Podcasting Tools for Youth Workers. Vircava, Latvia · 9–15 November 2026.">
 <meta name="twitter:image" content="https://ik.imagekit.io/fts/og/OG%20image%203.jpg">
 <link rel="canonical" href="https://untu.ngo/projects/fts.html">
 
@@ -95,6 +95,37 @@
     background:#fff; color:var(--blue-deep); padding:9px 18px; border-radius:999px; white-space:nowrap;
   }
 
+  /* ---------- no-fee banner ---------- */
+  .fee-banner{
+    background: var(--cream);
+    color: var(--text-dark);
+    display:flex; align-items:center;
+    padding: 26px 32px;
+    position:relative;
+    overflow:hidden;
+  }
+  .fee-banner:hover{ border-radius: 10px; }
+  .fee-banner::before{
+    content:"";
+    position:absolute;
+    top:0; left:-60%;
+    width:45%; height:100%;
+    background: linear-gradient(100deg, transparent, rgba(255,255,255,.75), transparent);
+    transform: skewX(-18deg);
+    animation: fee-shimmer 4.5s ease-in-out infinite;
+  }
+  @keyframes fee-shimmer{
+    0%   { left:-60%; }
+    35%  { left:130%; }
+    100% { left:130%; }
+  }
+  .fee-text{
+    position:relative; z-index:1;
+    font-size:19px; line-height:1.5; color: var(--text-dark);
+    font-family:'Space Grotesk', sans-serif;
+  }
+  .fee-text strong{ color: var(--text-dark); }
+
   /* ---------- generic card ---------- */
   .card{
     border-radius: var(--r-lg);
@@ -117,6 +148,7 @@
   .g-hero-title{ grid-column: span 7; }
   .g-hero-photo{ grid-column: span 5; }
   .g-pillars{ grid-column: span 6; }
+  .g-fee{ grid-column: span 12; }
   .g-location{ grid-column: span 6; }
   .g-gallery{ grid-column: span 12; }
   .g-timeline{ grid-column: span 12; }
@@ -909,9 +941,9 @@
   /* ---------- responsive ---------- */
   @media (max-width: 980px){
     .grid{ grid-template-columns: repeat(2, 1fr); }
-    .g-hero-title,.g-hero-photo,.g-gallery,.g-timeline,.g-objectives,.g-programme,
+    .g-hero-title,.g-hero-photo,.g-fee,.g-gallery,.g-timeline,.g-objectives,.g-programme,
     .g-output,.g-outcomes,.g-followup,.g-travel,.g-reimburse,
-    .g-before-travel,.g-contacts,.g-getting-here,.g-social,.g-footer{
+    .g-before-travel,.g-contacts,.g-getting-here,.g-funding,.g-social,.g-footer{
       grid-column: 1 / -1;
     }
     .g-hero-photo{ grid-row: auto; min-height: 260px; }
@@ -942,7 +974,7 @@
     .wd-cond{ display:none; }
     .wd-temps{ flex-direction:row; gap:5px; }
     .weather-note{ margin-top:10px; }
-    .g-pillars,.g-location,.g-profile,.g-inclusion,.g-funding,.g-logos{
+    .g-pillars,.g-location,.g-profile,.g-inclusion,.g-logos{
       grid-column: span 1;
     }
     .tl-steps{ grid-template-columns: 1fr; }
@@ -956,7 +988,7 @@
   @media (max-width: 700px){
     body{ padding: 16px; }
     .grid{ grid-template-columns: 1fr; }
-    .g-pillars,.g-location,.g-profile,.g-inclusion,.g-funding,.g-logos{
+    .g-pillars,.g-location,.g-profile,.g-inclusion,.g-logos{
       grid-column: 1 / -1;
     }
     .card{ padding: 22px; }
@@ -1018,6 +1050,13 @@
         <!-- populated by JS -->
       </div>
       <div class="weather-note" id="weatherNote">Fetching live forecast…</div>
+    </div>
+
+    <!-- NO FEE BANNER -->
+    <div class="card fee-banner g-fee">
+      <div class="fee-text">
+        <strong>No participation fee.</strong> Accommodation, meals and the educational programme during the eligible project period are covered by the project.
+      </div>
     </div>
 
     <!-- ORGANISATIONS -->
@@ -1257,7 +1296,7 @@
     <div class="card info-card inclusion-card g-inclusion">
       <div class="info-eyebrow">Fewer Opportunities</div>
       <h3>Inclusion Focus</h3>
-      <p style="font-size:13px; color:#3a352a; margin:0 0 12px 0;"><strong>10 of the 18 places</strong> are reserved for participants with fewer opportunities — candidates in this situation are particularly encouraged to apply.</p>
+      <p style="font-size:13px; color:#3a352a; margin:0 0 12px 0;">The project aims to include <strong>10 participants with fewer opportunities</strong> — candidates in this situation are particularly encouraged to apply.</p>
       <ul>
         <li>Economic difficulties &amp; disadvantaged socio‑economic backgrounds</li>
         <li>Social barriers &amp; discrimination</li>
@@ -1319,8 +1358,22 @@
           <summary>What to Bring <span class="gh-plus">+</span></summary>
           <div class="gh-body">
             <p><strong>Essential:</strong> ID / passport, health insurance / EHIC, personal medication, comfortable indoor &amp; outdoor clothes, slippers, toiletries, chargers.</p>
-            <p><strong>For the training:</strong> laptop if available, smartphone, headphones / earphones, charger or power bank, notebook if preferred.</p>
+            <p><strong>For the training:</strong> laptop if available, smartphone, headphones / earphones, charger or power bank, notebook if preferred, and — if you have one — a lapel mic or other compact microphone.</p>
             <p><strong>Green touch:</strong> a reusable water bottle — no need to bring professional microphones, the project provides the core podcast equipment.</p>
+          </div>
+        </details>
+        <details class="gh-accordion dark">
+          <summary>Intercultural Evening <span class="gh-plus">+</span></summary>
+          <div class="gh-body">
+            <p>During the training, we will have an Intercultural Evening, where each national team will have the opportunity to present their country in a fun and informal way.</p>
+            <p style="margin-top:10px;">Please prepare something together with your national team in advance. You are welcome to bring:</p>
+            <ul>
+              <li>traditional snacks or drinks;</li>
+              <li>music, stories, folklore or traditions;</li>
+              <li>a short presentation, quiz, game or other creative activity.</li>
+            </ul>
+            <p style="margin-top:10px;">The idea is not to make a formal presentation, but to share something authentic about your country and culture with the international group.</p>
+            <p style="margin-top:10px;">Please plan this before travelling and bring any small items or food you would like to use during the evening.</p>
           </div>
         </details>
         <details class="gh-accordion dark">
@@ -1429,9 +1482,10 @@
       <details class="gh-accordion" style="margin-top:14px;">
         <summary>🛂 Entry requirements for third‑country nationals <span class="gh-plus">+</span></summary>
         <div class="gh-body">
-          <p>From 1 September 2025 third country nationals are obligated to submit their identification information and information on purpose and duration of travelling to Latvia. This obligation also applies to passengers transiting through Latvia.</p>
+          <p>From 1 September 2025 third country nationals are obligated to submit their identification information and information on purpose and duration of travelling to Latvia. This obligation also applies to travellers transiting through Latvia.</p>
+          <p style="margin-top:10px;">Some third‑country nationals may be required to submit an Electronic Travel Declaration at least 48 hours before entering Latvia. Please check the official eligibility requirements through the link below.</p>
           <p style="margin-top:10px;">Please read more about the regulation established by the Republic of Latvia <a href="https://www.iem.gov.lv/en/article/entry-third-country-nationals-latvia-1-september-2025" target="_blank" rel="noopener">here</a>.</p>
-          <p style="margin-top:10px;">The passenger is obliged and responsible for providing their own data and for specifying whether they are subject to the obligation to provide their data.</p>
+          <p style="margin-top:10px;">The traveller is obliged and responsible for providing their own data and for specifying whether they are subject to the obligation to provide their data.</p>
           <p style="margin-top:10px;">The information must be submitted electronically <a href="https://eta.gov.lv/en/" target="_blank" rel="noopener">here</a>.</p>
         </div>
       </details>
