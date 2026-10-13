@@ -69,6 +69,15 @@
     font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:#c8c4b6;
   }
   .dot{width:7px;height:7px;border-radius:50%;background:var(--red);}
+  .topbar-left{ display:flex; align-items:center; gap:16px; min-width:0; }
+  .home-logo{
+    flex:0 0 auto; display:flex; align-items:center; justify-content:center;
+    width:44px; height:44px; border-radius:50%;
+    transition: transform .2s ease, opacity .2s ease;
+  }
+  .home-logo img{ width:100%; height:100%; object-fit:contain; display:block; }
+  .home-logo:hover{ transform: scale(1.06); }
+  .home-logo:focus-visible{ outline:2px solid var(--red); outline-offset:3px; }
   .erasmus-tag{
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em;
     color:#8f8b7d; text-transform:uppercase;
@@ -1010,7 +1019,12 @@
 <div class="wrap">
 
   <div class="topbar">
-    <div class="brandline"><span class="dot"></span> From Thinking to Speaking: Critical Thinking, Media Literacy and Podcasting Tools for Youth Workers</div>
+    <div class="topbar-left">
+      <a class="home-logo" href="https://untu.ngo/" aria-label="Back to UNTU main page" title="Back to untu.ngo">
+        <img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU logo">
+      </a>
+      <div class="brandline"><span class="dot"></span> From Thinking to Speaking: Critical Thinking, Media Literacy and Podcasting Tools for Youth Workers</div>
+    </div>
     <div class="erasmus-tag">Erasmus+ KA153-YOU · Approved by the Latvian National Agency</div>
   </div>
 
