@@ -1815,16 +1815,14 @@
     const REACH = 128;   // max vertical distance between two platforms you can stand on (jump height ≈ 165)
     /* levels by height (metres): fewer steps, more clickbait, fewer sources; every step stays reachable */
     const LEVELS = [
-      {from:0,   gap:[54,66],   bait:0.15, src:0.12},
-      {from:100, gap:[68,84],   bait:0.25, src:0.10},
-      {from:250, gap:[82,100],  bait:0.35, src:0.08},
-      {from:450, gap:[96,114],  bait:0.45, src:0.07},
-      {from:700, gap:[108,126], bait:0.55, src:0.06},
-      // from 1000 m the headlines start to move
-      {from:1000, gap:[108,126], bait:0.55, src:0.06, move:0.30, speed:1.0,                msg:'HEADLINES ON THE MOVE'},
-      {from:1400, gap:[108,126], bait:0.60, src:0.05, move:0.45, speed:1.4, baitMove:true, msg:'CLICKBAIT FOLLOWS YOU'},
-      {from:1900, gap:[108,126], bait:0.60, src:0.05, move:0.45, speed:1.6, baitMove:true, breaking:0.25, msg:'BREAKING NEWS FADES FAST'},
-      {from:2500, gap:[110,126], bait:0.65, src:0.04, move:0.60, speed:2.0, baitMove:true, breaking:0.30, msg:'FASTER NEWS CYCLE'},
+      {from:0,    gap:[54,66],   bait:0.15, src:0.12},
+      {from:100,  gap:[68,84],   bait:0.25, src:0.10,                                            msg:'FEWER STEPS AHEAD'},
+      // from level 3 the headlines start to move: slowly first, then faster
+      {from:250,  gap:[82,100],  bait:0.35, src:0.08, move:0.25, speed:0.8,                        msg:'HEADLINES START TO MOVE'},
+      {from:450,  gap:[96,114],  bait:0.45, src:0.07, move:0.35, speed:1.1,                        msg:'FASTER HEADLINES'},
+      {from:700,  gap:[108,126], bait:0.50, src:0.06, move:0.40, speed:1.3, baitMove:true,         msg:'CLICKBAIT FOLLOWS YOU'},
+      {from:1000, gap:[108,126], bait:0.55, src:0.05, move:0.45, speed:1.5, baitMove:true, breaking:0.25, msg:'BREAKING NEWS FADES FAST'},
+      {from:1400, gap:[110,126], bait:0.60, src:0.04, move:0.55, speed:1.8, baitMove:true, breaking:0.30, msg:'FASTER NEWS CYCLE'},
     ];
     // after the last level: a new level every 700 m, everything a bit faster
     const levelAt = h => { const m = h/10, last = LEVELS[LEVELS.length-1];
@@ -1833,7 +1831,7 @@
     const lvl = i => { if(i < LEVELS.length) return LEVELS[i];
       const L = LEVELS[LEVELS.length-1], extra = i - (LEVELS.length-1);
       return Object.assign({}, L, {move:Math.min(0.85, L.move + 0.06*extra), speed:L.speed + 0.35*extra, breaking:Math.min(0.45, L.breaking + 0.04*extra), msg:'SPEED UP'}); };
-    const MSG = ['','FEWER STEPS AHEAD','MORE CLICKBAIT','STAY SHARP','SIGNAL ONLY'];
+    const MSG = [];
     const dir = () => Math.random() < .5 ? -1 : 1;
     function plat(y, h, forceSolid){
       const r = Math.random(), L = lvl(levelAt(h));
@@ -1881,7 +1879,7 @@
         if(q.vx && !q.broken){ q.x += q.vx*dt; if(q.x < 0){ q.x = 0; q.vx *= -1; } if(q.x > W-PW){ q.x = W-PW; q.vx *= -1; } }
         if(q.fade){ q.fade -= 0.03*dt; if(q.fade <= 0){ q.broken = true; q.vy = 1; q.fade = 0; } }
         if(q.broken){ q.vy += G*dt; q.y += q.vy*dt; continue; }
-        if(p.vy > 0 && p.x+24 > q.x && p.x+4 < q.x+PW && p.y+44 >= q.y && p.y+44 - p.vy*dt <= q.y+6){
+        if(q.y < H - 2 && p.vy > 0 && p.x+24 > q.x && p.x+4 < q.x+PW && p.y+44 >= q.y && p.y+44 - p.vy*dt <= q.y+6){
           if(q.t==='bait'){ q.broken = true; q.vy = 1; continue; }
           p.y = q.y-44; p.vy = q.t==='src' ? SUPER : JUMP; p.sq = 1;
           if(q.breaking && !q.fade) q.fade = 1;   // breaking news: gone shortly after you touch it
@@ -1896,7 +1894,7 @@
       const lv = levelAt(st.h);
       if(lv > st.level){ st.level = lv; st.flash = 1; elLvl.textContent = lv+1; }
       st.flash = Math.max(0, st.flash - 0.012*dt);
-      if(p.y > H+40) end(score);
+      if(p.y + 30 > H) end(score);   // fell out of the frame = game over
     }
 
     function wrap(text, max){
