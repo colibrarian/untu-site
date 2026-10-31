@@ -1070,7 +1070,7 @@
   /* ================= OVERVIEW: explore tiles ================= */
   .explore{ background:var(--white); color:var(--text-dark); }
   .explore h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0; }
-  .explore-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .explore-grid{ display:grid; grid-template-columns:repeat(5,1fr); gap:12px; }
   .ex-tile{ border-radius:var(--r-md); padding:22px; min-height:230px; display:flex; flex-direction:column; gap:10px;
     text-decoration:none; transition:transform .25s ease, border-radius .25s ease; }
   .ex-tile:hover{ transform:translateY(-6px); border-radius:8px var(--r-md); }
@@ -1277,6 +1277,8 @@
     .si.k-meal, .si.k-break{ padding:3px 12px; }
     .sch-legend{ display:none; }
   }
+  .fts-nav a.on.c-mat{ background:var(--blue-deep); color:#fff; }
+  .ph-mat{ background:linear-gradient(135deg, var(--blue-deep), #1b2b4d 70%); color:#fff; }
 </style>
 </head>
 <body>
@@ -1298,6 +1300,7 @@
     <a href="fts-participants.html" class="c-blue"><span class="fn-num">03</span>Who &amp; Commitments</a>
     <a href="fts-travel.html" class="c-ink"><span class="fn-num">04</span>Travel &amp; Money</a>
     <a href="fts-before-you-go.html" class="c-sand"><span class="fn-num">05</span>Before You Go</a>
+    <a href="fts-materials.html" class="c-mat"><span class="fn-num">06</span>Materials</a>
   </nav>
   <div class="grid page-overview">
 
@@ -1408,6 +1411,7 @@
         <a class="ex-tile ph-blue" href="fts-participants.html"><span class="ex-num">03</span><span class="ex-title">Who &amp; Commitments</span><span class="ex-list">Participant Profile · Inclusion Focus · Your Participation Doesn't End With the Training Course</span><span class="nc-arrow">→</span></a>
         <a class="ex-tile ph-ink" href="fts-travel.html"><span class="ex-num">04</span><span class="ex-title">Travel &amp; Money</span><span class="ex-list">Getting to Vircava · Travel Budgets &amp; Green Travel · <b>🛂 Entry requirements for third‑country nationals</b> · Reimbursement &amp; Invoicing</span><span class="nc-arrow">→</span></a>
         <a class="ex-tile ph-sand" href="fts-before-you-go.html"><span class="ex-num">05</span><span class="ex-title">Before You Go</span><span class="ex-list">Insurance &amp; Health · What to Bring · Intercultural Evening · Preparation · Sustainability</span><span class="nc-arrow">→</span></a>
+        <a class="ex-tile ph-mat" href="fts-materials.html"><span class="ex-num">06</span><span class="ex-title">Materials</span><span class="ex-list">Presentations, podcast episodes and videos during the training · Mini‑game: Signal vs Noise</span><span class="nc-arrow">→</span></a>
       </div>
     </div>
     <div class="card gallery g-gallery">
@@ -1427,7 +1431,7 @@
       </div>
     </div>
     <a class="card next-card ph-cream" href="fts-programme.html">
-      <span class="nc-eyebrow">Next · 02 / 05</span>
+      <span class="nc-eyebrow">Next · 02 / 06</span>
       <span class="nc-title">Programme</span>
       <span class="nc-arrow">→</span>
     </a>
