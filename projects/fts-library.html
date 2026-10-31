@@ -1820,15 +1820,31 @@
       {from:250, gap:[82,100],  bait:0.35, src:0.08},
       {from:450, gap:[96,114],  bait:0.45, src:0.07},
       {from:700, gap:[108,126], bait:0.55, src:0.06},
+      // from 1000 m the headlines start to move
+      {from:1000, gap:[108,126], bait:0.55, src:0.06, move:0.30, speed:1.0,                msg:'HEADLINES ON THE MOVE'},
+      {from:1400, gap:[108,126], bait:0.60, src:0.05, move:0.45, speed:1.4, baitMove:true, msg:'CLICKBAIT FOLLOWS YOU'},
+      {from:1900, gap:[108,126], bait:0.60, src:0.05, move:0.45, speed:1.6, baitMove:true, breaking:0.25, msg:'BREAKING NEWS FADES FAST'},
+      {from:2500, gap:[110,126], bait:0.65, src:0.04, move:0.60, speed:2.0, baitMove:true, breaking:0.30, msg:'FASTER NEWS CYCLE'},
     ];
-    const levelAt = h => { let i = 0; LEVELS.forEach((L,k)=>{ if(h/10 >= L.from) i = k; }); return i; };
+    // after the last level: a new level every 700 m, everything a bit faster
+    const levelAt = h => { const m = h/10, last = LEVELS[LEVELS.length-1];
+      if(m >= last.from + 700) return LEVELS.length - 1 + Math.floor((m - last.from)/700);
+      let i = 0; LEVELS.forEach((L,k)=>{ if(m >= L.from) i = k; }); return i; };
+    const lvl = i => { if(i < LEVELS.length) return LEVELS[i];
+      const L = LEVELS[LEVELS.length-1], extra = i - (LEVELS.length-1);
+      return Object.assign({}, L, {move:Math.min(0.85, L.move + 0.06*extra), speed:L.speed + 0.35*extra, breaking:Math.min(0.45, L.breaking + 0.04*extra), msg:'SPEED UP'}); };
+    const MSG = ['','FEWER STEPS AHEAD','MORE CLICKBAIT','STAY SHARP','SIGNAL ONLY'];
+    const dir = () => Math.random() < .5 ? -1 : 1;
     function plat(y, h, forceSolid){
-      const r = Math.random(), L = LEVELS[levelAt(h)];
+      const r = Math.random(), L = lvl(levelAt(h));
       let t = 'news';
       if(r < L.src) t = 'src';
       if(forceSolid && t==='bait') t = 'news';
       const label = t==='news'?draw1(NEWS):t==='bait'?draw1(BAIT):t==='src'?draw1(SRC):draw1(VIRAL);
-      return {x: Math.random()*(W-PW), y, t, label, vx: t==='viral' ? (Math.random()<.5?-1:1)*(1.2+lvl*1.8) : 0, broken:false, vy:0};
+      const moving = L.move && Math.random() < L.move;
+      const breaking = t==='news' && L.breaking && !moving && Math.random() < L.breaking;
+      return {x: Math.random()*(W-PW), y, t, label: breaking ? 'BREAKING: ' + label : label, breaking, fade: 0,
+              vx: moving ? dir()*L.speed*(0.8 + Math.random()*0.4) : 0, broken:false, vy:0};
     }
     function reset(){
       st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false, solid:H-60, solidX:W/2-PW/2, level:0, flash:0}; elLvl.textContent = 1;
@@ -1836,18 +1852,19 @@
       let y = H-60;
       while(y > -H){ y = add(y - gap(0)); }
     }
-    function gap(h){ const g = LEVELS[levelAt(h)].gap; return g[0] + Math.random()*(g[1]-g[0]); }   // max 126 < REACH
+    function gap(h){ const g = lvl(levelAt(h)).gap; return g[0] + Math.random()*(g[1]-g[0]); }   // max 126 < REACH
     function add(y){
       // real steps: never further apart than REACH, never clickbait
       if(st.solid - y >= REACH) y = st.solid - REACH;
       const q = plat(y, st.h, true), prevY = st.solid, prevX = st.solidX;
       st.solid = y; st.solidX = q.x; st.plats.push(q);
       // clickbait = extra decoy halfway between two steps, placed beside them (never on top)
-      if(Math.random() < LEVELS[levelAt(st.h)].bait){
+      const L = lvl(levelAt(st.h));
+      if(Math.random() < L.bait){
         for(let k=0; k<14; k++){
           const bx = Math.random()*(W-PW);
           if(Math.abs(bx-q.x) > PW+10 && Math.abs(bx-prevX) > PW+10){
-            st.plats.push({x:bx, y:(y+prevY)/2, t:'bait', label:draw1(BAIT), vx:0, broken:false, vy:0}); break;
+            st.plats.push({x:bx, y:(y+prevY)/2, t:'bait', label:draw1(BAIT), vx: L.baitMove ? dir()*L.speed*0.7 : 0, broken:false, vy:0}); break;
           }
         }
       }
@@ -1861,11 +1878,13 @@
       p.x += p.vx*dt; if(p.x < -28) p.x = W; if(p.x > W) p.x = -28;
       p.vy += G*dt; p.y += p.vy*dt; p.sq = Math.max(0, p.sq - 0.08*dt);
       for(const q of st.plats){
-        if(q.t==='viral'){ q.x += q.vx*dt; if(q.x<0||q.x>W-PW) q.vx*=-1; }
+        if(q.vx && !q.broken){ q.x += q.vx*dt; if(q.x < 0){ q.x = 0; q.vx *= -1; } if(q.x > W-PW){ q.x = W-PW; q.vx *= -1; } }
+        if(q.fade){ q.fade -= 0.03*dt; if(q.fade <= 0){ q.broken = true; q.vy = 1; q.fade = 0; } }
         if(q.broken){ q.vy += G*dt; q.y += q.vy*dt; continue; }
         if(p.vy > 0 && p.x+24 > q.x && p.x+4 < q.x+PW && p.y+44 >= q.y && p.y+44 - p.vy*dt <= q.y+6){
           if(q.t==='bait'){ q.broken = true; q.vy = 1; continue; }
           p.y = q.y-44; p.vy = q.t==='src' ? SUPER : JUMP; p.sq = 1;
+          if(q.breaking && !q.fade) q.fade = 1;   // breaking news: gone shortly after you touch it
         }
       }
       const line = H*0.42;
@@ -1893,9 +1912,9 @@
       ctx.font = '600 10px "IBM Plex Mono", monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       for(const q of st.plats){
         const fill = q.t==='news'?C.cream:q.t==='bait'?C.red:q.t==='src'?C.blue:C.white;
-        ctx.save(); if(q.broken){ ctx.globalAlpha = 0.55; ctx.translate(q.x+PW/2, q.y+PH/2); ctx.rotate(q.vy*0.03); ctx.translate(-(q.x+PW/2), -(q.y+PH/2)); }
+        ctx.save(); if(q.fade) ctx.globalAlpha = Math.max(0.15, q.fade); if(q.broken){ ctx.globalAlpha = 0.55; ctx.translate(q.x+PW/2, q.y+PH/2); ctx.rotate(q.vy*0.03); ctx.translate(-(q.x+PW/2), -(q.y+PH/2)); }
         ctx.fillStyle = fill; rr(q.x,q.y,PW,PH,8); ctx.fill();
-        if(q.t==='viral'){ ctx.strokeStyle = C.blue; ctx.setLineDash([4,3]); ctx.lineWidth = 2; rr(q.x+1,q.y+1,PW-2,PH-2,7); ctx.stroke(); ctx.setLineDash([]); }
+        if(q.breaking){ ctx.fillStyle = C.red; rr(q.x,q.y,6,PH,3); ctx.fill(); }
         ctx.fillStyle = q.t==='news'||q.t==='viral' ? C.ink : '#fff';
         const lines = wrap(q.label, PW-12);
         lines.forEach((ln,i)=>ctx.fillText(ln, q.x+PW/2, q.y+PH/2 + (i-(lines.length-1)/2)*11 + 0.5));
@@ -1910,7 +1929,7 @@
         const sc = 1 + (1-f)*0.15; ctx.translate(W/2, H*0.3); ctx.scale(sc, sc);
         ctx.fillStyle = C.red; rr(-110,-38,220,76,20); ctx.fill();
         ctx.fillStyle = '#fff'; ctx.font = '400 46px Anton, sans-serif'; ctx.fillText('LEVEL ' + (st.level+1), 0, -4);
-        ctx.font = '600 11px "IBM Plex Mono", monospace'; ctx.fillText(['','FEWER STEPS AHEAD','MORE CLICKBAIT','STAY SHARP','SIGNAL ONLY'][st.level] || '', 0, 26);
+        ctx.font = '600 11px "IBM Plex Mono", monospace'; ctx.fillText(MSG[st.level] || lvl(st.level).msg || '', 0, 26);
         ctx.restore();
       }
       if(!st.over){ ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(W-16,16,5,0,7); ctx.fill();
