@@ -76,7 +76,7 @@
     transition: transform .2s ease, opacity .2s ease;
   }
   .home-logo img{ width:100%; height:100%; object-fit:contain; display:block; }
-  .home-logo:hover{ transform: scale(1.06); }
+  .home-logo:hover{ transform:none; }
   .home-logo:focus-visible{ outline:2px solid var(--red); outline-offset:3px; }
   .erasmus-tag{
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em;
@@ -93,7 +93,7 @@
     margin-bottom: var(--gap);
     transition: transform .3s ease, border-radius .3s ease;
   }
-  .deadline-banner:hover{ transform: translateY(-3px); border-radius: 10px; }
+  .deadline-banner:hover{ transform: translateY(-2px); }
   .deadline-banner .db-left{ display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
   .deadline-banner .db-eyebrow{
     font-family:'Anton', sans-serif; text-transform:uppercase; font-size:17px; letter-spacing:.02em;
@@ -113,7 +113,7 @@
     position:relative;
     overflow:hidden;
   }
-  .fee-banner:hover{ border-radius: 10px; }
+  .fee-banner:hover{ }
   .fee-banner::before{
     content:"";
     position:absolute;
@@ -144,8 +144,8 @@
     transition: transform .35s cubic-bezier(.2,.8,.2,1), box-shadow .35s ease, border-radius .35s ease;
   }
   .card:hover{
-    transform: translateY(-6px) scale(1.012);
-    box-shadow: 0 26px 50px rgba(0,0,0,.45);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 28px rgba(0,0,0,.28);
   }
 
   /* ---------- grid ---------- */
@@ -186,7 +186,7 @@
     min-height: 300px;
     display:flex; flex-direction:column; justify-content:space-between;
   }
-  .hero-title:hover{ border-radius: 8px var(--r-lg) var(--r-lg) var(--r-lg); }
+  .hero-title:hover{ }
   .badge-fts{
     align-self:flex-start;
     background: var(--blue);
@@ -233,7 +233,7 @@
     overflow:hidden;
     box-sizing:border-box;
   }
-  .weather-card:hover{ border-radius: 10px var(--r-lg) 10px var(--r-lg); }
+  .weather-card:hover{ }
   .weather-head{ display:flex; justify-content:space-between; align-items:flex-start; gap:10px; margin-bottom:6px; }
   .weather-head h3{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:21px; margin:0 0 3px 0; }
   .weather-head p{ font-family:'IBM Plex Mono', monospace; font-size:11px; color:#dfeaff; margin:0; }
@@ -273,7 +273,7 @@
     min-height: 300px;
     display:flex; flex-direction:column; justify-content:center; gap:16px;
   }
-  .pillars:hover{ border-radius: var(--r-lg) 10px var(--r-lg) 10px; }
+  .pillars:hover{ }
   .sticker{
     font-family:'Anton', sans-serif;
     text-transform:uppercase;
@@ -286,7 +286,7 @@
   .sticker.s1{ background:var(--blue); color:#fff; transform: rotate(-4deg); }
   .sticker.s2{ background:var(--ink); color:#fff; transform: rotate(2deg); margin-left:26px;}
   .sticker.s3{ background:var(--red); color:#fff; transform: rotate(-2deg); }
-  .sticker:hover{ transform: rotate(0deg) scale(1.06); border-radius: 6px; box-shadow:none; }
+  .sticker:hover{ transform: rotate(0deg); box-shadow:none; }
 
   /* ================= ORGANISATIONS (hero mini) ================= */
   .orgs-mini{
@@ -295,7 +295,7 @@
     display:flex; flex-direction:column;
     overflow: visible;
   }
-  .orgs-mini:hover{ border-radius: var(--r-lg) 10px; }
+  .orgs-mini:hover{ }
   .orgs-mini-head{ margin-bottom:12px; }
   .orgs-mini-head h3{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:21px; color:#fff; margin:0 0 3px 0; }
   .orgs-mini-head p{ margin:0; font-size:10px; font-family:'IBM Plex Mono', monospace; color:#9a9585; }
@@ -311,7 +311,7 @@
     display:flex; flex-direction:column; justify-content:flex-start; gap:9px;
     overflow: visible;
   }
-  .glance-mini:hover{ border-radius: 10px var(--r-lg); }
+  .glance-mini:hover{ }
   .glance-mini-head{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:21px; margin-bottom:12px; }
   .glance-step{
     background:#fff; border-radius: var(--r-sm); padding:10px 12px;
@@ -337,7 +337,7 @@
     background:#fff; border-radius: var(--r-sm); padding:12px 4px;
     text-align:center; transition: transform .2s ease, background .2s ease;
   }
-  .countdown-unit:hover{ transform: translateY(-4px); background: var(--red); }
+  .countdown-unit:hover{ transform: translateY(-2px); background: var(--red); }
   .countdown-unit:hover .countdown-num,
   .countdown-unit:hover .countdown-unit-label{ color:#fff; }
   .countdown-num{
@@ -354,7 +354,7 @@
     background: var(--ink-soft);
     border: 1px solid #2a2823;
   }
-  .gallery:hover{ border-radius: 10px; }
+  .gallery:hover{ }
   .gallery-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:18px; flex-wrap:wrap; gap:10px;}
   .gallery-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:26px; margin:0; }
   .gallery-tag{
@@ -381,14 +381,14 @@
     transform: scale(1.09) rotate(.3deg);
     filter: saturate(1.08) brightness(1.02);
   }
-  .gallery-item:hover{ border-radius: 6px; }
+  .gallery-item:hover{ }
 
   /* ================= CONTACTS ================= */
   .contacts{
     background: var(--cream);
     color: var(--text-dark);
   }
-  .contacts:hover{ border-radius: 10px; }
+  .contacts:hover{ }
   .contacts-head{ margin-bottom:20px; }
   .contacts-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:26px; margin:0 0 4px 0;}
   .contacts-head p{ margin:0; font-size:13px; color:#5a5646; }
@@ -401,8 +401,7 @@
     transition: transform .3s ease, border-radius .3s ease, box-shadow .3s ease;
   }
   .contact-card:hover{
-    transform: translateY(-5px);
-    border-radius: 10px var(--r-md);
+    transform: translateY(-2px);
     box-shadow: 0 18px 30px rgba(0,0,0,.12);
   }
   .contact-avatar{
@@ -447,7 +446,7 @@
     display:flex; flex-direction:column; justify-content:space-between;
     border: 1px solid #2a2823;
   }
-  .location:hover{ border-radius: 10px var(--r-lg) 10px var(--r-lg); }
+  .location:hover{ }
   .countries-eyebrow{
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.06em; text-transform:uppercase;
     color:#c8c4b6; margin-bottom:12px;
@@ -459,7 +458,7 @@
     color:#fff; padding:7px 12px; border-radius:999px;
     transition: transform .2s ease, background .2s ease;
   }
-  .loc-flag:hover{ transform: translateY(-2px) scale(1.05); background: var(--blue); border-color: var(--blue); }
+  .loc-flag:hover{ transform: translateY(-2px); background: var(--blue); border-color: var(--blue); }
   .quote-bubble{
     background: var(--white);
     color: var(--text-dark);
@@ -479,7 +478,7 @@
     color: var(--text-dark);
     min-height:auto;
   }
-  .timeline:hover{ border-radius: 12px; }
+  .timeline:hover{ }
   .tl-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:22px; flex-wrap:wrap; gap:10px;}
   .tl-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0; }
   .tl-total{
@@ -492,7 +491,7 @@
     padding: 20px;
     transition: transform .25s ease, border-radius .25s ease;
   }
-  .tl-step:hover{ transform: translateY(-4px); border-radius: 8px; }
+  .tl-step:hover{ transform: translateY(-2px); }
   .tl-step .tl-date{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.05em; opacity:.75; margin-bottom:8px; display:block;}
   .tl-step .tl-label{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:20px; line-height:1.05; }
   .tl-arrival{ background: var(--cream-deep); }
@@ -505,7 +504,7 @@
     background: var(--white);
     color: var(--text-dark);
   }
-  .travel-card:hover{ border-radius: 12px; }
+  .travel-card:hover{ }
   .travel-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:8px; flex-wrap:wrap; gap:10px;}
   .travel-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0; }
   .travel-tag{
@@ -566,7 +565,7 @@
     background: var(--cream);
     color: var(--text-dark);
   }
-  .reimburse-card:hover{ border-radius: 10px; }
+  .reimburse-card:hover{ }
   .reimburse-head{ margin-bottom:6px; }
   .reimburse-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:26px; margin:0 0 4px 0; }
   .reimburse-head p{ margin:0 0 18px 0; font-size:13.5px; color:#5a5646; max-width:640px; }
@@ -601,7 +600,7 @@
 
   /* ================= OBJECTIVES ================= */
   .objectives-card{ background: var(--white); color: var(--text-dark); }
-  .objectives-card:hover{ border-radius: 12px; }
+  .objectives-card:hover{ }
   .objectives-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0 0 4px 0; }
   .objectives-head p{ margin:0 0 20px 0; font-size:13.5px; color:#5a5646; max-width:640px; }
   .objectives-grid{ display:grid; grid-template-columns: repeat(5, 1fr); gap:12px; }
@@ -609,14 +608,14 @@
     background: var(--cream); border-radius: var(--r-md); padding:18px 16px;
     transition: transform .25s ease, border-radius .25s ease, background .25s ease;
   }
-  .objective-item:hover{ transform: translateY(-5px); border-radius: 8px var(--r-md); background: var(--cream-deep); }
+  .objective-item:hover{ transform: translateY(-2px); background: var(--cream-deep); }
   .objective-num{ font-family:'Anton', sans-serif; font-size:26px; color:var(--red-deep); line-height:1; margin-bottom:8px; }
   .objective-item h4{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:14.5px; margin:0 0 6px 0; letter-spacing:.01em; }
   .objective-item p{ font-size:12px; line-height:1.5; color:#4a4636; margin:0; }
 
   /* ================= PROGRAMME CONTENT ================= */
   .programme-card{ background: var(--ink-soft); color:#fff; border:1px solid #2a2823; }
-  .programme-card:hover{ border-radius: 10px; }
+  .programme-card:hover{ }
   .programme-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:26px; margin:0 0 4px 0; }
   .programme-head p{ margin:0 0 16px 0; font-size:13px; color:#c8c4b6; max-width:600px; }
 
@@ -636,7 +635,7 @@
     color:#fff;
     display:flex; align-items:center; justify-content:space-between; gap:20px; flex-wrap:wrap;
   }
-  .output-banner:hover{ border-radius: 10px var(--r-lg) 10px var(--r-lg); }
+  .output-banner:hover{ }
   .output-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:#ffd9c9; margin-bottom:6px; }
   .output-stat{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size: clamp(26px, 4vw, 40px); line-height:1.05; margin:0 0 6px 0; }
   .output-sub{ font-size:14px; color:#ffe1d6; max-width:420px; margin:0; }
@@ -647,12 +646,12 @@
 
   /* ================= LEARNING OUTCOMES ================= */
   .outcomes-card{ background: var(--white); color:var(--text-dark); }
-  .outcomes-card:hover{ border-radius: 12px; }
+  .outcomes-card:hover{ }
   .outcomes-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0 0 4px 0; }
   .outcomes-head p{ margin:0 0 18px 0; font-size:13.5px; color:#5a5646; max-width:660px; }
   .outcomes-grid{ display:grid; grid-template-columns: repeat(3, 1fr); gap:14px; margin-bottom:16px; }
   .outcome-col{ background: var(--cream); border-radius: var(--r-md); padding:18px 20px; transition: transform .25s ease;}
-  .outcome-col:hover{ transform: translateY(-4px); }
+  .outcome-col:hover{ transform: translateY(-2px); }
   .outcome-col .oc-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--red-deep); margin-bottom:8px; }
   .outcome-col ul{ margin:0; padding-left:16px; font-size:12.5px; line-height:1.6; color:#3a352a; }
   .outcome-col li{ margin-bottom:6px; }
@@ -665,7 +664,7 @@
 
   /* ================= FOLLOW-UP ================= */
   .followup-card{ background: var(--cream); color:var(--text-dark); }
-  .followup-card:hover{ border-radius: 10px; }
+  .followup-card:hover{ }
   .followup-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:26px; margin:0 0 12px 0; }
   .followup-card p{ font-size:13.5px; line-height:1.65; color:#3a352a; margin:0 0 12px 0; }
   .followup-callout{
@@ -682,7 +681,7 @@
     background: var(--red);
     color:#fff;
   }
-  .travel-warn:hover{ border-radius: 10px; }
+  .travel-warn:hover{ }
   .travel-warn-head{ display:flex; align-items:center; gap:10px; margin-bottom:12px; }
   .travel-warn-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:24px; margin:0; }
   .travel-warn p{ font-size:13.5px; line-height:1.6; color:#ffe1d6; margin:0 0 14px 0; max-width:760px; }
@@ -698,7 +697,7 @@
 
   /* ================= BEFORE YOU TRAVEL ================= */
   .before-travel-card{ background: var(--ink-soft); color:#fff; border:1px solid #2a2823; }
-  .before-travel-card:hover{ border-radius: 10px; }
+  .before-travel-card:hover{ }
   .before-travel-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:26px; margin:0 0 4px 0; }
   .before-travel-head p{ margin:0 0 16px 0; font-size:13px; color:#c8c4b6; }
   .bt-accordions{ display:flex; flex-direction:column; gap:10px; }
@@ -718,7 +717,7 @@
     min-height: 260px;
     display:flex; flex-direction:column;
   }
-  .info-card:hover{ border-radius: 10px var(--r-lg); }
+  .info-card:hover{ }
   .info-eyebrow{
     font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em;
     text-transform:uppercase; color:var(--red); margin-bottom:6px;
@@ -731,12 +730,12 @@
   }
 
   .profile-card{ background: var(--blue); border:none; }
-  .profile-card:hover{ border-radius: var(--r-lg) 10px; }
+  .profile-card:hover{ }
   .profile-card .info-eyebrow{ color:#ffffff; }
   .profile-card ul{ color:#eef4ff; }
 
   .inclusion-card{ background: var(--cream); color:var(--text-dark); border:none; }
-  .inclusion-card:hover{ border-radius: 10px var(--r-lg); }
+  .inclusion-card:hover{ }
   .inclusion-card .info-eyebrow{ color:var(--red-deep); }
   .inclusion-card ul{ color:#3a352a; }
 
@@ -747,7 +746,7 @@
     display:flex; gap:22px; align-items:flex-start;
   }
   .funding-text{ max-width: 720px; }
-  .funding:hover{ border-radius: 10px; }
+  .funding:hover{ }
   .eu-emblem{
     flex-shrink:0;
     width:84px; height:84px;
@@ -770,7 +769,7 @@
     border:1px solid #2a2823;
     display:flex; flex-direction:column; gap:14px;
   }
-  .logos:hover{ border-radius: var(--r-lg) 10px; }
+  .logos:hover{ }
   .logos-head{ margin-bottom:2px; }
   .logos-head h3{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:19px; margin:0 0 3px 0; color:#fff; }
   .logos-head p{ margin:0; font-size:11.5px; font-family:'IBM Plex Mono', monospace; color:#9a9585; }
@@ -785,7 +784,7 @@
     transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
   }
   .org-tile:hover{
-    transform: translateY(-4px) scale(1.03);
+    transform: translateY(-2px);
     box-shadow: 0 14px 24px rgba(0,0,0,.35);
     border-color: var(--red);
   }
@@ -848,7 +847,7 @@
     background: linear-gradient(160deg, var(--blue) 0%, var(--blue-deep) 100%);
     color: #fff;
   }
-  .getting-here:hover{ border-radius: 10px; }
+  .getting-here:hover{ }
   .gh-head{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:16px; flex-wrap:wrap; gap:10px;}
   .gh-head h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0; color:#fff; }
   .getting-here .gallery-tag{ color:#dfeaff; }
@@ -910,7 +909,7 @@
     background: var(--red);
     color:#fff;
   }
-  .social:hover{ border-radius: 10px var(--r-lg) 10px var(--r-lg); }
+  .social:hover{ }
   .social-inner{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:20px; }
   .social-text h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0 0 6px 0; }
   .social-text p{ margin:0; font-size:14px; color:#ffe1d6; max-width:420px; }
@@ -926,7 +925,7 @@
   .social-chip:nth-child(2){ transform: rotate(2deg); }
   .social-chip:nth-child(3){ transform: rotate(-1.5deg); }
   .social-chip:nth-child(4){ transform: rotate(1.5deg); }
-  .social-chip:hover{ transform: rotate(0deg) scale(1.07); }
+  .social-chip:hover{ transform: rotate(0deg); }
   .social-chip.ig{ background:#fff; color:var(--red-deep); }
   .social-chip.yt{ background:var(--ink); color:#fff; }
   .social-chip.tt{ background:var(--blue); color:#fff; }
@@ -938,7 +937,7 @@
     color:#fff;
     display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px;
   }
-  .footer:hover{ border-radius: var(--r-lg) 8px; }
+  .footer:hover{ }
   .footer h3{ font-family:'Anton', sans-serif; text-transform:uppercase; margin:0 0 4px 0; font-size:22px; }
   .footer p{ margin:0; font-size:13px; color:#e2ecff; }
   .footer .deadline-chip{
@@ -1013,6 +1012,271 @@
     .deadline-banner{ flex-direction:column; align-items:flex-start; }
     .invoice-box{ flex-direction:column; gap:4px; }
   }
+
+  /* ================= MULTI-PAGE: NAV ================= */
+  .fts-nav{
+    position:sticky; top:10px; z-index:50; display:flex; gap:6px; flex-wrap:wrap;
+    padding:6px; margin:0 0 18px 0; border-radius:999px;
+    background:rgba(22,21,19,.82); backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);
+    border:1px solid #2a2823; width:max-content; max-width:100%;
+  }
+  .fts-nav a{
+    display:flex; align-items:center; gap:8px; padding:10px 16px; border-radius:999px;
+    color:#d9d4c4; text-decoration:none; font-weight:600; font-size:14px; white-space:nowrap;
+    transition:background .2s ease, color .2s ease;
+  }
+  .fts-nav a:hover{ background:#2a2823; color:#fff; }
+  .fn-num{ font-family:'IBM Plex Mono', monospace; font-size:11px; opacity:.6; }
+  .fts-nav a.on.c-red{ background:var(--red); color:#fff; }
+  .fts-nav a.on.c-cream{ background:var(--cream); color:var(--text-dark); }
+  .fts-nav a.on.c-blue{ background:var(--blue); color:#fff; }
+  .fts-nav a.on.c-ink{ background:#fff; color:var(--ink); }
+  .fts-nav a.on.c-sand{ background:var(--cream-deep); color:var(--text-dark); }
+  .fts-nav a.on .fn-num{ opacity:.85; }
+  @media (max-width:760px){
+    .fts-nav{ border-radius:22px; width:100%; flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none; }
+    .fts-nav a{ padding:9px 13px; font-size:13px; }
+  }
+
+  /* page colour roles */
+  .ph-red{ background:var(--red); color:#fff; }
+  .ph-cream{ background:var(--cream); color:var(--text-dark); }
+  .ph-blue{ background:var(--blue); color:#fff; }
+  .ph-ink{ background:var(--ink-soft); color:#fff; border:1px solid #2a2823; }
+  .ph-sand{ background:var(--cream-deep); color:var(--text-dark); }
+
+  /* ================= PAGE HERO (sub-pages) ================= */
+  .page-hero{ grid-column:span 12; padding:40px 34px 30px; }
+  .page-hero:hover{ transform:none; box-shadow:none; }
+  .ph-index{ font-family:'Anton', sans-serif; font-size:22px; opacity:.9; }
+  .ph-index span{ opacity:.45; }
+  .ph-title{ font-family:'Anton', sans-serif; text-transform:uppercase; font-weight:400;
+    font-size:clamp(44px, 8vw, 112px); line-height:.92; margin:10px 0 24px; letter-spacing:.005em; }
+  .ph-chips{ display:flex; flex-wrap:wrap; gap:8px; }
+  .ph-chip{ font-family:'IBM Plex Mono', monospace; font-size:12px; text-decoration:none; color:inherit;
+    padding:8px 14px; border-radius:999px; border:1px solid currentColor; opacity:.85; transition:all .2s; }
+  .ph-chip:hover{ opacity:1; background:rgba(255,255,255,.18); }
+  .ph-cream .ph-chip:hover, .ph-sand .ph-chip:hover{ background:rgba(0,0,0,.06); }
+  [id]{ scroll-margin-top:90px; }
+
+  /* ================= NEXT CARD ================= */
+  .next-card{ grid-column:span 12; display:grid; grid-template-columns:1fr auto; align-items:end;
+    text-decoration:none; padding:34px; }
+  .nc-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; opacity:.75; grid-column:1; }
+  .nc-title{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:clamp(34px,5vw,64px); line-height:1; grid-column:1; }
+  .nc-arrow{ font-size:44px; line-height:1; grid-column:2; grid-row:1 / span 2; transition:transform .25s ease; }
+  .next-card:hover .nc-arrow, .ex-tile:hover .nc-arrow{ transform:translateX(10px); }
+
+  /* ================= OVERVIEW: explore tiles ================= */
+  .explore{ background:var(--white); color:var(--text-dark); }
+  .explore h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:28px; margin:0; }
+  .explore-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+  .ex-tile{ border-radius:var(--r-md); padding:22px; min-height:230px; display:flex; flex-direction:column; gap:10px;
+    text-decoration:none; transition:transform .25s ease, border-radius .25s ease; }
+  .ex-tile:hover{ transform:translateY(-6px); border-radius:8px var(--r-md); }
+  .ex-num{ font-family:'Anton', sans-serif; font-size:30px; opacity:.55; }
+  .ex-title{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:26px; line-height:1; }
+  .ex-list{ font-size:12.5px; line-height:1.5; opacity:.85; flex:1; }
+  .ex-tile .nc-arrow{ font-size:30px; align-self:flex-end; }
+  @media (max-width:980px){ .explore-grid{ grid-template-columns:1fr 1fr; } }
+  @media (max-width:560px){ .explore-grid{ grid-template-columns:1fr; } }
+
+  /* ================= PROGRAMME: objectives as a path ================= */
+  .objectives-card.path .objectives-grid{ grid-template-columns:1fr; gap:0; position:relative; padding-left:4px; }
+  .objectives-card.path .objective-item{ display:grid; grid-template-columns:70px 260px 1fr; align-items:center; gap:18px;
+    background:transparent; border-radius:0; padding:16px 0; border-bottom:1px dashed #d8cfb4; }
+  .objectives-card.path .objective-item:last-child{ border-bottom:none; }
+  .objectives-card.path .objective-item:hover{ background:transparent; transform:translateX(8px); }
+  .objectives-card.path .objective-num{ font-size:44px; margin:0; }
+  .objectives-card.path .objective-item h4{ font-size:19px; margin:0; }
+  .objectives-card.path .objective-item p{ font-size:14px; }
+  @media (max-width:760px){ .objectives-card.path .objective-item{ grid-template-columns:56px 1fr; }
+    .objectives-card.path .objective-item p{ grid-column:2; } }
+  .page-programme .programme-list{ columns:2; column-gap:40px; }
+  @media (max-width:760px){ .page-programme .programme-list{ columns:1; } }
+
+  /* ON AIR */
+  .onair{ display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-weight:600;
+    font-size:12px; letter-spacing:.2em; background:#fff; color:var(--red-deep); padding:6px 14px; border-radius:999px; margin-bottom:14px; }
+  .onair-dot{ width:9px; height:9px; border-radius:50%; background:var(--red); animation:onair 1.2s infinite; }
+  @keyframes onair{ 50%{ opacity:.2; } }
+  .wave{ display:inline-flex; gap:3px; align-items:center; height:14px; }
+  .wave i{ width:3px; background:var(--red); border-radius:2px; animation:wave 1s infinite ease-in-out; }
+  .wave i:nth-child(1){animation-delay:-.1s}.wave i:nth-child(2){animation-delay:-.5s}.wave i:nth-child(3){animation-delay:-.3s}
+  .wave i:nth-child(4){animation-delay:-.7s}.wave i:nth-child(5){animation-delay:-.2s}.wave i:nth-child(6){animation-delay:-.6s}.wave i:nth-child(7){animation-delay:-.4s}
+  @keyframes wave{ 0%,100%{ height:3px; } 50%{ height:14px; } }
+
+  /* ================= PARTICIPANTS: multiplier chain ================= */
+  .chain{ background:var(--ink-soft); border:1px solid #2a2823; }
+  .chain:hover{ transform:none; box-shadow:none; }
+  .chain-row{ display:flex; align-items:center; justify-content:space-between; gap:10px; flex-wrap:wrap; }
+  .chain-step{ display:flex; flex-direction:column; align-items:center; text-align:center; flex:1; min-width:120px; }
+  .chain-step b{ font-family:'Anton', sans-serif; font-weight:400; font-size:clamp(44px,6vw,76px); line-height:1; color:#fff; }
+  .chain-step span{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:#b9b4a4; margin-top:6px; }
+  .chain-step.big b{ color:var(--red); }
+  .chain-arrow{ font-size:30px; color:var(--blue); }
+  @media (max-width:760px){ .chain-arrow{ transform:rotate(90deg); width:100%; text-align:center; } }
+  ul.ticks{ list-style:none; padding-left:0 !important; }
+  ul.ticks li{ position:relative; padding-left:34px; margin-bottom:10px; }
+  ul.ticks li::before{ content:"✓"; position:absolute; left:0; top:-1px; width:22px; height:22px; border-radius:50%;
+    background:var(--blue); color:#fff; font-size:12px; display:flex; align-items:center; justify-content:center; font-weight:700; }
+
+  /* ================= TRAVEL: steps + route line ================= */
+  .steps{ background:var(--white); color:var(--text-dark); padding:18px; }
+  .steps:hover{ transform:none; box-shadow:none; }
+  .steps-row{ display:grid; grid-template-columns:repeat(4,1fr); gap:8px; counter-reset:s; }
+  .step{ position:relative; background:var(--cream); border-radius:var(--r-sm); padding:16px 16px 16px 58px; font-weight:600; font-size:14px; min-height:62px; display:flex; align-items:center; }
+  .step span{ position:absolute; left:14px; top:50%; transform:translateY(-50%); width:32px; height:32px; border-radius:50%;
+    background:var(--ink); color:#fff; font-family:'Anton', sans-serif; display:flex; align-items:center; justify-content:center; }
+  .step:nth-child(2) span{ background:var(--blue); } .step:nth-child(3) span{ background:var(--red); }
+  @media (max-width:760px){ .steps-row{ grid-template-columns:1fr; } }
+  .route{ display:flex; align-items:flex-start; margin:6px 0 26px; }
+  .stop{ display:flex; flex-direction:column; align-items:center; gap:6px; flex:0 0 auto; text-align:center; min-width:90px; }
+  .st-dot{ width:26px; height:26px; border-radius:50%; background:#fff; border:6px solid var(--blue-deep); box-shadow:0 0 0 3px #fff; }
+  .stop.end .st-dot{ background:var(--red); }
+  .stop b{ font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; font-size:22px; }
+  .stop small{ font-family:'IBM Plex Mono', monospace; font-size:12px; opacity:.85; }
+  .leg{ flex:1; height:6px; background:repeating-linear-gradient(90deg,#fff 0 14px, transparent 14px 22px); margin-top:10px; border-radius:3px; }
+  .gh-chips.tickets .gh-chip{ position:relative; border-radius:10px; padding:12px 18px; border-style:dashed; }
+  .page-travel .gh-head .gallery-tag{ display:none; }
+
+  /* ================= BEFORE YOU GO: board + packing list ================= */
+  .before-travel-card.board .bt-accordions{ columns:2; column-gap:14px; }
+  .before-travel-card.board .gh-accordion{ break-inside:avoid; margin-bottom:14px; display:block; }
+  @media (max-width:860px){ .before-travel-card.board .bt-accordions{ columns:1; } }
+  .pack-lab{ margin:16px 0 6px !important; }
+  ul.pack{ list-style:none; padding-left:0 !important; display:flex; flex-wrap:wrap; gap:6px; }
+  ul.pack li{ margin:0 !important; }
+  ul.pack label{ display:inline-flex; align-items:center; gap:8px; cursor:pointer; padding:7px 12px; border-radius:999px;
+    background:rgba(255,255,255,.08); border:1px solid #3a372f; font-size:13.5px; transition:all .2s; }
+  ul.pack input{ accent-color:var(--red); width:15px; height:15px; margin:0; }
+  ul.pack input:checked + span{ text-decoration:line-through; opacity:.55; }
+  ul.pack label:has(input:checked){ border-color:var(--red); }
+
+  /* ================= TRAVEL: entry requirements card ================= */
+  .entry-card{ grid-column:span 12; display:grid; grid-template-columns:120px 1fr; gap:26px; align-items:start;
+    background:var(--white); color:var(--text-dark); border:3px solid var(--red); }
+  .entry-card:hover{ transform:none; box-shadow:0 0 0 6px rgba(255,69,32,.18); }
+  .entry-stamp{ width:110px; height:110px; border-radius:50%; border:4px dashed var(--red); display:flex; align-items:center;
+    justify-content:center; font-size:52px; transform:rotate(-10deg); background:#fff3ef; }
+  .entry-card .info-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--red-deep); margin-bottom:6px; }
+  .entry-card h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-weight:400; font-size:clamp(26px,3.4vw,40px); line-height:1.02; margin:0 0 14px; }
+  .entry-text p{ font-size:15px; line-height:1.6; color:#3a352a; margin:0 0 8px !important; max-width:860px; }
+  .entry-text p:first-child{ font-weight:600; font-size:16.5px; color:var(--text-dark); }
+  .entry-text a{ color:var(--red-deep); font-weight:600; }
+  .entry-links{ display:flex; gap:10px; flex-wrap:wrap; margin-top:16px; }
+  .entry-btn{ font-family:'IBM Plex Mono', monospace; font-weight:600; font-size:14px; text-decoration:none; padding:12px 20px;
+    border-radius:999px; border:2px solid var(--red); color:var(--red-deep); transition:all .2s; }
+  .entry-btn.solid{ background:var(--red); color:#fff; }
+  .entry-btn:hover{ transform:translateY(-2px); }
+  @media (max-width:760px){ .entry-card{ grid-template-columns:1fr; } .entry-stamp{ width:76px; height:76px; font-size:36px; } }
+  .ex-list b{ display:block; margin-bottom:4px; }
+
+  /* calmer hover (option B) for new elements */
+  .card{ transition: transform .3s ease, box-shadow .3s ease !important; }
+  .ex-tile:hover{ transform:translateY(-2px); border-radius:var(--r-md); box-shadow:0 10px 22px rgba(0,0,0,.18); }
+  .objectives-card.path .objective-item:hover{ transform:none; }
+  .entry-btn:hover{ transform:none; filter:brightness(1.05); }
+  details.gh-accordion.dark .gh-body a{ color:#ff8a6e; font-weight:600; }
+  .team-note{ margin:14px 0; padding:14px 16px; border-radius:var(--r-sm); background:rgba(63,127,224,.16); border:1px solid var(--blue); }
+  .team-note-tag{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:#9ec2ff; margin-bottom:6px; }
+  .team-note p{ margin:0 !important; }
+
+  /* ================= PROGRAMME: daily schedule ================= */
+  .schedule-card{ grid-column:span 12; background:var(--white); color:var(--text-dark); }
+  .schedule-card:hover{ transform:none; box-shadow:none; }
+  .sch-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:18px; }
+  .schedule-card .info-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--red-deep); }
+  .schedule-card h2{ font-family:'Anton', sans-serif; text-transform:uppercase; font-weight:400; font-size:clamp(30px,4vw,44px); margin:2px 0 0; line-height:1; }
+  .sch-legend{ display:flex; gap:12px; flex-wrap:wrap; font-family:'IBM Plex Mono', monospace; font-size:11px; color:#5a5646; }
+  .lg{ display:inline-flex; align-items:center; gap:6px; }
+  .lg i{ width:12px; height:12px; border-radius:4px; background:var(--kc); display:inline-block; }
+  .k-session{ --kc:var(--ink); } .k-podcast{ --kc:var(--red); } .k-evening{ --kc:var(--blue); }
+  .k-reflect{ --kc:#8fb4ee; } .k-meal, .k-break{ --kc:#cfc5a6; } .k-free{ --kc:#7fb87f; }
+  .sch-tabs{ display:grid; grid-template-columns:repeat(8,1fr); gap:6px; margin-bottom:16px; }
+  .sch-tab{ font:inherit; cursor:pointer; border:1px solid var(--cream-deep); background:var(--cream); color:var(--text-dark);
+    border-radius:var(--r-sm); padding:10px 6px; display:flex; flex-direction:column; align-items:center; gap:2px; transition:background .2s, color .2s; position:relative; }
+  .sch-tab b{ font-family:'Anton', sans-serif; font-weight:400; font-size:18px; text-transform:uppercase; }
+  .sch-tab span{ font-family:'IBM Plex Mono', monospace; font-size:11px; opacity:.7; }
+  .sch-tab:hover{ background:var(--cream-deep); }
+  .sch-tab.on{ background:var(--ink); color:#fff; border-color:var(--ink); }
+  .sch-tab.all.on{ background:var(--red); border-color:var(--red); }
+  .sch-tab.today::after{ content:"TODAY"; position:absolute; top:-8px; right:6px; font-family:'IBM Plex Mono', monospace; font-size:9px;
+    background:var(--red); color:#fff; padding:2px 6px; border-radius:999px; letter-spacing:.08em; }
+  @media (max-width:760px){ .sch-tabs{ grid-template-columns:repeat(4,1fr); } }
+  .sd-head{ display:flex; align-items:baseline; gap:14px; margin-bottom:10px; flex-wrap:wrap; }
+  .sd-label{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:24px; }
+  .sd-theme{ font-size:15px; color:#5a5646; }
+  .sch-list{ list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:6px; }
+  .si{ display:grid; grid-template-columns:120px 1fr; gap:14px; align-items:start; padding:12px 14px; border-radius:12px;
+    background:var(--cream); border-left:5px solid var(--kc); }
+  .si-time{ font-family:'IBM Plex Mono', monospace; font-size:13px; font-weight:600; padding-top:2px; }
+  .si-t{ display:block; font-weight:700; font-size:15.5px; }
+  .si-d{ display:block; font-size:13.5px; color:#4a4636; margin-top:3px; line-height:1.5; }
+  .si.k-meal, .si.k-break{ background:transparent; padding:6px 14px; }
+  .si.k-meal .si-t, .si.k-break .si-t{ font-weight:500; color:#6d6754; font-size:14px; }
+  .si.k-podcast{ background:#fff0eb; } .si.k-evening{ background:#eaf1fd; } .si.k-reflect{ background:#f1f5fd; }
+  @media (max-width:560px){ .si{ grid-template-columns:1fr; gap:4px; } }
+  table.sch-grid{ border-collapse:separate; border-spacing:4px; min-width:1100px; width:100%; font-size:12px; }
+  .sch-grid thead th{ text-align:left; vertical-align:bottom; padding:6px 8px; }
+  .sch-grid thead th b{ display:block; font-family:'Anton', sans-serif; font-weight:400; font-size:16px; text-transform:uppercase; }
+  .sch-grid thead th span{ display:block; font-weight:400; color:#5a5646; font-size:11.5px; }
+  .sch-grid th.t{ font-family:'IBM Plex Mono', monospace; font-size:11.5px; white-space:nowrap; text-align:left; vertical-align:top; padding:8px 6px; }
+  .sch-grid td{ vertical-align:top; padding:8px; border-radius:8px; background:var(--cream); border-top:4px solid var(--kc); }
+  .sch-grid td .si-t{ font-size:12.5px; } .sch-grid td .si-d{ font-size:11.5px; }
+  .sch-grid td.k-meal, .sch-grid td.k-break{ background:transparent; border-top-width:2px; color:#6d6754; }
+  .sch-grid td.k-meal .si-t, .sch-grid td.k-break .si-t{ font-weight:500; }
+  .sch-grid td.k-podcast{ background:#fff0eb; } .sch-grid td.k-evening{ background:#eaf1fd; }
+  .sch-grid td.empty{ background:transparent; border:none; }
+  .sch-note{ margin:16px 0 0; padding:14px 16px; border-radius:var(--r-sm); background:var(--cream); font-size:13.5px; line-height:1.6; color:#3a352a; }
+  table.sch-grid{ table-layout:fixed; } .sch-grid thead th:first-child, .sch-grid th.t{ width:92px; }
+
+  /* smooth in-page jumps from the anchor chips */
+  html{ scroll-behavior:smooth; }
+  @media (prefers-reduced-motion: reduce){ html{ scroll-behavior:auto; } }
+  .arrived{ animation:arrived 1.6s ease; }
+  @keyframes arrived{ 0%{ box-shadow:0 0 0 0 rgba(255,69,32,0); } 25%{ box-shadow:0 0 0 6px rgba(255,69,32,.45); } 100%{ box-shadow:0 0 0 0 rgba(255,69,32,0); } }
+
+  /* arrival day box (Getting to Vircava) */
+  .arrival-box{ background:#fff; color:var(--text-dark); border-radius:var(--r-md); padding:20px 22px; margin:0 0 16px; }
+  .ab-tag{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--blue-deep); font-weight:600; margin-bottom:10px; }
+  .arrival-box ul{ margin:0; padding-left:18px; font-size:14.5px; line-height:1.6; }
+  .arrival-box li{ margin-bottom:6px; }
+  .arrival-box a{ color:var(--blue-deep); font-weight:600; }
+  .ab-links{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
+  .arrival-box .ab-btn{ font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none; padding:10px 16px; border-radius:999px; border:2px solid var(--blue); color:var(--blue-deep); }
+  .arrival-box .ab-btn.solid{ background:#25a244; border-color:#25a244; color:#fff; }
+
+  /* ================= MOBILE FIXES ================= */
+  @media (max-width:980px){
+    .grid > *{ grid-column:1 / -1; }
+    .grid > .g-pillars, .grid > .g-location, .grid > .g-profile, .grid > .g-inclusion{ grid-column:span 1; }
+  }
+  @media (max-width:700px){
+    .grid > *{ grid-column:1 / -1 !important; }
+    .page-hero{ padding:26px 22px 22px; }
+    .ph-chips{ gap:6px; } .ph-chip{ font-size:11px; padding:7px 11px; }
+    .next-card{ padding:24px 22px; }
+    .route .stop{ min-width:70px; } .route .stop b{ font-size:17px; }
+    .entry-card{ gap:14px; }
+  }
+
+  /* collapsible sections on phones: make "tap to open" obvious */
+  @media (max-width:700px){
+    details.gh-accordion > summary{ min-height:56px; }
+    details.gh-accordion:not([open]) > summary::after{
+      content:"Tap to open"; font-family:'IBM Plex Mono', monospace; font-size:10.5px; letter-spacing:.08em; text-transform:uppercase;
+      margin-left:auto; margin-right:10px; opacity:.6; white-space:nowrap; }
+    details.gh-accordion:not([open]){ box-shadow:inset 0 0 0 2px rgba(255,69,32,.35); }
+    details.gh-accordion > summary .gh-plus{ order:2; }
+    details.gh-accordion .gh-plus{ width:30px; height:30px; flex-shrink:0; background:var(--red) !important; color:#fff !important; }
+    /* schedule: tighter rows so a day fits in ~1.5 screens */
+    .si{ grid-template-columns:86px 1fr; gap:10px; padding:10px 12px; }
+    .si-time{ font-size:12px; }
+    .si-t{ font-size:14.5px; } .si-d{ font-size:12.5px; }
+    .si.k-meal, .si.k-break{ padding:3px 12px; }
+    .sch-legend{ display:none; }
+  }
 </style>
 </head>
 <body>
@@ -1028,17 +1292,15 @@
     <div class="erasmus-tag">Erasmus+ KA153-YOU · Approved by the Latvian National Agency</div>
   </div>
 
-  <div class="deadline-banner">
-    <div class="db-left">
-      <span class="db-eyebrow">⏳ Selection Deadline</span>
-      <span class="db-sub">3 participants per partner organisation</span>
-    </div>
-    <span class="db-date">27 OCTOBER 2026</span>
-  </div>
+  <nav class="fts-nav" aria-label="FTS infopack pages">
+    <a href="fts.html" aria-current="page" class="on c-red"><span class="fn-num">01</span>Overview</a>
+    <a href="fts-programme.html" class="c-cream"><span class="fn-num">02</span>Programme</a>
+    <a href="fts-participants.html" class="c-blue"><span class="fn-num">03</span>Who &amp; Commitments</a>
+    <a href="fts-travel.html" class="c-ink"><span class="fn-num">04</span>Travel &amp; Money</a>
+    <a href="fts-before-you-go.html" class="c-sand"><span class="fn-num">05</span>Before You Go</a>
+  </nav>
+  <div class="grid page-overview">
 
-  <div class="grid">
-
-    <!-- HERO -->
     <div class="card hero-title g-hero-title">
       <span class="badge-fts">FTS</span>
       <div>
@@ -1051,7 +1313,6 @@
         <span>👥 18 PARTICIPANTS + 2 TRAINERS</span>
       </div>
     </div>
-
     <div id="weather" class="card weather-card g-hero-photo">
       <div class="weather-head">
         <div>
@@ -1065,15 +1326,11 @@
       </div>
       <div class="weather-note" id="weatherNote">Fetching live forecast…</div>
     </div>
-
-    <!-- NO FEE BANNER -->
     <div class="card fee-banner g-fee">
       <div class="fee-text">
         <strong>No participation fee.</strong> Accommodation, meals and the educational programme during the eligible project period are covered by the project.
       </div>
     </div>
-
-    <!-- ORGANISATIONS -->
     <div class="card orgs-mini g-pillars">
       <div class="orgs-mini-head">
         <h3>Partner Organisations</h3>
@@ -1106,8 +1363,6 @@
         </div>
       </div>
     </div>
-
-    <!-- PROGRAMME AT A GLANCE -->
     <div class="card glance-mini g-location">
       <div class="glance-mini-head">Programme at a Glance</div>
       <div class="glance-step">
@@ -1146,8 +1401,15 @@
         </div>
       </div>
     </div>
-
-    <!-- GALLERY -->
+    <div class="card explore g-gallery">
+      <div class="gallery-head"><h2>Explore the Infopack</h2></div>
+      <div class="explore-grid">
+        <a class="ex-tile ph-cream" href="fts-programme.html"><span class="ex-num">02</span><span class="ex-title">Programme</span><span class="ex-list"><b>Daily Schedule</b> Objectives · What Will We Actually Do? · Main Project Output · Expected Learning Outcomes · Youthpass</span><span class="nc-arrow">→</span></a>
+        <a class="ex-tile ph-blue" href="fts-participants.html"><span class="ex-num">03</span><span class="ex-title">Who &amp; Commitments</span><span class="ex-list">Participant Profile · Inclusion Focus · Your Participation Doesn't End With the Training Course</span><span class="nc-arrow">→</span></a>
+        <a class="ex-tile ph-ink" href="fts-travel.html"><span class="ex-num">04</span><span class="ex-title">Travel &amp; Money</span><span class="ex-list">Getting to Vircava · Travel Budgets &amp; Green Travel · <b>🛂 Entry requirements for third‑country nationals</b> · Reimbursement &amp; Invoicing</span><span class="nc-arrow">→</span></a>
+        <a class="ex-tile ph-sand" href="fts-before-you-go.html"><span class="ex-num">05</span><span class="ex-title">Before You Go</span><span class="ex-list">Insurance &amp; Health · What to Bring · Intercultural Evening · Preparation · Sustainability</span><span class="nc-arrow">→</span></a>
+      </div>
+    </div>
     <div class="card gallery g-gallery">
       <div class="gallery-head">
         <h2>Location Gallery</h2>
@@ -1164,471 +1426,11 @@
         <div class="gallery-item"><img src="https://ik.imagekit.io/fts/location/8.jpg" alt="Vircava location photo 8" loading="lazy"></div>
       </div>
     </div>
-
-    <!-- OBJECTIVES -->
-    <div class="card objectives-card g-objectives">
-      <div class="objectives-head">
-        <h2>Objectives</h2>
-        <p>What the training course sets out to build, in five parts.</p>
-      </div>
-      <div class="objectives-grid">
-        <div class="objective-item">
-          <div class="objective-num">01</div>
-          <h4>Critical Thinking &amp; Media Literacy</h4>
-          <p>Practical, transferable tools for working with critical thinking and media literacy in youth work.</p>
-        </div>
-        <div class="objective-item">
-          <div class="objective-num">02</div>
-          <h4>Dialogue &amp; Public Speaking</h4>
-          <p>Stronger ability to run structured discussions, debates and public‑speaking activities with young people.</p>
-        </div>
-        <div class="objective-item">
-          <div class="objective-num">03</div>
-          <h4>Podcasting</h4>
-          <p>Practical skills in podcast design, scripting, recording and basic editing as a tool for digital youth work.</p>
-        </div>
-        <div class="objective-item">
-          <div class="objective-num">04</div>
-          <h4>Misinformation &amp; Biases</h4>
-          <p>Working with misinformation, cognitive biases, manipulation and polarisation.</p>
-        </div>
-        <div class="objective-item">
-          <div class="objective-num">05</div>
-          <h4>Digital Youth Work Innovation</h4>
-          <p>Responsible content creation, ethical communication and modern digital methods.</p>
-        </div>
-      </div>
-    </div>
-
-    <!-- PROGRAMME CONTENT -->
-    <div class="card programme-card g-programme">
-      <div class="programme-head">
-        <h2>What Will We Actually Do?</h2>
-        <p>Seven training days, one shared thread: turning critical thinking into real communication.</p>
-      </div>
-      <details class="gh-accordion dark">
-        <summary>Full programme content <span class="gh-plus">+</span></summary>
-        <div class="gh-body">
-          <ul class="programme-list">
-            <li>Critical thinking and structured reasoning</li>
-            <li>Cognitive biases and logical fallacies</li>
-            <li>Misinformation, source evaluation and digital manipulation</li>
-            <li>Media narratives and responsible digital participation</li>
-            <li>Structured debates and moderated dialogue</li>
-            <li>Public speaking, message clarity, argumentation and confidence</li>
-            <li>Practical podcast design and concept development</li>
-            <li>Scripting, interviewing and moderation</li>
-            <li>Recording and basic editing</li>
-            <li>Teamwork and peer feedback</li>
-            <li>Daily reflection</li>
-            <li>Youthpass competence mapping</li>
-            <li>Planning local follow‑up activities</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <!-- MAIN OUTPUT -->
-    <div class="card output-banner g-output">
-      <div>
-        <div class="output-eyebrow">Main Project Output</div>
-        <div class="output-stat">At least 5 podcast episodes</div>
-        <p class="output-sub">Minimum 30 minutes each. You are not only coming to learn — you will co‑create a real project result.</p>
-      </div>
-      <span class="output-badge">🎙 5+ EPISODES · 30+ MIN</span>
-    </div>
-
-    <!-- LEARNING OUTCOMES -->
-    <div class="card outcomes-card g-outcomes">
-      <div class="outcomes-head">
-        <h2>Expected Learning Outcomes</h2>
-        <p>The goal isn't "learning to record a podcast" — it's becoming a stronger youth worker / facilitator who can translate critical thinking into real communication.</p>
-      </div>
-      <div class="outcomes-grid">
-        <div class="outcome-col">
-          <div class="oc-eyebrow">Knowledge</div>
-          <ul>
-            <li>Critical thinking, cognitive biases, and media manipulation mechanisms</li>
-            <li>Ethical frameworks for communication and digital content creation</li>
-            <li>Podcast production structure and narrative storytelling</li>
-            <li>Youthpass competence and self‑assessment frameworks</li>
-          </ul>
-        </div>
-        <div class="outcome-col">
-          <div class="oc-eyebrow">Skills</div>
-          <ul>
-            <li>Facilitating critical‑thinking workshops, debates, and youth‑led discussions</li>
-            <li>Evaluating media content, verifying sources, and deconstructing biases</li>
-            <li>Delivering structured, persuasive public messages</li>
-            <li>End‑to‑end podcast production (scripting, interviewing, recording, and editing) as a youth‑work tool</li>
-          </ul>
-        </div>
-        <div class="outcome-col">
-          <div class="oc-eyebrow">Attitudes</div>
-          <ul>
-            <li>Commitment to ethical, inclusive, and fact‑based communication</li>
-            <li>Openness to diverse perspectives and continuous self‑reflection</li>
-            <li>Confidence in facilitating dialogue and adopting digital youth‑work practices</li>
-          </ul>
-        </div>
-      </div>
-      <div class="youthpass-box">
-        <span class="youthpass-badge">Youthpass</span>
-        <p>All participants will have the opportunity to receive a Youthpass certificate. It's not just a certificate of attendance — throughout the week you'll regularly reflect on what you've learned and map the development of your own competences, built directly into the project's methodology.</p>
-      </div>
-    </div>
-
-    <!-- PARTICIPANT PROFILE -->
-    <div class="card info-card profile-card g-profile">
-      <div class="info-eyebrow">Who Should Apply</div>
-      <h3>Participant Profile</h3>
-      <ul>
-        <li>Youth workers, trainers, educators and facilitators</li>
-        <li>People actively involved in non‑formal education, NGOs, youth centres, community organisations or youth initiatives</li>
-        <li>Both emerging and experienced youth professionals</li>
-        <li>People working directly with young people</li>
-        <li>People interested in critical thinking, media literacy, communication and digital youth work</li>
-        <li>Youth workers supporting migrants, refugees, rural youth, multicultural communities or young people with fewer opportunities</li>
-        <li>A limited number of youth‑oriented content creators / bloggers / vloggers / digital storytellers, if their work is directly connected to youth engagement or educational / community activities</li>
-      </ul>
-      <details class="gh-accordion dark" style="margin-top:12px;">
-        <summary style="font-size:12.5px;">Selection Qualities <span class="gh-plus">+</span></summary>
-        <div class="gh-body">
-          <p>We are looking for participants who:</p>
-          <ul>
-            <li>are motivated to actively participate during the whole programme;</li>
-            <li>can communicate in working English;</li>
-            <li>are willing to contribute to podcast production;</li>
-            <li>are ready to share experience from their own youth‑work context;</li>
-            <li>are committed to implementing and disseminating the learning after returning home.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <!-- INCLUSION -->
-    <div class="card info-card inclusion-card g-inclusion">
-      <div class="info-eyebrow">Fewer Opportunities</div>
-      <h3>Inclusion Focus</h3>
-      <p style="font-size:13px; color:#3a352a; margin:0 0 12px 0;">The project aims to include <strong>10 participants with fewer opportunities</strong> — candidates in this situation are particularly encouraged to apply.</p>
-      <ul>
-        <li>Economic difficulties &amp; disadvantaged socio‑economic backgrounds</li>
-        <li>Social barriers &amp; discrimination</li>
-        <li>Health‑related barriers</li>
-        <li>Rural / geographical contexts</li>
-        <li>Migrant / refugee background &amp; multicultural environments</li>
-      </ul>
-      <div class="flag" style="color:var(--red-deep);">Please share any accessibility, dietary, health or learning support needs confidentially before the mobility, so UNTU can prepare appropriate support.</div>
-    </div>
-
-    <!-- FOLLOW-UP & DISSEMINATION -->
-    <div class="card followup-card g-followup">
-      <div class="followup-head">
-        <h2>Your Participation Doesn't End With the Training Course</h2>
-      </div>
-      <p>"From Thinking to Speaking" is designed as a learning and multiplier project. By joining the Training Course, participants agree to take an active role not only during the mobility in Latvia, but also in transferring the results afterwards.</p>
-      <div class="followup-callout">
-        Each participant must actively contribute to the implementation of a local follow‑up activity. Participants from the same country may organise the activity together. Each national team is expected to organise at least one follow‑up activity reaching at least 16 people.
-      </div>
-      <div class="followup-stat" style="margin-top:14px;">
-        🎯 Through the combined follow‑up activities of all participating countries, the project aims to reach <strong>at least 80 young people</strong> beyond the international training group.
-      </div>
-      <details class="gh-accordion" style="margin-top:14px;">
-        <summary>Participant Commitments &amp; Expected Results <span class="gh-plus">+</span></summary>
-        <div class="gh-body">
-          <p>During and after the project, participants are expected to:</p>
-          <ul>
-            <li>actively participate in the full 7‑day Training Course;</li>
-            <li>contribute to the creation of at least 5 podcast episodes of minimum 30 minutes each, together with the international group;</li>
-            <li>participate in daily reflection, self‑assessment and the Youthpass learning process;</li>
-            <li>together with their national team, organise at least one local follow‑up activity reaching at least 16 people after returning home;</li>
-            <li>provide basic evidence of the follow‑up activity, such as photos/videos, a short agenda, participant numbers and a short report;</li>
-            <li>help disseminate the podcasts and other project results through their organisation, youth work networks and/or relevant communication channels;</li>
-            <li>present or share the acquired methods within their local organisation/community;</li>
-            <li>support the practical use of at least one project methodology in their organisation's regular youth work;</li>
-            <li>participate in a short post‑project follow‑up/evaluation process;</li>
-            <li>prepare a simple personal/team follow‑up commitment plan before leaving Latvia.</li>
-          </ul>
-          <p style="margin-top:10px;">We are looking for participants who are motivated not only to learn, but also to apply, share and multiply the results after the mobility.</p>
-        </div>
-      </details>
-    </div>
-
-    <!-- BEFORE YOU TRAVEL -->
-    <div class="card before-travel-card g-before-travel">
-      <div class="before-travel-head">
-        <h2>Before You Travel</h2>
-        <p>Insurance, packing, preparation &amp; sustainability — the practical bits.</p>
-      </div>
-      <div class="bt-accordions">
-        <details class="gh-accordion dark">
-          <summary>Insurance &amp; Health <span class="gh-plus">+</span></summary>
-          <div class="gh-body">
-            <p>Participants are responsible for having valid health insurance for the full travel and mobility period. EU/EEA participants can use their EHIC, but note that an EHIC does not replace full travel insurance in every situation.</p>
-            <p>Before the mobility we will collect: allergies, dietary requirements, relevant medical / support needs, accessibility needs, and an emergency contact.</p>
-          </div>
-        </details>
-        <details class="gh-accordion dark">
-          <summary>What to Bring <span class="gh-plus">+</span></summary>
-          <div class="gh-body">
-            <p><strong>Essential:</strong> ID / passport, health insurance / EHIC, personal medication, comfortable indoor &amp; outdoor clothes, slippers, toiletries, chargers, eta.gov.lv confirmation e‑mail (non‑EU / EEA citizens only).</p>
-            <p><strong>For the training:</strong> laptop if available, smartphone, headphones / earphones (you will need them during sessions), charger or power bank, notebook if preferred.</p>
-            <p><strong>For a good night's sleep:</strong> a sleep mask, if you have one. If you are a light sleeper, consider earplugs too — we share one house, and people sometimes chat until late.</p>
-            <p><strong>Weather:</strong> November is the start of the cold season in Latvia, and winter is close. Most of the programme takes place indoors at the manor, but please pack for the temperatures in the <a href="fts.html#weather">Weather in Vircava</a> forecast.</p>
-            <div class="team-note">
-              <div class="team-note-tag">👥 Per national team · not per person</div>
-              <p><strong>Microphones:</strong> if possible, each national team brings at least two small clip‑on (lapel) microphones — we will also film video. One person from the team can take care of this. If your team has none, you can borrow from another team during the project.</p>
-            </div>
-            <p><strong>Green touch:</strong> a reusable water bottle — no need to bring professional microphones, the project provides the core podcast equipment.</p>
-          </div>
-        </details>
-        <details class="gh-accordion dark">
-          <summary>Intercultural Evening <span class="gh-plus">+</span></summary>
-          <div class="gh-body">
-            <p>During the training, we will have an Intercultural Evening, where each national team will have the opportunity to present their country in a fun and informal way.</p>
-            <p style="margin-top:10px;">Please prepare something together with your national team in advance. You are welcome to bring:</p>
-            <ul>
-              <li>traditional snacks or drinks;</li>
-              <li>music, stories, folklore or traditions;</li>
-              <li>a short presentation, quiz, game or other creative activity.</li>
-            </ul>
-            <p style="margin-top:10px;">The idea is not to make a formal presentation, but to share something authentic about your country and culture with the international group.</p>
-            <p style="margin-top:10px;">Please plan this before travelling and bring any small items or food you would like to use during the evening.</p>
-          </div>
-        </details>
-        <details class="gh-accordion dark">
-          <summary>Preparation Before Arrival <span class="gh-plus">+</span></summary>
-          <div class="gh-body">
-            <p>Before the mobility, participants will be invited to an online preparation meeting introducing the project, trainers and learning framework, added to a shared communication group, and given a short preparatory self‑reflection task on critical thinking, media use and communication challenges in their own youth‑work context.</p>
-          </div>
-        </details>
-        <details class="gh-accordion dark">
-          <summary>Sustainability During the Project <span class="gh-plus">+</span></summary>
-          <div class="gh-body">
-            <ul>
-              <li>Prefer green travel where assigned</li>
-              <li>Reusable bottles, minimise single‑use plastic</li>
-              <li>Waste separation</li>
-              <li>Digital rather than printed materials</li>
-              <li>Responsible consumption; local / seasonal products where possible</li>
-              <li>Shared / public transport when feasible</li>
-            </ul>
-          </div>
-        </details>
-      </div>
-    </div>
-
-    <!-- TRAVEL BUDGET TABLE -->
-    <div class="card travel-card g-travel">
-      <div class="travel-head">
-        <h2>Travel Budgets &amp; Green Travel</h2>
-      </div>
-      <div class="table-scroll">
-        <table class="travel-table">
-          <thead>
-            <tr>
-              <th>Country</th>
-              <th>Distance band</th>
-              <th class="num">Standard travel</th>
-              <th class="num green-col">Green Travel</th>
-              <th class="num green-col">Funded days*</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><span class="country-cell">🇪🇸 Spain</span></td>
-              <td>2000–2999 km</td>
-              <td class="num">€395</td>
-              <td class="num green-col"><span class="approved-amount">€535 <span class="approved-check">✓</span></span></td>
-              <td class="num green-col">4</td>
-            </tr>
-            <tr>
-              <td><span class="country-cell">🇫🇷 France</span></td>
-              <td>500–1999 km</td>
-              <td class="num">€309</td>
-              <td class="num green-col"><span class="approved-amount">€417 <span class="approved-check">✓</span></span></td>
-              <td class="num green-col">4</td>
-            </tr>
-            <tr>
-              <td><span class="country-cell">🇪🇪 Estonia</span></td>
-              <td>100–499 km</td>
-              <td class="num">€211</td>
-              <td class="num green-col"><span class="approved-amount">€285 <span class="approved-check">✓</span></span></td>
-              <td class="num green-col">2</td>
-            </tr>
-            <tr>
-              <td><span class="country-cell">🇳🇴 Norway</span></td>
-              <td>500–1999 km</td>
-              <td class="num">€309</td>
-              <td class="num green-col">—</td>
-              <td class="num green-col">—</td>
-            </tr>
-            <tr>
-              <td><span class="country-cell">🇷🇴 Romania</span></td>
-              <td>500–1999 km</td>
-              <td class="num">€309</td>
-              <td class="num green-col"><span class="approved-amount">€417 <span class="approved-check">✓</span></span></td>
-              <td class="num green-col">4</td>
-            </tr>
-            <tr>
-              <td><span class="country-cell">🇱🇻 Latvia</span></td>
-              <td>10–99 km</td>
-              <td class="num">€28</td>
-              <td class="num green-col"><span class="approved-amount">€56 <span class="approved-check">✓</span></span></td>
-              <td class="num green-col">2</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="travel-footnote">✓ marks the travel type approved for this mobility flow in the FTS application. Norway's approved flow is standard travel only. Final reimbursement/payment arrangements are subject to the approved travel plan, eligibility and the financial arrangements agreed with the sending/coordinating organisation.</p>
-
-      <div class="gh-callout" style="margin-top:14px;">
-        <strong>What is green travel?</strong> Choosing sustainable transport for the main part of the journey whenever required by the approved mobility flow:
-        <ul style="margin:8px 0 10px 0; padding-left:18px;">
-          <li>train</li>
-          <li>bus / coach</li>
-          <li>car‑pooling</li>
-          <li>bicycle, where relevant</li>
-        </ul>
-        <strong>4 funded travel days</strong> for Spain, France and Romania · <strong>2 funded travel days</strong> for Estonia, Norway and Latvia.<br><br>
-        <strong>Funded days apply only to tickets booked under Green Travel</strong> — the extra journey time needed for train / bus / car‑pooling. They do not apply to standard (flight) tickets.<br><br>
-        Any private stay, tourism or additional days outside the eligible / approved project travel period are at the participant's own cost, unless explicitly confirmed otherwise by the coordinator.
-      </div>
-
-      <div class="travel-email-plate">
-        📧 Send your travel plan to e‑mail <a href="mailto:fts@untu.ngo">fts@untu.ngo</a>
-      </div>
-
-      <details class="gh-accordion" style="margin-top:14px;">
-        <summary>🛂 Entry requirements for third‑country nationals <span class="gh-plus">+</span></summary>
-        <div class="gh-body">
-          <p>From 1 September 2025 third country nationals are obligated to submit their identification information and information on purpose and duration of travelling to Latvia. This obligation also applies to travellers transiting through Latvia.</p>
-          <p style="margin-top:10px;">Some third‑country nationals may be required to submit an Electronic Travel Declaration at least 48 hours before entering Latvia. Please check the official eligibility requirements through the link below.</p>
-          <p style="margin-top:10px;"><strong>Who needs this:</strong> only citizens of countries outside the EU / EEA, Switzerland, NATO, the OECD and Brazil who do not hold a Latvian visa or residence permit. Most participants from partner countries are EU / EEA citizens and do not need to submit anything.</p>
-          <p style="margin-top:10px;">Please read more about the regulation established by the Republic of Latvia <a href="https://www.iem.gov.lv/en/article/entry-third-country-nationals-latvia-1-september-2025" target="_blank" rel="noopener">here</a>.</p>
-          <p style="margin-top:10px;">The traveller is obliged and responsible for providing their own data and for specifying whether they are subject to the obligation to provide their data.</p>
-          <p style="margin-top:10px;">The information must be submitted electronically <a href="https://eta.gov.lv/en/" target="_blank" rel="noopener">here</a>.</p>
-          <p style="margin-top:10px;"><strong>Keep your confirmation:</strong> after submitting on eta.gov.lv you receive a confirmation by e‑mail — keep it on your phone while travelling.</p>
-        </div>
-      </details>
-
-      <details class="gh-accordion warn" style="margin-top:14px;">
-        <summary>⚠️ Do not buy tickets before approval <span class="gh-plus">+</span></summary>
-        <div class="gh-body">
-          <p>Before purchasing any tickets, every participant / national team must send the complete proposed travel plan to the coordinating / hosting organisation Biedrība UNTU and receive <strong>written approval</strong>. Only after approval should tickets be purchased.</p>
-          <p style="margin-top:10px;">Tickets purchased without prior approval are purchased at the participant's own risk and may not be accepted for reimbursement if the route, dates, price or travel mode do not comply with the agreed project conditions.</p>
-        </div>
-      </details>
-    </div>
-
-    <!-- GETTING HERE -->
-    <div class="card getting-here g-getting-here">
-      <div class="gh-head">
-        <h2>Getting to Vircava</h2>
-        <span class="gallery-tag">Riga (RIX) → Jelgava → Vircava</span>
-      </div>
-      <div class="gh-chips">
-        <span class="gh-chip">🛬 Arrival Day: 8 Nov</span>
-        <span class="gh-chip">📚 Activity: 9–15 Nov</span>
-        <span class="gh-chip">🛫 Departure Day: 16 Nov</span>
-        <span class="gh-chip warn">⏰ Arrive in Jelgava after 18:00</span>
-      </div>
-
-      <div class="arrival-box">
-        <div class="ab-tag">🚂 Arrival day · 8 November 2026</div>
-        <ul>
-          <li><strong>Arrive after 18:00</strong> at <a href="https://maps.app.goo.gl/VDCCr7PPHPu19Mmu7?g_st=ic" target="_blank" rel="noopener">Jelgava train station</a> — this is where we pick you up.</li>
-          <li><strong>Train Riga → Jelgava:</strong> timetable and tickets at <a href="https://vivi.lv/lv/routes/list" target="_blank" rel="noopener">vivi.lv</a>. The latest train leaves Riga at <strong>23:35</strong> and arrives in Jelgava at <strong>00:21</strong>.</li>
-          <li><strong>After buying your train ticket</strong>, send a WhatsApp message to Kate (Jekaterina Orlova, project coordinator, <a href="https://wa.me/37120139181" target="_blank" rel="noopener">+371 20 139 181</a>): tell her your arrival time at Jelgava train station and agree who will meet you there and when.</li>
-        </ul>
-        <div class="ab-links">
-          <a class="ab-btn solid" href="https://wa.me/37120139181" target="_blank" rel="noopener">💬 Message Kate on WhatsApp</a>
-          <a class="ab-btn" href="https://vivi.lv/lv/routes/list" target="_blank" rel="noopener">🚂 Train timetable</a>
-          <a class="ab-btn" href="https://maps.app.goo.gl/VDCCr7PPHPu19Mmu7?g_st=ic" target="_blank" rel="noopener">📍 Jelgava train station</a>
-        </div>
-      </div>
-
-      <details class="gh-accordion">
-        <summary>Full travel guide — click to expand <span class="gh-plus">+</span></summary>
-        <div class="gh-body">
-          <h4>If you arrive by plane</h4>
-          <p>Fly into <strong>Riga International Airport (RIX)</strong> — the closest major airport.</p>
-          <ul>
-            <li><strong>Airport → Riga centre:</strong> take bus No. 22 or the Airport Express shuttle to the Central Bus/Train Station (“Autoosta”), about 20–30 minutes. Buying an e‑ticket in advance (Narvesen kiosks or the Mobilly app) is recommended.</li>
-            <li><strong>Riga → Jelgava by bus:</strong> board a Hansa Lines (or similar carrier) bus from Rīgas SAO — departs roughly every 20 minutes, ~55 minutes to Jelgava Bus Station, around €2.50.</li>
-            <li><strong>Riga → Jelgava by train:</strong> suburban electric train from the Central Railway Station, every 30–60 minutes, ~45 minutes, approx. €2 one way, ticket at the station office or from the conductor.</li>
-            <li><strong>Jelgava → Vircava by bus:</strong> route 6764 (Wanema) from Jelgava Bus Station, ~20 minutes, €1–2. Ask the driver to drop you near your accommodation.</li>
-            <li><strong>Pick‑up:</strong> we meet participants at Jelgava train station and bring them to Vircava (~12 km, 15 min). Agree the time with Kate — see "Arrival day" above.</li>
-          </ul>
-
-          <h4>Green travel (train, bus or car)</h4>
-          <ul>
-            <li><strong>Bus &amp; train:</strong> same route as above — reach Jelgava first, then bus 6764 to Vircava.</li>
-            <li><strong>Driving:</strong> Vircava is ~55 km south‑west of Riga via the A8/E77 towards Jelgava, then local roads — about 49 minutes. Parking &amp; public transport details will be covered in the online preparatory meeting.</li>
-            <li><strong>International coaches</strong> typically stop at Riga Bus Station — continue by local bus or train from there.</li>
-          </ul>
-
-          <div class="gh-callout">
-            Please arrive at <strong>Jelgava train station on 8 November 2026, after 18:00</strong> — training starts the next morning.
-          </div>
-
-          <h4>Upon arrival</h4>
-          <ul>
-            <li>Keep <strong>all travel receipts</strong> (plane, bus, train, fuel) for reimbursement under Erasmus+ rules.</li>
-            <li>Trouble en route? Emergency contact: <strong>+371 20 139 181</strong>.</li>
-          </ul>
-        </div>
-      </details>
-    </div>
-
-    <!-- REIMBURSEMENT & INVOICING -->
-    <div class="card reimburse-card g-reimburse">
-      <div class="reimburse-head">
-        <h2>Reimbursement &amp; Invoicing</h2>
-        <p>Travel costs are reimbursed after the Training Course and your local follow‑up activity, via bank transfer — keep every receipt.</p>
-      </div>
-
-      <details class="gh-accordion">
-        <summary>Full reimbursement rules &amp; invoice details <span class="gh-plus">+</span></summary>
-        <div class="gh-body">
-          <div class="reimburse-rules">
-            <div class="reimburse-rule">Please try to fit all your tickets within the amount above.</div>
-            <div class="reimburse-rule">Travel costs are covered by NGO UNTU after the Training Course ends and after you complete the dissemination activity in your country, via bank transfer.</div>
-            <div class="reimburse-rule">Maximum tolerance of 2 days before/after the official travel days. Accommodation &amp; food on extra days are not funded.</div>
-            <div class="reimburse-rule">Maximum 1 bag per participant (1 cabin bag). Travel insurance will <strong>not</strong> be reimbursed — it is your responsibility.</div>
-            <div class="reimburse-rule">NGO UNTU won't accept photos or edited documents for reimbursement — only original PDFs, preferably with invoicing data.</div>
-            <div class="reimburse-rule">Please, if possible, <u>request an invoice</u> from the service provider and <u>use the invoicing data</u> of the Latvian host NGO when you book your tickets.</div>
-          </div>
-          <div class="invoice-box">
-            <div>
-              <div class="invoice-label">Invoice Info</div>
-              <div class="invoice-name">Biedrība "UNTU"</div>
-              <div class="invoice-detail">
-                Reg. Nr. 40008271520<br>
-                Address: Riga, Lībekas iela 6a‑2<br>
-                Postal Code: LV‑1014<br>
-                Riga, Latvia
-              </div>
-            </div>
-          </div>
-          <h4 style="font-family:'Anton', sans-serif; text-transform:uppercase; font-size:15px; color:var(--red-deep); margin:20px 0 8px 0;">Documents checklist</h4>
-          <p style="margin:0 0 8px 0;">Keep <strong>ALL</strong> travel documents until reimbursement is completed:</p>
-          <ul>
-            <li>e‑tickets</li>
-            <li>invoices / receipts</li>
-            <li>boarding passes</li>
-            <li>train / bus tickets</li>
-            <li>booking confirmations</li>
-            <li>proof of payment, if requested</li>
-            <li>complete travel itinerary</li>
-            <li>green‑travel evidence / declaration, where applicable</li>
-          </ul>
-          <p style="margin:8px 0 0 0;"><em>Do not throw away paper tickets or boarding passes.</em></p>
-        </div>
-      </details>
-    </div>
-
-    <!-- CONTACTS -->
+    <a class="card next-card ph-cream" href="fts-programme.html">
+      <span class="nc-eyebrow">Next · 02 / 05</span>
+      <span class="nc-title">Programme</span>
+      <span class="nc-arrow">→</span>
+    </a>
     <div class="card contacts g-contacts">
       <div class="contacts-head">
         <h2>Project Contacts</h2>
@@ -1668,8 +1470,6 @@
       </div>
       <div class="contacts-note">Please also stay in touch with your national partner organisation for travel arrangements and other questions.</div>
     </div>
-
-    <!-- FUNDING -->
     <div class="card funding g-funding">
       <div class="eu-emblem"><img src="https://ik.imagekit.io/fts/logos/logo%20ersamus%20plus.png" alt="Erasmus+ logo"></div>
       <div class="funding-text">
@@ -1678,8 +1478,6 @@
         <span class="funding-code">ERASMUS+ · KA153-YOU</span>
       </div>
     </div>
-
-    <!-- SOCIAL -->
     <div class="card social g-social">
       <div class="social-inner">
         <div class="social-text">
@@ -1694,8 +1492,6 @@
         </div>
       </div>
     </div>
-
-    <!-- FOOTER -->
     <div class="card footer g-footer">
       <div>
         <h3>From Thinking to Speaking</h3>
@@ -1707,7 +1503,6 @@
   </div>
 </div>
 
-<!-- ORG INFO POPUP -->
 <div class="org-modal-overlay" id="orgModalOverlay" onclick="if(event.target===this) closeOrgModal()">
   <div class="org-modal">
     <button class="org-modal-close" onclick="closeOrgModal()" aria-label="Close">✕</button>
@@ -1856,6 +1651,7 @@
 
   function renderWeatherRows(days){
     const wrap = document.getElementById('weatherDays');
+    if(!wrap) return;
     wrap.innerHTML = '';
     days.forEach(d => {
       const [icon, label] = iconFor(d.code);
@@ -1874,6 +1670,7 @@
   async function loadWeather(){
     const statusEl = document.getElementById('weatherStatus');
     const noteEl = document.getElementById('weatherNote');
+    if(!statusEl) return;
     try{
       const url = `https://api.open-meteo.com/v1/forecast?latitude=${WEATHER_LAT}&longitude=${WEATHER_LON}&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=Europe%2FRiga&start_date=${EVENT_START}&end_date=${EVENT_END}`;
       const res = await fetch(url);
@@ -1967,6 +1764,48 @@
   }
   updateCountdown();
   setInterval(updateCountdown, 1000);
+
+  /* daily schedule tabs: opens today's day during the training */
+  (function(){
+    const card = document.getElementById('schedule'); if(!card) return;
+    const tabs = card.querySelectorAll('.sch-tab'), views = card.querySelectorAll('.sch-day'), all = card.querySelector('.sch-all');
+    function show(d){
+      tabs.forEach(t=>t.classList.toggle('on', t.dataset.day==String(d)));
+      views.forEach(v=>v.hidden = !(v.dataset.day==String(d)));
+      all.hidden = d!=='all';
+    }
+    tabs.forEach(t=>t.addEventListener('click',()=>show(t.dataset.day==='all'?'all':+t.dataset.day)));
+    const riga = new Date(new Date().toLocaleString('en-US',{timeZone:'Europe/Riga'}));
+    let d = 0;
+    if(riga.getFullYear()===2026 && riga.getMonth()===10 && riga.getDate()>=9 && riga.getDate()<=15){
+      d = riga.getDate()-9; tabs[d].classList.add('today');
+    }
+    show(d);
+  })();
+
+  /* on phones, long sections start collapsed (tap to open) */
+  if(window.matchMedia('(max-width:700px)').matches){
+    document.querySelectorAll('details.auto-open').forEach(d=>d.removeAttribute('open'));
+  }
+  /* jumping to a collapsed section opens it */
+  function openTarget(t){ if(t && t.tagName==='DETAILS') t.open = true; }
+
+  /* anchor chips: smooth scroll + short highlight of the target block */
+  document.querySelectorAll('.ph-chip').forEach(a=>a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href')); if(!t) return; openTarget(t);
+    e.preventDefault();
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    t.scrollIntoView({behavior: reduce?'auto':'smooth', block:'start'});
+    history.replaceState(null,'',a.getAttribute('href'));
+    t.classList.remove('arrived'); void t.offsetWidth; t.classList.add('arrived');
+  }));
+
+  /* packing checklist memory */
+  document.querySelectorAll('.pack input').forEach((cb,i)=>{
+    const k='fts-pack-'+i; cb.checked = localStorage.getItem(k)==='1';
+    cb.addEventListener('change',()=>localStorage.setItem(k, cb.checked?'1':'0'));
+  });
+
 </script>
 </body>
 </html>
