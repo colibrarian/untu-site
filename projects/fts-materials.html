@@ -1805,20 +1805,27 @@
       return {x: Math.random()*(W-PW), y, t, label, vx: t==='viral' ? (Math.random()<.5?-1:1)*(1.2+lvl*1.8) : 0, broken:false, vy:0};
     }
     function reset(){
-      st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false, solid:H-60};
+      st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false, solid:H-60, solidX:W/2-PW/2};
       st.plats.push({x:W/2-PW/2, y:H-60, t:'news', label:'FTS · VIRCAVA', vx:0, broken:false, vy:0});
       let y = H-60;
       while(y > -H){ y = add(y - gap(0)); }
     }
     function gap(h){ return 58 + Math.min(42, h/150) + Math.random()*20; }   // max ≈ 120 < REACH
     function add(y){
-      // never leave a gap you cannot jump: a crumbling platform does not count as a step,
-      // so the next standable platform is always within REACH of the previous one
-      let force = false;
-      if(st.solid - y >= REACH){ y = st.solid - REACH; force = true; }
-      const q = plat(y, st.h, force);
-      if(q.t !== 'bait') st.solid = y;
-      st.plats.push(q);
+      // real steps: never further apart than REACH, never clickbait
+      if(st.solid - y >= REACH) y = st.solid - REACH;
+      const q = plat(y, st.h, true), prevY = st.solid, prevX = st.solidX;
+      st.solid = y; st.solidX = q.x; st.plats.push(q);
+      // clickbait = extra decoy halfway between two steps, placed beside them (never on top)
+      const lvl = Math.min(1, st.h/6000);
+      if(Math.random() < 0.28 + 0.32*lvl){
+        for(let k=0; k<14; k++){
+          const bx = Math.random()*(W-PW);
+          if(Math.abs(bx-q.x) > PW+10 && Math.abs(bx-prevX) > PW+10){
+            st.plats.push({x:bx, y:(y+prevY)/2, t:'bait', label:draw1(BAIT), vx:0, broken:false, vy:0}); break;
+          }
+        }
+      }
       return y;
     }
 
