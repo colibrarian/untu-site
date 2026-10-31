@@ -1780,12 +1780,15 @@
     const ov = document.getElementById('svnOverlay'), btn = document.getElementById('svnStart');
     const elNow = document.getElementById('svnNow'), elBest = document.getElementById('svnBest');
     const C = {ink:'#0b0b0a', soft:'#161513', red:'#ff4520', redD:'#c93414', blue:'#3f7fe0', blueD:'#2c5cb0', cream:'#f2ecdd', creamD:'#e4dcc4', white:'#fbfbf6'};
-    const NEWS = ['RAIN AGAIN IN VIRCAVA','LOCAL CHOIR WINS','TRAIN ON TIME','NEW BIKE LANE','LIBRARY OPENS LATE','YOUTH CENTRE NEWS','MARKET ON SATURDAY','SCHOOL PLAY TONIGHT','BRIDGE REPAIRED','FIRST SNOW SOON'];
+    const NEWS = ["FIRST SNOW IN VIRCAVA", "RAINY DAY, BRING A HAT", "NEW CAFÉ OPENS IN TOWN", "LOCAL CHOIR WINS PRIZE", "TRAIN RUNS ON TIME", "NEW BIKE LANE OPENS", "LIBRARY OPEN LATE TODAY", "MARKET ON SATURDAY", "SCHOOL PLAY TONIGHT", "BRIDGE REPAIRED", "PARK GETS NEW BENCHES", "CAT RESCUED FROM TREE", "BAKERY TRIES NEW BREAD", "FOG IN THE MORNING", "SUNNY AFTERNOON AHEAD", "YOUTH CENTRE OPENS DOORS", "LOCAL TEAM WINS 2:1", "STREET LIGHTS FIXED", "NEW BUS STOP ADDED", "POETRY NIGHT ON FRIDAY", "APPLE HARVEST IS IN", "RIVER LEVEL NORMAL", "MUSEUM ENTRY FREE TODAY", "VOLUNTEERS PLANT TREES", "KIDS PAINT A MURAL", "CONCERT IN THE SQUARE", "WIND CALMS DOWN TONIGHT", "NEW BOOKS AT LIBRARY", "CHESS CLUB MEETS TUESDAY", "MANOR HOSTS GUESTS", "HOT SOUP AT THE CANTEEN", "PODCAST STUDIO READY", "MUSHROOM SEASON ENDS", "GEESE FLY SOUTH", "RECYCLING DAY ON MONDAY", "LOCAL FARM OPENS SHOP", "TOWN CLOCK FIXED AT LAST", "NEW PLAYGROUND OPENS", "DANCE CLASS FOR ALL", "FROST ON THE WINDOWS"];
     const BAIT = ["YOU WON'T BELIEVE…",'DOCTORS HATE THIS','SHOCKING!!!','99% FAIL THIS','NUMBER 7 WILL…','THEY HID THIS?!','ONE WEIRD TRICK'];
     const SRC  = ['✓ CHECKED','✓ SOURCE','✓ 2ND SOURCE','✓ ORIGINAL DATA'];
     const VIRAL= ['TRENDING ↔','VIRAL ↔','EVERYONE SHARES ↔'];
     const TIPS = ['Strong emotion? Pause before you share.','Headlines sell; the article tells.','Find a second, independent source.','Check the date: old news travels fast.','Who is behind it? Open a new tab and look.','Screenshots are easy to fake. Find the original.'];
     const pick = a => a[Math.floor(Math.random()*a.length)];
+    // shuffle bag: every headline appears once before any repeats
+    const bags = new Map();
+    const draw1 = a => { let b = bags.get(a); if(!b || !b.length){ b = a.slice().sort(()=>Math.random()-.5); bags.set(a, b); } return b.pop(); };
     const store = { get(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
     let best = store.get('svn-best', 0); elBest.textContent = best;
     const PW = 124, PH = 34, G = 0.38, JUMP = -11.2, SUPER = -18;
@@ -1798,7 +1801,7 @@
       if(r < 0.10 + 0.18*lvl) t = 'bait';
       else if(r < 0.17 + 0.18*lvl) t = 'src';
       if(forceSolid && t==='bait') t = 'news';
-      const label = t==='news'?pick(NEWS):t==='bait'?pick(BAIT):t==='src'?pick(SRC):pick(VIRAL);
+      const label = t==='news'?draw1(NEWS):t==='bait'?draw1(BAIT):t==='src'?draw1(SRC):draw1(VIRAL);
       return {x: Math.random()*(W-PW), y, t, label, vx: t==='viral' ? (Math.random()<.5?-1:1)*(1.2+lvl*1.8) : 0, broken:false, vy:0};
     }
     function reset(){
@@ -1863,18 +1866,35 @@
         lines.forEach((ln,i)=>ctx.fillText(ln, q.x+PW/2, q.y+PH/2 + (i-(lines.length-1)/2)*11 + 0.5));
         ctx.restore();
       }
-      const p = st.p, s = 1 + p.sq*0.18;
-      ctx.save(); ctx.translate(p.x+14, p.y+44); ctx.scale(s, 1/s);
-      ctx.fillStyle = '#3a3833'; rr(-3,-20,6,20,3); ctx.fill();
-      ctx.fillStyle = C.red; rr(-14,-44,28,28,14); ctx.fill();
-      ctx.strokeStyle = 'rgba(0,0,0,.35)'; ctx.lineWidth = 1.5;
-      for(let i=-8;i<=8;i+=5){ ctx.beginPath(); ctx.moveTo(-10,-30+i*0.0+i); ctx.lineTo(10,-30+i); ctx.stroke(); }
-      ctx.fillStyle = '#fff'; ctx.beginPath(); ctx.arc(-5,-37,3,0,7); ctx.fill();
-      ctx.restore();
+      const p = st.p, s = 1 + p.sq*0.22;
+      drawMic(p.x+14, p.y+44, s, p.vx);
       if(!st.over){ ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(W-16,16,5,0,7); ctx.fill();
         ctx.fillStyle = '#fff'; ctx.font = '600 10px "IBM Plex Mono", monospace'; ctx.textAlign='right'; ctx.fillText('ON AIR', W-26, 16.5); }
     }
 
+    /* handheld microphone: mesh ball head, metal ring, tapered handle */
+    function drawMic(cx, by, s, vx){
+      ctx.save(); ctx.translate(cx, by); ctx.scale(s, 1/s); ctx.rotate(vx*0.035);
+      // handle
+      ctx.beginPath(); ctx.moveTo(-6.5,-19); ctx.lineTo(6.5,-19); ctx.lineTo(4,-1); ctx.quadraticCurveTo(0,1.5,-4,-1); ctx.closePath();
+      const hg = ctx.createLinearGradient(-7,0,7,0); hg.addColorStop(0,'#1c1b19'); hg.addColorStop(.45,'#4a4741'); hg.addColorStop(1,'#141311');
+      ctx.fillStyle = hg; ctx.fill();
+      ctx.fillStyle = C.red; rr(-5,-9,10,3,1.5); ctx.fill();               // brand stripe
+      // ring
+      const rg = ctx.createLinearGradient(-9,0,9,0); rg.addColorStop(0,'#8e8b84'); rg.addColorStop(.5,'#f1efe9'); rg.addColorStop(1,'#77746d');
+      ctx.fillStyle = rg; rr(-8.5,-23,17,5,2); ctx.fill();
+      // mesh head
+      const R = 12, hy = -33;
+      const g = ctx.createRadialGradient(-4,hy-5,2, 0,hy,R); g.addColorStop(0,'#f4f3ef'); g.addColorStop(.6,'#b9b6ae'); g.addColorStop(1,'#6f6c66');
+      ctx.beginPath(); ctx.arc(0,hy,R,0,Math.PI*2); ctx.fillStyle = g; ctx.fill();
+      ctx.save(); ctx.beginPath(); ctx.arc(0,hy,R-0.5,0,Math.PI*2); ctx.clip();
+      ctx.strokeStyle = 'rgba(40,38,34,.45)'; ctx.lineWidth = 0.8;
+      for(let d=-24; d<=24; d+=4){ ctx.beginPath(); ctx.moveTo(d-R, hy-R); ctx.lineTo(d+R, hy+R); ctx.stroke(); ctx.beginPath(); ctx.moveTo(d+R, hy-R); ctx.lineTo(d-R, hy+R); ctx.stroke(); }
+      ctx.restore();
+      ctx.strokeStyle = '#5e5b55'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(0,hy,R,0,Math.PI*2); ctx.stroke();
+      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.beginPath(); ctx.ellipse(-4.5,hy-5,3.2,2,-0.6,0,Math.PI*2); ctx.fill();
+      ctx.restore();
+    }
     function loop(t){
       const dt = Math.min(2.5, (t - last)/16.67 || 1); last = t;
       if(!st.over){ step(dt); draw(); raf = requestAnimationFrame(loop); }
