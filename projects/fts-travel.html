@@ -1300,13 +1300,6 @@
   .stay-box{ background:#fff; color:var(--text-dark); border-radius:var(--r-md); padding:20px 22px; margin:0 0 16px; }
   .stay-box .ab-tag{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--blue-deep); font-weight:600; margin-bottom:10px; }
   .stay-addr{ font-style:normal; font-size:16px; line-height:1.6; }
-  .stay-addr[hidden]{ display:none; }
-  .stay-head{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom:10px; }
-  .stay-head .ab-tag{ margin-bottom:0; }
-  .lang-switch{ display:inline-flex; border:2px solid var(--blue); border-radius:999px; overflow:hidden; }
-  .lang-switch button{ font:600 12px 'IBM Plex Mono', monospace; border:none; background:#fff; color:var(--blue-deep); padding:6px 12px; cursor:pointer; }
-  .lang-switch button.on{ background:var(--blue); color:#fff; }
-  .stay-note{ font-size:13px; color:#5a5646; margin:10px 0 0; }
   .stay-box .ab-links{ display:flex; gap:8px; flex-wrap:wrap; margin-top:14px; }
   .stay-box .ab-btn{ font-family:'IBM Plex Mono', monospace; font-size:13px; text-decoration:none; padding:10px 16px; border-radius:999px; border:2px solid var(--blue); color:var(--blue-deep); background:#fff; cursor:pointer; }
   .stay-box .ab-btn.solid{ background:var(--blue); color:#fff; }
@@ -1383,29 +1376,13 @@
       </div>
 
       <div id="accommodation" class="stay-box">
-        <div class="stay-head">
-          <div class="ab-tag">🏠 Accommodation in Vircava</div>
-          <div class="lang-switch" role="group" aria-label="Address language">
-            <button type="button" class="on" data-lang="en">EN</button><button type="button" data-lang="lv">LV</button>
-          </div>
-        </div>
-        <address class="stay-addr" data-lang="en">
+        <div class="ab-tag">🏠 Accommodation in Vircava</div>
+        <address class="stay-addr">
           <strong>“Ielejas” Guest House</strong><br>
           Vircava Parish<br>
           Jelgava Municipality<br>
           LV‑3020, Latvia
         </address>
-        <address class="stay-addr" data-lang="lv" hidden>
-          <strong>“Ielejas” Viesu Māja</strong><br>
-          Vircavas pagasts<br>
-          Jelgavas novads<br>
-          LV‑3020, Latvija
-        </address>
-        <p class="stay-note">Switch to <b>LV</b> for the address as it is written in Latvian, e.g. for a taxi driver. GPS: 56.5597, 23.7719</p>
-        <div class="ab-links">
-          <a class="ab-btn solid" href="https://www.google.com/maps/search/?api=1&amp;query=56.5597%2C23.7719" target="_blank" rel="noopener">📍 Open in Google Maps</a>
-          <button class="ab-btn" type="button" id="copyAddr">📋 Copy address</button>
-        </div>
       </div>
 
       <details class="gh-accordion">
@@ -1982,18 +1959,6 @@
     document.addEventListener('click', e=>{ if(!nav.contains(e.target)){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
   })();
 
-  /* accommodation: EN/LV address switch + copy */
-  (function(){ const box=document.getElementById('accommodation'); if(!box) return;
-    const TXT={en:'"Ielejas" Guest House, Vircava Parish, Jelgava Municipality, LV-3020, Latvia',
-               lv:'"Ielejas" Viesu Māja, Vircavas pagasts, Jelgavas novads, LV-3020, Latvija'};
-    let lang='en'; const b=document.getElementById('copyAddr');
-    box.querySelectorAll('.lang-switch button').forEach(btn=>btn.addEventListener('click',()=>{
-      lang=btn.dataset.lang;
-      box.querySelectorAll('.lang-switch button').forEach(x=>x.classList.toggle('on', x===btn));
-      box.querySelectorAll('.stay-addr').forEach(a=>a.hidden = a.dataset.lang!==lang);
-    }));
-    b.addEventListener('click', async ()=>{ try{ await navigator.clipboard.writeText(TXT[lang]); b.textContent='✓ Copied'; }catch(e){ b.textContent=TXT[lang]; } setTimeout(()=>b.textContent='📋 Copy address', 2500); });
-  })();
 
 </script>
 </body>
