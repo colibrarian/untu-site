@@ -1371,7 +1371,6 @@
           <span><i class="pl-news"></i>News: safe to stand on</span>
           <span><i class="pl-bait"></i>Clickbait: crumbles</span>
           <span><i class="pl-src"></i>✓ Source: super jump</span>
-          <span><i class="pl-viral"></i>Viral: keeps moving</span>
         </div>
       </div>
       <div class="game-wrap">
@@ -1798,7 +1797,6 @@
       let t = 'news';
       if(r < 0.10 + 0.18*lvl) t = 'bait';
       else if(r < 0.17 + 0.18*lvl) t = 'src';
-      else if(r < 0.25 + 0.30*lvl) t = 'viral';
       if(forceSolid && t==='bait') t = 'news';
       const label = t==='news'?pick(NEWS):t==='bait'?pick(BAIT):t==='src'?pick(SRC):pick(VIRAL);
       return {x: Math.random()*(W-PW), y, t, label, vx: t==='viral' ? (Math.random()<.5?-1:1)*(1.2+lvl*1.8) : 0, broken:false, vy:0};
@@ -1854,9 +1852,6 @@
     function rr(x,y,w,h,r){ ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x,y,w,h,r) : ctx.rect(x,y,w,h); }
     function draw(){
       ctx.fillStyle = C.ink; ctx.fillRect(0,0,W,H);
-      ctx.fillStyle = 'rgba(255,255,255,0.05)';
-      const off = (st.h*0.3)%22;
-      for(let y=-22+off; y<H; y+=22) for(let x=11; x<W; x+=22) ctx.fillRect(x,y,1.5,1.5);
       ctx.font = '600 10px "IBM Plex Mono", monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
       for(const q of st.plats){
         const fill = q.t==='news'?C.cream:q.t==='bait'?C.red:q.t==='src'?C.blue:C.white;
