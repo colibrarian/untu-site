@@ -1385,7 +1385,7 @@
             <div class="go-keys">Computer: ← → or A / D &nbsp;·&nbsp; Phone: touch the left or right half</div>
           </div>
         </div>
-        <div class="game-hud"><span>Height <b id="svnNow">0</b></span><span>Best <b id="svnBest">0</b></span></div>
+        <div class="game-hud"><span>Level <b id="svnLvl">1</b></span><span>Height <b id="svnNow">0</b></span><span>Best <b id="svnBest">0</b></span></div>
       </div>
       <div class="game-board">
         <div class="mi-eyebrow">Your last runs (saved only in this browser)</div>
@@ -1778,7 +1778,7 @@
     const cv = document.getElementById('svn'); if(!cv) return;
     const ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
     const ov = document.getElementById('svnOverlay'), btn = document.getElementById('svnStart');
-    const elNow = document.getElementById('svnNow'), elBest = document.getElementById('svnBest');
+    const elNow = document.getElementById('svnNow'), elBest = document.getElementById('svnBest'), elLvl = document.getElementById('svnLvl');
     const C = {ink:'#0b0b0a', soft:'#161513', red:'#ff4520', redD:'#c93414', blue:'#3f7fe0', blueD:'#2c5cb0', cream:'#f2ecdd', creamD:'#e4dcc4', white:'#fbfbf6'};
     const NEWS = ["FIRST SNOW IN VIRCAVA", "RAINY DAY, BRING A HAT", "NEW CAFÉ OPENS IN TOWN", "LOCAL CHOIR WINS PRIZE", "TRAIN RUNS ON TIME", "NEW BIKE LANE OPENS", "LIBRARY OPEN LATE TODAY", "MARKET ON SATURDAY", "SCHOOL PLAY TONIGHT", "BRIDGE REPAIRED", "PARK GETS NEW BENCHES", "CAT RESCUED FROM TREE", "BAKERY TRIES NEW BREAD", "FOG IN THE MORNING", "SUNNY AFTERNOON AHEAD", "YOUTH CENTRE OPENS DOORS", "LOCAL TEAM WINS 2:1", "STREET LIGHTS FIXED", "NEW BUS STOP ADDED", "POETRY NIGHT ON FRIDAY", "APPLE HARVEST IS IN", "RIVER LEVEL NORMAL", "MUSEUM ENTRY FREE TODAY", "VOLUNTEERS PLANT TREES", "KIDS PAINT A MURAL", "CONCERT IN THE SQUARE", "WIND CALMS DOWN TONIGHT", "NEW BOOKS AT LIBRARY", "CHESS CLUB MEETS TUESDAY", "MANOR HOSTS GUESTS", "HOT SOUP AT THE CANTEEN", "PODCAST STUDIO READY", "MUSHROOM SEASON ENDS", "GEESE FLY SOUTH", "RECYCLING DAY ON MONDAY", "LOCAL FARM OPENS SHOP", "TOWN CLOCK FIXED AT LAST", "NEW PLAYGROUND OPENS", "DANCE CLASS FOR ALL", "FROST ON THE WINDOWS"];
     const BAIT = ["YOU WON'T BELIEVE…",'DOCTORS HATE THIS','SHOCKING!!!','99% FAIL THIS','NUMBER 7 WILL…','THEY HID THIS?!','ONE WEIRD TRICK'];
@@ -1795,30 +1795,37 @@
     let st, keys = {left:false, right:false}, raf = null, last = 0;
 
     const REACH = 128;   // max vertical distance between two platforms you can stand on (jump height ≈ 165)
+    /* levels by height (metres): fewer steps, more clickbait, fewer sources; every step stays reachable */
+    const LEVELS = [
+      {from:0,   gap:[54,66],   bait:0.15, src:0.12},
+      {from:100, gap:[68,84],   bait:0.25, src:0.10},
+      {from:250, gap:[82,100],  bait:0.35, src:0.08},
+      {from:450, gap:[96,114],  bait:0.45, src:0.07},
+      {from:700, gap:[108,126], bait:0.55, src:0.06},
+    ];
+    const levelAt = h => { let i = 0; LEVELS.forEach((L,k)=>{ if(h/10 >= L.from) i = k; }); return i; };
     function plat(y, h, forceSolid){
-      const r = Math.random(), lvl = Math.min(1, h/6000);
+      const r = Math.random(), L = LEVELS[levelAt(h)];
       let t = 'news';
-      if(r < 0.10 + 0.18*lvl) t = 'bait';
-      else if(r < 0.17 + 0.18*lvl) t = 'src';
+      if(r < L.src) t = 'src';
       if(forceSolid && t==='bait') t = 'news';
       const label = t==='news'?draw1(NEWS):t==='bait'?draw1(BAIT):t==='src'?draw1(SRC):draw1(VIRAL);
       return {x: Math.random()*(W-PW), y, t, label, vx: t==='viral' ? (Math.random()<.5?-1:1)*(1.2+lvl*1.8) : 0, broken:false, vy:0};
     }
     function reset(){
-      st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false, solid:H-60, solidX:W/2-PW/2};
+      st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false, solid:H-60, solidX:W/2-PW/2, level:0, flash:0}; elLvl.textContent = 1;
       st.plats.push({x:W/2-PW/2, y:H-60, t:'news', label:'FTS · VIRCAVA', vx:0, broken:false, vy:0});
       let y = H-60;
       while(y > -H){ y = add(y - gap(0)); }
     }
-    function gap(h){ return 58 + Math.min(42, h/150) + Math.random()*20; }   // max ≈ 120 < REACH
+    function gap(h){ const g = LEVELS[levelAt(h)].gap; return g[0] + Math.random()*(g[1]-g[0]); }   // max 126 < REACH
     function add(y){
       // real steps: never further apart than REACH, never clickbait
       if(st.solid - y >= REACH) y = st.solid - REACH;
       const q = plat(y, st.h, true), prevY = st.solid, prevX = st.solidX;
       st.solid = y; st.solidX = q.x; st.plats.push(q);
       // clickbait = extra decoy halfway between two steps, placed beside them (never on top)
-      const lvl = Math.min(1, st.h/6000);
-      if(Math.random() < 0.28 + 0.32*lvl){
+      if(Math.random() < LEVELS[levelAt(st.h)].bait){
         for(let k=0; k<14; k++){
           const bx = Math.random()*(W-PW);
           if(Math.abs(bx-q.x) > PW+10 && Math.abs(bx-prevX) > PW+10){
@@ -1849,6 +1856,9 @@
       let top = Math.min(...st.plats.map(q=>q.y));
       while(top > -60){ top = add(top - gap(st.h)); }
       const score = Math.floor(st.h/10); elNow.textContent = score;
+      const lv = levelAt(st.h);
+      if(lv > st.level){ st.level = lv; st.flash = 1; elLvl.textContent = lv+1; }
+      st.flash = Math.max(0, st.flash - 0.012*dt);
       if(p.y > H+40) end(score);
     }
 
@@ -1875,6 +1885,16 @@
       }
       const p = st.p, s = 1 + p.sq*0.22;
       drawMic(p.x+14, p.y+44, s, p.vx);
+      if(st.flash > 0){
+        const f = st.flash;
+        ctx.fillStyle = `rgba(63,127,224,${0.28*f*f})`; ctx.fillRect(0,0,W,H);
+        ctx.save(); ctx.globalAlpha = Math.min(1, f*1.6); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
+        const sc = 1 + (1-f)*0.15; ctx.translate(W/2, H*0.3); ctx.scale(sc, sc);
+        ctx.fillStyle = C.red; rr(-110,-38,220,76,20); ctx.fill();
+        ctx.fillStyle = '#fff'; ctx.font = '400 46px Anton, sans-serif'; ctx.fillText('LEVEL ' + (st.level+1), 0, -4);
+        ctx.font = '600 11px "IBM Plex Mono", monospace'; ctx.fillText(['','FEWER STEPS AHEAD','MORE CLICKBAIT','STAY SHARP','SIGNAL ONLY'][st.level] || '', 0, 26);
+        ctx.restore();
+      }
       if(!st.over){ ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(W-16,16,5,0,7); ctx.fill();
         ctx.fillStyle = '#fff'; ctx.font = '600 10px "IBM Plex Mono", monospace'; ctx.textAlign='right'; ctx.fillText('ON AIR', W-26, 16.5); }
     }
