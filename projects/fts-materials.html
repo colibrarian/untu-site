@@ -1789,25 +1789,37 @@
     const pick = a => a[Math.floor(Math.random()*a.length)];
     const store = { get(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
     let best = store.get('svn-best', 0); elBest.textContent = best;
-    const PW = 96, PH = 22, G = 0.38, JUMP = -11.2, SUPER = -18;
+    const PW = 124, PH = 34, G = 0.38, JUMP = -11.2, SUPER = -18;
     let st, keys = {left:false, right:false}, raf = null, last = 0;
 
-    function plat(y, h){
+    const REACH = 128;   // max vertical distance between two platforms you can stand on (jump height ≈ 165)
+    function plat(y, h, forceSolid){
       const r = Math.random(), lvl = Math.min(1, h/6000);
       let t = 'news';
       if(r < 0.10 + 0.18*lvl) t = 'bait';
       else if(r < 0.17 + 0.18*lvl) t = 'src';
       else if(r < 0.25 + 0.30*lvl) t = 'viral';
+      if(forceSolid && t==='bait') t = 'news';
       const label = t==='news'?pick(NEWS):t==='bait'?pick(BAIT):t==='src'?pick(SRC):pick(VIRAL);
       return {x: Math.random()*(W-PW), y, t, label, vx: t==='viral' ? (Math.random()<.5?-1:1)*(1.2+lvl*1.8) : 0, broken:false, vy:0};
     }
     function reset(){
-      st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false};
+      st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false, solid:H-60};
       st.plats.push({x:W/2-PW/2, y:H-60, t:'news', label:'FTS · VIRCAVA', vx:0, broken:false, vy:0});
       let y = H-60;
-      while(y > -H){ y -= gap(0); st.plats.push(plat(y,0)); }
+      while(y > -H){ y = add(y - gap(0)); }
     }
-    function gap(h){ return 62 + Math.min(58, h/120) + Math.random()*22; }
+    function gap(h){ return 58 + Math.min(42, h/150) + Math.random()*20; }   // max ≈ 120 < REACH
+    function add(y){
+      // never leave a gap you cannot jump: a crumbling platform does not count as a step,
+      // so the next standable platform is always within REACH of the previous one
+      let force = false;
+      if(st.solid - y >= REACH){ y = st.solid - REACH; force = true; }
+      const q = plat(y, st.h, force);
+      if(q.t !== 'bait') st.solid = y;
+      st.plats.push(q);
+      return y;
+    }
 
     function step(dt){
       const p = st.p;
@@ -1824,14 +1836,21 @@
         }
       }
       const line = H*0.42;
-      if(p.y < line){ const d = line - p.y; p.y = line; st.plats.forEach(q=>q.y+=d); st.h += d; }
+      if(p.y < line){ const d = line - p.y; p.y = line; st.plats.forEach(q=>q.y+=d); st.h += d; st.solid += d; }
       st.plats = st.plats.filter(q=>q.y < H+80);
       let top = Math.min(...st.plats.map(q=>q.y));
-      while(top > -60){ top -= gap(st.h); st.plats.push(plat(top, st.h)); }
+      while(top > -60){ top = add(top - gap(st.h)); }
       const score = Math.floor(st.h/10); elNow.textContent = score;
       if(p.y > H+40) end(score);
     }
 
+    function wrap(text, max){
+      if(ctx.measureText(text).width <= max) return [text];
+      const w = text.split(' '); let a = '', i = 0;
+      while(i < w.length && ctx.measureText((a?a+' ':'')+w[i]).width <= max){ a = (a?a+' ':'') + w[i]; i++; }
+      if(!a){ a = w[0]; i = 1; }
+      return [a, w.slice(i).join(' ')];
+    }
     function rr(x,y,w,h,r){ ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x,y,w,h,r) : ctx.rect(x,y,w,h); }
     function draw(){
       ctx.fillStyle = C.ink; ctx.fillRect(0,0,W,H);
@@ -1845,8 +1864,8 @@
         ctx.fillStyle = fill; rr(q.x,q.y,PW,PH,8); ctx.fill();
         if(q.t==='viral'){ ctx.strokeStyle = C.blue; ctx.setLineDash([4,3]); ctx.lineWidth = 2; rr(q.x+1,q.y+1,PW-2,PH-2,7); ctx.stroke(); ctx.setLineDash([]); }
         ctx.fillStyle = q.t==='news'||q.t==='viral' ? C.ink : '#fff';
-        let txt = q.label; while(ctx.measureText(txt).width > PW-10 && txt.length>3) txt = txt.slice(0,-2)+'…';
-        ctx.fillText(txt, q.x+PW/2, q.y+PH/2+0.5);
+        const lines = wrap(q.label, PW-12);
+        lines.forEach((ln,i)=>ctx.fillText(ln, q.x+PW/2, q.y+PH/2 + (i-(lines.length-1)/2)*11 + 0.5));
         ctx.restore();
       }
       const p = st.p, s = 1 + p.sq*0.18;
