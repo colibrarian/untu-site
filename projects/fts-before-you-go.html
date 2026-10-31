@@ -1279,6 +1279,23 @@
   }
   .fts-nav a.on.c-mat{ background:var(--blue-deep); color:#fff; }
   .ph-mat{ background:linear-gradient(135deg, var(--blue-deep), #1b2b4d 70%); color:#fff; }
+
+  /* ===== phone: page menu as a dropdown instead of a sideways-scrolling strip ===== */
+  .fn-toggle{ display:none; }
+  @media (max-width:760px){
+    .fts-nav{ display:block; width:100%; border-radius:22px; padding:6px; overflow:visible; }
+    .fn-toggle{ display:flex; align-items:center; gap:10px; width:100%; font:600 15px 'Space Grotesk', sans-serif; color:#fff;
+      background:transparent; border:none; padding:10px 12px; cursor:pointer; text-align:left; }
+    .fn-toggle .fn-num{ opacity:.7; }
+    .fn-toggle .fn-label{ flex:1; }
+    .fn-toggle .fn-menu{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.1em; text-transform:uppercase;
+      display:inline-flex; align-items:center; gap:6px; background:var(--red); color:#fff; padding:7px 12px; border-radius:999px; }
+    .fn-toggle .fn-caret{ transition:transform .2s ease; display:inline-block; }
+    .fts-nav.open .fn-caret{ transform:rotate(180deg); }
+    .fts-nav > a{ display:none; }
+    .fts-nav.open > a{ display:flex; padding:13px 14px; font-size:15px; border-radius:14px; }
+    .fts-nav.open{ padding-bottom:8px; }
+  }
 </style>
 </head>
 <body>
@@ -1295,6 +1312,7 @@
   </div>
 
   <nav class="fts-nav" aria-label="FTS infopack pages">
+    <button class="fn-toggle" type="button" aria-expanded="false"><span class="fn-num">05 / 06</span><span class="fn-label">Before You Go</span><span class="fn-menu">All pages <span class="fn-caret">▾</span></span></button>
     <a href="fts.html" class="c-red"><span class="fn-num">01</span>Overview</a>
     <a href="fts-programme.html" class="c-cream"><span class="fn-num">02</span>Programme</a>
     <a href="fts-participants.html" class="c-blue"><span class="fn-num">03</span>Who &amp; Commitments</a>
@@ -1751,6 +1769,13 @@
     cb.addEventListener('change',()=>localStorage.setItem(k, cb.checked?'1':'0'));
   });
 
+
+  /* phone page menu */
+  (function(){
+    const nav = document.querySelector('.fts-nav'), btn = nav && nav.querySelector('.fn-toggle'); if(!btn) return;
+    btn.addEventListener('click', e=>{ e.stopPropagation(); const o = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
+    document.addEventListener('click', e=>{ if(!nav.contains(e.target)){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
+  })();
 </script>
 </body>
 </html>
