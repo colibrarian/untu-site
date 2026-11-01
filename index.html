@@ -285,10 +285,9 @@
       background: rgba(255,255,255,.05);
       box-shadow: var(--shadow);
       overflow:hidden;
-      transform-style: preserve-3d;
-      will-change: transform;
       transition: transform .35s ease, box-shadow .35s ease, border-color .35s ease;
     }
+    .card.tilt:hover{ transform: translateY(-3px); }
     .card:hover{
       box-shadow: var(--shadowHover);
       border-color: rgba(255,255,255,.22);
@@ -2056,7 +2055,7 @@
 
     if(supportsHover && !reduceMotion){
       // Only elements that have .tilt class get the effect.
-      document.querySelectorAll(".tilt").forEach(attachTilt);
+      // Cards use a flat CSS lift (.card.tilt:hover): 3D rotate/scale made text and images blurry.
 
       const logo = document.getElementById("logoTilt");
       if(logo) attachTilt(logo);
