@@ -4,13 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Library · From Thinking to Speaking</title>
-<meta name="description" content="Materials from the training, and a mini-game while you wait. Erasmus+ training course · Vircava, Latvia · 9–15 November 2026.">
+<meta name="description" content="Materials from the training, sorted by topic: critical thinking, media literacy, public speaking and podcasting. Erasmus+ training course · Vircava, Latvia · 9–15 November 2026.">
 
 <!-- Open Graph / Facebook, LinkedIn, WhatsApp, Telegram, etc. -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Biedrība UNTU">
 <meta property="og:title" content="Library · From Thinking to Speaking">
-<meta property="og:description" content="Materials from the training, and a mini-game while you wait. Erasmus+ training course · Vircava, Latvia · 9–15 November 2026.">
+<meta property="og:description" content="Materials from the training, sorted by topic: critical thinking, media literacy, public speaking and podcasting. Erasmus+ training course · Vircava, Latvia · 9–15 November 2026.">
 <meta property="og:image" content="https://untu.ngo/projects/og/fts-library.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
 <!-- Twitter / X card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Library · From Thinking to Speaking">
-<meta name="twitter:description" content="Materials from the training, and a mini-game while you wait. Erasmus+ training course · Vircava, Latvia · 9–15 November 2026.">
+<meta name="twitter:description" content="Materials from the training, sorted by topic: critical thinking, media literacy, public speaking and podcasting. Erasmus+ training course · Vircava, Latvia · 9–15 November 2026.">
 <meta name="twitter:image" content="https://untu.ngo/projects/og/fts-library.jpg">
 <link rel="canonical" href="https://untu.ngo/projects/fts-library">
 
@@ -1283,41 +1283,34 @@
   .ph-mat{ background:linear-gradient(135deg, var(--blue-deep), #1b2b4d 70%); color:#fff; }
   .fts-nav a.on.c-mat{ background:var(--blue-deep); color:#fff; }
   .mat-intro{ grid-column:span 12; background:var(--white); color:var(--text-dark); }
-  .mat-intro:hover, .game-card:hover{ transform:none; box-shadow:none; }
+  .mat-intro:hover{ transform:none; box-shadow:none; }
   .mi-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--red-deep); }
-  .mat-intro h2, .game-card h2{ font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,4vw,44px); line-height:1; margin:6px 0 12px; }
+  .mat-intro h2{ font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,4vw,44px); line-height:1; margin:6px 0 12px; }
   .mat-intro p{ font-size:16px; line-height:1.6; max-width:760px; margin:0 0 16px; color:#3a352a; }
   .mi-locks{ display:flex; flex-wrap:wrap; gap:8px; margin-bottom:14px; }
   .mi-lock{ display:inline-flex; gap:10px; align-items:center; padding:10px 14px; border-radius:var(--r-sm); background:var(--cream); border:1px dashed #cfc5a6; font-weight:600; font-size:14px; color:#6d6754; }
   .mi-lock b{ font-family:'IBM Plex Mono', monospace; font-size:11px; font-weight:500; }
-  .mi-meanwhile{ font-weight:700; color:var(--text-dark) !important; margin:0 !important; }
-  .game-card{ grid-column:span 12; background:var(--ink-soft); border:1px solid #2a2823; color:#fff; }
-  .game-card .mi-eyebrow{ color:#ff8a6e; }
-  .game-head{ display:flex; justify-content:space-between; align-items:flex-end; gap:16px; flex-wrap:wrap; margin-bottom:16px; }
-  .game-legend{ display:flex; flex-wrap:wrap; gap:12px; font-family:'IBM Plex Mono', monospace; font-size:11.5px; color:#c8c4b6; }
-  .game-legend span{ display:inline-flex; align-items:center; gap:6px; }
-  .game-legend i{ width:22px; height:10px; border-radius:4px; display:inline-block; }
-  .pl-news{ background:var(--cream); } .pl-bait{ background:var(--red); } .pl-src{ background:var(--blue); } .pl-viral{ background:var(--white); outline:2px dashed var(--blue); outline-offset:-2px; }
-  .game-wrap{ position:relative; width:100%; max-width:420px; margin:0 auto; aspect-ratio:420/640; border-radius:var(--r-md); overflow:hidden; border:1px solid #2a2823; touch-action:none; user-select:none; -webkit-user-select:none; }
-  #svn{ width:100%; height:100%; display:block; }
-  .game-overlay{ position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(11,11,10,.72); padding:20px; }
-  .game-overlay[hidden]{ display:none; }
-  .go-box{ background:var(--white); color:var(--text-dark); border-radius:var(--r-md); padding:24px 22px; text-align:center; max-width:320px; }
-  .go-title{ font-family:'Anton', sans-serif; text-transform:uppercase; font-size:30px; line-height:1; margin-bottom:10px; }
-  .go-box p{ font-size:14px; line-height:1.5; margin:0 0 12px; color:#3a352a; }
-  .go-score{ font-family:'Anton', sans-serif; font-size:52px; color:var(--red); line-height:1; margin:4px 0 10px; }
-  .go-tip{ background:var(--cream); border-radius:10px; padding:10px 12px; font-weight:600; }
-  .go-btn{ font:600 15px 'Space Grotesk', sans-serif; border:none; cursor:pointer; background:var(--red); color:#fff; padding:13px 26px; border-radius:999px; margin:4px 0 12px; }
-  .go-btn:hover{ background:var(--red-deep); }
-  .go-keys{ font-family:'IBM Plex Mono', monospace; font-size:10.5px; color:#6d6754; }
-  .game-hud{ position:absolute; top:10px; left:12px; display:flex; gap:14px; font-family:'IBM Plex Mono', monospace; font-size:12px; color:#c8c4b6; pointer-events:none; }
-  .game-hud b{ color:#fff; font-size:14px; }
-  .game-board{ max-width:420px; margin:16px auto 0; }
-  .game-board ol{ margin:8px 0 0; padding:0; list-style:none; display:flex; flex-direction:column; gap:4px; counter-reset:r; }
-  .game-board li{ display:flex; justify-content:space-between; padding:8px 12px; border-radius:10px; background:rgba(255,255,255,.06); font-size:14px; }
-  .game-board li span{ font-family:'IBM Plex Mono', monospace; font-size:12px; color:#a8a393; }
-  .game-board li.empty{ color:#a8a393; justify-content:center; }
-
+  .lib-section{ grid-column:span 12; background:var(--white); color:var(--text-dark); }
+  .lib-section:hover{ transform:none; box-shadow:none; }
+  .lib-section h2{ font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; font-size:clamp(28px,4vw,44px); line-height:1; margin:6px 0 18px; }
+  .lib-items{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+  .lib-item{ display:flex; flex-direction:column; background:var(--cream); border-radius:var(--r-md); overflow:hidden; text-decoration:none; color:inherit; transition:transform .25s ease, box-shadow .25s ease; }
+  .lib-item:hover{ transform:translateY(-2px); box-shadow:0 14px 26px rgba(0,0,0,.10); }
+  .lib-thumb{ aspect-ratio:16/9; background:var(--cream-deep); position:relative; overflow:hidden; }
+  .lib-thumb img{ width:100%; height:100%; object-fit:cover; object-position:top center; display:block; }
+  .lib-thumb.video{ background:var(--ink); }
+  .lib-play{ position:absolute; left:50%; top:50%; transform:translate(-50%,-50%); width:64px; height:64px; border-radius:50%; background:var(--red); color:#fff; display:flex; align-items:center; justify-content:center; font-size:22px; padding-left:4px; }
+  .lib-meta{ padding:18px 20px 20px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .lib-kind{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:#6d6754; }
+  .lib-meta h3{ font-family:'Anton', sans-serif; font-weight:400; text-transform:uppercase; font-size:22px; line-height:1.1; margin:0; }
+  .lib-meta p{ font-size:14px; line-height:1.5; margin:0; color:#3a352a; }
+  .lib-go{ margin-top:auto; padding-top:8px; font-family:'IBM Plex Mono', monospace; font-size:12.5px; color:var(--blue-deep); }
+  .lib-soon{ grid-column:span 12; display:grid; grid-template-columns:repeat(3,1fr); gap:var(--gap); }
+  .lib-soon .lib-section{ grid-column:auto !important; }
+  .lib-section.small h2{ font-size:clamp(22px,2.6vw,30px); margin:6px 0 8px; }
+  .lib-section.small p{ margin:0; font-size:14px; color:#6d6754; }
+  @media (max-width:980px){ .lib-section,.lib-soon{ grid-column:1 / -1; } }
+  @media (max-width:760px){ .lib-items,.lib-soon{ grid-template-columns:1fr; } }
 
   /* ===== phone: page menu as a dropdown instead of a sideways-scrolling strip ===== */
   .fn-toggle{ display:none; }
@@ -1364,7 +1357,7 @@
     <div class="card page-hero ph-mat">
       <div class="ph-index">06 <span>/ 06</span></div>
       <h1 class="ph-title">Library</h1>
-      <div class="ph-chips"><a class="ph-chip" href="#game">🎮 Signal vs Noise</a></div>
+      <div class="ph-chips"><a class="ph-chip" href="#critical-thinking">Critical Thinking</a><a class="ph-chip" href="#more-sections">Media Literacy · Public Speaking · Podcasting</a></div>
     </div>
     <div class="card mat-intro">
       <div class="mi-eyebrow">Coming during the training · 9–15 November 2026</div>
@@ -1376,39 +1369,37 @@
         <span class="mi-lock">🎬 Team videos <b>🔒 from 14 Nov</b></span>
         <span class="mi-lock">📝 Handouts <b>🔒 from 9 Nov</b></span>
       </div>
-      <p class="mi-meanwhile">Meanwhile, keep yourself busy ↓</p>
     </div>
 
-    <div id="game" class="card game-card">
-      <div class="game-head">
-        <div>
-          <div class="mi-eyebrow">Mini‑game</div>
-          <h2>Signal vs Noise</h2>
-        </div>
-        <div class="game-legend">
-          <span><i class="pl-news"></i>News: safe to stand on</span>
-          <span><i class="pl-bait"></i>Clickbait: crumbles</span>
-          <span><i class="pl-src"></i>✓ Source: super jump</span>
-        </div>
+    <section id="critical-thinking" class="card lib-section">
+      <div class="lib-head">
+        <div class="mi-eyebrow">Section 01</div>
+        <h2>Critical Thinking</h2>
       </div>
-      <div class="game-wrap">
-        <canvas id="svn" width="420" height="640" aria-label="Signal vs Noise game"></canvas>
-        <div class="game-overlay" id="svnOverlay">
-          <div class="go-box">
-            <div class="go-title" id="svnTitle">Signal vs Noise</div>
-            <p id="svnText">Bounce your microphone up through the headlines. Clickbait gives way under you; checked sources launch you higher.</p>
-            <div class="go-score" id="svnScore" hidden></div>
-            <p class="go-tip" id="svnTip" hidden></p>
-            <button class="go-btn" id="svnStart">▶ Play</button>
-            <div class="go-keys">Computer: ← → or A / D &nbsp;·&nbsp; Phone: touch the left or right half</div>
+      <div class="lib-items">
+        <a class="lib-item" href="fts-bias-map">
+          <div class="lib-thumb"><img src="og/fts-bias-map-preview.jpg" alt="Preview of the Cognitive Bias Map page" loading="lazy"></div>
+          <div class="lib-meta">
+            <div class="lib-kind">Interactive map</div>
+            <h3>Cognitive Bias Map</h3>
+            <p>40 cognitive biases around one brain, grouped like Buster Benson’s Cognitive Bias Codex and marked by how well the research holds up.</p>
+            <span class="lib-go">Open the map →</span>
           </div>
-        </div>
-        <div class="game-hud"><span>Level <b id="svnLvl">1</b></span><span>Height <b id="svnNow">0</b></span><span>Best <b id="svnBest">0</b></span></div>
+        </a>
+        <a class="lib-item" href="https://www.youtube.com/watch?v=CjVQJdIrDJ0" target="_blank" rel="noopener">
+          <div class="lib-thumb video"><img src="https://i.ytimg.com/vi/CjVQJdIrDJ0/hqdefault.jpg" alt="" loading="lazy" onerror="this.remove()"><span class="lib-play">▶</span></div>
+          <div class="lib-meta">
+            <div class="lib-kind">Video · YouTube</div>
+            <h3>Thinking, Fast and Slow | Daniel Kahneman | Talks at Google</h3>
+            <span class="lib-go">Watch on YouTube →</span>
+          </div>
+        </a>
       </div>
-      <div class="game-board">
-        <div class="mi-eyebrow">Your last runs (saved only in this browser)</div>
-        <ol id="svnRuns"><li class="empty">No runs yet.</li></ol>
-      </div>
+    </section>
+    <div id="more-sections" class="lib-soon">
+      <section id="media-literacy" class="card lib-section small"><div class="mi-eyebrow">Section 02</div><h2>Media Literacy</h2><p>Materials will be added during the training.</p></section>
+      <section id="public-speaking" class="card lib-section small"><div class="mi-eyebrow">Section 03</div><h2>Public Speaking</h2><p>Materials will be added during the training.</p></section>
+      <section id="podcasting" class="card lib-section small"><div class="mi-eyebrow">Section 04</div><h2>Podcasting</h2><p>Materials will be added during the training.</p></section>
     </div>
     <a class="card next-card ph-red" href="fts">
       <span class="nc-eyebrow">Next · 01 / 06</span>
@@ -1791,210 +1782,6 @@
     cb.addEventListener('change',()=>localStorage.setItem(k, cb.checked?'1':'0'));
   });
 
-
-  /* ================= SIGNAL VS NOISE (original mini-game) ================= */
-  (function(){
-    const cv = document.getElementById('svn'); if(!cv) return;
-    const ctx = cv.getContext('2d'), W = cv.width, H = cv.height;
-    const ov = document.getElementById('svnOverlay'), btn = document.getElementById('svnStart');
-    const elNow = document.getElementById('svnNow'), elBest = document.getElementById('svnBest'), elLvl = document.getElementById('svnLvl');
-    const C = {ink:'#0b0b0a', soft:'#161513', red:'#ff4520', redD:'#c93414', blue:'#3f7fe0', blueD:'#2c5cb0', cream:'#f2ecdd', creamD:'#e4dcc4', white:'#fbfbf6'};
-    const NEWS = ["FIRST SNOW IN VIRCAVA", "RAINY DAY, BRING A HAT", "NEW CAFÉ OPENS IN TOWN", "LOCAL CHOIR WINS PRIZE", "TRAIN RUNS ON TIME", "NEW BIKE LANE OPENS", "LIBRARY OPEN LATE TODAY", "MARKET ON SATURDAY", "SCHOOL PLAY TONIGHT", "BRIDGE REPAIRED", "PARK GETS NEW BENCHES", "CAT RESCUED FROM TREE", "BAKERY TRIES NEW BREAD", "FOG IN THE MORNING", "SUNNY AFTERNOON AHEAD", "YOUTH CENTRE OPENS DOORS", "LOCAL TEAM WINS 2:1", "STREET LIGHTS FIXED", "NEW BUS STOP ADDED", "POETRY NIGHT ON FRIDAY", "APPLE HARVEST IS IN", "RIVER LEVEL NORMAL", "MUSEUM ENTRY FREE TODAY", "VOLUNTEERS PLANT TREES", "KIDS PAINT A MURAL", "CONCERT IN THE SQUARE", "WIND CALMS DOWN TONIGHT", "NEW BOOKS AT LIBRARY", "CHESS CLUB MEETS TUESDAY", "MANOR HOSTS GUESTS", "HOT SOUP AT THE CANTEEN", "PODCAST STUDIO READY", "MUSHROOM SEASON ENDS", "GEESE FLY SOUTH", "RECYCLING DAY ON MONDAY", "LOCAL FARM OPENS SHOP", "TOWN CLOCK FIXED AT LAST", "NEW PLAYGROUND OPENS", "DANCE CLASS FOR ALL", "FROST ON THE WINDOWS"];
-    const BAIT = ["YOU WON'T BELIEVE…",'DOCTORS HATE THIS','SHOCKING!!!','99% FAIL THIS','NUMBER 7 WILL…','THEY HID THIS?!','ONE WEIRD TRICK'];
-    const SRC  = ['✓ CHECKED','✓ SOURCE','✓ 2ND SOURCE','✓ ORIGINAL DATA'];
-    const VIRAL= ['TRENDING ↔','VIRAL ↔','EVERYONE SHARES ↔'];
-    const TIPS = ['Strong emotion? Pause before you share.','Headlines sell; the article tells.','Find a second, independent source.','Check the date: old news travels fast.','Who is behind it? Open a new tab and look.','Screenshots are easy to fake. Find the original.'];
-    const pick = a => a[Math.floor(Math.random()*a.length)];
-    // shuffle bag: every headline appears once before any repeats
-    const bags = new Map();
-    const draw1 = a => { let b = bags.get(a); if(!b || !b.length){ b = a.slice().sort(()=>Math.random()-.5); bags.set(a, b); } return b.pop(); };
-    const store = { get(k,d){ try{ return JSON.parse(localStorage.getItem(k)) ?? d; }catch(e){ return d; } }, set(k,v){ try{ localStorage.setItem(k, JSON.stringify(v)); }catch(e){} } };
-    let best = store.get('svn-best', 0); elBest.textContent = best;
-    const PW = 124, PH = 34, G = 0.38, JUMP = -11.2, SUPER = -18;
-    let st, keys = {left:false, right:false}, raf = null, last = 0;
-
-    const REACH = 128;   // max vertical distance between two platforms you can stand on (jump height ≈ 165)
-    /* levels by height (metres): fewer steps, more clickbait, fewer sources; every step stays reachable */
-    const LEVELS = [
-      {from:0,    gap:[54,66],   bait:0.15, src:0.12},
-      {from:100,  gap:[68,84],   bait:0.25, src:0.10,                                            msg:'FEWER STEPS AHEAD'},
-      // from level 3 the headlines start to move: slowly first, then faster
-      {from:250,  gap:[82,100],  bait:0.35, src:0.08, move:0.25, speed:0.8,                        msg:'HEADLINES START TO MOVE'},
-      {from:450,  gap:[96,114],  bait:0.45, src:0.07, move:0.35, speed:1.1,                        msg:'FASTER HEADLINES'},
-      {from:700,  gap:[108,126], bait:0.50, src:0.06, move:0.40, speed:1.3, baitMove:true,         msg:'CLICKBAIT FOLLOWS YOU'},
-      {from:1000, gap:[108,126], bait:0.55, src:0.05, move:0.45, speed:1.5, baitMove:true, breaking:0.25, msg:'BREAKING NEWS FADES FAST'},
-      {from:1400, gap:[110,126], bait:0.60, src:0.04, move:0.55, speed:1.8, baitMove:true, breaking:0.30, msg:'FASTER NEWS CYCLE'},
-    ];
-    // after the last level: a new level every 700 m, everything a bit faster
-    const levelAt = h => { const m = h/10, last = LEVELS[LEVELS.length-1];
-      if(m >= last.from + 700) return LEVELS.length - 1 + Math.floor((m - last.from)/700);
-      let i = 0; LEVELS.forEach((L,k)=>{ if(m >= L.from) i = k; }); return i; };
-    const lvl = i => { if(i < LEVELS.length) return LEVELS[i];
-      const L = LEVELS[LEVELS.length-1], extra = i - (LEVELS.length-1);
-      return Object.assign({}, L, {move:Math.min(0.85, L.move + 0.06*extra), speed:L.speed + 0.35*extra, breaking:Math.min(0.45, L.breaking + 0.04*extra), msg:'SPEED UP'}); };
-    const MSG = [];
-    const dir = () => Math.random() < .5 ? -1 : 1;
-    function plat(y, h, forceSolid){
-      const r = Math.random(), L = lvl(levelAt(h));
-      let t = 'news';
-      if(r < L.src) t = 'src';
-      if(forceSolid && t==='bait') t = 'news';
-      const label = t==='news'?draw1(NEWS):t==='bait'?draw1(BAIT):t==='src'?draw1(SRC):draw1(VIRAL);
-      const moving = L.move && Math.random() < L.move;
-      const breaking = t==='news' && L.breaking && !moving && Math.random() < L.breaking;
-      return {x: Math.random()*(W-PW), y, t, label: breaking ? 'BREAKING: ' + label : label, breaking, fade: 0,
-              vx: moving ? dir()*L.speed*(0.8 + Math.random()*0.4) : 0, broken:false, vy:0};
-    }
-    function reset(){
-      st = {p:{x:W/2-14, y:H-120, vx:0, vy:JUMP, sq:0}, plats:[], cam:0, h:0, over:false, solid:H-60, solidX:W/2-PW/2, level:0, flash:0}; elLvl.textContent = 1;
-      st.plats.push({x:W/2-PW/2, y:H-60, t:'news', label:'FTS · VIRCAVA', vx:0, broken:false, vy:0});
-      let y = H-60;
-      while(y > -H){ y = add(y - gap(0)); }
-    }
-    function gap(h){ const g = lvl(levelAt(h)).gap; return g[0] + Math.random()*(g[1]-g[0]); }   // max 126 < REACH
-    function add(y){
-      // real steps: never further apart than REACH, never clickbait
-      if(st.solid - y >= REACH) y = st.solid - REACH;
-      const q = plat(y, st.h, true), prevY = st.solid, prevX = st.solidX;
-      st.solid = y; st.solidX = q.x; st.plats.push(q);
-      // clickbait = extra decoy halfway between two steps, placed beside them (never on top)
-      const L = lvl(levelAt(st.h));
-      if(Math.random() < L.bait){
-        for(let k=0; k<14; k++){
-          const bx = Math.random()*(W-PW);
-          if(Math.abs(bx-q.x) > PW+10 && Math.abs(bx-prevX) > PW+10){
-            st.plats.push({x:bx, y:(y+prevY)/2, t:'bait', label:draw1(BAIT), vx: L.baitMove ? dir()*L.speed*0.7 : 0, broken:false, vy:0}); break;
-          }
-        }
-      }
-      return y;
-    }
-
-    function step(dt){
-      const p = st.p;
-      const ax = (keys.right?1:0) - (keys.left?1:0);
-      p.vx += ax*0.9*dt; p.vx *= Math.pow(0.86, dt); p.vx = Math.max(-7, Math.min(7, p.vx));
-      p.x += p.vx*dt; if(p.x < -28) p.x = W; if(p.x > W) p.x = -28;
-      p.vy += G*dt; p.y += p.vy*dt; p.sq = Math.max(0, p.sq - 0.08*dt);
-      for(const q of st.plats){
-        if(q.vx && !q.broken){ q.x += q.vx*dt; if(q.x < 0){ q.x = 0; q.vx *= -1; } if(q.x > W-PW){ q.x = W-PW; q.vx *= -1; } }
-        if(q.fade){ q.fade -= 0.03*dt; if(q.fade <= 0){ q.broken = true; q.vy = 1; q.fade = 0; } }
-        if(q.broken){ q.vy += G*dt; q.y += q.vy*dt; continue; }
-        if(q.y < H - 2 && p.vy > 0 && p.x+24 > q.x && p.x+4 < q.x+PW && p.y+44 >= q.y && p.y+44 - p.vy*dt <= q.y+6){
-          if(q.t==='bait'){ q.broken = true; q.vy = 1; continue; }
-          p.y = q.y-44; p.vy = q.t==='src' ? SUPER : JUMP; p.sq = 1;
-          if(q.breaking && !q.fade) q.fade = 1;   // breaking news: gone shortly after you touch it
-        }
-      }
-      const line = H*0.42;
-      if(p.y < line){ const d = line - p.y; p.y = line; st.plats.forEach(q=>q.y+=d); st.h += d; st.solid += d; }
-      st.plats = st.plats.filter(q=>q.y < H+80);
-      let top = Math.min(...st.plats.map(q=>q.y));
-      while(top > -60){ top = add(top - gap(st.h)); }
-      const score = Math.floor(st.h/10); elNow.textContent = score;
-      const lv = levelAt(st.h);
-      if(lv > st.level){ st.level = lv; st.flash = 1; elLvl.textContent = lv+1; }
-      st.flash = Math.max(0, st.flash - 0.012*dt);
-      if(p.y + 30 > H) end(score);   // fell out of the frame = game over
-    }
-
-    function wrap(text, max){
-      if(ctx.measureText(text).width <= max) return [text];
-      const w = text.split(' '); let a = '', i = 0;
-      while(i < w.length && ctx.measureText((a?a+' ':'')+w[i]).width <= max){ a = (a?a+' ':'') + w[i]; i++; }
-      if(!a){ a = w[0]; i = 1; }
-      return [a, w.slice(i).join(' ')];
-    }
-    function rr(x,y,w,h,r){ ctx.beginPath(); ctx.roundRect ? ctx.roundRect(x,y,w,h,r) : ctx.rect(x,y,w,h); }
-    function draw(){
-      ctx.fillStyle = C.ink; ctx.fillRect(0,0,W,H);
-      ctx.font = '600 10px "IBM Plex Mono", monospace'; ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-      for(const q of st.plats){
-        const fill = q.t==='news'?C.cream:q.t==='bait'?C.red:q.t==='src'?C.blue:C.white;
-        ctx.save(); if(q.fade) ctx.globalAlpha = Math.max(0.15, q.fade); if(q.broken){ ctx.globalAlpha = 0.55; ctx.translate(q.x+PW/2, q.y+PH/2); ctx.rotate(q.vy*0.03); ctx.translate(-(q.x+PW/2), -(q.y+PH/2)); }
-        ctx.fillStyle = fill; rr(q.x,q.y,PW,PH,8); ctx.fill();
-        if(q.breaking){ ctx.fillStyle = C.red; rr(q.x,q.y,6,PH,3); ctx.fill(); }
-        ctx.fillStyle = q.t==='news'||q.t==='viral' ? C.ink : '#fff';
-        const lines = wrap(q.label, PW-12);
-        lines.forEach((ln,i)=>ctx.fillText(ln, q.x+PW/2, q.y+PH/2 + (i-(lines.length-1)/2)*11 + 0.5));
-        ctx.restore();
-      }
-      const p = st.p, s = 1 + p.sq*0.22;
-      drawMic(p.x+14, p.y+44, s, p.vx);
-      if(st.flash > 0){
-        const f = st.flash;
-        ctx.fillStyle = `rgba(63,127,224,${0.28*f*f})`; ctx.fillRect(0,0,W,H);
-        ctx.save(); ctx.globalAlpha = Math.min(1, f*1.6); ctx.textAlign = 'center'; ctx.textBaseline = 'middle';
-        const sc = 1 + (1-f)*0.15; ctx.translate(W/2, H*0.3); ctx.scale(sc, sc);
-        ctx.fillStyle = C.red; rr(-110,-38,220,76,20); ctx.fill();
-        ctx.fillStyle = '#fff'; ctx.font = '400 46px Anton, sans-serif'; ctx.fillText('LEVEL ' + (st.level+1), 0, -4);
-        ctx.font = '600 11px "IBM Plex Mono", monospace'; ctx.fillText(MSG[st.level] || lvl(st.level).msg || '', 0, 26);
-        ctx.restore();
-      }
-      if(!st.over){ ctx.fillStyle = C.red; ctx.beginPath(); ctx.arc(W-16,16,5,0,7); ctx.fill();
-        ctx.fillStyle = '#fff'; ctx.font = '600 10px "IBM Plex Mono", monospace'; ctx.textAlign='right'; ctx.fillText('ON AIR', W-26, 16.5); }
-    }
-
-    /* handheld microphone: mesh ball head, metal ring, tapered handle */
-    function drawMic(cx, by, s, vx){
-      ctx.save(); ctx.translate(cx, by); ctx.scale(s, 1/s); ctx.rotate(vx*0.035);
-      // handle
-      ctx.beginPath(); ctx.moveTo(-6.5,-19); ctx.lineTo(6.5,-19); ctx.lineTo(4,-1); ctx.quadraticCurveTo(0,1.5,-4,-1); ctx.closePath();
-      const hg = ctx.createLinearGradient(-7,0,7,0); hg.addColorStop(0,'#1c1b19'); hg.addColorStop(.45,'#4a4741'); hg.addColorStop(1,'#141311');
-      ctx.fillStyle = hg; ctx.fill();
-      ctx.fillStyle = C.red; rr(-5,-9,10,3,1.5); ctx.fill();               // brand stripe
-      // ring
-      const rg = ctx.createLinearGradient(-9,0,9,0); rg.addColorStop(0,'#8e8b84'); rg.addColorStop(.5,'#f1efe9'); rg.addColorStop(1,'#77746d');
-      ctx.fillStyle = rg; rr(-8.5,-23,17,5,2); ctx.fill();
-      // mesh head
-      const R = 12, hy = -33;
-      const g = ctx.createRadialGradient(-4,hy-5,2, 0,hy,R); g.addColorStop(0,'#f4f3ef'); g.addColorStop(.6,'#b9b6ae'); g.addColorStop(1,'#6f6c66');
-      ctx.beginPath(); ctx.arc(0,hy,R,0,Math.PI*2); ctx.fillStyle = g; ctx.fill();
-      ctx.save(); ctx.beginPath(); ctx.arc(0,hy,R-0.5,0,Math.PI*2); ctx.clip();
-      ctx.strokeStyle = 'rgba(40,38,34,.45)'; ctx.lineWidth = 0.8;
-      for(let d=-24; d<=24; d+=4){ ctx.beginPath(); ctx.moveTo(d-R, hy-R); ctx.lineTo(d+R, hy+R); ctx.stroke(); ctx.beginPath(); ctx.moveTo(d+R, hy-R); ctx.lineTo(d-R, hy+R); ctx.stroke(); }
-      ctx.restore();
-      ctx.strokeStyle = '#5e5b55'; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(0,hy,R,0,Math.PI*2); ctx.stroke();
-      ctx.fillStyle = 'rgba(255,255,255,.55)'; ctx.beginPath(); ctx.ellipse(-4.5,hy-5,3.2,2,-0.6,0,Math.PI*2); ctx.fill();
-      ctx.restore();
-    }
-    function loop(t){
-      const dt = Math.min(2.5, (t - last)/16.67 || 1); last = t;
-      if(!st.over){ step(dt); draw(); raf = requestAnimationFrame(loop); }
-    }
-    function start(){
-      reset(); ov.hidden = true; last = performance.now();
-      cancelAnimationFrame(raf); raf = requestAnimationFrame(loop); cv.focus && cv.focus();
-    }
-    function end(score){
-      st.over = true; draw();
-      const nb = score > best; if(nb){ best = score; store.set('svn-best', best); elBest.textContent = best; }
-      const runs = store.get('svn-runs', []); runs.unshift({s:score, d:new Date().toLocaleDateString('en-GB',{day:'2-digit',month:'short'})}); store.set('svn-runs', runs.slice(0,5)); renderRuns();
-      document.getElementById('svnTitle').textContent = nb ? 'New best!' : 'Lost in the noise';
-      document.getElementById('svnText').textContent = 'You climbed ' + score + ' m of headlines.';
-      const sc = document.getElementById('svnScore'); sc.hidden = false; sc.textContent = score + ' m';
-      const tip = document.getElementById('svnTip'); tip.hidden = false; tip.textContent = '💡 ' + pick(TIPS);
-      btn.textContent = '↻ Play again'; ov.hidden = false;
-    }
-    function renderRuns(){
-      const runs = store.get('svn-runs', []), ol = document.getElementById('svnRuns');
-      ol.innerHTML = runs.length ? runs.map(r=>`<li><b>${r.s} m</b><span>${r.d}</span></li>`).join('') : '<li class="empty">No runs yet.</li>';
-    }
-    renderRuns();
-    btn.addEventListener('click', start);
-    const K = {ArrowLeft:'left', a:'left', A:'left', ArrowRight:'right', d:'right', D:'right'};
-    window.addEventListener('keydown', e=>{ if(K[e.key] && st && !st.over){ keys[K[e.key]] = true; e.preventDefault(); } });
-    window.addEventListener('keyup', e=>{ if(K[e.key]) keys[K[e.key]] = false; });
-    function touch(e){
-      if(!st || st.over) return; e.preventDefault();
-      keys.left = keys.right = false;
-      const r = cv.getBoundingClientRect();
-      for(const t of e.touches){ if(t.clientX - r.left < r.width/2) keys.left = true; else keys.right = true; }
-    }
-    ['touchstart','touchmove','touchend','touchcancel'].forEach(n=>cv.addEventListener(n, touch, {passive:false}));
-    document.addEventListener('visibilitychange', ()=>{ if(document.hidden && st && !st.over){ keys.left = keys.right = false; } });
-    reset(); draw();
-  })();
 
   /* phone page menu */
   (function(){

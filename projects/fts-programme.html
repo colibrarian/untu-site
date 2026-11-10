@@ -1095,6 +1095,11 @@
   .page-programme .programme-list{ columns:2; column-gap:40px; }
   @media (max-width:760px){ .page-programme .programme-list{ columns:1; } }
 
+  .aim-box{ border-left:4px solid var(--blue); padding:4px 0 4px 18px; margin:6px 0 26px; max-width:860px; }
+  .aim-box p{ font-size:clamp(17px,2vw,21px); line-height:1.45; margin:6px 0 0; color:var(--text-dark); }
+  .aim-eyebrow{ font-family:'IBM Plex Mono', monospace; font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--red-deep); }
+  .objectives-card.path .aim-eyebrow + .objectives-grid{ margin-top:4px; }
+
   /* ON AIR */
   .onair{ display:inline-flex; align-items:center; gap:10px; font-family:'IBM Plex Mono', monospace; font-weight:600;
     font-size:12px; letter-spacing:.2em; background:#fff; color:var(--red-deep); padding:6px 14px; border-radius:999px; margin-bottom:14px; }
@@ -1325,7 +1330,7 @@
     <div class="card page-hero ph-cream">
       <div class="ph-index">02 <span>/ 06</span></div>
       <h1 class="ph-title">Programme</h1>
-      <div class="ph-chips"><a class="ph-chip" href="#schedule">Daily Schedule</a><a class="ph-chip" href="#objectives">Objectives</a><a class="ph-chip" href="#programme">What Will We Actually Do?</a><a class="ph-chip" href="#output">Main Project Output</a><a class="ph-chip" href="#outcomes">Expected Learning Outcomes</a></div>
+      <div class="ph-chips"><a class="ph-chip" href="#schedule">Daily Schedule</a><a class="ph-chip" href="#objectives">Aim &amp; Objectives</a><a class="ph-chip" href="#programme">What Will We Actually Do?</a><a class="ph-chip" href="#output">Main Project Output</a><a class="ph-chip" href="#outcomes">Expected Learning Outcomes</a></div>
     </div>
     <div id="schedule" class="card schedule-card">
       <div class="sch-head">
@@ -1338,34 +1343,43 @@
     </div>
     <div id="objectives" class="card objectives-card path g-objectives">
       <div class="objectives-head">
-        <h2>Objectives</h2>
-        <p>What the training course sets out to build, in five parts.</p>
+        <h2>Aim &amp; Objectives</h2>
       </div>
+      <div class="aim-box">
+        <div class="aim-eyebrow">Project Aim</div>
+        <p>To strengthen youth workers’ competences in critical thinking, media literacy, public speaking, and podcasting, enabling them to support young people in becoming critical thinkers, confident communicators, and responsible digital citizens.</p>
+      </div>
+      <div class="aim-eyebrow">Project Objectives</div>
       <div class="objectives-grid">
         <div class="objective-item">
           <div class="objective-num">01</div>
-          <h4>Critical Thinking &amp; Media Literacy</h4>
-          <p>Practical, transferable tools for working with critical thinking and media literacy in youth work.</p>
+          <h4>Critical Thinking</h4>
+          <p>Develop skills to analyse information, recognise cognitive biases, and challenge misinformation.</p>
         </div>
         <div class="objective-item">
           <div class="objective-num">02</div>
-          <h4>Dialogue &amp; Public Speaking</h4>
-          <p>Stronger ability to run structured discussions, debates and public‑speaking activities with young people.</p>
+          <h4>Media Literacy</h4>
+          <p>Strengthen the ability to identify media manipulation, fake news, and digital polarisation.</p>
         </div>
         <div class="objective-item">
           <div class="objective-num">03</div>
-          <h4>Podcasting</h4>
-          <p>Practical skills in podcast design, scripting, recording and basic editing as a tool for digital youth work.</p>
+          <h4>Public Speaking</h4>
+          <p>Improve communication, argumentation, and facilitation of meaningful discussions.</p>
         </div>
         <div class="objective-item">
           <div class="objective-num">04</div>
-          <h4>Misinformation &amp; Biases</h4>
-          <p>Working with misinformation, cognitive biases, manipulation and polarisation.</p>
+          <h4>Podcasting</h4>
+          <p>Learn to use podcast creation as an educational tool for youth engagement and self-expression.</p>
         </div>
         <div class="objective-item">
           <div class="objective-num">05</div>
-          <h4>Digital Youth Work Innovation</h4>
-          <p>Responsible content creation, ethical communication and modern digital methods.</p>
+          <h4>Practical Application</h4>
+          <p>Equip youth workers with transferable non-formal education methods they can use in their communities.</p>
+        </div>
+        <div class="objective-item">
+          <div class="objective-num">06</div>
+          <h4>Youth Work Innovation</h4>
+          <p>Promote responsible digital content creation and improve the quality of youth work.</p>
         </div>
       </div>
     </div>
