@@ -1399,28 +1399,6 @@
         <div class="gs-label">Departure Day</div>
       </div>
       <div class="glance-tag">9 DAYS TOTAL</div>
-
-      <div class="countdown-wrap">
-        <div class="countdown-label">⏳ Countdown to Arrival Day</div>
-        <div class="countdown-grid">
-          <div class="countdown-unit">
-            <div class="countdown-num" id="cd-days">–</div>
-            <div class="countdown-unit-label">Days</div>
-          </div>
-          <div class="countdown-unit">
-            <div class="countdown-num" id="cd-hours">–</div>
-            <div class="countdown-unit-label">Hrs</div>
-          </div>
-          <div class="countdown-unit">
-            <div class="countdown-num" id="cd-mins">–</div>
-            <div class="countdown-unit-label">Min</div>
-          </div>
-          <div class="countdown-unit">
-            <div class="countdown-num" id="cd-secs">–</div>
-            <div class="countdown-unit-label">Sec</div>
-          </div>
-        </div>
-      </div>
     </div>
     <div class="card explore g-gallery">
       <div class="gallery-head"><h2>Explore the Infopack</h2></div>
@@ -1761,32 +1739,6 @@
   setTimeout(syncWeatherHeight, 50);
   setTimeout(syncWeatherHeight, 400);
 
-  /* ================= COUNTDOWN ================= */
-  function updateCountdown(){
-    const target = new Date("2026-11-08T00:00:00+02:00").getTime();
-    const now = Date.now();
-    const diff = Math.max(0, target - now);
-
-    const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-    const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-    const mins = Math.floor((diff / (1000 * 60)) % 60);
-    const secs = Math.floor((diff / 1000) % 60);
-
-    const pad = n => String(n).padStart(2, '0');
-
-    const elDays = document.getElementById('cd-days');
-    const elHours = document.getElementById('cd-hours');
-    const elMins = document.getElementById('cd-mins');
-    const elSecs = document.getElementById('cd-secs');
-    if (!elDays) return;
-
-    elDays.textContent = days;
-    elHours.textContent = pad(hours);
-    elMins.textContent = pad(mins);
-    elSecs.textContent = pad(secs);
-  }
-  updateCountdown();
-  setInterval(updateCountdown, 1000);
 
   /* daily schedule tabs: opens today's day during the training */
   (function(){
