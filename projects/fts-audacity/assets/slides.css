@@ -65,7 +65,7 @@ svg.wave .over{fill:var(--head);}
 .hero-wave .ph circle{fill:var(--head);}
 
 /* pipeline as clips on one track */
-.track{display:grid; grid-template-columns:repeat(4,1fr); gap:.5em; margin-top:1.8em; position:relative;}
+.track{display:grid; grid-template-columns:repeat(5,1fr); gap:.5em; margin-top:1.8em; position:relative;}
 .clip{border:1.5px solid var(--ink); border-radius:10px; background:#fff; overflow:hidden; display:flex; flex-direction:column; box-shadow:0 5px 0 var(--ink);}
 .clip .ch{background:var(--wave); color:#fff; font:600 .66em/1 'JetBrains Mono', monospace; letter-spacing:.08em; text-transform:uppercase; padding:.7em .9em;}
 .clip .cb{padding:1em 1em .4em; flex:1;}
