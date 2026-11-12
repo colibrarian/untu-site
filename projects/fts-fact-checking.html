@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<link rel="canonical" href="https://untu.ngo/projects/fts-fact-checking">
+<meta name="description" content="A practical fact-checking toolkit: the SIFT method, lateral reading, reverse image search, AI-generated content, fact-checkers in six European countries, and five questions for reading a news frame.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Biedrība UNTU">
+<meta property="og:title" content="Don’t Get Fooled: Fact-Checking Toolkit · From Thinking to Speaking">
+<meta property="og:description" content="SIFT, lateral reading, reverse image search, AI-generated content and fact-checkers in six countries.">
+<meta property="og:image" content="https://untu.ngo/projects/og/fts-fact-checking-preview.jpg">
+<meta property="og:url" content="https://untu.ngo/projects/fts-fact-checking">
+<meta name="twitter:card" content="summary_large_image">
+<title>Don’t Get Fooled: Fact-Checking Toolkit · From Thinking to Speaking</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,700;1,6..72,400&display=swap" rel="stylesheet">
+<style>
+/* Same look as the day-4 slides «True, False, Framed»: a newspaper page, red stamps, nothing else decorative. */
+:root{
+  --bg:#f4f1e8; --paper:#fffdf8; --ink:#16181d; --soft:#3b3d44; --muted:#6f7078; --rule:#d9d4c6;
+  --red:#c52d1b; --hl:#ffe36b;
+  --f-display:'Bricolage Grotesque', 'Arial Narrow', sans-serif;
+  --f-body:'Figtree', system-ui, sans-serif;
+  --f-serif:'Newsreader', Georgia, serif;
+  --f-mono:'JetBrains Mono', ui-monospace, monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box;}
+html,body{background:var(--bg); color:var(--ink); margin:0;}
+body{font-family:var(--f-body); font-size:17px; line-height:1.55;
+  padding-left:max(16px, env(safe-area-inset-left, 0px)); padding-right:max(16px, env(safe-area-inset-right, 0px)); padding-block:20px 48px;}
+img{max-width:100%;}
+a{color:var(--ink); text-decoration-color:var(--red); text-underline-offset:3px;}
+a:hover{color:var(--red);}
+a:focus-visible{outline:3px solid var(--red); outline-offset:2px;}
+.wrap{max-width:980px; margin:0 auto;}
+
+.topbar{display:flex; align-items:center; justify-content:space-between; gap:12px 20px; flex-wrap:wrap; padding-bottom:14px; border-bottom:1px solid var(--rule);}
+.topbar-left{display:flex; align-items:center; gap:14px; min-width:0;}
+.home-logo{flex:0 0 auto; width:44px; height:44px; display:block;}
+.home-logo img{width:100%; height:100%; object-fit:contain; display:block;}
+.brandline{font-family:var(--f-mono); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--soft);}
+.back{font-family:var(--f-mono); font-size:12px; letter-spacing:.06em; text-transform:uppercase; color:var(--ink); text-decoration:none; border:1.5px solid var(--ink); border-radius:999px; padding:6px 12px;}
+.back:hover{background:var(--ink); color:var(--bg);}
+
+/* masthead */
+.mast{border-bottom:3px double var(--ink); padding:28px 0 18px; margin-bottom:8px; position:relative;}
+.eyebrow{font-family:var(--f-mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--muted); margin:0;}
+h1{font-family:var(--f-display); font-weight:800; letter-spacing:-.025em; font-size:clamp(38px,7vw,76px); line-height:.98; margin:10px 0 0; text-wrap:balance;}
+.lead{font-family:var(--f-serif); font-size:clamp(19px,2.2vw,23px); line-height:1.45; color:var(--soft); max-width:40ch; margin:16px 0 0;}
+.lead .src{display:block; margin-top:8px;}
+.stamp{display:inline-block; font:800 22px/1 var(--f-display); letter-spacing:.06em; text-transform:uppercase; color:var(--red);
+  border:3px solid var(--red); border-radius:6px; padding:6px 12px; transform:rotate(-7deg); background:rgba(244,241,232,.6);}
+.mast .stamp{position:absolute; right:4px; bottom:26px;}
+@media (max-width:720px){ .mast .stamp{position:static; margin-top:18px;} }
+.toc{display:flex; flex-wrap:wrap; gap:8px; margin:18px 0 0; padding:0; list-style:none;}
+.toc a{font-family:var(--f-mono); font-size:12px; letter-spacing:.05em; text-transform:uppercase; text-decoration:none; border:1.5px solid var(--ink); border-radius:999px; padding:6px 12px; display:inline-block; background:var(--paper);}
+.toc a:hover{background:var(--ink); color:var(--bg);}
+
+section{padding:34px 0 8px; border-bottom:1px solid var(--rule);}
+section:last-of-type{border-bottom:none;}
+h2{font-family:var(--f-display); font-weight:800; letter-spacing:-.02em; font-size:clamp(28px,4vw,40px); line-height:1.05; margin:6px 0 10px;}
+h3{font-family:var(--f-display); font-weight:800; font-size:21px; letter-spacing:-.01em; line-height:1.15; margin:0 0 6px;}
+p{margin:0 0 12px;}
+.intro{color:var(--soft); max-width:64ch;}
+.src{font-family:var(--f-mono); font-size:12px; color:var(--muted);}
+code{font-family:var(--f-mono); font-size:.86em; background:var(--paper); border:1px solid var(--rule); border-radius:5px; padding:1px 5px; overflow-wrap:anywhere;}
+mark{background:linear-gradient(transparent 55%, var(--hl) 55%); color:inherit; padding:0 2px;}
+
+.card{background:var(--paper); border:1.5px solid var(--ink); border-radius:12px; box-shadow:0 4px 0 var(--ink); padding:18px 20px;}
+.card.hot{border-color:var(--red); box-shadow:0 4px 0 var(--red);}
+.card ul{margin:6px 0 0; padding-left:20px;}
+.card li{margin:5px 0;}
+.grid{display:grid; gap:16px; margin-top:16px;}
+.g2{grid-template-columns:repeat(2,minmax(0,1fr));}
+@media (max-width:720px){ .g2{grid-template-columns:minmax(0,1fr);} }
+
+/* SIFT steps */
+.steps{display:grid; gap:16px; margin-top:16px;}
+.step{display:grid; grid-template-columns:64px minmax(0,1fr); gap:16px; align-items:start;}
+.letter{font:800 54px/1 var(--f-display); color:var(--red); letter-spacing:-.03em; text-align:center;}
+@media (max-width:520px){ .step{grid-template-columns:minmax(0,1fr);} .letter{text-align:left; font-size:44px;} }
+.tip{border-left:3px solid var(--red); padding:4px 0 4px 12px; margin-top:10px; color:var(--soft); font-size:16px;}
+
+/* tables */
+.tbl{width:100%; border-collapse:separate; border-spacing:0; background:var(--paper); border:1.5px solid var(--ink); border-radius:12px; box-shadow:0 4px 0 var(--ink); overflow:hidden; margin-top:16px;}
+.tbl th,.tbl td{text-align:left; vertical-align:top; padding:12px 16px; border-bottom:1px solid var(--rule);}
+.tbl tr:last-child th,.tbl tr:last-child td{border-bottom:none;}
+.tbl thead th{font-family:var(--f-mono); font-size:11.5px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); border-bottom:1.5px solid var(--ink);}
+.tbl tbody th{font-weight:700; width:28%;}
+@media (max-width:640px){
+  .tbl thead{display:none;}
+  .tbl tr{display:block; border-bottom:1px solid var(--rule);}
+  .tbl tr:last-child{border-bottom:none;}
+  .tbl th,.tbl td{display:block; width:auto !important; border-bottom:none; padding:6px 14px;}
+  .tbl tbody th{padding-top:12px;}
+  .tbl td:last-child{padding-bottom:12px;}
+}
+.flag{font-family:var(--f-mono); font-size:12px; letter-spacing:.04em; color:var(--muted); white-space:nowrap;}
+
+/* red flags */
+ol.flags{counter-reset:f; list-style:none; margin:16px 0 0; padding:0;}
+ol.flags li{counter-increment:f; display:grid; grid-template-columns:44px minmax(0,1fr); gap:12px; padding:12px 0; border-bottom:1px solid var(--rule);}
+ol.flags li:last-child{border-bottom:none;}
+ol.flags li::before{content:counter(f, decimal-leading-zero); font-family:var(--f-mono); font-size:13px; color:var(--red); padding-top:3px;}
+
+/* five questions */
+.q5{display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px; margin-top:16px;}
+.q5 .card{padding:14px 16px;}
+.q5 .card p{margin:0; font-size:15px; color:var(--soft);}
+.q5 .n{font-family:var(--f-mono); font-size:11px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); display:block; margin-bottom:8px;}
+.q5 .hot .n{color:var(--red);}
+@media (max-width:860px){ .q5{grid-template-columns:repeat(2,minmax(0,1fr));} }
+@media (max-width:520px){ .q5{grid-template-columns:minmax(0,1fr);} }
+
+/* checklist */
+ul.check{list-style:none; margin:16px 0 0; padding:0;}
+ul.check li{display:grid; grid-template-columns:28px minmax(0,1fr); gap:12px; padding:10px 0; border-bottom:1px solid var(--rule);}
+ul.check li:last-child{border-bottom:none;}
+ul.check li::before{content:""; width:20px; height:20px; border:1.5px solid var(--ink); border-radius:4px; margin-top:3px; background:var(--paper);}
+.verdicts{display:flex; flex-wrap:wrap; gap:14px 22px; margin:18px 0 6px; align-items:center;}
+.verdicts .stamp{font-size:17px;}
+.stamp.ok{color:#1f7a4d; border-color:#1f7a4d;}
+.stamp.mid{color:#a87708; border-color:#a87708;}
+
+footer{font-size:14px; color:var(--muted); margin-top:30px; padding-top:16px; border-top:3px double var(--ink);}
+@media print{
+  body{background:#fff;} .topbar .back,.toc{display:none;} .card,.tbl{box-shadow:none;} section{break-inside:avoid-page;}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="topbar">
+    <div class="topbar-left">
+      <a class="home-logo" href="https://untu.ngo/" aria-label="Back to UNTU main page" title="Back to untu.ngo"><img src="https://ik.imagekit.io/xshkpkf2i/Untu/logo%20untu.png" alt="UNTU logo"></a>
+      <span class="brandline">From Thinking to Speaking</span>
+    </div>
+    <a class="back" href="https://untu.ngo/projects/fts-library">← Library</a>
+  </div>
+
+  <header class="mast">
+    <p class="eyebrow">Media literacy · Toolkit</p>
+    <h1>Don’t Get Fooled</h1>
+    <p class="lead">On Twitter, true stories took about six times as long as false ones to reach 1,500 people. A routine of a few minutes is enough to stop most of it with you.
+      <span class="src">Vosoughi, Roy &amp; Aral, “The spread of true and false news online”, Science, 2018 (Twitter, 2006–2017)</span></p>
+    <span class="stamp" aria-hidden="true">Check first</span>
+    <ul class="toc">
+      <li><a href="#sift">SIFT</a></li>
+      <li><a href="#images">Images &amp; video</a></li>
+      <li><a href="#fact-checkers">Fact-checkers</a></li>
+      <li><a href="#red-flags">Red flags</a></li>
+      <li><a href="#frames">Frames</a></li>
+      <li><a href="#checklist">Checklist</a></li>
+    </ul>
+  </header>
+
+  <section id="sift">
+    <p class="eyebrow">The routine · Mike Caulfield</p>
+    <h2>Four moves before you believe or share</h2>
+    <p class="intro">Professional fact-checkers barely read a doubtful page. They open new tabs and check what <em>others</em> say about it. Researchers call this <b>lateral reading</b>, and it beats careful reading of the page itself (Wineburg &amp; McGrew, Stanford, 2019). SIFT turns it into four moves.</p>
+    <div class="steps">
+      <div class="step card"><div class="letter">S</div><div>
+        <h3>Stop</h3>
+        <p>Pause before you read the comments or press Share. Misinformation runs on strong feelings: outrage, fear, or the pleasure of “I knew it!”. If a post hits you like that, take it as a signal to slow down.</p>
+      </div></div>
+      <div class="step card"><div class="letter">I</div><div>
+        <h3>Investigate the source</h3>
+        <p>Find out who is behind it, <mark>outside</mark> the page itself. Design, a logo, an “About us” page and links to “studies” are all written by the same people, so they prove nothing.</p>
+        <ul>
+          <li>Open a new tab and search the name of the outlet or author, with words like <em>fact check</em>, <em>funding</em> or <em>Wikipedia</em>.</li>
+          <li>Ask what they gain: money, politics, attention.</li>
+          <li>Look at the address: imposter sites copy real ones, like <code>abcnews.com.co</code> instead of <code>abcnews.go.com</code>.</li>
+        </ul>
+      </div></div>
+      <div class="step card"><div class="letter">F</div><div>
+        <h3>Find better coverage</h3>
+        <p>Search the claim itself and see who else reports it. A big event will be covered by several reliable outlets within hours.</p>
+        <p class="tip">Only one blog or a few anonymous accounts? Treat it as <b>not confirmed yet</b>. Real scoops also start in one place, so wait and check again rather than calling it fake.</p>
+      </div></div>
+      <div class="step card"><div class="letter">T</div><div>
+        <h3>Trace claims, quotes and media to the original</h3>
+        <p>Content is often cut from its context to tell a different story.</p>
+        <ul>
+          <li>Click the links: does the source really say what the headline claims?</li>
+          <li>Find the original number, quote or photo. Does it say the same thing there?</li>
+          <li>Check the date: old news often comes back as if it happened today.</li>
+        </ul>
+      </div></div>
+    </div>
+  </section>
+
+  <section id="images">
+    <p class="eyebrow">Pictures and video</p>
+    <h2>How to check images and video</h2>
+    <table class="tbl">
+      <thead><tr><th>What to check</th><th>How to do it</th></tr></thead>
+      <tbody>
+        <tr><th>Where it first appeared</th><td>Upload the image, or a screenshot of a video frame, to <a href="https://search.google/ways-to-search/lens/" target="_blank" rel="noopener">Google Lens</a> or <a href="https://tineye.com/" target="_blank" rel="noopener">TinEye</a>. TinEye can sort results by oldest. Crop to the main part if nothing comes up. Same picture, other year or place? It is out of context.</td></tr>
+        <tr><th>Place and time</th><td>Do street signs, number plates, shop names, plants and weather match the claimed place and season?</td></tr>
+        <tr><th>AI-generated content</th><td>Extra fingers, broken text and odd shadows are <b>no longer reliable</b> tells: new generators fix them, and no glitch does not mean real. Check the origin instead: who posted it first, who could have filmed it, and whether reliable outlets show the same scene. If the file carries <a href="https://verify.contentauthenticity.org/" target="_blank" rel="noopener">Content Credentials</a>, they show how it was made.</td></tr>
+        <tr><th>AI-written text</th><td>Chatbots can invent quotes, studies and links. Trace every source an AI answer gives you before you repeat it.</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="fact-checkers">
+    <p class="eyebrow">Bookmark these</p>
+    <h2>Fact-checkers in our six countries</h2>
+    <p class="intro">Search here first: someone may have checked the claim already, in your language.</p>
+    <table class="tbl">
+      <thead><tr><th>Country</th><th>Where to look</th></tr></thead>
+      <tbody>
+        <tr><th>Latvia</th><td><a href="https://rebaltica.lv/category/recheck/" target="_blank" rel="noopener">Re:Check</a> by Re:Baltica</td></tr>
+        <tr><th>Estonia</th><td><a href="https://www.propastop.org/" target="_blank" rel="noopener">Propastop</a>: tracks propaganda and disinformation in Estonian media</td></tr>
+        <tr><th>Norway</th><td><a href="https://www.faktisk.no/" target="_blank" rel="noopener">Faktisk.no</a></td></tr>
+        <tr><th>Spain</th><td><a href="https://maldita.es/" target="_blank" rel="noopener">Maldita.es</a> · <a href="https://www.newtral.es/" target="_blank" rel="noopener">Newtral</a></td></tr>
+        <tr><th>France</th><td><a href="https://factuel.afp.com/" target="_blank" rel="noopener">AFP Factuel</a> · <a href="https://www.lemonde.fr/les-decodeurs/" target="_blank" rel="noopener">Les Décodeurs</a> (Le Monde)</td></tr>
+        <tr><th>Romania</th><td><a href="https://www.factual.ro/" target="_blank" rel="noopener">Factual.ro</a></td></tr>
+        <tr><th>Europe-wide</th><td><a href="https://edmo.eu/" target="_blank" rel="noopener">EDMO</a>, the European Digital Media Observatory · <a href="https://factcheck.afp.com/" target="_blank" rel="noopener">AFP Fact Check</a> in English · <a href="https://euvsdisinfo.eu/" target="_blank" rel="noopener">EUvsDisinfo</a> for pro-Kremlin disinformation</td></tr>
+        <tr><th>Search all at once</th><td><a href="https://toolbox.google.com/factcheck/explorer" target="_blank" rel="noopener">Google Fact Check Explorer</a>: finds published fact-checks on a claim from many outlets</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <section id="red-flags">
+    <p class="eyebrow">Reasons to check</p>
+    <h2>Five red flags</h2>
+    <ol class="flags">
+      <li><span><b>ALL CAPS and pressure.</b> “BREAKING!!!”, “SHARE BEFORE THIS IS DELETED!”</span></li>
+      <li><span><b>Anonymous experts.</b> “Scientists say…”, “Doctors are shocked…”, with no names or institutions.</span></li>
+      <li><span><b>Screenshots instead of links.</b> A screenshot of a post or headline takes seconds to fake and hides the original.</span></li>
+      <li><span><b>“They won’t show you this”.</b> Claims that the media hide a topic that is easy to find.</span></li>
+      <li><span><b>Headline and text don’t match.</b> The article itself admits the headline isn’t quite true.</span></li>
+    </ol>
+    <p class="tip">A red flag is a reason to check, not proof. A polished page can be fake, and a clumsy one can be true.</p>
+  </section>
+
+  <section id="frames">
+    <p class="eyebrow">Beyond fakes</p>
+    <h2>True news has a frame too</h2>
+    <p class="intro">A story can mislead without a single false fact: through the headline word, who is quoted first, the photo, the numbers (“80% fat-free” or “contains 20% fat”) and what is left out. Five questions help you see the frame.</p>
+    <div class="q5">
+      <div class="card"><span class="n">01</span><h3>Who made it?</h3><p>Who owns it, and why now? News, opinion or ad?</p></div>
+      <div class="card"><span class="n">02</span><h3>How is it made?</h3><p>Headline, sources, words, photo, placement.</p></div>
+      <div class="card"><span class="n">03</span><h3>Who is shown how?</h3><p>Who is “us” and who is “them”?</p></div>
+      <div class="card"><span class="n">04</span><h3>Who is it for?</h3><p>What should you feel, and then do?</p></div>
+      <div class="card hot"><span class="n">05 · strongest</span><h3>What’s missing?</h3><p>Which numbers, voices, context?</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card"><h3>Honest frame</h3><p>The position is visible: opinion is labelled, sources are named, the other side is quoted.</p></div>
+      <div class="card hot"><h3>Manipulation</h3><p>The position hides as fact: one side only, emotional words presented as news, missing context.</p></div>
+    </div>
+  </section>
+
+  <section id="checklist">
+    <p class="eyebrow">Pocket version</p>
+    <h2>Before you share</h2>
+    <ul class="check">
+      <li><span><b>Stop.</b> I haven’t shared or believed it yet.</span></li>
+      <li><span><b>Source.</b> I checked who is behind it in a new tab, not on its “About us” page.</span></li>
+      <li><span><b>Interest.</b> I know whether they gain money, votes or attention from it.</span></li>
+      <li><span><b>Coverage.</b> Other reliable sources say the same, the opposite, or nothing.</span></li>
+      <li><span><b>Original.</b> I found the original number, quote or photo, and it says the same.</span></li>
+      <li><span><b>Picture.</b> I ran it through a reverse image search and know where and when it first appeared.</span></li>
+    </ul>
+    <div class="verdicts"><span class="stamp ok">True</span><span class="stamp mid">Careful</span><span class="stamp">Don’t share</span></div>
+  </section>
+
+  <footer>Part of the training course “From Thinking to Speaking” (Vircava, Latvia, 9–15 November 2026). Based on the SIFT method by Mike Caulfield and research on lateral reading by Sam Wineburg and Sarah McGrew.</footer>
+</div>
+</body>
+</html>

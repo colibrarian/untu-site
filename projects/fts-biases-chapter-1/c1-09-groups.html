@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Quiz: find the filter · FTS Cognitive Biases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/slides.css">
+</head>
+<body data-chapter="1">
+<div class="stage">
+  <div class="bar">
+    <span class="brand"><span class="dot"></span>From Thinking to Speaking · Vircava 2026</span>
+    <span class="chap"><i></i>1 · Filter</span>
+  </div>
+  <div class="content fq">
+    <p class="eyebrow">Chapter 1 · Filter · Quiz</p>
+    <h2>Find the filter</h2>
+    <div class="fq-board" id="fqBoard"></div>
+    <p class="hint">Confirmation · Anchoring · Framing · Availability · Priming</p>
+    <div class="fq-pop" id="fqPop" hidden>
+      <div class="fq-card">
+        <div class="tag" id="fqPts"></div>
+        <p class="fq-q" id="fqQ"></p>
+        <div class="fq-ans" id="fqAns" hidden><h3 id="fqA"></h3><p id="fqW"></p></div>
+        <div class="fq-btns"><button type="button" id="fqShow">Show the bias</button><button type="button" id="fqClose" class="ghost">Back to board</button></div>
+      </div>
+    </div>
+    <style>
+      .fq-board{display:grid; grid-template-columns:repeat(3,1fr); grid-auto-flow:column; grid-template-rows:auto repeat(4,auto); gap:.6em; margin-top:1em;}
+      .fq-head{font:600 .8em 'JetBrains Mono',monospace; letter-spacing:.12em; text-transform:uppercase; text-align:center; color:var(--t-ink);}
+      .fq-board button{font:800 1.7em 'Bricolage Grotesque',sans-serif; padding:.28em 0; border:1.5px solid var(--t-ink); border-radius:10px; box-shadow:4px 4px 0 var(--t-ink); color:var(--t-ink); cursor:pointer;}
+      .fq-board button[data-c="green"]{background:#8fd19e;}
+      .fq-board button[data-c="blue"]{background:#8dbcf2;}
+      .fq-board button[data-c="yellow"]{background:#f6d860;}
+      .fq-board button.used{background:#fff; color:var(--t-muted); box-shadow:none; text-decoration:line-through;}
+      .fq-pop{perspective:1200px; position:absolute; inset:0; background:rgba(245,244,238,.94); display:flex; align-items:center; justify-content:center; z-index:5; padding:4%;}
+      .fq-pop[hidden]{display:none;}
+      .fq-card{background:#fff; border:1.5px solid var(--t-ink); box-shadow:6px 6px 0 var(--t-ink); border-radius:12px; padding:1.6em 1.9em; width:min(100%,46em);}
+      @keyframes fqIn{from{transform:rotateY(-90deg) scale(.9); opacity:0;} to{transform:none; opacity:1;}}
+      @media (prefers-reduced-motion: reduce){.fq-card{animation:none;} .fq-board button{transition:none;}}
+      .fq-q{font-size:1.6em; line-height:1.35; margin:.3em 0 0;}
+      .fq-ans{margin-top:1em; padding-top:.9em; border-top:1.5px dashed var(--t-line);}
+      .fq-ans h3{font:800 1.9em 'Bricolage Grotesque',sans-serif; margin:0 0 .2em; color:var(--t-ink);}
+      .fq-ans p{margin:0; font-size:1.1em; color:var(--t-soft);}
+      .fq-btns{display:flex; gap:.8em; margin-top:1.3em;}
+      .fq-btns button{font:600 .8em 'JetBrains Mono',monospace; letter-spacing:.08em; text-transform:uppercase; padding:.6em 1.2em; border:1.5px solid var(--t-ink); border-radius:999px; background:var(--t-ink); color:#fff; cursor:pointer;}
+      .fq-btns button.ghost{background:#fff; color:var(--t-ink);}
+    </style>
+    <script>
+    (function(){
+      var D=[{"p": 100, "q": "\"Was €49, now only €19!\"", "a": "Anchoring", "w": "The crossed-out price sets the starting point, so €19 feels cheap.", "c": "green"}, {"p": 200, "q": "A moderator introduces two speakers: \"our expert\" and \"a random blogger\". You trust the first one more before anyone speaks.", "a": "Priming", "w": "The label switches on an idea before you hear a single argument.", "c": "green"}, {"p": 300, "q": "You saw three posts about stolen phones this week. Now you are sure phones get stolen everywhere.", "a": "Availability heuristic", "w": "Easy to remember feels common. Three posts are not statistics.", "c": "green"}, {"p": 400, "q": "A survey asks: \"Don't you agree the youth centre is too expensive?\"", "a": "Priming (and framing)", "w": "The question plants the answer. A fair one: \"What do you think about the price?\"", "c": "green"}, {"p": 100, "q": "Sure your city is unsafe, you read only crime news and say: \"See? I told you.\"", "a": "Confirmation bias", "w": "We look for what proves us right and skip the rest.", "c": "blue"}, {"p": 200, "q": "In a salary talk the employer names a number first. The whole talk stays close to it.", "a": "Anchoring", "w": "Whoever names the first number sets the anchor.", "c": "blue"}, {"p": 300, "q": "You read the headline \"Teen trouble on the rise\". Then teens laughing loudly in the park look threatening.", "a": "Priming", "w": "The headline told you what to see before you looked.", "c": "blue"}, {"p": 400, "q": "A donation form offers €100, €50 or €20. Most people give €50, though they planned €10.", "a": "Anchoring", "w": "The big first number pulls the whole scale up.", "c": "blue"}, {"p": 100, "q": "A yoghurt label: \"95% sugar-free\".", "a": "Framing", "w": "5% sugar sounds bad. \"95% free\" says the same thing as a win.", "c": "yellow"}, {"p": 200, "q": "One site: \"1 in 4 young people can't find a job\". Another: \"3 in 4 young people have a job\". Same data.", "a": "Framing", "w": "Same fact, two frames: one sounds like a crisis, one like success.", "c": "yellow"}, {"p": 300, "q": "You remember the two times your horoscope was right and forget all the times it was wrong.", "a": "Confirmation bias", "w": "Hits are memorable, misses disappear.", "c": "yellow"}, {"p": 400, "q": "Are there more English words that start with K, or with K as the third letter? Most say \"start with K\".", "a": "Availability heuristic", "w": "Words starting with K are easier to recall. In fact K is about twice as common in third place.", "c": "yellow"}];
+      var board=document.getElementById('fqBoard'), pop=document.getElementById('fqPop');
+      var root=board.closest('.content'); root.style.position='relative';
+      [board,pop].forEach(function(el){el.addEventListener('click',function(e){e.stopPropagation();});});
+      D.forEach(function(it,i){
+        if(i%4===0){var h=document.createElement('div'); h.className='fq-head'; h.textContent=it.c; board.appendChild(h);}
+        var b=document.createElement('button'); b.type='button'; b.textContent=it.p; b.dataset.p=it.p; b.dataset.c=it.c;
+        b.onclick=function(){ if(b.classList.contains('used')) return; b.classList.add('used');
+          document.getElementById('fqPts').textContent=it.c+' '+it.p;
+          document.getElementById('fqQ').textContent=it.q;
+          document.getElementById('fqA').textContent=it.a;
+          document.getElementById('fqW').textContent=it.w;
+          document.getElementById('fqAns').hidden=true; document.getElementById('fqShow').hidden=false;
+          pop.hidden=false; };
+        board.appendChild(b);
+      });
+      document.getElementById('fqShow').onclick=function(){document.getElementById('fqAns').hidden=false; this.hidden=true;};
+      document.getElementById('fqClose').onclick=function(){pop.hidden=true;};
+    })();
+    </script>
+  </div>
+  <nav class="foot"></nav>
+</div>
+<script src="assets/nav.js"></script>
+</body>
+</html>
