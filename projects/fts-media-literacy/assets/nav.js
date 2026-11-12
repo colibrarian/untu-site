@@ -98,3 +98,17 @@ if (!window.FTS_BUNDLE) (function () {
   });
   document.querySelector(".content")?.addEventListener("click", forward);
 })();
+
+// Click timer (e.g. "Watch me check 3:00"): click starts the countdown, click again resets.
+document.addEventListener("click", (e) => {
+  const t = e.target.closest("button.timer");
+  if (!t) return;
+  e.stopPropagation();
+  const total = +t.dataset.sec || 180;
+  const fmt = (s) => Math.floor(s / 60) + ":" + String(s % 60).padStart(2, "0");
+  const label = (txt) => { t.firstChild.nodeValue = txt; };
+  if (t._iv) { clearInterval(t._iv); t._iv = null; t.classList.remove("run"); label(fmt(total)); t.querySelector("small").textContent = "click to start"; return; }
+  let left = total;
+  t.classList.add("run"); t.querySelector("small").textContent = "click to reset";
+  t._iv = setInterval(() => { left--; label(fmt(Math.max(left, 0))); if (left <= 0) { clearInterval(t._iv); t._iv = null; t.querySelector("small").textContent = "time · click to reset"; } }, 1000);
+}, true);

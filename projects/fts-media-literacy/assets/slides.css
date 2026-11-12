@@ -151,3 +151,6 @@ table.tpl{width:100%; border-collapse:separate; border-spacing:0; margin-top:1.2
 body.notes .note:not(:empty){display:block;}
 .read svg.diag{max-height:13.5em; width:auto; max-width:100%;}
 .rows.wide li{grid-template-columns:5em 1fr;}
+button.timer{font:800 6em/1 'Bricolage Grotesque', sans-serif; letter-spacing:-.04em; background:none; border:none; color:var(--ink); padding:0; cursor:pointer; text-align:left;}
+button.timer small{font:600 .14em 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); display:block; margin-top:.6em;}
+button.timer.run{color:var(--stamp);}
