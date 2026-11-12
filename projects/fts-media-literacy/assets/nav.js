@@ -3,7 +3,7 @@ const SLIDES = [
   "index.html",
   "s1-00-part.html",
   "s1-01-tools.html",
-  "s1-02-four.html",
+  "p1-04-signs.html",
   "p1-05-lateral.html",
   "p1-07-sift.html",
   "s1-04-redo.html",
