@@ -40,12 +40,13 @@ window.FTSFoot = function (foot, i, N, hrefOf, isStart, onPick) {
   foot.innerHTML =
     `<a href="${i > 0 ? hrefOf(i - 1) : "#"}" aria-disabled="${i <= 0}">← Back</a>` +
     `<div class="cols-nav">${cols}</div>` +
+    `<a href="../fts-library#media-literacy" class="lib">FTS Library</a>` +
     `<span class="pg">p. ${pad(i + 1)} / ${pad(N)}</span>` +
     `<a href="${i < N - 1 ? hrefOf(i + 1) : "#"}" aria-disabled="${i >= N - 1}">Next →</a>`;
   if (onPick) {
     foot.addEventListener("click", (e) => {
       const a = e.target.closest("a");
-      if (!a) return;
+      if (!a || a.classList.contains("lib")) return;
       e.preventDefault(); e.stopPropagation();
       if (a.getAttribute("aria-disabled") === "true") return;
       const list = Array.from(foot.querySelectorAll("a"));
