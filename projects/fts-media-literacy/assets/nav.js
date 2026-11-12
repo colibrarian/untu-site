@@ -5,7 +5,6 @@ const SLIDES = [
   "s1-01-tools.html",
   "s1-02-four.html",
   "p1-05-lateral.html",
-  "p1-06-demo.html",
   "p1-07-sift.html",
   "s1-04-redo.html",
   "s2-00-part.html",
