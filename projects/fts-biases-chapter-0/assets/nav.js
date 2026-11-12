@@ -1,7 +1,6 @@
 // Slide order. Add new slide files here; navigation, counter and keys follow automatically.
 const SLIDES = [
   "index.html",
-  "00-map.html",
   "c0-00-volunteer.html",
   "c0-00v-half-a.html",
   "c0-00v-half-b.html",
@@ -22,7 +21,6 @@ const SLIDES = [
 // Slide titles for the overview (O). Keep in sync when adding slides.
 const TITLES = {
  "index.html": "Cover",
- "00-map.html": "Map",
  "c0-00-volunteer.html": "Experiment: eyes closed",
  "c0-00v-half-a.html": "Half A only",
  "c0-00v-half-b.html": "Half B only",
