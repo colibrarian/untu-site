@@ -48,7 +48,9 @@ const CHAPTER_COLOURS = ["var(--c0)", "var(--c1)", "var(--c2)", "var(--c3)", "va
 const CHAPTER_START = ["../fts-biases-chapter-0/", "../fts-biases-chapter-1/", null, null, null];
 
 (function () {
-  const file = location.pathname.split("/").pop() || "index.html";
+  let file = location.pathname.split("/").pop() || "index.html";
+  // Cloudflare Pages serves slides without .html (pretty URLs): add it back
+  if (!file.endsWith(".html")) file += ".html";
   const i = SLIDES.indexOf(file);
   const ch = document.body.dataset.chapter;
   if (ch !== undefined && CHAPTER_COLOURS[ch]) {
