@@ -37,7 +37,7 @@ const TITLES = {
 const CHAPTER_COLOURS = ["var(--c0)", "var(--c1)", "var(--c2)", "var(--c3)", "var(--c4)"];
 
 // First slide of each chapter: map cards and the chapters page link here.
-const CHAPTER_START = ["../fts-biases-chapter-0/", "../fts-biases-chapter-1/", null, null, null];
+const CHAPTER_START = ["../fts-biases-chapter-0/", "../fts-biases-chapter-1/", "../fts-biases-chapter-2/", "../fts-biases-chapter-3/", "../fts-biases-chapter-4/"];
 
 (function () {
   let file = location.pathname.split("/").pop() || "index.html";

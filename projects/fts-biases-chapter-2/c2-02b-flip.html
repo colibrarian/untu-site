@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Now a real coin · FTS Cognitive Biases</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/slides.css">
+</head>
+<body data-chapter="2">
+<div class="stage">
+  <div class="bar">
+    <span class="brand"><span class="dot"></span>From Thinking to Speaking · Vircava 2026</span>
+    <span class="chap"><i></i>2 · Filling the gaps</span>
+  </div>
+  <div class="content">
+    <p class="eyebrow">Chapter 2 · Filling the gaps · Experiment · Step 2</p>
+    <h1>Now a real coin</h1>
+    <p class="lead">Flip a real coin 30 times and write down every result. No coin? Press the button. Then, in both rows, find the longest streak of the same side in a row.</p>
+    <div id="coins" style="display:grid;grid-template-columns:repeat(15,1fr);gap:.35em;margin-top:1.2em;max-width:30em"></div>
+    <p style="margin-top:1em"><button id="flip" type="button" style="font:600 .8em 'JetBrains Mono',monospace;letter-spacing:.08em;text-transform:uppercase;color:var(--t-ink);background:#fff;border:1.5px solid var(--t-ink);box-shadow:4px 4px 0 var(--t-ink);border-radius:999px;padding:.55em 1.4em;cursor:pointer">Flip 30 times</button>
+    <span id="streak" style="margin-left:1em;font:600 .8em 'JetBrains Mono',monospace;letter-spacing:.06em;text-transform:uppercase"></span></p>
+    <script>
+    (function () {
+      var box = document.getElementById("coins"), out = document.getElementById("streak");
+      function draw(r) {
+        var best = 0, run = 0, end = -1;
+        for (var i = 0; i < 30; i++) { run = i && r && r[i] === r[i - 1] ? run + 1 : 1; if (r && run > best) { best = run; end = i; } }
+        box.innerHTML = "";
+        for (var k = 0; k < 30; k++) {
+          var s = document.createElement("span"), hot = r && k > end - best && k <= end;
+          s.textContent = r ? r[k] : "";
+          s.style.cssText = "aspect-ratio:1;border:1.5px solid var(--t-ink);border-radius:4px;display:grid;place-items:center;font:700 1em 'JetBrains Mono',monospace;background:" + (hot ? "var(--chap);color:#fff" : "#fff");
+          box.appendChild(s);
+        }
+        out.textContent = r ? "Longest streak: " + best : "";
+      }
+      draw(null);
+      document.getElementById("flip").addEventListener("click", function (ev) {
+        ev.stopPropagation();
+        var r = []; for (var i = 0; i < 30; i++) r.push(Math.random() < 0.5 ? "H" : "T");
+        draw(r);
+      });
+    })();
+    </script>
+  </div>
+  <nav class="foot"></nav>
+</div>
+<script src="assets/nav.js"></script>
+</body>
+</html>
