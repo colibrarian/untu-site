@@ -1312,6 +1312,22 @@
   @media (max-width:980px){ .lib-section,.lib-soon{ grid-column:1 / -1; } }
   @media (max-width:760px){ .lib-items,.lib-soon{ grid-template-columns:1fr; } }
 
+  /* ===== section 05: visibility kit (caption + tags to copy) ===== */
+  .kit{ background:var(--cream); border-radius:var(--r-md); padding:18px 20px 20px; display:flex; flex-direction:column; gap:12px; }
+  .kit-cap{ background:#fff; border-radius:14px; padding:14px 16px; font-size:13.5px; line-height:1.5; color:#3a352a; }
+  .kit-cap p{ margin:0 0 8px; } .kit-cap p:last-child{ margin:0; }
+  .kit-cap .yours{ background:#ffe45c; border-radius:6px; padding:4px 6px; margin:0 -6px 8px; }
+  .kit-cap .fine{ font-size:12px; color:#6d6754; }
+  .kit-note{ font-size:13px; line-height:1.5; margin:0; color:#3a352a; }
+  .kit-note mark{ background:#ffe45c; padding:0 3px; border-radius:3px; }
+  .kit-tags{ display:flex; flex-wrap:wrap; gap:6px; }
+  .kit-tags a, .kit-tags span{ font-family:'IBM Plex Mono', monospace; font-size:12.5px; background:#fff; border-radius:999px; padding:5px 10px; text-decoration:none; color:inherit; }
+  .kit-tags .main{ background:var(--ink); color:#fff; }
+  .kit-btn{ align-self:flex-start; font-family:'IBM Plex Mono', monospace; font-size:12.5px; background:var(--ink); color:#fff; border:0; border-radius:999px; padding:8px 14px; cursor:pointer; }
+  .kit-btn:focus-visible{ outline:2px solid var(--blue-deep); outline-offset:2px; }
+  .kit-items{ grid-template-columns:1fr 1.2fr; align-items:start; }
+  @media (max-width:760px){ .kit-items{ grid-template-columns:1fr; } }
+
   /* ===== phone: page menu as a dropdown instead of a sideways-scrolling strip ===== */
   .fn-toggle{ display:none; }
   @media (max-width:1100px), (max-height:520px){
@@ -1357,7 +1373,7 @@
     <div class="card page-hero ph-mat">
       <div class="ph-index">06 <span>/ 06</span></div>
       <h1 class="ph-title">Library</h1>
-      <div class="ph-chips"><a class="ph-chip" href="#critical-thinking">Critical Thinking</a><a class="ph-chip" href="#media-literacy">Media Literacy</a><a class="ph-chip" href="#public-speaking">Public Speaking</a><a class="ph-chip" href="#podcasting">Podcasting</a></div>
+      <div class="ph-chips"><a class="ph-chip" href="#critical-thinking">Critical Thinking</a><a class="ph-chip" href="#media-literacy">Media Literacy</a><a class="ph-chip" href="#public-speaking">Public Speaking</a><a class="ph-chip" href="#podcasting">Podcasting</a><a class="ph-chip" href="#create-share">Create &amp; Share</a></div>
     </div>
     <div class="card mat-intro">
       <div class="mi-eyebrow">Training materials · 9–15 November 2026</div>
@@ -1466,6 +1482,42 @@
             <span class="lib-go">Open the slides →</span>
           </div>
         </a>
+      </div>
+    </section>
+    <section id="create-share" class="card lib-section">
+      <div class="lib-head">
+        <div class="mi-eyebrow">Section 05 · Tools</div>
+        <h2>Create &amp; Share</h2>
+      </div>
+      <div class="lib-items kit-items">
+        <a class="lib-item" href="fts-team-video/">
+          <div class="lib-thumb"><img src="og/fts-team-video-preview.jpg" alt="Cover slide: One bias, one video" loading="lazy"></div>
+          <div class="lib-meta">
+            <div class="lib-kind">Presentation · 11 slides</div>
+            <h3>One Bias, One Video</h3>
+            <p>Make a short team video: crew roles, a script with AI and fact-checking, vertical or horizontal format, phone settings, microphones, editing, subtitles, and how to publish it.</p>
+            <span class="lib-go">Open the slides →</span>
+          </div>
+        </a>
+        <div class="kit">
+          <div class="lib-kind">Visibility kit · required for every post</div>
+          <h3 style="font-family:'Anton',sans-serif;font-weight:400;text-transform:uppercase;font-size:22px;line-height:1.1;margin:0">Caption for your posts</h3>
+          <p class="kit-note">Every video, picture or podcast you publish from the training carries this text. Copy it as it is. Only the <mark>yellow paragraph</mark> can be replaced with your own story.</p>
+          <div class="kit-cap" id="kit-caption">
+              <p>🎙 This video/picture/podcast was created by participants of the Erasmus+ training course “From Thinking to Speaking: Critical Thinking, Media Literacy and Podcasting Tools for Youth Workers.”</p>
+              <p>📍 Vircava, Latvia<br>📅 9-15 November 2026</p>
+              <p class="yours">During this international training course, youth workers from six countries came together to explore critical thinking, media literacy, public speaking and podcasting, while developing their communication and creative skills.</p>
+              <p>🌍 Organised by NGO UNTU within the Erasmus+ programme.</p>
+              <p>Project number: 2026-1-LV02-KA153-YOU-000398033</p>
+              <p>Co-funded by the European Union.</p>
+              <p class="fine">*Views and opinions expressed are however those of the author(s) only and do not necessarily reflect those of the European Union, European Commission or the granting authority (Agency for International Programs for Youth). Neither the European Union nor the granting authority can be held responsible for them.</p>
+              <p>#ErasmusPlus #JSPA</p>
+          </div>
+          <button class="kit-btn" type="button" data-copy="kit-caption">Copy caption</button>
+          <p class="kit-note"><b>Tag everyone and add them as Collaborators.</b> Post on the social network that suits you.</p>
+          <div class="kit-tags" id="kit-tags"><a class="main" href="https://www.instagram.com/fromthinkingtospeaking/" target="_blank" rel="noopener">@fromthinkingtospeaking</a><a href="https://www.instagram.com/ngo_untu/" target="_blank" rel="noopener">@ngo_untu</a><a href="https://www.instagram.com/international.volda/" target="_blank" rel="noopener">@international.volda</a><a href="https://www.instagram.com/lumensa.estonia/" target="_blank" rel="noopener">@lumensa.estonia</a><a href="https://www.instagram.com/alea.spain/" target="_blank" rel="noopener">@alea.spain</a><a href="https://www.instagram.com/asociatiamoldavia/" target="_blank" rel="noopener">@asociatiamoldavia</a><a href="https://www.instagram.com/ofcifr/" target="_blank" rel="noopener">@ofcifr</a></div>
+          <button class="kit-btn" type="button" data-copy="kit-tags">Copy all tags</button>
+        </div>
       </div>
     </section>
     <a class="card next-card ph-red" href="fts">
@@ -1856,6 +1908,19 @@
     btn.addEventListener('click', e=>{ e.stopPropagation(); const o = nav.classList.toggle('open'); btn.setAttribute('aria-expanded', o); });
     document.addEventListener('click', e=>{ if(!nav.contains(e.target)){ nav.classList.remove('open'); btn.setAttribute('aria-expanded', false); } });
   })();
+</script>
+<script>
+document.addEventListener("click", function (e) {
+  var b = e.target.closest(".kit-btn"); if (!b) return;
+  var box = document.getElementById(b.dataset.copy); if (!box) return;
+  var text = box.id === "kit-tags"
+    ? Array.from(box.querySelectorAll("a")).map(function (a) { return a.textContent; }).join(" ")
+    : Array.from(box.querySelectorAll("p")).map(function (p) { return p.innerText; }).join("\n\n");
+  var done = function () { var t = b.textContent; b.textContent = "Copied ✓"; setTimeout(function () { b.textContent = t; }, 1600); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, function () { fallback(); });
+  else fallback();
+  function fallback() { var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); done(); } catch (err) {} ta.remove(); }
+});
 </script>
 </body>
 </html>
