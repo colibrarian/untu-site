@@ -26,3 +26,16 @@ window.FTSTimeline = function (foot, i, N, hrefOf, onPick) {
     });
   }
 };
+
+// Copy buttons (caption, tags): copy the text, not the slide.
+document.addEventListener("click", function (e) {
+  var b = e.target.closest("button.copy"); if (!b) return;
+  e.stopPropagation();
+  var box = document.getElementById(b.dataset.copy); if (!box) return;
+  var text = b.dataset.copy === "tags"
+    ? Array.from(box.querySelectorAll("h3")).map(function (h) { return h.textContent.trim(); }).join(" ")
+    : Array.from(box.querySelectorAll("p")).map(function (p) { return p.innerText; }).join("\n\n");
+  var done = function () { var t = b.textContent; b.textContent = "Copied ✓"; setTimeout(function () { b.textContent = t; }, 1600); };
+  var fallback = function () { var ta = document.createElement("textarea"); ta.value = text; document.body.appendChild(ta); ta.select(); try { document.execCommand("copy"); done(); } catch (err) {} ta.remove(); };
+  if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(text).then(done, fallback); else fallback();
+}, true);

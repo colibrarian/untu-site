@@ -123,3 +123,7 @@ body.notes .note:not(:empty){display:block;}
 .card.yellow{background:#ffe45c;} .card.yellow p,.card.yellow .tag{color:var(--ink);}
 .handles .card{padding:.9em 1.1em;} .handles h3{font-size:1.02em; margin:0; white-space:nowrap;}
 .handles .main{grid-row:span 2; display:flex; flex-direction:column; justify-content:center;} .handles .main h3{font-size:1.05em;}
+
+.nocl{cursor:text; user-select:text;}
+button.copy{align-self:flex-start; font:600 .75em 'JetBrains Mono', monospace; letter-spacing:.06em; background:var(--ink); color:#fff; border:0; border-radius:999px; padding:.7em 1.2em; cursor:pointer;}
+.handles h3 a{color:inherit; text-decoration:none; border-bottom:2px solid currentColor;} .handles h3 a:hover{opacity:.7;}

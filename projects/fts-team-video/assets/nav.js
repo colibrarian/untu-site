@@ -55,5 +55,8 @@ const SLIDES = [
     if (["ArrowRight", "PageDown", " ", "Enter"].includes(e.key)) { e.preventDefault(); forward(); }
     if (["ArrowLeft", "PageUp", "Backspace"].includes(e.key)) { e.preventDefault(); back(); }
   });
-  document.querySelector(".content")?.addEventListener("click", forward);
+  document.querySelector(".content")?.addEventListener("click", (e) => {
+    if (e.target.closest(".nocl, button, a") || String(window.getSelection())) return;
+    forward();
+  });
 })();
