@@ -1,0 +1,125 @@
+/* FTS · Team video. Same base as the FTS decks (fonts, ink, cards with a hard shadow).
+   Own look: the slide is a camera viewfinder. Corner brackets, a REC dot, frame guides,
+   and the footer is a video-editor timeline with one clip per slide. */
+:root{
+  --paper:#f5f3ee; --ink:#16181d; --soft:#3b3d44; --muted:#7a7c84;
+  --rec:#ff3b30;          /* record dot, playhead */
+  --clip:#5b4bd6;         /* clips on the timeline, accents */
+  --clip-soft:rgba(91,75,214,.12);
+  --card:#fff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0; padding:0; height:100%;}
+body{background:var(--paper); color:var(--ink); font-family:'Figtree', sans-serif; overflow:hidden;}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} }
+
+.stage{position:absolute; inset:0; margin:auto; width:min(100vw, 177.78vh); height:min(56.25vw, 100vh);
+  padding:3.2% 4.4% 2.4%; display:flex; flex-direction:column; font-size:min(1.6vw, 2.85vh);}
+/* viewfinder corners on the whole stage */
+.stage::before,.stage::after,.vf3,.vf4{content:""; position:absolute; width:2.2em; height:2.2em; border:2.5px solid var(--ink); pointer-events:none;}
+.stage::before{left:1.4%; top:2.2%; border-right:none; border-bottom:none;}
+.stage::after{right:1.4%; top:2.2%; border-left:none; border-bottom:none;}
+.vf3{left:1.4%; bottom:2.2%; border-right:none; border-top:none;}
+.vf4{right:1.4%; bottom:2.2%; border-left:none; border-top:none;}
+.content{flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0;}
+
+/* top bar = camera status line */
+.bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:1.6em;
+  font:500 .62em/1 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);}
+.bar .brand{display:flex; align-items:center; gap:.8em;}
+.bar .cam{display:flex; gap:1.2em; align-items:center; color:var(--ink);}
+.rec{display:inline-flex; align-items:center; gap:.5em; color:var(--rec); font-weight:600;}
+.rec::before{content:""; width:.75em; height:.75em; border-radius:50%; background:var(--rec); animation:blink 1.6s steps(1) infinite;}
+@keyframes blink{50%{opacity:.15;}}
+
+/* type */
+.eyebrow{align-self:flex-start; width:fit-content; margin:0 0 1em; font:600 .66em/1 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase;
+  border:1.5px solid var(--ink); border-radius:999px; padding:.45em .9em; background:#fff;}
+h1,h2,h3,.big{font-family:'Bricolage Grotesque', sans-serif; font-weight:800; letter-spacing:-.02em; line-height:1.02; margin:0;}
+h1{font-size:4.6em;} h2{font-size:2.7em;} h3{font-size:1.3em; margin:0 0 .4em;}
+p{margin:0;}
+p.lead{font-size:1.3em; line-height:1.4; max-width:36em; color:var(--soft); margin-top:.9em;}
+b.hl{color:var(--clip);}
+
+/* cards */
+.grid{display:grid; gap:1em; margin-top:1.6em;}
+.g2{grid-template-columns:1fr 1fr;} .g3{grid-template-columns:repeat(3,1fr);} .g4{grid-template-columns:repeat(4,1fr);} .g5{grid-template-columns:repeat(5,1fr);}
+.card{background:var(--card); border:1.5px solid var(--ink); border-radius:12px; box-shadow:0 5px 0 var(--ink); padding:1.1em 1.25em;}
+.card p{line-height:1.4; color:var(--soft);}
+.tag{font:600 .62em/1 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:.9em;}
+.card.violet{background:var(--clip); border-color:var(--ink); color:#fff;} .card.violet p,.card.violet .tag{color:#eae7ff;}
+.card.red{border-color:var(--rec); box-shadow:0 5px 0 var(--rec);} .card.red .tag{color:var(--rec);}
+.card.ink{background:var(--ink); color:#fff;} .card.ink p,.card.ink .tag{color:#c9cbd2;}
+
+/* cover: a frame with rule-of-thirds guides and a focus box */
+.cover{display:grid; grid-template-columns:1.1fr 1fr; gap:3em; align-items:center;}
+.frame{position:relative; aspect-ratio:16/9; border:2px solid var(--ink); border-radius:10px; background:#fff; overflow:hidden; box-shadow:0 6px 0 var(--ink);}
+.frame .g{position:absolute; background:#d9d6cc;}
+.frame .gv{top:0; bottom:0; width:1.5px;} .frame .gh{left:0; right:0; height:1.5px;}
+.frame .focus{position:absolute; left:calc(66.6% - 2.2em); top:calc(33.3% - 2.2em); width:4.4em; height:4.4em; border:2.5px solid var(--clip); border-radius:6px; animation:focus 1.4s ease .4s both;}
+@keyframes focus{from{transform:scale(1.6); opacity:0;} 60%{transform:scale(.92); opacity:1;} to{transform:scale(1);}}
+.frame .lab{position:absolute; left:.8em; bottom:.7em; font:600 .62em 'JetBrains Mono', monospace; letter-spacing:.1em; color:var(--muted);}
+
+/* role cards with a clapperboard strip */
+.slate{height:.9em; margin:-1.1em -1.25em .9em; border-radius:10px 10px 0 0; border-bottom:1.5px solid var(--ink);
+  background:repeating-linear-gradient(-45deg, var(--ink) 0 .7em, #fff .7em 1.4em);}
+
+/* formats: two frames, 9:16 and 16:9 */
+.formats{display:grid; grid-template-columns:auto auto; justify-content:start; gap:3.5em; align-items:start; margin-top:1.4em;}
+.fmt{display:flex; flex-direction:column; gap:.8em;}
+.box{border:2px solid var(--ink); border-radius:10px; background:#fff; box-shadow:0 5px 0 var(--ink); display:flex; align-items:center; justify-content:center;
+  font:800 1.6em 'Bricolage Grotesque', sans-serif; letter-spacing:-.02em;}
+.box.v{height:6.2em; width:3.49em; align-self:flex-start;} .box.h{height:6.2em; width:11.02em; align-self:flex-start;} .fmt p{max-width:20em;}
+.box.v{background:var(--clip); color:#fff;}
+.fmt h3{margin:0;} .fmt p{color:var(--soft); line-height:1.4; max-width:24em;}
+.fmt .tag{margin:0;}
+
+/* camera-app style selectors */
+.selectors{display:flex; flex-direction:column; gap:1.1em; margin-top:1.6em;}
+.sel{display:flex; align-items:center; gap:1.2em;}
+.sel .name{font:600 .7em 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); width:14em;}
+.pills{display:flex; gap:.4em; background:var(--ink); border-radius:999px; padding:.35em;}
+.pills span{font:700 1.15em/1 'JetBrains Mono', monospace; color:#9a9ca3; padding:.5em .9em; border-radius:999px;}
+.pills span.on{background:#ffd60a; color:var(--ink);}
+.sel .why{color:var(--soft);}
+
+/* checklist */
+.check .card{display:flex; gap:.8em; align-items:flex-start; padding:.9em 1.1em;}
+.check .bx{flex:none; width:1.3em; height:1.3em; border:1.5px solid var(--ink); border-radius:4px;}
+.check .card.red .bx{background:var(--rec); border-color:var(--rec);}
+.check p{font-size:1em;}
+
+/* reveals */
+.reveal{opacity:0; transform:translateY(.5em); transition:opacity .4s ease, transform .4s ease;}
+.reveal.on{opacity:1; transform:none;}
+
+/* footer = editing timeline */
+.foot{display:flex; align-items:center; gap:1em; margin-top:1.4em; font:500 .6em/1 'JetBrains Mono', monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+.foot > a{color:var(--muted); text-decoration:none; padding:.5em .9em; border:1px solid #c9c6bb; border-radius:999px; white-space:nowrap;}
+.foot > a:hover{color:var(--ink); border-color:var(--ink);}
+.foot > a[aria-disabled="true"]{visibility:hidden;}
+.tl{flex:1; display:flex; gap:3px; height:2.4em; position:relative; align-items:stretch;}
+.tl a{flex:1; display:flex; gap:2px; padding:3px; border-radius:4px; border:1.5px solid #c9c6bb; background:#fff; cursor:pointer;}
+.tl a i{flex:1; border-radius:2px; background:#e6e3da;}
+.tl a.done{border-color:var(--ink);} .tl a.done i{background:#8f9198;}
+.tl a.cur{border-color:var(--clip); background:var(--clip-soft);} .tl a.cur i{background:var(--clip);}
+.tl .head{position:absolute; top:-.4em; bottom:-.4em; width:2px; background:var(--rec); pointer-events:none;}
+.tl .head::before{content:""; position:absolute; top:-.3em; left:-.32em; width:.75em; height:.6em; background:var(--rec); clip-path:polygon(0 0,100% 0,50% 100%);}
+.tc{white-space:nowrap; color:var(--ink);}
+
+.note{display:none; position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+  width:min(92vw, 60em); background:#fff; color:var(--ink); border:1.5px solid var(--ink); box-shadow:0 4px 0 var(--ink);
+  border-radius:8px; padding:.8em 1.1em; font:14px/1.5 'JetBrains Mono', monospace; z-index:20;}
+.note::before{content:"Trainer note · "; color:var(--muted);}
+body.notes .note:not(:empty){display:block;}
+
+/* caption slide */
+.caption-wrap{display:grid; grid-template-columns:1.5fr 1fr; gap:1.4em; margin-top:1.2em; align-items:start;}
+.caption{background:#fff; border:1.5px solid var(--ink); border-radius:12px; box-shadow:0 5px 0 var(--ink); padding:1em 1.2em; font-size:.72em; line-height:1.4;}
+.caption p{margin:0 0 .55em;} .caption p:last-child{margin:0;}
+.caption .yours{background:#ffe45c; outline:2px solid #f2c200; border-radius:4px; padding:.3em .45em; margin-left:-.45em; margin-right:-.45em;}
+.caption .fine{font-size:.85em; color:var(--muted);}
+.caption-side{display:flex; flex-direction:column; gap:1em;}
+.card.yellow{background:#ffe45c;} .card.yellow p,.card.yellow .tag{color:var(--ink);}
+.handles .card{padding:.9em 1.1em;} .handles h3{font-size:1.02em; margin:0; white-space:nowrap;}
+.handles .main{grid-row:span 2; display:flex; flex-direction:column; justify-content:center;} .handles .main h3{font-size:1.5em;}
