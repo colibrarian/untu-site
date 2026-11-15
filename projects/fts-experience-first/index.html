@@ -27,7 +27,7 @@ body{background:var(--paper); color:var(--ink); font-family:'Figtree', system-ui
 .slide{position:absolute; inset:0;}
 .stage{position:absolute; inset:0; margin:auto; width:min(100vw, 177.78vh); height:min(56.25vw, 100vh);
   padding:3.2% 4.4% 2.2%; display:flex; flex-direction:column; font-size:min(1.6vw, 2.85vh);}
-.content{flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0;}
+.content{flex:1; display:flex; flex-direction:column; justify-content:safe center; min-height:0; overflow:hidden;}
 
 .bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4em;
   font:500 .62em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);}
@@ -133,7 +133,7 @@ ol.order li.acc{color:var(--acc);}
 .acts .card{padding:.8em 1em;}
 .acts .card p{font-size:.9em;}
 .acts .ages{display:flex; gap:.3em; margin-top:.6em; flex-wrap:wrap;}
-.acts .ages b{font:600 .6em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.04em; padding:.3em .5em; border-radius:4px; background:var(--acc-soft); color:var(--acc);}
+.acts .ages b{font:600 .6em/1.25 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.04em; padding:.3em .5em; border-radius:4px; background:var(--acc-soft); color:var(--acc);}
 
 /* age cards for the redesign task */
 .agecards{display:grid; grid-template-columns:repeat(4,1fr); gap:1em; margin-top:1.4em;}
@@ -435,9 +435,18 @@ const BANDS = [
     });
   });
   const steps = () => Array.from(slides[cur].querySelectorAll(".reveal"));
+  // shrink the text of the current slide until it fits the screen (wide or short screens)
+  function fit(){
+    const st = slides[cur].querySelector(".stage"), c = st.querySelector(".content");
+    st.style.fontSize = "";
+    let f = parseFloat(getComputedStyle(st).fontSize), min = f * 0.55;
+    while (c.scrollHeight > c.clientHeight + 1 && f > min) { f *= 0.96; st.style.fontSize = f + "px"; }
+  }
+  window.addEventListener("resize", () => fit());
   function go(i, fromEnd){
     if (i < 0 || i >= N) return;
     slides[cur].hidden = true; cur = i; slides[cur].hidden = false;
+    fit();
     const st = steps(); st.forEach(el => el.classList.toggle("on", !!fromEnd)); shown = fromEnd ? st.length : 0;
     try { history.replaceState(null, "", "#s" + (cur + 1)); } catch (e) {}
   }
