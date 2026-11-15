@@ -1,0 +1,492 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Experience First · FTS Library</title>
+<meta name="description" content="How the learning process of the training was built: experience before theory, conclusions, initiative. From Thinking to Speaking, Erasmus+ training course.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,400;0,600;0,700;1,400&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* FTS · Thirteen to Thirty. Same base as the other FTS decks (fonts, ink, cards with a hard shadow).
+   Own look: a measuring tape. The footer is a tape from 13 to 30, the marker moves with the slides.
+   The one interactive slide is the age slider (slide 4). */
+:root{
+  color-scheme:light;
+  --paper:#f6f4ef; --ink:#16181d; --soft:#3b3d44; --muted:#7a7c84;
+  --acc:#e0621f;            /* tape orange */
+  --acc-soft:rgba(224,98,31,.11);
+  --blue:#2f5fd0; --blue-soft:rgba(47,95,208,.10);
+  --card:#fff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0; padding:0; height:100%;}
+body{background:var(--paper); color:var(--ink); font-family:'Figtree', system-ui, sans-serif; overflow:hidden;}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} }
+
+.slide{position:absolute; inset:0;}
+.stage{position:absolute; inset:0; margin:auto; width:min(100vw, 177.78vh); height:min(56.25vw, 100vh);
+  padding:3.2% 4.4% 2.2%; display:flex; flex-direction:column; font-size:min(1.6vw, 2.85vh);}
+.content{flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0;}
+
+.bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4em;
+  font:500 .62em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);}
+.bar .part b{color:var(--acc); font-weight:600;}
+
+.eyebrow{align-self:flex-start; width:fit-content; margin:0 0 1em; font:600 .66em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase;
+  border:1.5px solid var(--ink); border-radius:999px; padding:.45em .9em; background:#fff;}
+h1,h2,h3{font-family:'Bricolage Grotesque', system-ui, sans-serif; font-weight:800; letter-spacing:-.02em; line-height:1.02; margin:0;}
+h1{font-size:4.4em;}
+h2{font-size:2.6em;}
+h3{font-size:1.25em; margin:0 0 .4em;}
+p{margin:0;}
+p.lead{font-size:1.28em; line-height:1.4; max-width:36em; color:var(--soft); margin-top:.9em;}
+.hint{font:.62em/1.5 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.06em; color:var(--muted); margin-top:1.4em;}
+.acc{color:var(--acc);}
+
+.grid{display:grid; gap:1em; margin-top:1.5em;}
+.g2{grid-template-columns:1fr 1fr;} .g3{grid-template-columns:repeat(3,1fr);} .g4{grid-template-columns:repeat(4,1fr);}
+.card{background:var(--card); border:1.5px solid var(--ink); border-radius:14px; box-shadow:0 5px 0 var(--ink); padding:1.1em 1.25em;}
+.card p{line-height:1.4;}
+.card.acc{background:var(--acc); color:#fff;}
+.card.acc .tag{color:rgba(255,255,255,.8);}
+.card.acc .num{color:#fff;}
+.card.ink{background:var(--ink); color:#fff;}
+.card.ink .tag{color:rgba(255,255,255,.6);}
+.card.soft{background:var(--acc-soft);}
+.card.blue{background:var(--blue-soft);}
+.tag{font:600 .62em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:.8em;}
+.num{font:800 2.1em/1 'Bricolage Grotesque', system-ui, sans-serif; color:var(--acc); margin-bottom:.2em;}
+ul.plain{margin:.3em 0 0; padding-left:1.1em; line-height:1.45;}
+
+/* cover */
+.cover{display:grid; grid-template-columns:1.25fr 1fr; gap:3em; align-items:center;}
+.bigage{white-space:nowrap; font:800 9.5em/.85 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing:-.05em; text-align:right;}
+.bigage span{color:var(--acc);}
+.bigage small{display:block; font:600 .07em/1.4 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.14em; text-transform:uppercase; color:var(--muted); margin-top:1.2em;}
+
+/* cover: the order of our process */
+ol.order{list-style:none; margin:0; padding:0; display:flex; flex-direction:column; gap:.5em; justify-self:end;}
+ol.order li{font:800 2.6em/1.05 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing:-.02em;}
+ol.order li::before{content:"↓ "; color:var(--muted); font-size:.6em; vertical-align:.15em;}
+ol.order li:first-child::before{visibility:hidden;}
+ol.order li.acc{color:var(--acc);}
+
+/* tape: a ruler strip 13..30 */
+.tape{position:relative; height:2.4em; border:1.5px solid var(--ink); border-radius:6px; background:#ffd9a8;
+  background-image:repeating-linear-gradient(90deg, var(--ink) 0 1.5px, transparent 1.5px 100%);
+  background-size:calc(100% / 17) 40%; background-repeat:repeat-x; background-position:0 0;}
+.tape .lbl{position:absolute; bottom:.25em; transform:translateX(-50%); font:600 .62em/1 'JetBrains Mono', ui-monospace, monospace;}
+
+/* age slider (the trick) */
+.slider-wrap{display:grid; grid-template-columns:13em 1fr; gap:2em; align-items:stretch; margin-top:.6em;}
+.agebox{display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
+.agebox .n{font:800 9em/.85 'Bricolage Grotesque', system-ui, sans-serif; letter-spacing:-.05em; color:var(--acc); transition:color .3s;}
+.agebox .stage-name{font:700 1.15em/1.2 'Bricolage Grotesque', system-ui, sans-serif; margin-top:.4em;}
+.agebox .life{color:var(--soft); margin-top:.4em; line-height:1.35; font-size:.92em;}
+.panel{display:grid; grid-template-columns:1fr 1fr; gap:.8em;}
+.panel .card{padding:.85em 1.05em;}
+.panel .card p{font-size:.95em; transition:opacity .25s;}
+.panel .card.fade p{opacity:.15;}
+.who{grid-column:1 / -1;}
+.split{display:flex; height:1.9em; border:1.5px solid var(--ink); border-radius:999px; overflow:hidden; margin-top:.2em;
+  font:600 .62em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.08em; text-transform:uppercase;}
+.split .t{background:var(--ink); color:#fff; display:flex; align-items:center; padding-left:1em; transition:width .45s ease; white-space:nowrap; overflow:hidden;}
+.split .g{flex:1; background:var(--acc); color:#fff; display:flex; align-items:center; justify-content:flex-end; padding-right:1em; white-space:nowrap; overflow:hidden;}
+.levels{display:flex; justify-content:space-between; margin-top:.5em; font:500 .58em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.06em; text-transform:uppercase; color:var(--muted);}
+.levels span.on{color:var(--ink); font-weight:600;}
+.range{margin-top:1.3em; position:relative;}
+.range input{width:100%; margin:0; -webkit-appearance:none; appearance:none; background:transparent; height:2.6em; position:relative; z-index:2; cursor:grab;}
+.range input:focus{outline:none;}
+.range input::-webkit-slider-runnable-track{height:2.4em; background:transparent;}
+.range input::-moz-range-track{height:2.4em; background:transparent;}
+.range input::-webkit-slider-thumb{-webkit-appearance:none; width:1.1em; height:3.1em; margin-top:-.35em; background:var(--ink); border-radius:4px; border:2px solid #fff; box-shadow:0 0 0 1.5px var(--ink);}
+.range input::-moz-range-thumb{width:1.1em; height:3.1em; background:var(--ink); border-radius:4px; border:2px solid #fff;}
+.range input:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 3px var(--acc);}
+.range .tape{position:absolute; left:0; right:0; top:.1em; pointer-events:none;}
+
+/* two columns: say this / not this */
+.say{display:grid; grid-template-columns:1fr 1fr; gap:.6em 1.2em; margin-top:1.3em;}
+.say div{padding:.7em 1em; border-radius:10px; border:1.5px solid var(--ink); background:#fff; line-height:1.35;}
+.say .no{color:var(--soft); text-decoration:line-through; text-decoration-color:var(--acc); text-decoration-thickness:2px;}
+.say .yes{background:var(--acc-soft);}
+.say .h{border:none; background:none; padding:0 0 .1em; font:600 .62em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);}
+
+/* ladder */
+.ladder{display:grid; grid-template-columns:repeat(4,1fr); gap:1em; margin-top:1.5em; align-items:end;}
+.ladder .card:nth-child(1){min-height:7.5em;} .ladder .card:nth-child(2){min-height:9.5em;}
+.ladder .card:nth-child(3){min-height:11.5em;} .ladder .card:nth-child(4){min-height:13.5em;}
+.dials{display:flex; gap:.6em; flex-wrap:wrap; margin-top:1.3em;}
+.dials span{border:1.5px solid var(--ink); border-radius:999px; padding:.35em .8em; background:#fff; font:600 .7em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.06em; text-transform:uppercase;}
+
+/* cycle */
+.cycle{display:grid; grid-template-columns:repeat(4,1fr); gap:1.6em; margin-top:1.5em; position:relative;}
+.cycle .card{position:relative;}
+.cycle .card:not(:last-child)::after{content:"→"; position:absolute; right:-1.3em; top:50%; transform:translateY(-50%); font:800 1.3em/1 'Bricolage Grotesque', sans-serif; color:var(--acc);}
+
+/* flow chart */
+.flow{display:grid; grid-template-columns:1fr 1.1fr; gap:2.4em; align-items:center;}
+.flow svg{width:100%; height:auto; display:block;}
+
+/* activity table */
+.acts{display:grid; grid-template-columns:repeat(3,1fr); gap:.8em; margin-top:1.3em;}
+.acts .card{padding:.8em 1em;}
+.acts .card p{font-size:.9em;}
+.acts .ages{display:flex; gap:.3em; margin-top:.6em; flex-wrap:wrap;}
+.acts .ages b{font:600 .6em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.04em; padding:.3em .5em; border-radius:4px; background:var(--acc-soft); color:var(--acc);}
+
+/* age cards for the redesign task */
+.agecards{display:grid; grid-template-columns:repeat(4,1fr); gap:1em; margin-top:1.4em;}
+.agecards .card{text-align:center;}
+.agecards .card b{display:block; font:800 3.2em/1 'Bricolage Grotesque', sans-serif; color:var(--acc);}
+.agecards .card span{font-size:.85em; color:var(--soft);}
+
+/* reveals */
+.reveal{opacity:0; transform:translateY(.5em); transition:opacity .4s ease, transform .4s ease;}
+.reveal.on{opacity:1; transform:none;}
+
+/* footer: a tape from 13 to 30, the marker shows where we are in the deck */
+.foot{display:flex; align-items:center; gap:1.2em; margin-top:1.3em; font:500 .6em/1 'JetBrains Mono', ui-monospace, monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+.foot button{font:inherit; letter-spacing:inherit; text-transform:inherit; color:var(--ink); background:none; border:0; padding:.4em 0; cursor:pointer; white-space:nowrap;}
+.foot button:disabled{opacity:.3; cursor:default;}
+.foot .mini{flex:1; position:relative; height:1.2em; border-bottom:1.5px solid var(--ink);
+  background-image:repeating-linear-gradient(90deg, var(--ink) 0 1.5px, transparent 1.5px 100%); background-size:calc(100% / 17) 45%; background-repeat:repeat-x; background-position:0 100%;}
+.foot .mini i{position:absolute; bottom:-.35em; width:.7em; height:.7em; border-radius:50%; background:var(--acc); transform:translateX(-50%); transition:left .35s ease;}
+.foot .mini em{position:absolute; top:-.9em; font-style:normal; transform:translateX(-50%);}
+.foot .pos{white-space:nowrap;}
+.foot a.lib{color:var(--ink); text-decoration:none; white-space:nowrap;}
+
+/* trainer note (N) */
+.note{display:none; position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+  width:min(92vw, 1000px); background:var(--ink); color:#fff; font:400 16px/1.45 'Figtree', system-ui, sans-serif; padding:12px 16px; border-radius:10px; z-index:10;}
+body.notes .slide:not([hidden]) .note:not(:empty){display:block;}
+
+@media (max-width:700px){
+  .g3,.g4,.ladder,.cycle,.acts,.agecards{grid-template-columns:1fr 1fr;}
+  .cover,.slider-wrap,.flow{grid-template-columns:1fr;}
+}
+</style>
+</head>
+<body>
+
+<!-- 1 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> How we learned</span></div>
+  <div class="content">
+    <div class="cover">
+      <div>
+        <p class="eyebrow">Youth work · Erasmus+</p>
+        <h1>Experience<br>first</h1>
+        <p class="lead">How the learning process of this training was built, and why. Take it home to your own groups.</p>
+      </div>
+      <ol class="order">
+        <li>Experiment</li>
+        <li>What happened?</li>
+        <li>Conclusions</li>
+        <li class="acc">Theory</li>
+      </ol>
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<!-- 2 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> The order</span></div>
+  <div class="content">
+    <p class="eyebrow">The order</p>
+    <h2>Usually theory first. Here, the other way round</h2>
+    <div class="say" style="grid-template-columns:9em 1fr; align-items:center">
+      <div class="h">Usual</div>
+      <div class="no" style="text-decoration:none">Theory → Practice → Test</div>
+      <div class="h">This week</div>
+      <div class="yes"><b>Experiment</b> → What happened? → <b>Conclusions</b> → The idea gets a name → Use it in your life</div>
+    </div>
+    <div class="grid g2 reveal">
+      <div class="card ink"><div class="tag">Why</div><p>With cognitive biases, theory first breaks the experiment. Once you know the trick, it stops working on you. So you fall for it first, and then we look at what happened.</p></div>
+      <div class="card"><div class="tag">Result</div><p>The idea is not something you were told. It is something that happened to you, in this room.</p></div>
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<!-- 3 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> This week</span></div>
+  <div class="content">
+    <p class="eyebrow">Where you met it</p>
+    <h2>First you lived it, then we named it</h2>
+    <div class="acts" style="grid-template-columns:repeat(4,1fr)">
+      <div class="card"><h3>Eyes closed, fast questions</h3><div class="ages"><b>Two systems of thinking</b></div></div>
+      <div class="card"><h3>The 2-4-6 rule</h3><div class="ages"><b>Confirmation bias</b></div></div>
+      <div class="card"><h3>How many McDonald's?</h3><div class="ages"><b>Anchoring</b></div></div>
+      <div class="card"><h3>"80% fat-free" bun</h3><div class="ages"><b>Framing</b></div></div>
+      <div class="card"><h3>Invented vs real coin flips</h3><div class="ages"><b>Patterns in randomness</b></div></div>
+      <div class="card"><h3>Four news, no tools yet</h3><div class="ages"><b>Lateral reading</b></div></div>
+      <div class="card"><h3>Draw a bicycle, hidden conditions</h3><div class="ages"><b>Judging people</b></div></div>
+      <div class="card"><h3>Normal, strange or rude?</h3><div class="ages"><b>Our normal</b></div></div>
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<!-- 4 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> Why interactive</span></div>
+  <div class="content">
+    <p class="eyebrow">Why interactive</p>
+    <h2>You remember what happened to you</h2>
+    <p class="lead">Living something on your own experience pulls you in. People of any age engage when three needs are fed.</p>
+    <div class="grid g3">
+      <div class="card"><div class="num">1</div><h3>Choice</h3><p>"I decided this." Real options and a clear reason why we do it.</p></div>
+      <div class="card"><div class="num">2</div><h3>I can do it</h3><p>Hard enough to matter, possible to win.</p></div>
+      <div class="card"><div class="num">3</div><h3>People</h3><p>I belong here, and someone cares about what we make.</p></div>
+    </div>
+    <p class="hint">Self-Determination Theory · Deci &amp; Ryan: autonomy, competence, relatedness. Prizes and points are not on the list.</p>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<!-- 5 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> Conclusions</span></div>
+  <div class="content">
+    <p class="eyebrow">The part we never skip</p>
+    <h2>Every activity ends with conclusions</h2>
+    <div class="cycle">
+      <div class="card"><div class="num">1</div><h3>What happened?</h3><p>Facts first. What did we do, what did we see?</p></div>
+      <div class="card"><div class="num">2</div><h3>What did I notice?</h3><p>In me, in the group, in the result.</p></div>
+      <div class="card"><div class="num">3</div><h3>What does it mean?</h3><p>Now the idea, the name, the research.</p></div>
+      <div class="card acc"><div class="num">4</div><h3>What will I do?</h3><p>Where will I see it again in my life?</p></div>
+    </div>
+    <div class="grid g2">
+      <div class="card soft"><div class="tag">Why 1</div><p>People feel heard. What they lived and said becomes part of the result.</p></div>
+      <div class="card soft"><div class="tag">Why 2</div><p>Each person builds their own logical chain: from the event, to what happened, to the conclusion they reached.</p></div>
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<!-- 6 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> Initiative</span></div>
+  <div class="content">
+    <p class="eyebrow">Give people the floor</p>
+    <h2>They speak first, the trainer speaks last</h2>
+    <div class="grid g3">
+      <div class="card"><h3>Silent first</h3><p>A sticker or a note before talking, so quiet people count too.</p></div>
+      <div class="card"><h3>No wrong position</h3><p>On the opinion line, moving is welcome and nobody is judged for where they stand.</p></div>
+      <div class="card"><h3>Ideas get help</h3><p>A weak idea is improved together, not taken away.</p></div>
+      <div class="card"><h3>Roles, not ranks</h3><p>Host, camera, timer, editor rotate, so the oldest do not always lead.</p></div>
+      <div class="card"><h3>Real decisions</h3><p>Teams chose their topic, their format, their episode.</p></div>
+      <div class="card acc"><h3>Questions, not answers</h3><p>The trainer asks "What did you notice?" first, and lets the group find the point.</p></div>
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<!-- 7 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> Other tools</span></div>
+  <div class="content">
+    <p class="eyebrow">Other tools we used</p>
+    <h2>Six more methods you saw this week</h2>
+    <div class="acts">
+      <div class="card"><h3>Try before the tools</h3><p>Check the news first on your own, learn the methods, then a second round.</p><div class="ages"><b>Productive failure</b></div></div>
+      <div class="card"><h3>The quiz on the week</h3><p>Pull ideas back from memory instead of re-reading them.</p><div class="ages"><b>Retrieval practice</b></div></div>
+      <div class="card"><h3>The opinion line, debates</h3><p>A format that makes everyone take a position and listen.</p><div class="ages"><b>Discussion protocols</b></div></div>
+      <div class="card"><h3>Teams on different sides</h3><p>Defend a position you did not choose.</p><div class="ages"><b>Perspective taking</b></div></div>
+      <div class="card"><h3>Podcast and videos</h3><p>Real listeners and viewers, not only the trainer.</p><div class="ages"><b>Real audience</b></div></div>
+      <div class="card"><h3>A story from your feed</h3><p>Use the idea on your own life right away.</p><div class="ages"><b>Transfer</b></div></div>
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<!-- 8: the age slider -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> Any age</span></div>
+  <div class="content">
+    <p class="eyebrow">Same process, different dose · drag the slider</p>
+    <div class="slider-wrap">
+      <div class="agebox">
+        <div class="n" id="ageN">15</div>
+        <div class="stage-name" id="ageStage">Early teens</div>
+        <div class="life" id="ageLife"></div>
+      </div>
+      <div class="panel">
+        <div class="card"><div class="tag">Hooks them</div><p id="ageHook"></p></div>
+        <div class="card"><div class="tag">Switches them off</div><p id="ageOff"></p></div>
+        <div class="card soft"><div class="tag">Try this</div><p id="ageTry"></p></div>
+        <div class="card"><div class="tag">Your role</div><p id="ageRole"></p></div>
+        <div class="card who"><div class="tag">Who decides</div>
+          <div class="split"><div class="t" id="ageT">Trainer</div><div class="g">Group</div></div>
+          <div class="levels" id="ageLv"><span>Directed</span><span>Guided choice</span><span>Structured freedom</span><span>Co-designed</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="range">
+      <div class="tape">
+        <span class="lbl" style="left:2%">13</span><span class="lbl" style="left:29.4%">18</span><span class="lbl" style="left:52.9%">22</span><span class="lbl" style="left:76.5%">26</span><span class="lbl" style="left:98%">30</span>
+      </div>
+      <input type="range" id="age" min="13" max="30" value="15" step="1" aria-label="Age of the group">
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+
+<!-- 9 -->
+<section class="slide" hidden>
+<div class="stage">
+  <div class="bar"><span>From Thinking to Speaking</span><span class="part"><b>●</b> Take it home</span></div>
+  <div class="content">
+    <p class="eyebrow">Take it home</p>
+    <h2>Five rules for your own groups</h2>
+    <div class="grid g3" style="grid-template-columns:repeat(5,1fr)">
+      <div class="card"><div class="num">1</div><p>Experience before theory.</p></div>
+      <div class="card"><div class="num">2</div><p>Every activity ends with conclusions.</p></div>
+      <div class="card"><div class="num">3</div><p>Let them speak first. Notice every initiative.</p></div>
+      <div class="card"><div class="num">4</div><p>Hand over decisions step by step.</p></div>
+      <div class="card acc"><div class="num">5</div><p>Ask young people what they need. Do not guess for them.</p></div>
+    </div>
+  </div>
+  <nav class="foot"></nav>
+</div>
+
+</section>
+
+<script>
+// Age slider content: one band per range. A starting guess for discussion, not a rule.
+const BANDS = [
+  {to:15, name:"Early teens", life:"School, family rules, phone as the main window. Friends are the centre.",
+   hook:"Games, movement, something to make in one go. Peers they like. A role with a name.",
+   off:"Long talks, being singled out in front of others, adults who try too hard to be cool.",
+   tryit:"Short rounds with a visible result. Choose between two or three options.",
+   role:"Clear host. You set the frame, they pick inside it.", t:72, lv:1},
+  {to:18, name:"Late teens", life:"Exams, first job, first big decisions. Identity is being built.",
+   hook:"Being taken seriously. Real topics: fairness, the future, their feed. A say in the rules.",
+   off:"Being treated as kids, moralising, fake choice, pointless worksheets.",
+   tryit:"Debate a real question. Let them set the group rules on day one.",
+   role:"Guide. Give options and ask them to defend their choice.", t:55, lv:1},
+  {to:23, name:"Students and starters", life:"Study or first jobs, maybe a new city. Free, busy, often broke.",
+   hook:"Skills they can use or show. New people. Travel, networks, a project of their own.",
+   off:"School-like tasks, wasting their time, no link to what comes next.",
+   tryit:"A project with a real product: podcast, video, event. They plan the how.",
+   role:"Facilitator. Agree the goal, then step back and coach.", t:38, lv:2},
+  {to:27, name:"Young professionals", life:"Work, rent, a partner maybe. Less free time, more experience.",
+   hook:"Impact and purpose. Using what they know. Peers from other countries and fields.",
+   off:"Ice-breakers with no point, being lectured on things they do daily, vague plans.",
+   tryit:"Let them run a part of the session or mentor a younger group.",
+   role:"Partner. Co-design goals and criteria together.", t:25, lv:3},
+  {to:30, name:"Almost thirty", life:"Career, maybe children. Strong views, little time, a lot to give.",
+   hook:"Real influence, depth, honest debate, a community they help shape.",
+   off:"Being placed with teens as equals with no role, tasks that ignore their life.",
+   tryit:"Co-create the programme. Give them the hard cases, not the warm-up.",
+   role:"Consultant. Ask what they need from you.", t:18, lv:3},
+];
+(function(){
+  const input = document.getElementById("age"); if (!input) return;
+  const $ = (id) => document.getElementById(id);
+  let lastBand = -1;
+  function upd(){
+    const a = +input.value, bi = BANDS.findIndex(b => a <= b.to), b = BANDS[bi];
+    $("ageN").textContent = a;
+    if (bi === lastBand) return;
+    lastBand = bi;
+    const cards = document.querySelectorAll(".panel .card:not(.who)");
+    cards.forEach(c => c.classList.add("fade"));
+    setTimeout(() => {
+      $("ageStage").textContent = b.name; $("ageLife").textContent = b.life;
+      $("ageHook").textContent = b.hook; $("ageOff").textContent = b.off;
+      $("ageTry").textContent = b.tryit; $("ageRole").textContent = b.role;
+      cards.forEach(c => c.classList.remove("fade"));
+    }, 180);
+    $("ageT").style.width = b.t + "%";
+    $("ageT").textContent = "Trainer " + b.t + "%";
+    document.querySelectorAll("#ageLv span").forEach((s, i) => s.classList.toggle("on", i === b.lv));
+  }
+  input.addEventListener("input", upd);
+  input.addEventListener("click", e => e.stopPropagation());
+  input.addEventListener("pointerdown", e => e.stopPropagation());
+  upd();
+})();
+
+// Navigation: arrows / space / Enter / click = next step or slide, N = trainer note, F = fullscreen.
+(function(){
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const N = slides.length;
+  let cur = 0, shown = 0;
+  slides.forEach((s, i) => {
+    const foot = s.querySelector(".foot");
+    const pct = N > 1 ? (i / (N - 1)) * 100 : 0;
+    foot.innerHTML = `<button type="button" data-go="-1"${i === 0 ? " disabled" : ""}>← Back</button>` +
+      `<div class="mini"><i style="left:${pct}%"></i></div>` +
+      `<a class="lib" href="../fts-library#youth-work">FTS Library</a><span class="pos">${i + 1} / ${N}</span>` +
+      `<button type="button" data-go="1"${i === N - 1 ? " disabled" : ""}>Next →</button>`;
+    foot.addEventListener("click", (e) => {
+      const b = e.target.closest("button"); if (!b) return;
+      e.stopPropagation();
+      if (b.dataset.go === "1") go(cur + 1, false); else go(cur - 1, true);
+    });
+  });
+  const steps = () => Array.from(slides[cur].querySelectorAll(".reveal"));
+  function go(i, fromEnd){
+    if (i < 0 || i >= N) return;
+    slides[cur].hidden = true; cur = i; slides[cur].hidden = false;
+    const st = steps(); st.forEach(el => el.classList.toggle("on", !!fromEnd)); shown = fromEnd ? st.length : 0;
+    try { history.replaceState(null, "", "#s" + (cur + 1)); } catch (e) {}
+  }
+  function forward(){ const st = steps(); if (shown < st.length) { st[shown++].classList.add("on"); return; } go(cur + 1, false); }
+  function back(){ const st = steps(); if (shown > 0) { st[--shown].classList.remove("on"); return; } go(cur - 1, true); }
+  document.addEventListener("keydown", (e) => {
+    if (e.metaKey || e.ctrlKey || e.altKey) return;
+    if (e.target && e.target.type === "range" && ["ArrowLeft","ArrowRight","ArrowUp","ArrowDown","Home","End","PageUp","PageDown"].includes(e.key)) return;
+    const k = e.key.toLowerCase();
+    if (k === "n") { document.body.classList.toggle("notes"); return; }
+    if (k === "f") {
+      const d = document, el = d.documentElement;
+      if (d.fullscreenElement || d.webkitFullscreenElement) (d.exitFullscreen || d.webkitExitFullscreen).call(d);
+      else { const r = el.requestFullscreen || el.webkitRequestFullscreen; if (r) { const p = r.call(el); if (p && p.catch) p.catch(() => {}); } }
+      return;
+    }
+    if (e.key === "Home") go(0, false);
+    if (e.key === "End") go(N - 1, false);
+    if (["ArrowRight", "PageDown", " ", "Enter"].includes(e.key)) { e.preventDefault(); forward(); }
+    if (["ArrowLeft", "PageUp", "Backspace"].includes(e.key)) { e.preventDefault(); back(); }
+  });
+  slides.forEach(s => s.querySelector(".content").addEventListener("click", (e) => {
+    if (e.target.closest("input,button,a")) return;
+    forward();
+  }));
+  function fromHash(){ const m = /^#s(\d+)$/.exec(location.hash); const i = m ? Math.min(Math.max(+m[1] - 1, 0), N - 1) : 0; if (i !== cur || slides[cur].hidden) go(i, false); }
+  window.addEventListener("hashchange", fromHash);
+  fromHash();
+})();
+</script>
+</body>
+</html>
