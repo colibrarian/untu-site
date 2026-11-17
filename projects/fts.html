@@ -1014,6 +1014,18 @@
   }
 
   /* ================= MULTI-PAGE: NAV ================= */
+  .fts-status{
+    display:flex; align-items:center; gap:12px; flex-wrap:wrap;
+    margin: 0 0 var(--gap);
+    padding: 14px 20px;
+    border-radius: var(--r-sm);
+    background: var(--ink-soft);
+    border: 1px solid rgba(255,255,255,.12);
+    color: var(--white);
+    font-size: 15px; line-height: 1.45;
+  }
+  .fts-status b{ font-family:'IBM Plex Mono', monospace; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color: var(--cream-deep); white-space:nowrap; }
+  .fts-status a{ color: var(--white); text-decoration: underline; text-underline-offset: 3px; }
   .fts-nav{
     position:sticky; top:10px; z-index:50; display:flex; gap:6px; flex-wrap:wrap;
     padding:6px; margin:0 0 18px 0; border-radius:999px;
@@ -1320,6 +1332,7 @@
     <a href="fts-before-you-go" class="c-sand"><span class="fn-num">05</span>Before You Go</a>
     <a href="fts-library" class="c-mat"><span class="fn-num">06</span>Library</a>
   </nav>
+  <p class="fts-status"><b>Follow-up phase</b><span>The training took place on 9–15 November 2026. Partner teams are now running follow-up activities in their countries. Materials are open in the <a href="fts-library">Library</a>.</span></p>
   <div class="grid page-overview">
 
     <div class="card hero-title g-hero-title">
