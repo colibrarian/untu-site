@@ -11,14 +11,21 @@ const SLIDES = [
   "f5-c3-05-projection.html",
   "f5-c3-06-double.html",
   "c3-07-negativity.html",
-  "f6-c3-10-towers.html",
-  "f6-c3-10b-jury.html",
-  "c3-11-normal.html",
-  "f6-c3-11b-debrief.html",
-  "c3-12-just-world.html",
-  "c3-13-cultural.html",
-  "f6-c3-15-rewrite.html",
-  "c3-14-catch.html"
+  "f6-d1-draw.html",
+  "f6-d1-team-a.html",
+  "f6-d1-team-b.html",
+  "f6-d1-team-c.html",
+  "f6-d1-team-d.html",
+  "f6-d2-jury.html",
+  "f6-d3-cards.html",
+  "f6-t1-just-world.html",
+  "f6-r1-roles.html",
+  "f6-n1-vote.html",
+  "f6-n2-where.html",
+  "f6-t2-ethno.html",
+  "f6-w1-rewrite.html",
+  "c3-14-catch.html",
+  "f6-x1-exit.html"
 ];
 
 // Slide titles for the overview (O). Keep in sync when adding slides.
@@ -34,14 +41,21 @@ const TITLES = {
  "f5-c3-05-projection.html": "False consensus",
  "f5-c3-06-double.html": "Double standards",
  "c3-07-negativity.html": "Negativity bias",
- "f6-c3-10-towers.html": "Towers",
- "f6-c3-10b-jury.html": "Jury, your verdict",
- "c3-11-normal.html": "What is normal",
- "f6-c3-11b-debrief.html": "Look at the envelopes",
- "c3-12-just-world.html": "Just-world belief",
- "c3-13-cultural.html": "Ethnocentrism",
- "f6-c3-15-rewrite.html": "Before and after",
- "c3-14-catch.html": "Catch it in yourself"
+ "f6-d1-draw.html": "Draw a bicycle",
+ "f6-d1-team-a.html": "Bicycle: team A",
+ "f6-d1-team-b.html": "Bicycle: team B",
+ "f6-d1-team-c.html": "Bicycle: team C",
+ "f6-d1-team-d.html": "Bicycle: team D",
+ "f6-d2-jury.html": "Jury, your verdict",
+ "f6-d3-cards.html": "Now read the cards",
+ "f6-t1-just-world.html": "Just-world belief",
+ "f6-r1-roles.html": "Team roles",
+ "f6-n1-vote.html": "Normal, strange or rude?",
+ "f6-n2-where.html": "Normal for whom?",
+ "f6-t2-ethno.html": "Ethnocentrism",
+ "f6-w1-rewrite.html": "Before and after",
+ "c3-14-catch.html": "Catch it in yourself",
+ "f6-x1-exit.html": "One sticker"
 };
 
 const CHAPTER_COLOURS = ["var(--c0)", "var(--c1)", "var(--c2)", "var(--c3)", "var(--c4)"];

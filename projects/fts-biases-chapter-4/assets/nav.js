@@ -18,6 +18,17 @@ const SLIDES = [
   "c4-11-teleology.html",
   "c4-12-quiz.html",
   "c4-13-catch.html",
+  "f6-q0-quiz.html",
+  "f6-q01.html",
+  "f6-q02.html",
+  "f6-q03.html",
+  "f6-q04.html",
+  "f6-q05.html",
+  "f6-q06.html",
+  "f6-q07.html",
+  "f6-q08.html",
+  "f6-q09.html",
+  "f6-q10.html",
   "c4-15-end.html"
 ];
 
@@ -41,6 +52,17 @@ const TITLES = {
  "c4-11-teleology.html": "Teleology",
  "c4-12-quiz.html": "Quiz: name the trick",
  "c4-13-catch.html": "Catch it in yourself",
+ "f6-q0-quiz.html": "Quick quiz",
+ "f6-q01.html": "Quiz 1",
+ "f6-q02.html": "Quiz 2",
+ "f6-q03.html": "Quiz 3",
+ "f6-q04.html": "Quiz 4",
+ "f6-q05.html": "Quiz 5",
+ "f6-q06.html": "Quiz 6",
+ "f6-q07.html": "Quiz 7",
+ "f6-q08.html": "Quiz 8",
+ "f6-q09.html": "Quiz 9",
+ "f6-q10.html": "Quiz 10",
  "c4-15-end.html": "End"
 };
 
