@@ -1,0 +1,111 @@
+/* FTS · Premiere + Words and consequences (day 6). Same base as the FTS decks (fonts, ink, cards with a hard shadow).
+   Own look: a cinema ticket. Cards can be tickets with notched sides, the footer is a row of cinema seats
+   (one seat per slide), and the second part uses one line from "just an opinion" to "harm". */
+:root{
+  --paper:#f7f4ee; --ink:#16181d; --soft:#3b3d44; --muted:#7a7c84;
+  --red:#c8322b;           /* curtain red: current seat, accents */
+  --red-soft:rgba(200,50,43,.10);
+  --gold:#e0a530;          /* used once per slide at most */
+  --card:#fff;
+}
+*{box-sizing:border-box;}
+html,body{margin:0; padding:0; height:100%;}
+body{background:var(--paper); color:var(--ink); font-family:'Figtree', sans-serif; overflow:hidden;}
+@media (prefers-reduced-motion: reduce){ *{transition:none !important; animation:none !important;} }
+
+.stage{position:absolute; inset:0; margin:auto; width:min(100vw, 177.78vh); height:min(56.25vw, 100vh);
+  padding:3.2% 4.4% 2.4%; display:flex; flex-direction:column; font-size:min(1.6vw, 2.85vh);}
+.content{flex:1; display:flex; flex-direction:column; justify-content:center; min-height:0;}
+
+.bar{display:flex; justify-content:space-between; align-items:center; margin-bottom:1.4em;
+  font:500 .62em/1 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted);}
+.bar .stub{display:flex; align-items:center; gap:.7em; border:1.5px dashed var(--muted); border-radius:6px; padding:.45em .8em;}
+.bar .stub b{color:var(--red); font-weight:600;}
+
+.eyebrow{align-self:flex-start; width:fit-content; margin:0 0 1em; font:600 .66em/1 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase;
+  border:1.5px solid var(--ink); border-radius:999px; padding:.45em .9em; background:#fff;}
+h1,h2,h3{font-family:'Bricolage Grotesque', sans-serif; font-weight:800; letter-spacing:-.02em; line-height:1.02; margin:0;}
+h1{font-size:4.6em;}
+h2{font-size:2.7em;}
+h3{font-size:1.3em; margin:0 0 .4em;}
+p{margin:0;}
+p.lead{font-size:1.3em; line-height:1.4; max-width:36em; color:var(--soft); margin-top:.9em;}
+.hint{font:.62em/1.5 'JetBrains Mono', monospace; letter-spacing:.06em; color:var(--muted); margin-top:1.4em;}
+
+.grid{display:grid; gap:1em; margin-top:1.5em;}
+.g2{grid-template-columns:1fr 1fr;} .g3{grid-template-columns:repeat(3,1fr);} .g4{grid-template-columns:repeat(4,1fr);}
+.card{background:var(--card); border:1.5px solid var(--ink); border-radius:14px; box-shadow:0 5px 0 var(--ink); padding:1.15em 1.3em;}
+.card p{line-height:1.4;}
+.card.red{background:var(--red); color:#fff; border-color:var(--ink);}
+.card.red .tag{color:rgba(255,255,255,.75);}
+.card.ink{background:var(--ink); color:#fff;}
+.card.ink .tag{color:rgba(255,255,255,.6);}
+.card.soft{background:var(--red-soft);}
+.tag{font:600 .62em/1 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--muted); margin-bottom:.9em;}
+.num{font:800 2.2em/1 'Bricolage Grotesque', sans-serif; color:var(--red); margin-bottom:.2em;}
+
+/* ticket: notched sides + a dashed tear line before the stub */
+.ticket{position:relative; display:flex; background:#fff; border:1.5px solid var(--ink); border-radius:14px; box-shadow:0 5px 0 var(--ink);
+  -webkit-mask:radial-gradient(circle .9em at 0 50%, #0000 98%, #000) left/51% 100% no-repeat, radial-gradient(circle .9em at 100% 50%, #0000 98%, #000) right/51% 100% no-repeat;
+          mask:radial-gradient(circle .9em at 0 50%, #0000 98%, #000) left/51% 100% no-repeat, radial-gradient(circle .9em at 100% 50%, #0000 98%, #000) right/51% 100% no-repeat;}
+.ticket .main{flex:1; padding:1.4em 1.8em;}
+.ticket .side{width:9em; border-left:2px dashed var(--muted); padding:1.4em 1.2em; display:flex; flex-direction:column; justify-content:center; gap:.4em;
+  font:600 .7em/1.3 'JetBrains Mono', monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+.ticket .side b{font:800 2.6em/1 'Bricolage Grotesque', sans-serif; color:var(--red); letter-spacing:-.02em;}
+
+/* cover */
+.cover{display:grid; grid-template-columns:1.2fr 1fr; gap:3em; align-items:center;}
+.cover .ticket{transform:rotate(-3deg);}
+.cover .ticket .main h3{font-size:1.8em;}
+
+/* run of show: steps in a row */
+.steps{display:grid; grid-template-columns:repeat(4,1fr); gap:1em; margin-top:1.5em; counter-reset:st;}
+.steps .card{position:relative;}
+.steps .card::before{counter-increment:st; content:counter(st); display:block; font:800 2em/1 'Bricolage Grotesque', sans-serif; color:var(--red); margin-bottom:.3em;}
+
+/* running order: six tickets */
+.order{display:grid; grid-template-columns:repeat(3,1fr); gap:1em; margin-top:1.5em;}
+.order .ticket .main{padding:1em 1.3em;}
+.order .ticket .side{width:4.5em; align-items:center;}
+.order h3{margin:0;}
+
+/* the line: just an opinion ... harm */
+.line{margin-top:2em; position:relative; padding-top:1.2em;}
+.line .track{height:.5em; border-radius:999px; background:linear-gradient(90deg, #d9d5cb, var(--red)); border:1.5px solid var(--ink);}
+.line .ends{display:flex; justify-content:space-between; margin-top:.8em; font:600 .72em/1.3 'JetBrains Mono', monospace; letter-spacing:.08em; text-transform:uppercase;}
+.line .ends span:last-child{color:var(--red); text-align:right;}
+.line .ticks{position:absolute; left:0; right:0; top:1.2em; display:flex; justify-content:space-between; padding:0 .2em;}
+.line .ticks i{width:2px; height:.5em; background:var(--ink); opacity:.35;}
+.case{font:700 2.1em/1.25 'Bricolage Grotesque', sans-serif; letter-spacing:-.01em; max-width:24em; margin-top:.4em;}
+.case-n{font:600 .7em/1 'JetBrains Mono', monospace; letter-spacing:.12em; text-transform:uppercase; color:var(--red);}
+
+/* decisions */
+.verdict .card h3{font-size:1.6em;}
+
+/* pause slide */
+.pause h1{text-decoration:underline; text-decoration-color:var(--red); text-decoration-thickness:.1em; text-underline-offset:.1em;}
+
+/* reveals */
+.reveal{opacity:0; transform:translateY(.5em); transition:opacity .4s ease, transform .4s ease;}
+.reveal.on{opacity:1; transform:none;}
+
+/* footer: a row of cinema seats, one per slide */
+.foot{display:flex; align-items:center; gap:1.2em; margin-top:1.4em; font:500 .6em/1 'JetBrains Mono', monospace; letter-spacing:.1em; text-transform:uppercase; color:var(--muted);}
+.foot > a{color:var(--ink); text-decoration:none; white-space:nowrap;}
+.foot > a[aria-disabled="true"]{opacity:.3; pointer-events:none;}
+.foot .seats{flex:1; display:flex; gap:.35em; justify-content:center;}
+.foot .seats a{width:1.5em; height:1.2em; border:1.5px solid var(--ink); border-radius:.55em .55em .2em .2em; background:#fff; display:block;}
+.foot .seats a.done{background:var(--ink);}
+.foot .seats a.cur{background:var(--red); border-color:var(--red);}
+.foot .row{white-space:nowrap;}
+
+/* trainer note */
+.note{display:none; position:fixed; left:50%; transform:translateX(-50%); bottom:calc(14px + env(safe-area-inset-bottom, 0px));
+  width:min(92vw, 900px); background:var(--ink); color:#fff; font:400 15px/1.45 'Figtree', sans-serif; padding:12px 16px; border-radius:10px; z-index:10;}
+.note::before{content:"Trainer note · "; color:#aaa;}
+body.notes .note:not(:empty){display:block;}
+
+@media (max-width:700px){
+  .g3,.g4,.steps,.order{grid-template-columns:1fr 1fr;}
+  .cover{grid-template-columns:1fr;}
+}
