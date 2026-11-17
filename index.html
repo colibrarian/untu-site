@@ -314,8 +314,6 @@
       height:100%;
       object-fit:cover;
       display:block;
-      opacity:.95;
-      filter: contrast(1.05) saturate(1.03);
     }
     .featured-project-body{
       display:flex;
@@ -559,15 +557,8 @@
       height:100%;
       object-fit:cover;
       display:block;
-      opacity:.95;
-      filter: contrast(1.05) saturate(1.03);
     }
-    .project-media::after{
-      content:"";
-      position:absolute;
-      inset:0;
-      background: linear-gradient(180deg, rgba(10,12,18,.18), rgba(10,12,18,.82));
-    }
+    .project-media::after{ display: none; }
     .project-name{
       font-weight:900;
       margin: 14px 0 8px;
@@ -826,9 +817,7 @@
         background: transparent;
       }
 
-      .project-media::after{
-        background: linear-gradient(180deg, rgba(10,12,18,.08), rgba(10,12,18,.55));
-      }
+      .project-media::after{ display: none; }
     }
 
     @media (max-width: 680px){
